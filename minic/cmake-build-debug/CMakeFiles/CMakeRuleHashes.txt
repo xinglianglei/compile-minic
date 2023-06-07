@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+6f0a889ef08458c39006f4f1160b8399 D:/CompilerTools/code/minic/minic_lex.cpp
+d98ddb8c4732ffbf957899182df28a5f D:/CompilerTools/code/minic/minic_yacc.cpp
