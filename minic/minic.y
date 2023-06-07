@@ -17,8 +17,9 @@
 // 抽象语法树函数定义原型头文件
 #include "ast_minic.h"
 
-// LR分   析失败时所调用函数的原型声明
-void yyerror(char * msg);
+// LR分析失败时所调用函数的原型声明
+int yylex();
+void yyerror(std::unique_ptr<AST_Base> &root, const char *s);
 using namespace std;
 
 %}
@@ -31,13 +32,12 @@ using namespace std;
     AST_Vec *ast_vecVal;
     AST_Exp *ast_expVal;
     enum ast_op_type ast_op_type;
-    //unique_ptr <string> str_val(new string);
     string *str_val;
     int val;
 };
 
 // 文法的开始符号
-%parse-param { std::unique_ptr<BaseAST> &root }
+%parse-param { std::unique_ptr<AST_Base> &root }
 
 // 指定文法的终结符号，<>可指定文法属性
 %token <int_val> NUM
@@ -46,7 +46,7 @@ using namespace std;
 %token IF ELSE WHILE
 %token BREAK CONT RET
 
-%token INT VOID
+%token T_INT T_VOID
 
 %token INCR DECR        
 %token GE LE EQ NE AND OR
@@ -56,7 +56,7 @@ using namespace std;
 %type <ast_baseVal> BlockItem Stmt MatchedStmt OpenStmt SimpleStmt FuncFParam 
 %type <ast_expVal> ConstExp InitVal Exp UnaryExp PrimaryExp LVal
 %type <ast_expVal> AddExp MulExp RelExp EqExp LAndExp LOrExp Cond
-%type <str_val> BType FuncType
+%type <str_val> BType
 %type <ast_op_type> UnaryOp 
 %type <val> Number
 %type <ast_vecVal> BlockItemList VarDefList FuncFParams FuncRParams InitValList ArrayIndexList
@@ -78,24 +78,21 @@ using namespace std;
                 {
                     cout<<"CompUnit : CompUnit FuncDef"<<endl;
                     auto ptr=(AST_CompUnit *)($1);
-                    auto func=unique_ptr<AST_Base>($2);
-                    ptr->list_func.push_back(func);
+                    ptr->list_func.push_back(unique_ptr<AST_Base>($2));
                     $$=ptr;
                 }
                 | Decl
                 {
                     cout<<"CompUnit : Decl"<<endl;
-                    auto decl=unique_ptr<AST_Base>($1);
                     auto ptr=new AST_CompUnit();
-                    ptr->list_decl.push_back(decl);
+                    ptr->list_decl.push_back(unique_ptr<AST_Base>($1));
                     $$=ptr;
                 }
                 | FuncDef
                 {
                     cout<<"CompUnit : FuncDef"<<endl;
-                    auto func=unique_ptr<AST_Base>($1);
                     auto ptr=new AST_CompUnit();
-                    ptr->list_func.push_back(func);
+                    ptr->list_func.push_back(unique_ptr<AST_Base>($1));
                     $$=ptr;
                 };
     Decl        : VarDecl
@@ -103,10 +100,17 @@ using namespace std;
                     cout<<"Decl : VarDecl"<<endl;
                     $$=$1;
                 };
-    BType       : INT
+    BType       : T_INT
                 {
-                    cout<<"cout : INT"<<endl;
+                    cout<<"BType : T_INT"<<endl;
                     auto btype=new string("int");
+                    //auto btype=unique_ptr<string>(tmp);
+                    $$=btype;
+                }
+                | T_VOID
+                {
+                    cout<<"BType : T_VOID"<<endl;
+                    auto btype=new string("void");
                     //auto btype=unique_ptr<string>(tmp);
                     $$=btype;
                 };
@@ -146,7 +150,7 @@ using namespace std;
                 }
                 | IDENT
                 {
-                    cout<<"VarDef : IDENT ArrayIndexList"<<endl;
+                    cout<<"VarDef : IDENT"<<endl;
                     auto ptr=new AST_VarDef();
                     ptr->tag=AST_VarDef::VARIABLE;
                     ptr->ident=unique_ptr<string>($1.id);
@@ -210,36 +214,24 @@ using namespace std;
                     ptr->push(initVal);
                     $$=ptr;
                 };
-    FuncDef     : FuncType IDENT '(' ')' Block
+    FuncDef     : BType IDENT '(' ')' Block
                 {
-                    cout<<"FuncDef : FuncType IDENT '(' ')' Block"<<endl;
+                    cout<<"FuncDef : BType IDENT '(' ')' Block"<<endl;
                     auto funcType=unique_ptr<string>($1);
                     auto funcName=unique_ptr<string>($2.id);
                     auto funcBlock=unique_ptr<AST_Base>($5);
                     auto ptr=new AST_FuncDef(funcType, funcName, funcBlock);
                     $$=ptr;
                 }
-                | FuncType IDENT '(' FuncFParams ')' Block
+                | BType IDENT '(' FuncFParams ')' Block
                 {
-                    cout<<"FuncDef : FuncType IDENT '(' FuncFParams ')' Block"<<endl;
+                    cout<<"FuncDef : BType IDENT '(' FuncFParams ')' Block"<<endl;
                     auto funcType=unique_ptr<string>($1);
                     auto funcName=unique_ptr<string>($2.id);
                     auto funcFParams=unique_ptr<AST_Vec>($4);
                     auto funcBlock=unique_ptr<AST_Base>($6);
                     auto ptr=new AST_FuncDef(funcType,funcName,funcFParams,funcBlock);
                     $$=ptr;
-                };
-    FuncType    : VOID
-                {
-                    cout<<"FuncType : VOID"<<endl;
-                    auto type=new string("void");
-                    $$=type;
-                }
-                | INT
-                {
-                    cout<<"FuncType : INT"<<endl;
-                    auto type=new string("int");
-                    $$=type;
                 };
     FuncFParams : FuncFParam
                 {
@@ -285,7 +277,8 @@ using namespace std;
                     ptr->ArrayIndexList=unique_ptr<AST_Vec>($5);
                     $$=ptr;
                 };
-    ArrayIndexList : '[' Exp ']'
+                //！！！这里应该是constexp
+    ArrayIndexList : '[' ConstExp ']'
                     {
                         cout<<"ArrayIndexList : '[' Exp ']'"<<endl;
                         auto exp=unique_ptr<AST_Base>($2);
@@ -293,7 +286,7 @@ using namespace std;
                         ptr->push(exp);
                         $$=ptr;
                     } 
-                    | ArrayIndexList '[' Exp ']'
+                    | ArrayIndexList '[' ConstExp ']'
                     {
                         cout<<"ArrayIndexList : ArrayIndexList '[' Exp ']'"<<endl;
                         auto ptr=$1;
@@ -446,14 +439,14 @@ using namespace std;
                     ptr->exp=unique_ptr<AST_Exp>($2);
                     $$=ptr;
                 };
-    Exp         : AddExp
+    Exp         : LOrExp
                 {
-                    cout<<"Exp : AddExp"<<endl;
-                    auto andExp=unique_ptr<AST_Exp>($1);
-                    auto ptr=new AST_Exp1(andExp);
+                    cout<<"Exp : LOrExp"<<endl;
+                    auto lorExp=unique_ptr<AST_Exp>($1);
+                    auto ptr=new AST_Exp1(lorExp);
                     $$=ptr;
                 };
-    Cond        :LOrExp
+    Cond        : LOrExp
                 {
                     cout<<"Cond :LOrExp"<<endl;
                     //!!!需新建cond类
@@ -716,18 +709,17 @@ using namespace std;
                     auto ptr=new AST_LOr(lor,land);
                     $$=ptr;
                 };
-    ConstExp    : AddExp
+    ConstExp    : Exp
                 {
-                    cout<<"ConstExp :AddExp"<<endl;
-                    auto addExp=unique_ptr<AST_Exp>($1);
-                    auto ptr=new AST_ConstExp(addExp);
+                    cout<<"ConstExp :Exp"<<endl;
+                    auto Exp=unique_ptr<AST_Exp>($1);
+                    auto ptr=new AST_ConstExp(Exp);
                     $$=ptr;
                 };    
 
 %%
 
 // 语法识别错误要调用函数的定义
-void yyerror(char * msg)
-{
-    printf("Line %d: %s\n", yylineno, msg);
+void yyerror(unique_ptr<AST_Base> &ast, const char *s) {
+  cerr << "error: " << s << endl;
 }

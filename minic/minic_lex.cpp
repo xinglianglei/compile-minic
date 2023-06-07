@@ -385,15 +385,15 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[91] =
     {   0,
-        0,    0,    0,    0,   46,   44,   42,   43,   43,   37,
-       25,   38,   15,   16,   21,   22,   40,   24,   23,    5,
-        5,   41,   30,   28,   29,    6,   17,   18,    6,    6,
-        6,    6,    6,    6,    6,   19,   39,   20,    3,    3,
-        3,   42,   43,   34,   35,   26,   27,    1,    0,    5,
-       32,   33,   31,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,   36,    3,    3,    2,    0,    4,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    0
+        0,    0,    0,    0,   46,   44,   42,   43,   43,   35,
+       23,   36,   13,   14,   19,   20,   38,   22,   21,   40,
+       40,   39,   28,   26,   27,   41,   15,   16,   41,   41,
+       41,   41,   41,   41,   41,   17,   37,   18,    3,    3,
+        3,   42,   43,   32,   33,   24,   25,    1,    0,   40,
+       30,   31,   29,   41,   41,   41,   41,    5,   41,   41,
+       41,   41,   34,    3,    3,    2,    0,    4,   41,   41,
+       41,   11,   41,   41,   41,   41,   41,    6,   41,   12,
+       41,    8,   41,   41,    7,   41,   10,   41,    9,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -886,211 +886,215 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
+#line 69 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return IF;}
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
 #line 70 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return ELSE;} 
+	YY_BREAK
+case 7:
+YY_RULE_SETUP
+#line 71 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return WHILE;}
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 72 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return BREAK;}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 73 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return CONT;}
+	YY_BREAK
+case 10:
+YY_RULE_SETUP
+#line 74 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return RET;}
+	YY_BREAK
+case 11:
+YY_RULE_SETUP
+#line 76 "D:/CompilerTools/code/minic/minic.l"
 {
+                cout<<yytext<<endl;
+                return T_INT;}
+	YY_BREAK
+case 12:
+YY_RULE_SETUP
+#line 79 "D:/CompilerTools/code/minic/minic.l"
+{return T_VOID;}
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 81 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '(';}
+	YY_BREAK
+case 14:
+YY_RULE_SETUP
+#line 82 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return ')';}
+	YY_BREAK
+case 15:
+YY_RULE_SETUP
+#line 83 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '[';}
+	YY_BREAK
+case 16:
+YY_RULE_SETUP
+#line 84 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return ']';}
+	YY_BREAK
+case 17:
+YY_RULE_SETUP
+#line 85 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '{';}
+	YY_BREAK
+case 18:
+YY_RULE_SETUP
+#line 86 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '}';}
+	YY_BREAK
+case 19:
+YY_RULE_SETUP
+#line 88 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '*';}
+	YY_BREAK
+case 20:
+YY_RULE_SETUP
+#line 89 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '+';}
+	YY_BREAK
+case 21:
+YY_RULE_SETUP
+#line 90 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '/';}
+	YY_BREAK
+case 22:
+YY_RULE_SETUP
+#line 91 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '-';}
+	YY_BREAK
+case 23:
+YY_RULE_SETUP
+#line 92 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '%';}
+	YY_BREAK
+case 24:
+YY_RULE_SETUP
+#line 93 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return INCR;}
+	YY_BREAK
+case 25:
+YY_RULE_SETUP
+#line 94 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return DECR;}
+	YY_BREAK
+case 26:
+YY_RULE_SETUP
+#line 96 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '=';}
+	YY_BREAK
+case 27:
+YY_RULE_SETUP
+#line 98 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '>';}
+	YY_BREAK
+case 28:
+YY_RULE_SETUP
+#line 99 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '<';}
+	YY_BREAK
+case 29:
+YY_RULE_SETUP
+#line 100 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return GE;}
+	YY_BREAK
+case 30:
+YY_RULE_SETUP
+#line 101 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return LE;}
+	YY_BREAK
+case 31:
+YY_RULE_SETUP
+#line 102 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return EQ;}
+	YY_BREAK
+case 32:
+YY_RULE_SETUP
+#line 103 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return NE;}
+	YY_BREAK
+case 33:
+YY_RULE_SETUP
+#line 104 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return AND;}
+	YY_BREAK
+case 34:
+YY_RULE_SETUP
+#line 105 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return OR;}
+	YY_BREAK
+case 35:
+YY_RULE_SETUP
+#line 107 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '!';}
+	YY_BREAK
+case 36:
+YY_RULE_SETUP
+#line 108 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '&';}
+	YY_BREAK
+case 37:
+YY_RULE_SETUP
+#line 109 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '|';}
+	YY_BREAK
+case 38:
+YY_RULE_SETUP
+#line 111 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return ',';}
+	YY_BREAK
+case 39:
+YY_RULE_SETUP
+#line 112 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return ';';}
+	YY_BREAK
+case 40:
+YY_RULE_SETUP
+#line 114 "D:/CompilerTools/code/minic/minic.l"
+{
+                cout<<yytext<<endl;
                 yylval.int_val.val = (int)strtol(yytext, (char **)NULL, 10);
                 yylval.int_val.lineno = yylineno;
                 return NUM;
             }
 	YY_BREAK
-case 6:
+case 41:
 YY_RULE_SETUP
-#line 76 "D:/CompilerTools/code/minic/minic.l"
+#line 121 "D:/CompilerTools/code/minic/minic.l"
 { 
+                cout<<yytext<<endl;
                 yylval.id_val.id = new string(yytext); 
                 yylval.id_val.lineno = yylineno;
                 return IDENT; 
             }
 	YY_BREAK
-case 7:
-YY_RULE_SETUP
-#line 82 "D:/CompilerTools/code/minic/minic.l"
-{return IF;}
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
-#line 83 "D:/CompilerTools/code/minic/minic.l"
-{return ELSE;} 
-	YY_BREAK
-case 9:
-YY_RULE_SETUP
-#line 84 "D:/CompilerTools/code/minic/minic.l"
-{return WHILE;}
-	YY_BREAK
-case 10:
-YY_RULE_SETUP
-#line 85 "D:/CompilerTools/code/minic/minic.l"
-{return BREAK;}
-	YY_BREAK
-case 11:
-YY_RULE_SETUP
-#line 86 "D:/CompilerTools/code/minic/minic.l"
-{return CONT;}
-	YY_BREAK
-case 12:
-YY_RULE_SETUP
-#line 87 "D:/CompilerTools/code/minic/minic.l"
-{return RET;}
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
-#line 89 "D:/CompilerTools/code/minic/minic.l"
-{return INT;}
-	YY_BREAK
-case 14:
-YY_RULE_SETUP
-#line 90 "D:/CompilerTools/code/minic/minic.l"
-{return VOID;}
-	YY_BREAK
-case 15:
-YY_RULE_SETUP
-#line 92 "D:/CompilerTools/code/minic/minic.l"
-{return '(';}
-	YY_BREAK
-case 16:
-YY_RULE_SETUP
-#line 93 "D:/CompilerTools/code/minic/minic.l"
-{return ')';}
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
-#line 94 "D:/CompilerTools/code/minic/minic.l"
-{return '[';}
-	YY_BREAK
-case 18:
-YY_RULE_SETUP
-#line 95 "D:/CompilerTools/code/minic/minic.l"
-{return ']';}
-	YY_BREAK
-case 19:
-YY_RULE_SETUP
-#line 96 "D:/CompilerTools/code/minic/minic.l"
-{return '{';}
-	YY_BREAK
-case 20:
-YY_RULE_SETUP
-#line 97 "D:/CompilerTools/code/minic/minic.l"
-{return '}';}
-	YY_BREAK
-case 21:
-YY_RULE_SETUP
-#line 99 "D:/CompilerTools/code/minic/minic.l"
-{return '*';}
-	YY_BREAK
-case 22:
-YY_RULE_SETUP
-#line 100 "D:/CompilerTools/code/minic/minic.l"
-{return '+';}
-	YY_BREAK
-case 23:
-YY_RULE_SETUP
-#line 101 "D:/CompilerTools/code/minic/minic.l"
-{return '/';}
-	YY_BREAK
-case 24:
-YY_RULE_SETUP
-#line 102 "D:/CompilerTools/code/minic/minic.l"
-{return '-';}
-	YY_BREAK
-case 25:
-YY_RULE_SETUP
-#line 103 "D:/CompilerTools/code/minic/minic.l"
-{return '%';}
-	YY_BREAK
-case 26:
-YY_RULE_SETUP
-#line 104 "D:/CompilerTools/code/minic/minic.l"
-{return INCR;}
-	YY_BREAK
-case 27:
-YY_RULE_SETUP
-#line 105 "D:/CompilerTools/code/minic/minic.l"
-{return DECR;}
-	YY_BREAK
-case 28:
-YY_RULE_SETUP
-#line 107 "D:/CompilerTools/code/minic/minic.l"
-{return '=';}
-	YY_BREAK
-case 29:
-YY_RULE_SETUP
-#line 109 "D:/CompilerTools/code/minic/minic.l"
-{return '>';}
-	YY_BREAK
-case 30:
-YY_RULE_SETUP
-#line 110 "D:/CompilerTools/code/minic/minic.l"
-{return '<';}
-	YY_BREAK
-case 31:
-YY_RULE_SETUP
-#line 111 "D:/CompilerTools/code/minic/minic.l"
-{return GE;}
-	YY_BREAK
-case 32:
-YY_RULE_SETUP
-#line 112 "D:/CompilerTools/code/minic/minic.l"
-{return LE;}
-	YY_BREAK
-case 33:
-YY_RULE_SETUP
-#line 113 "D:/CompilerTools/code/minic/minic.l"
-{return EQ;}
-	YY_BREAK
-case 34:
-YY_RULE_SETUP
-#line 114 "D:/CompilerTools/code/minic/minic.l"
-{return NE;}
-	YY_BREAK
-case 35:
-YY_RULE_SETUP
-#line 115 "D:/CompilerTools/code/minic/minic.l"
-{return AND;}
-	YY_BREAK
-case 36:
-YY_RULE_SETUP
-#line 116 "D:/CompilerTools/code/minic/minic.l"
-{return OR;}
-	YY_BREAK
-case 37:
-YY_RULE_SETUP
-#line 118 "D:/CompilerTools/code/minic/minic.l"
-{return '!';}
-	YY_BREAK
-case 38:
-YY_RULE_SETUP
-#line 119 "D:/CompilerTools/code/minic/minic.l"
-{return '&';}
-	YY_BREAK
-case 39:
-YY_RULE_SETUP
-#line 120 "D:/CompilerTools/code/minic/minic.l"
-{return '|';}
-	YY_BREAK
-case 40:
-YY_RULE_SETUP
-#line 122 "D:/CompilerTools/code/minic/minic.l"
-{return ',';}
-	YY_BREAK
-case 41:
-YY_RULE_SETUP
-#line 123 "D:/CompilerTools/code/minic/minic.l"
-{return ';';}
-	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 126 "D:/CompilerTools/code/minic/minic.l"
+#line 128 "D:/CompilerTools/code/minic/minic.l"
 ;
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 128 "D:/CompilerTools/code/minic/minic.l"
+#line 130 "D:/CompilerTools/code/minic/minic.l"
 ;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 130 "D:/CompilerTools/code/minic/minic.l"
+#line 132 "D:/CompilerTools/code/minic/minic.l"
 {
                 printf("Line %d: Invalid char %s\n", yylineno, yytext);
                 return YYUNDEF;
@@ -1098,10 +1102,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 134 "D:/CompilerTools/code/minic/minic.l"
+#line 136 "D:/CompilerTools/code/minic/minic.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1104 "D:/CompilerTools/code/minic/minic_lex.cpp"
+#line 1108 "D:/CompilerTools/code/minic/minic_lex.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2118,6 +2122,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 134 "D:/CompilerTools/code/minic/minic.l"
+#line 136 "D:/CompilerTools/code/minic/minic.l"
 
 

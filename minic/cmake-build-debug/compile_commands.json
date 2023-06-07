@@ -1,20 +1,26 @@
 [
 {
   "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
-  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wall -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\minic_lex.cpp.obj -c D:\\CompilerTools\\code\\minic\\minic_lex.cpp",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\minic_lex.cpp.obj -c D:\\CompilerTools\\code\\minic\\minic_lex.cpp",
   "file": "D:/CompilerTools/code/minic/minic_lex.cpp",
   "output": "CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.obj"
 },
 {
   "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
-  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wall -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\minic_yacc.cpp.obj -c D:\\CompilerTools\\code\\minic\\minic_yacc.cpp",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\minic_yacc.cpp.obj -c D:\\CompilerTools\\code\\minic\\minic_yacc.cpp",
   "file": "D:/CompilerTools/code/minic/minic_yacc.cpp",
   "output": "CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.obj"
 },
 {
   "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
-  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wall -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\ast_minic.cpp.obj -c D:\\CompilerTools\\code\\minic\\ast_minic.cpp",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\ast_minic.cpp.obj -c D:\\CompilerTools\\code\\minic\\ast_minic.cpp",
   "file": "D:/CompilerTools/code/minic/ast_minic.cpp",
   "output": "CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.obj"
+},
+{
+  "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\main.cpp.obj -c D:\\CompilerTools\\code\\minic\\main.cpp",
+  "file": "D:/CompilerTools/code/minic/main.cpp",
+  "output": "CMakeFiles/minic-flex-bison.dir/main.cpp.obj"
 }
 ]

@@ -152,6 +152,30 @@ ast_minic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.s
 .PHONY : ast_minic.cpp.s
 
+main.obj: main.cpp.obj
+.PHONY : main.obj
+
+# target to build an object file
+main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/main.cpp.obj
+.PHONY : main.cpp.obj
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 minic_lex.obj: minic_lex.cpp.obj
 .PHONY : minic_lex.obj
 
@@ -212,6 +236,9 @@ help:
 	@echo ... ast_minic.obj
 	@echo ... ast_minic.i
 	@echo ... ast_minic.s
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
 	@echo ... minic_lex.obj
 	@echo ... minic_lex.i
 	@echo ... minic_lex.s

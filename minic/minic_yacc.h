@@ -70,8 +70,8 @@ extern int yydebug;
     BREAK = 263,                   /* BREAK  */
     CONT = 264,                    /* CONT  */
     RET = 265,                     /* RET  */
-    INT = 266,                     /* INT  */
-    VOID = 267,                    /* VOID  */
+    T_INT = 266,                   /* T_INT  */
+    T_VOID = 267,                  /* T_VOID  */
     INCR = 268,                    /* INCR  */
     DECR = 269,                    /* DECR  */
     GE = 270,                      /* GE  */
@@ -88,7 +88,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 27 "D:/CompilerTools/code/minic/minic.y"
+#line 28 "D:/CompilerTools/code/minic/minic.y"
 
     digit_int_attr int_val; // 整型字面量
     var_id_attr id_val;     // 标识符（变量名）
@@ -96,11 +96,10 @@ union YYSTYPE
     AST_Vec *ast_vecVal;
     AST_Exp *ast_expVal;
     enum ast_op_type ast_op_type;
-    //unique_ptr <string> str_val(new string);
     string *str_val;
     int val;
 
-#line 104 "D:/CompilerTools/code/minic/minic_yacc.h"
+#line 103 "D:/CompilerTools/code/minic/minic_yacc.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -112,7 +111,7 @@ typedef union YYSTYPE YYSTYPE;
 extern YYSTYPE yylval;
 
 
-int yyparse (std::unique_ptr<BaseAST> &root);
+int yyparse (std::unique_ptr<AST_Base> &root);
 
 
 #endif /* !YY_YY_D_COMPILERTOOLS_CODE_MINIC_MINIC_YACC_H_INCLUDED  */

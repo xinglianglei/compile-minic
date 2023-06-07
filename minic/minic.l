@@ -66,62 +66,64 @@ white_line  [\r\n]
                 ; // 忽略行注释
             }
 
+"if"        {cout<<yytext<<endl;return IF;}
+"else"      {cout<<yytext<<endl;return ELSE;} 
+"while"     {cout<<yytext<<endl;return WHILE;}
+"break"     {cout<<yytext<<endl;return BREAK;}
+"continue"  {cout<<yytext<<endl;return CONT;}
+"return"    {cout<<yytext<<endl;return RET;}
+
+"int"       {
+                cout<<yytext<<endl;
+                return T_INT;}
+"void"      {return T_VOID;}
+
+"("			{cout<<yytext<<endl;return '(';}
+")"			{cout<<yytext<<endl;return ')';}
+"["			{cout<<yytext<<endl;return '[';}
+"]"			{cout<<yytext<<endl;return ']';}
+"{"			{cout<<yytext<<endl;return '{';}
+"}"			{cout<<yytext<<endl;return '}';}
+
+"*"			{cout<<yytext<<endl;return '*';}
+"+"			{cout<<yytext<<endl;return '+';}
+"/"			{cout<<yytext<<endl;return '/';}
+"-"			{cout<<yytext<<endl;return '-';}
+"%"         {cout<<yytext<<endl;return '%';}
+"++"        {cout<<yytext<<endl;return INCR;}
+"--"        {cout<<yytext<<endl;return DECR;}
+
+"="         {cout<<yytext<<endl;return '=';}
+
+">"         {cout<<yytext<<endl;return '>';}
+"<"         {cout<<yytext<<endl;return '<';}
+">="        {cout<<yytext<<endl;return GE;}
+"<="        {cout<<yytext<<endl;return LE;}
+"=="        {cout<<yytext<<endl;return EQ;}
+"!="        {cout<<yytext<<endl;return NE;}
+"&&"        {cout<<yytext<<endl;return AND;}
+"||"        {cout<<yytext<<endl;return OR;}
+
+"!"         {cout<<yytext<<endl;return '!';}
+"&"         {cout<<yytext<<endl;return '&';}
+"|"         {cout<<yytext<<endl;return '|';}
+
+","         {cout<<yytext<<endl;return ',';}
+";"         {cout<<yytext<<endl;return ';';}
 
 {num}		{
+                cout<<yytext<<endl;
                 yylval.int_val.val = (int)strtol(yytext, (char **)NULL, 10);
                 yylval.int_val.lineno = yylineno;
                 return NUM;
             }
 
 {ident}    { 
+                cout<<yytext<<endl;
                 yylval.id_val.id = new string(yytext); 
                 yylval.id_val.lineno = yylineno;
                 return IDENT; 
             }
-
-"if"        {return IF;}
-"else"      {return ELSE;} 
-"while"     {return WHILE;}
-"break"     {return BREAK;}
-"continue"  {return CONT;}
-"return"    {return RET;}
-
-"int"       {return INT;}
-"void"      {return VOID;}
-
-"("			{return '(';}
-")"			{return ')';}
-"["			{return '[';}
-"]"			{return ']';}
-"{"			{return '{';}
-"}"			{return '}';}
-
-"*"			{return '*';}
-"+"			{return '+';}
-"/"			{return '/';}
-"-"			{return '-';}
-"%"         {return '%';}
-"++"        {return INCR;}
-"--"        {return DECR;}
-
-"="         {return '=';}
-
-">"         {return '>';}
-"<"         {return '<';}
-">="        {return GE;}
-"<="        {return LE;}
-"=="        {return EQ;}
-"!="        {return NE;}
-"&&"        {return AND;}
-"||"        {return OR;}
-
-"!"         {return '!';}
-"&"         {return '&';}
-"|"         {return '|';}
-
-","         {return ',';}
-";"         {return ';';}
-
 
 {white}+	 ;
 

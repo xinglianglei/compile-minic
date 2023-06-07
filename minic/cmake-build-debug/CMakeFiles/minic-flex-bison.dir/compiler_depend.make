@@ -3,6 +3,418 @@
 
 CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.obj: D:/CompilerTools/code/minic/ast_minic.cpp
 
+CMakeFiles/minic-flex-bison.dir/main.cpp.obj: D:/CompilerTools/code/minic/main.cpp \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/string \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/pstl_config.h \
+  D:/CompilerTools/msys64/mingw64/include/tbb/tbb.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stringfwd.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/memoryfwd.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/char_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/postypes.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cwchar \
+  D:/CompilerTools/msys64/mingw64/include/wchar.h \
+  D:/CompilerTools/msys64/mingw64/include/corecrt.h \
+  D:/CompilerTools/msys64/mingw64/include/_mingw.h \
+  D:/CompilerTools/msys64/mingw64/include/_mingw_mac.h \
+  D:/CompilerTools/msys64/mingw64/include/_mingw_secapi.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vadefs.h \
+  D:/CompilerTools/msys64/mingw64/include/vadefs.h \
+  D:/CompilerTools/msys64/mingw64/include/sdks/_mingw_ddk.h \
+  D:/CompilerTools/msys64/mingw64/include/corecrt_stdio_config.h \
+  D:/CompilerTools/msys64/mingw64/include/corecrt_wstdlib.h \
+  D:/CompilerTools/msys64/mingw64/include/_mingw_off_t.h \
+  D:/CompilerTools/msys64/mingw64/include/_mingw_stat64.h \
+  D:/CompilerTools/msys64/mingw64/include/swprintf.inl \
+  D:/CompilerTools/msys64/mingw64/include/sec_api/wchar_s.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/type_traits \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdint \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stdint.h \
+  D:/CompilerTools/msys64/mingw64/include/stdint.h \
+  D:/CompilerTools/msys64/mingw64/include/crtdefs.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stddef.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/new_allocator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/new \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/functexcept.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception_defines.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/move.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cpp_type_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/localefwd.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/clocale \
+  D:/CompilerTools/msys64/mingw64/include/locale.h \
+  D:/CompilerTools/msys64/mingw64/include/stdio.h \
+  D:/CompilerTools/msys64/mingw64/include/sec_api/stdio_s.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/iosfwd \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cctype \
+  D:/CompilerTools/msys64/mingw64/include/ctype.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream_insert.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cxxabi_forced.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator_base_types.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator_base_funcs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/concept_check.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/debug/assertions.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/type_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ptr_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_function.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/binders.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/numeric_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_algobase.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_pair.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/utility.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/debug/debug.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/predefined_ops.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/refwrap.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/invoke.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/range_access.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/initializer_list \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_string.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/alloc_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/alloc_traits.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_construct.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/string_view \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/functional_hash.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hash_bytes.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/string_view.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/string_conversions.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdlib \
+  D:/CompilerTools/msys64/mingw64/include/stdlib.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/limits.h \
+  D:/CompilerTools/msys64/mingw64/include/limits.h \
+  D:/CompilerTools/msys64/mingw64/include/sec_api/stdlib_s.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/stdlib.h \
+  D:/CompilerTools/msys64/mingw64/include/malloc.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mm_malloc.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/std_abs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdio \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cerrno \
+  D:/CompilerTools/msys64/mingw64/include/errno.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/charconv.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_string.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/iostream \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ostream \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ios \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/exception \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cxxabi_init_exception.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__stddef_max_align_t.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/typeinfo \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/nested_exception.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ios_base.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/atomicity.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/gthr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  D:/CompilerTools/msys64/mingw64/include/pthread.h \
+  D:/CompilerTools/msys64/mingw64/include/sys/types.h \
+  D:/CompilerTools/msys64/mingw64/include/process.h \
+  D:/CompilerTools/msys64/mingw64/include/corecrt_startup.h \
+  D:/CompilerTools/msys64/mingw64/include/signal.h \
+  D:/CompilerTools/msys64/mingw64/include/pthread_signal.h \
+  D:/CompilerTools/msys64/mingw64/include/time.h \
+  D:/CompilerTools/msys64/mingw64/include/sys/timeb.h \
+  D:/CompilerTools/msys64/mingw64/include/sec_api/sys/timeb_s.h \
+  D:/CompilerTools/msys64/mingw64/include/_timeval.h \
+  D:/CompilerTools/msys64/mingw64/include/pthread_time.h \
+  D:/CompilerTools/msys64/mingw64/include/pthread_compat.h \
+  D:/CompilerTools/msys64/mingw64/include/pthread_unistd.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/system_error \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/error_constants.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/stdexcept \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/streambuf \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/streambuf.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_ios.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_facets.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cwctype \
+  D:/CompilerTools/msys64/mingw64/include/wctype.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/streambuf_iterator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_facets.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_ios.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/istream \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/istream.tcc \
+  D:/CompilerTools/msys64/mingw64/include/unistd.h \
+  D:/CompilerTools/msys64/mingw64/include/io.h \
+  D:/CompilerTools/msys64/mingw64/include/string.h \
+  D:/CompilerTools/msys64/mingw64/include/sec_api/string_s.h \
+  D:/CompilerTools/msys64/mingw64/include/getopt.h \
+  D:/CompilerTools/msys64/mingw64/include/windows.h \
+  D:/CompilerTools/msys64/mingw64/include/sdkddkver.h \
+  D:/CompilerTools/msys64/mingw64/include/excpt.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stdarg.h \
+  D:/CompilerTools/msys64/mingw64/include/windef.h \
+  D:/CompilerTools/msys64/mingw64/include/winapifamily.h \
+  D:/CompilerTools/msys64/mingw64/include/minwindef.h \
+  D:/CompilerTools/msys64/mingw64/include/specstrings.h \
+  D:/CompilerTools/msys64/mingw64/include/sal.h \
+  D:/CompilerTools/msys64/mingw64/include/concurrencysal.h \
+  D:/CompilerTools/msys64/mingw64/include/driverspecs.h \
+  D:/CompilerTools/msys64/mingw64/include/winnt.h \
+  D:/CompilerTools/msys64/mingw64/include/_mingw_unicode.h \
+  D:/CompilerTools/msys64/mingw64/include/apiset.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/intrin-impl.h \
+  D:/CompilerTools/msys64/mingw64/include/basetsd.h \
+  D:/CompilerTools/msys64/mingw64/include/guiddef.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/x86intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/ia32intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/immintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/x86gprintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/hresetintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/uintrintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/crc32intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xmmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/emmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pmmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tmmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/smmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/popcntintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/wmmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__wmmintrin_aes.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__wmmintrin_pclmul.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/clflushoptintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/clwbintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avxintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx2intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/f16cintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/bmiintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/bmi2intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/lzcntintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/fmaintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512fintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512bwintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512bitalgintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512cdintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vpopcntdqintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vpopcntdqvlintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vnniintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlvnniintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avxvnniintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512dqintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbitalgintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbwintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlcdintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vldqintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512erintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512ifmaintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512ifmavlintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmiintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmivlintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmi2intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlvbmi2intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512pfintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512bf16intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbf16intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pkuintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vpclmulqdqintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vaesintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/gfniintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rtmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xtestintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/shaintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/fxsrintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsaveintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsaveoptintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsavecintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsavesintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/cetintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/adxintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rdseedintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/wbnoinvdintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/cldemoteintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/waitpkgintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/movdirintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pconfigintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/sgxintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/ptwriteintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/invpcidintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/keylockerintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/amxintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vp2intersectintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlvp2intersectintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/enqcmdintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/serializeintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tsxldtrkintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mm3dnow.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/prfchwintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/ammintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/fma4intrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xopintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tbmintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/lwpintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mwaitxintrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/clzerointrin.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rdpruintrin.h \
+  D:/CompilerTools/msys64/mingw64/include/pshpack4.h \
+  D:/CompilerTools/msys64/mingw64/include/poppack.h \
+  D:/CompilerTools/msys64/mingw64/include/pshpack2.h \
+  D:/CompilerTools/msys64/mingw64/include/pshpack8.h \
+  D:/CompilerTools/msys64/mingw64/include/ktmtypes.h \
+  D:/CompilerTools/msys64/mingw64/include/winbase.h \
+  D:/CompilerTools/msys64/mingw64/include/apisetcconv.h \
+  D:/CompilerTools/msys64/mingw64/include/minwinbase.h \
+  D:/CompilerTools/msys64/mingw64/include/bemapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/debugapi.h \
+  D:/CompilerTools/msys64/mingw64/include/errhandlingapi.h \
+  D:/CompilerTools/msys64/mingw64/include/fibersapi.h \
+  D:/CompilerTools/msys64/mingw64/include/fileapi.h \
+  D:/CompilerTools/msys64/mingw64/include/handleapi.h \
+  D:/CompilerTools/msys64/mingw64/include/heapapi.h \
+  D:/CompilerTools/msys64/mingw64/include/ioapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/interlockedapi.h \
+  D:/CompilerTools/msys64/mingw64/include/jobapi.h \
+  D:/CompilerTools/msys64/mingw64/include/libloaderapi.h \
+  D:/CompilerTools/msys64/mingw64/include/memoryapi.h \
+  D:/CompilerTools/msys64/mingw64/include/namedpipeapi.h \
+  D:/CompilerTools/msys64/mingw64/include/namespaceapi.h \
+  D:/CompilerTools/msys64/mingw64/include/processenv.h \
+  D:/CompilerTools/msys64/mingw64/include/processthreadsapi.h \
+  D:/CompilerTools/msys64/mingw64/include/processtopologyapi.h \
+  D:/CompilerTools/msys64/mingw64/include/profileapi.h \
+  D:/CompilerTools/msys64/mingw64/include/realtimeapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/securityappcontainer.h \
+  D:/CompilerTools/msys64/mingw64/include/securitybaseapi.h \
+  D:/CompilerTools/msys64/mingw64/include/synchapi.h \
+  D:/CompilerTools/msys64/mingw64/include/sysinfoapi.h \
+  D:/CompilerTools/msys64/mingw64/include/systemtopologyapi.h \
+  D:/CompilerTools/msys64/mingw64/include/threadpoolapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/threadpoollegacyapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/utilapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/wow64apiset.h \
+  D:/CompilerTools/msys64/mingw64/include/winerror.h \
+  D:/CompilerTools/msys64/mingw64/include/fltwinerror.h \
+  D:/CompilerTools/msys64/mingw64/include/timezoneapi.h \
+  D:/CompilerTools/msys64/mingw64/include/wingdi.h \
+  D:/CompilerTools/msys64/mingw64/include/pshpack1.h \
+  D:/CompilerTools/msys64/mingw64/include/winuser.h \
+  D:/CompilerTools/msys64/mingw64/include/tvout.h \
+  D:/CompilerTools/msys64/mingw64/include/winnls.h \
+  D:/CompilerTools/msys64/mingw64/include/datetimeapi.h \
+  D:/CompilerTools/msys64/mingw64/include/stringapiset.h \
+  D:/CompilerTools/msys64/mingw64/include/wincon.h \
+  D:/CompilerTools/msys64/mingw64/include/winver.h \
+  D:/CompilerTools/msys64/mingw64/include/winreg.h \
+  D:/CompilerTools/msys64/mingw64/include/reason.h \
+  D:/CompilerTools/msys64/mingw64/include/winnetwk.h \
+  D:/CompilerTools/msys64/mingw64/include/wnnc.h \
+  D:/CompilerTools/msys64/mingw64/include/virtdisk.h \
+  D:/CompilerTools/msys64/mingw64/include/cderr.h \
+  D:/CompilerTools/msys64/mingw64/include/dde.h \
+  D:/CompilerTools/msys64/mingw64/include/ddeml.h \
+  D:/CompilerTools/msys64/mingw64/include/dlgs.h \
+  D:/CompilerTools/msys64/mingw64/include/lzexpand.h \
+  D:/CompilerTools/msys64/mingw64/include/mmsystem.h \
+  D:/CompilerTools/msys64/mingw64/include/mmsyscom.h \
+  D:/CompilerTools/msys64/mingw64/include/mciapi.h \
+  D:/CompilerTools/msys64/mingw64/include/mmiscapi.h \
+  D:/CompilerTools/msys64/mingw64/include/mmiscapi2.h \
+  D:/CompilerTools/msys64/mingw64/include/playsoundapi.h \
+  D:/CompilerTools/msys64/mingw64/include/mmeapi.h \
+  D:/CompilerTools/msys64/mingw64/include/timeapi.h \
+  D:/CompilerTools/msys64/mingw64/include/joystickapi.h \
+  D:/CompilerTools/msys64/mingw64/include/nb30.h \
+  D:/CompilerTools/msys64/mingw64/include/rpc.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcdce.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcdcep.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcnsi.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcnterr.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcasync.h \
+  D:/CompilerTools/msys64/mingw64/include/shellapi.h \
+  D:/CompilerTools/msys64/mingw64/include/winperf.h \
+  D:/CompilerTools/msys64/mingw64/include/winsock.h \
+  D:/CompilerTools/msys64/mingw64/include/_bsd_types.h \
+  D:/CompilerTools/msys64/mingw64/include/inaddr.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_socket_types.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_fd_types.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_ip_types.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_ip_mreq1.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_wsadata.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_xmitfile.h \
+  D:/CompilerTools/msys64/mingw64/include/psdk_inc/_wsa_errnos.h \
+  D:/CompilerTools/msys64/mingw64/include/wincrypt.h \
+  D:/CompilerTools/msys64/mingw64/include/bcrypt.h \
+  D:/CompilerTools/msys64/mingw64/include/ncrypt.h \
+  D:/CompilerTools/msys64/mingw64/include/dpapi.h \
+  D:/CompilerTools/msys64/mingw64/include/winefs.h \
+  D:/CompilerTools/msys64/mingw64/include/winscard.h \
+  D:/CompilerTools/msys64/mingw64/include/wtypes.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcndr.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcnsip.h \
+  D:/CompilerTools/msys64/mingw64/include/rpcsal.h \
+  D:/CompilerTools/msys64/mingw64/include/ole2.h \
+  D:/CompilerTools/msys64/mingw64/include/objbase.h \
+  D:/CompilerTools/msys64/mingw64/include/combaseapi.h \
+  D:/CompilerTools/msys64/mingw64/include/wtypesbase.h \
+  D:/CompilerTools/msys64/mingw64/include/unknwnbase.h \
+  D:/CompilerTools/msys64/mingw64/include/objidlbase.h \
+  D:/CompilerTools/msys64/mingw64/include/cguid.h \
+  D:/CompilerTools/msys64/mingw64/include/objidl.h \
+  D:/CompilerTools/msys64/mingw64/include/unknwn.h \
+  D:/CompilerTools/msys64/mingw64/include/urlmon.h \
+  D:/CompilerTools/msys64/mingw64/include/oleidl.h \
+  D:/CompilerTools/msys64/mingw64/include/servprov.h \
+  D:/CompilerTools/msys64/mingw64/include/msxml.h \
+  D:/CompilerTools/msys64/mingw64/include/oaidl.h \
+  D:/CompilerTools/msys64/mingw64/include/propidl.h \
+  D:/CompilerTools/msys64/mingw64/include/oleauto.h \
+  D:/CompilerTools/msys64/mingw64/include/winioctl.h \
+  D:/CompilerTools/msys64/mingw64/include/winsmcrd.h \
+  D:/CompilerTools/msys64/mingw64/include/winspool.h \
+  D:/CompilerTools/msys64/mingw64/include/prsht.h \
+  D:/CompilerTools/msys64/mingw64/include/commdlg.h \
+  D:/CompilerTools/msys64/mingw64/include/stralign.h \
+  D:/CompilerTools/msys64/mingw64/include/sec_api/stralign_s.h \
+  D:/CompilerTools/msys64/mingw64/include/winsvc.h \
+  D:/CompilerTools/msys64/mingw64/include/mcx.h \
+  D:/CompilerTools/msys64/mingw64/include/imm.h \
+  D:/CompilerTools/code/minic/lexer.h \
+  D:/CompilerTools/code/minic/minic_lex.h \
+  D:/CompilerTools/code/minic/parser.h \
+  D:/CompilerTools/code/minic/minic_yacc.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/align.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bit \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uses_allocator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unique_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tuple \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_base.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocated_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/aligned_buffer.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/concurrence.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_atomic.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_base.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h \
+  D:/CompilerTools/code/minic/ast_minic.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cassert \
+  D:/CompilerTools/msys64/mingw64/include/assert.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/list \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_list.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/list.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/vector \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_vector.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_bvector.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/sstream \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc
+
 CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.obj: D:/CompilerTools/code/minic/minic_lex.cpp \
   D:/CompilerTools/msys64/mingw64/include/stdio.h \
   D:/CompilerTools/msys64/mingw64/include/corecrt_stdio_config.h \
@@ -368,15 +780,13 @@ CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.obj: D:/CompilerTools/code/minic/
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc
 
 
-D:/CompilerTools/code/minic/minic_lex.h:
-
 D:/CompilerTools/code/minic/minic_yacc.cpp:
 
-D:/CompilerTools/msys64/mingw64/include/getopt.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstring:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/sstream:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_bvector.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_vector.h:
 
@@ -384,354 +794,818 @@ D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/vector:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/list.tcc:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_facets.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/ctype_inline.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cwctype:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_facets.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_ios.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/stdexcept:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/system_error:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ios_base.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ios:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/iostream:
-
-D:/CompilerTools/msys64/mingw64/include/assert.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cassert:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/list:
 
 D:/CompilerTools/code/minic/ast_minic.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_base.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cxxabi_init_exception.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception_ptr.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/concurrence.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
-
-D:/CompilerTools/msys64/mingw64/include/pthread_compat.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cpp_type_traits.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/istream:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/exception:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/refwrap.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/new:
-
-D:/CompilerTools/msys64/mingw64/include/tbb/tbb.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/istream.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++allocator.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/predefined_ops.h:
-
-D:/CompilerTools/msys64/mingw64/include/process.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/memoryfwd.h:
-
-D:/CompilerTools/code/minic/minic_lex.cpp:
-
-D:/CompilerTools/code/minic/ast_minic.cpp:
-
-D:/CompilerTools/msys64/mingw64/include/sec_api/wchar_s.h:
-
-D:/CompilerTools/msys64/mingw64/include/malloc.h:
-
-D:/CompilerTools/msys64/mingw64/include/errno.h:
-
-D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mm_malloc.h:
-
-D:/CompilerTools/msys64/mingw64/include/_mingw_mac.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocator.h:
-
-D:/CompilerTools/msys64/mingw64/include/stdint.h:
-
-D:/CompilerTools/msys64/mingw64/include/sec_api/stdlib_s.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tuple:
-
-D:/CompilerTools/msys64/mingw64/include/vadefs.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/char_traits.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++locale.h:
-
-D:/CompilerTools/msys64/mingw64/include/_mingw_off_t.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/numeric_traits.h:
-
-D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vadefs.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/concept_check.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdio:
-
-D:/CompilerTools/msys64/mingw64/include/stdlib.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception_defines.h:
-
-D:/CompilerTools/msys64/mingw64/include/corecrt.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/string:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/functexcept.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/type_traits:
-
-D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/limits.h:
-
-D:/CompilerTools/msys64/mingw64/include/pthread_signal.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdint:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cwchar:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/streambuf.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/nested_exception.h:
-
-D:/CompilerTools/msys64/mingw64/include/ctype.h:
-
-D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stddef.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/std_abs.h:
-
-D:/CompilerTools/msys64/mingw64/include/string.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stringfwd.h:
-
-D:/CompilerTools/msys64/mingw64/include/stdio.h:
-
-D:/CompilerTools/msys64/mingw64/include/_mingw.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_list.h:
-
-D:/CompilerTools/msys64/mingw64/include/limits.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/pstl_config.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/aligned_buffer.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocated_ptr.h:
 
-D:/CompilerTools/msys64/mingw64/include/corecrt_stdio_config.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unique_ptr.h:
 
-D:/CompilerTools/msys64/mingw64/include/crtdefs.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uses_allocator.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/align.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory:
+
+D:/CompilerTools/code/minic/lexer.h:
+
+D:/CompilerTools/msys64/mingw64/include/mcx.h:
+
+D:/CompilerTools/msys64/mingw64/include/sec_api/stralign_s.h:
+
+D:/CompilerTools/msys64/mingw64/include/winspool.h:
+
+D:/CompilerTools/msys64/mingw64/include/winsmcrd.h:
+
+D:/CompilerTools/msys64/mingw64/include/winioctl.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bit:
+
+D:/CompilerTools/msys64/mingw64/include/oaidl.h:
+
+D:/CompilerTools/msys64/mingw64/include/servprov.h:
+
+D:/CompilerTools/msys64/mingw64/include/oleidl.h:
+
+D:/CompilerTools/msys64/mingw64/include/unknwn.h:
+
+D:/CompilerTools/msys64/mingw64/include/objidl.h:
+
+D:/CompilerTools/msys64/mingw64/include/wtypesbase.h:
+
+D:/CompilerTools/msys64/mingw64/include/objbase.h:
+
+D:/CompilerTools/msys64/mingw64/include/ole2.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcsal.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcnsip.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcndr.h:
+
+D:/CompilerTools/msys64/mingw64/include/wtypes.h:
+
+D:/CompilerTools/msys64/mingw64/include/winscard.h:
+
+D:/CompilerTools/msys64/mingw64/include/winefs.h:
+
+D:/CompilerTools/msys64/mingw64/include/ncrypt.h:
+
+D:/CompilerTools/msys64/mingw64/include/bcrypt.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_wsadata.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_ip_mreq1.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_ip_types.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_socket_types.h:
+
+D:/CompilerTools/msys64/mingw64/include/_bsd_types.h:
+
+D:/CompilerTools/msys64/mingw64/include/winsock.h:
+
+D:/CompilerTools/msys64/mingw64/include/winperf.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcasync.h:
+
+D:/CompilerTools/code/minic/parser.h:
+
+D:/CompilerTools/msys64/mingw64/include/cguid.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcnterr.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcnsi.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpc.h:
+
+D:/CompilerTools/msys64/mingw64/include/nb30.h:
+
+D:/CompilerTools/msys64/mingw64/include/mmeapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/mmiscapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/stralign.h:
+
+D:/CompilerTools/msys64/mingw64/include/urlmon.h:
+
+D:/CompilerTools/msys64/mingw64/include/mciapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/mmsyscom.h:
+
+D:/CompilerTools/msys64/mingw64/include/mmsystem.h:
+
+D:/CompilerTools/msys64/mingw64/include/lzexpand.h:
+
+D:/CompilerTools/msys64/mingw64/include/dlgs.h:
+
+D:/CompilerTools/msys64/mingw64/include/dde.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_list.h:
+
+D:/CompilerTools/msys64/mingw64/include/cderr.h:
+
+D:/CompilerTools/msys64/mingw64/include/virtdisk.h:
+
+D:/CompilerTools/code/minic/minic_lex.h:
+
+D:/CompilerTools/msys64/mingw64/include/wnnc.h:
+
+D:/CompilerTools/code/minic/minic_lex.cpp:
+
+D:/CompilerTools/msys64/mingw64/include/winnetwk.h:
+
+D:/CompilerTools/msys64/mingw64/include/reason.h:
+
+D:/CompilerTools/msys64/mingw64/include/winreg.h:
+
+D:/CompilerTools/msys64/mingw64/include/winver.h:
+
+D:/CompilerTools/msys64/mingw64/include/timeapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/wincon.h:
+
+D:/CompilerTools/msys64/mingw64/include/stringapiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/tvout.h:
+
+D:/CompilerTools/msys64/mingw64/include/wingdi.h:
+
+D:/CompilerTools/msys64/mingw64/include/timezoneapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/winerror.h:
+
+D:/CompilerTools/msys64/mingw64/include/wow64apiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/utilapiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/threadpoollegacyapiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/mmiscapi2.h:
+
+D:/CompilerTools/msys64/mingw64/include/threadpoolapiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/systemtopologyapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/joystickapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/winnls.h:
+
+D:/CompilerTools/msys64/mingw64/include/securityappcontainer.h:
+
+D:/CompilerTools/msys64/mingw64/include/profileapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/processtopologyapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr.h:
+
+D:/CompilerTools/msys64/mingw64/include/namespaceapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/namedpipeapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/memoryapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/libloaderapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/jobapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/interlockedapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/handleapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/fibersapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/playsoundapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/heapapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/debugapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/apisetcconv.h:
+
+D:/CompilerTools/msys64/mingw64/include/winbase.h:
+
+D:/CompilerTools/msys64/mingw64/include/ktmtypes.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h:
+
+D:/CompilerTools/msys64/mingw64/include/pshpack8.h:
+
+D:/CompilerTools/msys64/mingw64/include/corecrt_startup.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/gthr-default.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/nested_exception.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/streambuf.tcc:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/typeinfo:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h:
+
+D:/CompilerTools/msys64/mingw64/include/ddeml.h:
+
+D:/CompilerTools/msys64/mingw64/include/minwinbase.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/istream:
+
+D:/CompilerTools/msys64/mingw64/include/pshpack4.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/system_error:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/iostream:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/charconv.h:
+
+D:/CompilerTools/msys64/mingw64/include/pthread_unistd.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/postypes.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/gthr.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdio:
+
+D:/CompilerTools/msys64/mingw64/include/string.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mm_malloc.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.tcc:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avxintrin.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ostream:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/stdlib.h:
 
+D:/CompilerTools/msys64/mingw64/include/prsht.h:
+
+D:/CompilerTools/msys64/mingw64/include/sec_api/stdlib_s.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsaveoptintrin.h:
+
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdlib:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_algobase.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/gthr.h:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/sgxintrin.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/align.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hash_bytes.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unique_ptr.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/clocale:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/localefwd.h:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbitalgintrin.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/os_defines.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/functional_hash.h:
 
-D:/CompilerTools/msys64/mingw64/include/sec_api/string_s.h:
+D:/CompilerTools/msys64/mingw64/include/fltwinerror.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/error_constants.h:
+D:/CompilerTools/msys64/mingw64/include/corecrt_wstdlib.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/uintrintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_construct.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cassert:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_string.tcc:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_ios.tcc:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/popcntintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/sec_api/sys/timeb_s.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xtestintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/alloc_traits.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator_base_funcs.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmiintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/initializer_list:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/concurrence.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ios_base.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/string_view:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx2intrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/invoke.h:
+
+D:/CompilerTools/code/minic/main.cpp:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/smmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xopintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/debug/debug.h:
+
+D:/CompilerTools/msys64/mingw64/include/io.h:
+
+D:/CompilerTools/msys64/mingw64/include/_mingw_secapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_pair.h:
+
+D:/CompilerTools/msys64/mingw64/include/pthread_time.h:
+
+D:/CompilerTools/msys64/mingw64/include/imm.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/lwpintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/string_view.tcc:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tuple:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_function.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vpclmulqdqintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/bemapiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/_mingw_off_t.h:
+
+D:/CompilerTools/msys64/mingw64/include/driverspecs.h:
 
 D:/CompilerTools/msys64/mingw64/include/wchar.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/move.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/error_constants.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/new_allocator.h:
-
-D:/CompilerTools/msys64/mingw64/include/unistd.h:
-
-D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stdint.h:
-
-D:/CompilerTools/msys64/mingw64/include/sec_api/stdio_s.h:
+D:/CompilerTools/msys64/mingw64/include/rpcdcep.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
 
-D:/CompilerTools/msys64/mingw64/include/swprintf.inl:
+D:/CompilerTools/msys64/mingw64/include/sec_api/stdio_s.h:
 
-D:/CompilerTools/msys64/mingw64/include/locale.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/new_allocator.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ptr_traits.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h:
 
-D:/CompilerTools/msys64/mingw64/include/pthread.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/alloc_traits.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/iosfwd:
+D:/CompilerTools/msys64/mingw64/include/pthread_signal.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uses_allocator.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_atomic.h:
-
-D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__stddef_max_align_t.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream_insert.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator_base_types.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlcdintrin.h:
 
 D:/CompilerTools/msys64/mingw64/include/_mingw_stat64.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/string_conversions.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/debug/assertions.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/move.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/type_traits.h:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/ia32intrin.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/list:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_base.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/range_access.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_function.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstdint:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/streambuf:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/string_view.tcc:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cwchar:
 
-D:/CompilerTools/msys64/mingw64/include/pthread_time.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/char_traits.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_pair.h:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rdseedintrin.h:
 
-D:/CompilerTools/msys64/mingw64/include/_mingw_secapi.h:
+D:/CompilerTools/msys64/mingw64/include/stdlib.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/utility.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h:
-
-D:/CompilerTools/msys64/mingw64/include/io.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/debug/debug.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/invoke.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/string_view:
-
-D:/CompilerTools/msys64/mingw64/include/time.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/initializer_list:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++config.h:
-
-D:/CompilerTools/code/minic/parser.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_string.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/streambuf_iterator.h:
-
-D:/CompilerTools/msys64/mingw64/include/sys/types.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator_base_funcs.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/alloc_traits.h:
-
-D:/CompilerTools/msys64/mingw64/include/sec_api/sys/timeb_s.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/alloc_traits.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_ios.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_string.tcc:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_construct.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/functional_hash.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/clocale:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cerrno:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hash_bytes.h:
-
-D:/CompilerTools/msys64/mingw64/include/_timeval.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/postypes.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/charconv.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cctype:
-
-D:/CompilerTools/code/minic/minic_yacc.h:
-
-D:/CompilerTools/msys64/mingw64/include/wctype.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cxxabi_forced.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h:
-
-D:/CompilerTools/msys64/mingw64/include/pthread_unistd.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/typeinfo:
-
-D:/CompilerTools/msys64/mingw64/include/sdks/_mingw_ddk.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bit:
-
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/aligned_buffer.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/string:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/atomicity.h:
 
-D:/CompilerTools/code/minic/lexer.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/functexcept.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vnniintrin.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/gthr-default.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/utility.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc:
+D:/CompilerTools/msys64/mingw64/include/corecrt.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception_defines.h:
+
+D:/CompilerTools/msys64/mingw64/include/errhandlingapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++config.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stddef.h:
+
+D:/CompilerTools/msys64/mingw64/include/rpcdce.h:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/binders.h:
 
-D:/CompilerTools/msys64/mingw64/include/corecrt_wstdlib.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stringfwd.h:
 
-D:/CompilerTools/msys64/mingw64/include/corecrt_startup.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_fd_types.h:
+
+D:/CompilerTools/msys64/mingw64/include/stdio.h:
+
+D:/CompilerTools/code/minic/ast_minic.cpp:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/bmi2intrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/limits.h:
+
+D:/CompilerTools/msys64/mingw64/include/time.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/pstl_config.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/std_abs.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocator.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/movdirintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/wmmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++allocator.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/istream.tcc:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception_ptr.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/exception:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ios:
+
+D:/CompilerTools/msys64/mingw64/include/msxml.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ptr_traits.h:
+
+D:/CompilerTools/msys64/mingw64/include/unistd.h:
+
+D:/CompilerTools/msys64/mingw64/include/pthread.h:
+
+D:/CompilerTools/msys64/mingw64/include/realtimeapiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/tbb/tbb.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/new:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512bwintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/memoryfwd.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/intrin-impl.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512bf16intrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/securitybaseapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cpp_type_traits.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/os_defines.h:
+
+D:/CompilerTools/msys64/mingw64/include/sec_api/string_s.h:
+
+D:/CompilerTools/msys64/mingw64/include/errno.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_base.h:
+
+D:/CompilerTools/msys64/mingw64/include/apiset.h:
+
+D:/CompilerTools/msys64/mingw64/include/sys/timeb.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/gfniintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/sysinfoapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/locale.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_atomic.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__stddef_max_align_t.h:
+
+D:/CompilerTools/msys64/mingw64/include/shellapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/swprintf.inl:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vpopcntdqvlintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/propidl.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_xmitfile.h:
 
 D:/CompilerTools/msys64/mingw64/include/signal.h:
 
-D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstring:
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmi2intrin.h:
 
-D:/CompilerTools/msys64/mingw64/include/sys/timeb.h:
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/iosfwd:
+
+D:/CompilerTools/msys64/mingw64/include/assert.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cctype:
+
+D:/CompilerTools/msys64/mingw64/include/synchapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cerrno:
+
+D:/CompilerTools/msys64/mingw64/include/process.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/cetintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/sdks/_mingw_ddk.h:
+
+D:/CompilerTools/msys64/mingw64/include/pthread_compat.h:
+
+D:/CompilerTools/msys64/mingw64/include/ioapiset.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/lzcntintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream_insert.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cxxabi_forced.h:
+
+D:/CompilerTools/msys64/mingw64/include/wctype.h:
+
+D:/CompilerTools/msys64/mingw64/include/sys/types.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/streambuf_iterator.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__wmmintrin_pclmul.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vadefs.h:
+
+D:/CompilerTools/msys64/mingw64/include/oleauto.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/prfchwintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512bitalgintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_string.h:
+
+D:/CompilerTools/msys64/mingw64/include/sec_api/wchar_s.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/concept_check.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmivlintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/debug/assertions.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlvnniintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbwintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/range_access.h:
+
+D:/CompilerTools/msys64/mingw64/include/datetimeapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/type_traits.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/basic_ios.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/numeric_traits.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_facets.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/crc32intrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlvbmi2intrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cwctype:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mm3dnow.h:
+
+D:/CompilerTools/msys64/mingw64/include/winsvc.h:
+
+D:/CompilerTools/msys64/mingw64/include/winuser.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/ctype_inline.h:
+
+D:/CompilerTools/msys64/mingw64/include/unknwnbase.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/locale_facets.tcc:
+
+D:/CompilerTools/msys64/mingw64/include/excpt.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pconfigintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/fileapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/ctype.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++locale.h:
+
+D:/CompilerTools/msys64/mingw64/include/getopt.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/localefwd.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream.tcc:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/clzerointrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/windows.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/limits.h:
+
+D:/CompilerTools/msys64/mingw64/include/sdkddkver.h:
+
+D:/CompilerTools/msys64/mingw64/include/dpapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/windef.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/predefined_ops.h:
+
+D:/CompilerTools/msys64/mingw64/include/winapifamily.h:
+
+D:/CompilerTools/msys64/mingw64/include/minwindef.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/hresetintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/sal.h:
+
+D:/CompilerTools/msys64/mingw64/include/concurrencysal.h:
+
+D:/CompilerTools/msys64/mingw64/include/basetsd.h:
+
+D:/CompilerTools/msys64/mingw64/include/corecrt_stdio_config.h:
+
+D:/CompilerTools/msys64/mingw64/include/winnt.h:
+
+D:/CompilerTools/msys64/mingw64/include/_mingw_unicode.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rdpruintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/ammintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator.h:
+
+D:/CompilerTools/msys64/mingw64/include/guiddef.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/x86intrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/cldemoteintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/stdint.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/enqcmdintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/x86gprintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/_mingw.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xmmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_iterator_base_types.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512erintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/type_traits:
+
+D:/CompilerTools/msys64/mingw64/include/malloc.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/emmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/keylockerintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pmmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbf16intrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tmmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/stdexcept:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/__wmmintrin_aes.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/refwrap.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/clflushoptintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/_mingw_mac.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/clwbintrin.h:
+
+D:/CompilerTools/code/minic/minic_yacc.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/f16cintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/fmaintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/bmiintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/commdlg.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stdint.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/exception.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512fintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512cdintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512ifmavlintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vpopcntdqintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/specstrings.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avxvnniintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512dqintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_bvector.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vldqintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/combaseapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/inaddr.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsavecintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512ifmaintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512pfintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pkuintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/vaesintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsavesintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rtmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/shaintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/fxsrintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/objidlbase.h:
+
+D:/CompilerTools/msys64/mingw64/include/crtdefs.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/ptwriteintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsaveintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/pshpack1.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/immintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/adxintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/wbnoinvdintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/psdk_inc/_wsa_errnos.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/waitpkgintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/invpcidintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/stdarg.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/amxintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vp2intersectintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/vadefs.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlvp2intersectintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/wincrypt.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/serializeintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/cxxabi_init_exception.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tsxldtrkintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/_timeval.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/fma4intrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/processenv.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tbmintrin.h:
+
+D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mwaitxintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/processthreadsapi.h:
+
+D:/CompilerTools/msys64/mingw64/include/poppack.h:
+
+D:/CompilerTools/msys64/mingw64/include/pshpack2.h:

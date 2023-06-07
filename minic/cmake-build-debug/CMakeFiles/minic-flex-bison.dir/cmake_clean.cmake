@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.obj"
   "CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.obj.d"
+  "CMakeFiles/minic-flex-bison.dir/main.cpp.obj"
+  "CMakeFiles/minic-flex-bison.dir/main.cpp.obj.d"
   "CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.obj"
   "CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.obj.d"
   "CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.obj"

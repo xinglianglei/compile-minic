@@ -1,5 +1,19 @@
-a=5;
-b=2;
-c=2.2;
-d=-a;
-a-c*b+d
+int add(int x, int y)
+{
+    return (x + y);
+}
+int main(){
+    int i=1;
+    int b;
+    if(i==1)
+        b=2;
+    else
+        b=1;
+    while(b>=0)
+    {
+        b=b-1;
+    }
+    int c=add(i+b);
+    int a[2][3]={2,5,4};
+    return 0;
+}

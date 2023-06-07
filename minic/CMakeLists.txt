@@ -39,6 +39,7 @@ add_executable(${PROJECT_NAME}
     parser.h
     ast_minic.cpp
     ast_minic.h
+    main.cpp
 )
 
 # 设置语言标准，可根据需要调整
@@ -53,7 +54,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 # -Werror强制警告当作错误处理
 # -Wall尽可能多的让编译器提示警告和错误
 #target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Werror -Wno-write-strings -Wno-unused-function)
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wno-write-strings -Wno-unused-function)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wno-write-strings -Wno-unused-function)
 
 # 引入graphviz库的头文件，防止编译时找不到graphviz的头文件
 target_include_directories(${PROJECT_NAME} PRIVATE ${Graphviz_INCLUDE_DIRS})

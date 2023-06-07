@@ -6,5 +6,5 @@ CXX_DEFINES = -DBISON_USE -DFLEX_USE
 
 CXX_INCLUDES = @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp
 
-CXX_FLAGS = -g -std=c++17 -Wall -Wno-write-strings -Wno-unused-function
+CXX_FLAGS = -g -std=c++17 -Wno-write-strings -Wno-unused-function
 
