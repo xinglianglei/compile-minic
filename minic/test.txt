@@ -1,19 +1,32 @@
-int add(int x, int y)
-{
-    return (x + y);
-}
+int add(int x, int y);
+int s=0;
 int main(){
     int i=1;
     int b;
-    if(i==1)
-        b=2;
+    if(i>1)
+    {
+        if(i>2)
+            b=3;
+        else
+            b=2;
+    }
     else
         b=1;
     while(b>=0)
     {
+        while(i>=0)
+            i--;
         b=b-1;
     }
+    s++;
     int c=add(i+b);
     int a[2][3]={2,5,4};
+    a[2][1]=0;
+    int d=b++;
+    int e=++b;
     return 0;
+}
+int add(int x, int y)
+{
+    return (x + y);
 }

@@ -181,14 +181,15 @@ enum yysymbol_kind_t
   YYSYMBOL_Number = 63,                    /* Number  */
   YYSYMBOL_UnaryExp = 64,                  /* UnaryExp  */
   YYSYMBOL_UnaryOp = 65,                   /* UnaryOp  */
-  YYSYMBOL_FuncRParams = 66,               /* FuncRParams  */
-  YYSYMBOL_MulExp = 67,                    /* MulExp  */
-  YYSYMBOL_AddExp = 68,                    /* AddExp  */
-  YYSYMBOL_RelExp = 69,                    /* RelExp  */
-  YYSYMBOL_EqExp = 70,                     /* EqExp  */
-  YYSYMBOL_LAndExp = 71,                   /* LAndExp  */
-  YYSYMBOL_LOrExp = 72,                    /* LOrExp  */
-  YYSYMBOL_ConstExp = 73                   /* ConstExp  */
+  YYSYMBOL_SelfOp = 66,                    /* SelfOp  */
+  YYSYMBOL_FuncRParams = 67,               /* FuncRParams  */
+  YYSYMBOL_MulExp = 68,                    /* MulExp  */
+  YYSYMBOL_AddExp = 69,                    /* AddExp  */
+  YYSYMBOL_RelExp = 70,                    /* RelExp  */
+  YYSYMBOL_EqExp = 71,                     /* EqExp  */
+  YYSYMBOL_LAndExp = 72,                   /* LAndExp  */
+  YYSYMBOL_LOrExp = 73,                    /* LOrExp  */
+  YYSYMBOL_ConstExp = 74                   /* ConstExp  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -516,16 +517,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  9
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   178
+#define YYLAST   213
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  38
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  36
+#define YYNNTS  37
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  87
+#define YYNRULES  92
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  148
+#define YYNSTATES  155
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   275
@@ -578,13 +579,14 @@ static const yytype_int16 yyrline[] =
 {
        0,    65,    65,    70,    77,    84,    91,    98,   103,   110,
      117,   125,   133,   142,   151,   159,   169,   178,   186,   193,
-     201,   209,   217,   226,   236,   244,   252,   261,   270,   281,
-     289,   297,   305,   310,   318,   325,   332,   335,   338,   348,
-     352,   360,   369,   378,   386,   394,   404,   413,   420,   427,
-     434,   442,   449,   457,   465,   474,   482,   490,   499,   505,
-     512,   519,   527,   534,   539,   544,   549,   557,   565,   572,
-     580,   588,   596,   603,   611,   619,   626,   634,   642,   650,
-     658,   665,   673,   682,   689,   697,   704,   712
+     201,   209,   217,   227,   238,   246,   254,   263,   272,   283,
+     291,   299,   306,   313,   318,   326,   333,   340,   343,   346,
+     356,   360,   368,   377,   386,   394,   402,   412,   421,   428,
+     435,   442,   450,   457,   465,   473,   482,   490,   498,   507,
+     513,   521,   528,   536,   545,   557,   569,   574,   579,   584,
+     589,   595,   603,   611,   618,   626,   634,   642,   649,   657,
+     665,   672,   680,   688,   696,   704,   711,   719,   728,   735,
+     743,   750,   758
 };
 #endif
 
@@ -608,7 +610,7 @@ static const char *const yytname[] =
   "VarDecl", "VarDefList", "VarDef", "InitVal", "InitValList", "FuncDef",
   "FuncFParams", "FuncFParam", "ArrayIndexList", "Block", "BlockItemList",
   "BlockItem", "Stmt", "MatchedStmt", "OpenStmt", "SimpleStmt", "Exp",
-  "Cond", "LVal", "PrimaryExp", "Number", "UnaryExp", "UnaryOp",
+  "Cond", "LVal", "PrimaryExp", "Number", "UnaryExp", "UnaryOp", "SelfOp",
   "FuncRParams", "MulExp", "AddExp", "RelExp", "EqExp", "LAndExp",
   "LOrExp", "ConstExp", YY_NULLPTR
 };
@@ -620,7 +622,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-102)
+#define YYPACT_NINF (-132)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -634,21 +636,22 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-      83,  -102,  -102,    17,    83,  -102,    35,  -102,  -102,  -102,
-    -102,  -102,    43,   115,  -102,    88,     0,   128,    37,  -102,
-      41,  -102,    36,    79,   128,  -102,  -102,  -102,  -102,  -102,
-    -102,  -102,  -102,  -102,   128,    -9,    70,    -7,   121,    29,
-      64,    73,   109,    52,  -102,  -102,   117,    88,   128,    45,
-    -102,   103,    89,  -102,  -102,   -12,    97,  -102,   128,   128,
-     128,   128,   128,   128,   128,   128,   128,   128,   128,   128,
-     128,  -102,  -102,   119,    83,    73,  -102,  -102,   120,  -102,
-    -102,    53,    88,  -102,  -102,  -102,  -102,  -102,    -9,    -9,
-      70,    70,    70,    70,    -7,    -7,   121,    29,    11,   122,
-    -102,  -102,  -102,   128,  -102,  -102,   124,   126,   127,   132,
-      95,  -102,  -102,  -102,    41,  -102,  -102,  -102,  -102,  -102,
-    -102,   134,   133,   129,  -102,   128,   128,  -102,  -102,  -102,
-     140,  -102,   128,    89,   135,   136,    64,  -102,   143,    46,
-      46,  -102,  -102,   159,  -102,    46,  -102,  -102
+      24,  -132,  -132,     8,    24,  -132,    46,  -132,  -132,  -132,
+    -132,  -132,    61,    64,  -132,   143,    14,   181,    -6,  -132,
+      73,  -132,   -10,  -132,  -132,    93,   181,  -132,  -132,  -132,
+    -132,  -132,    52,  -132,  -132,  -132,   181,    75,   144,    60,
+      -4,    77,     9,    63,     3,    97,    29,  -132,  -132,    84,
+     143,   181,    44,  -132,    16,    86,  -132,  -132,    27,    99,
+    -132,  -132,    92,  -132,   181,   181,   181,   181,   181,   181,
+     181,   181,   181,   181,   181,   181,   181,  -132,  -132,  -132,
+     100,    24,     3,  -132,  -132,    98,  -132,  -132,    51,   143,
+    -132,  -132,  -132,  -132,  -132,   144,   144,    60,    60,    60,
+      60,    -4,    -4,    77,     9,    50,   102,  -132,  -132,  -132,
+     181,  -132,  -132,    95,   114,   120,   123,   167,  -132,  -132,
+    -132,    73,  -132,  -132,  -132,  -132,  -132,  -132,   124,     0,
+      92,  -132,   181,   181,  -132,  -132,  -132,   127,  -132,   181,
+      86,   122,   125,    63,  -132,   130,   129,   129,  -132,  -132,
+     148,  -132,   129,  -132,  -132
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -658,37 +661,38 @@ static const yytype_int8 yydefact[] =
 {
        0,     8,     9,     0,     2,     5,     0,     7,     6,     1,
        3,     4,    14,     0,    12,     0,     0,     0,    13,    10,
-       0,    58,    53,     0,     0,    63,    64,    65,    16,    17,
-      56,    59,    57,    68,     0,    72,    75,    80,    83,    85,
-      51,     0,     0,     0,    24,    87,     0,     0,     0,    14,
-      11,     0,    54,    18,    20,     0,     0,    62,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,    32,    22,    26,     0,     0,    29,    15,     0,    60,
-      66,     0,     0,    19,    55,    69,    70,    71,    73,    74,
-      79,    78,    76,    77,    81,    82,    84,    86,     0,     0,
-      25,    23,    30,     0,    61,    21,     0,     0,     0,     0,
-       0,    43,    31,    34,     0,    45,    33,    35,    36,    37,
-      39,     0,    56,    27,    67,     0,     0,    47,    48,    49,
-       0,    44,     0,    28,     0,     0,    52,    50,     0,     0,
-       0,    42,    40,    36,    46,     0,    38,    41
+       0,    59,    54,    69,    70,     0,     0,    66,    67,    68,
+      16,    17,    57,    60,    58,    73,     0,     0,    77,    80,
+      85,    88,    90,    52,     0,     0,     0,    24,    92,     0,
+       0,     0,    14,    11,     0,    55,    18,    20,     0,     0,
+      65,    63,    54,    64,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,    32,    33,    22,
+      26,     0,     0,    29,    15,     0,    61,    71,     0,     0,
+      19,    56,    74,    75,    76,    78,    79,    84,    83,    81,
+      82,    86,    87,    89,    91,     0,     0,    25,    23,    30,
+       0,    62,    21,     0,     0,     0,     0,     0,    32,    31,
+      35,     0,    46,    34,    36,    37,    38,    40,     0,    57,
+      27,    72,     0,     0,    48,    49,    50,     0,    45,     0,
+      28,     0,     0,    53,    51,     0,     0,     0,    43,    41,
+      37,    47,     0,    39,    42
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -102,  -102,  -102,    -2,   -13,  -102,  -102,   146,   -19,  -102,
-     163,  -102,    94,   -21,   -35,  -102,  -102,     1,  -101,    25,
-    -102,   -17,  -102,   -93,  -102,  -102,    -1,  -102,  -102,    81,
-      24,    77,   100,   101,    47,   130
+    -132,  -132,  -132,    -2,   -13,  -132,  -132,   138,   -19,  -132,
+     158,  -132,    87,   -18,   -37,  -132,  -132,   -48,  -131,    20,
+    -132,   -17,  -132,   -36,  -132,  -132,   -26,  -132,   -27,  -132,
+      37,    94,    35,   101,   106,    53,   132
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_uint8 yydefgoto[] =
 {
-       0,     3,     4,     5,     6,     7,    13,    14,    28,    55,
-       8,    43,    44,    18,   115,    98,   116,   117,   118,   119,
-     120,    29,   135,    30,    31,    32,    33,    34,    81,    35,
-      36,    37,    38,    39,    40,    46
+       0,     3,     4,     5,     6,     7,    13,    14,    30,    58,
+       8,    46,    47,    18,   122,   105,   123,   124,   125,   126,
+     127,    31,   142,    32,    33,    34,    35,    36,    37,    88,
+      38,    39,    40,    41,    42,    43,    49
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -696,46 +700,54 @@ static const yytype_uint8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-      45,    52,    10,    42,    54,   122,    72,    56,    63,    64,
-      82,     1,     2,    83,    21,    22,   106,     9,   107,   108,
-     109,   110,     1,     2,    58,    59,    60,    41,    77,    65,
-      66,    45,   111,    57,    80,    71,   112,    24,   143,    12,
-     101,    25,    26,    27,   146,    49,   122,   122,    69,    21,
-      22,   106,   122,   107,   108,   109,   110,    85,    86,    87,
-      47,    42,    51,   105,    17,    48,    15,   111,    15,    16,
-      71,    17,    24,    17,    74,   103,    25,    26,    27,    75,
-     104,   121,    21,    22,    70,   114,   124,    90,    91,    92,
-      93,    21,    22,   130,     1,     2,   113,    71,    21,    22,
-      61,    62,   133,    23,    53,    24,    21,    22,   134,    25,
-      26,    27,    23,    73,    24,   138,   129,    48,    25,    26,
-      27,    24,   121,   121,    84,    25,    26,    27,   121,    24,
-      79,    21,    22,    25,    26,    27,    19,    20,    67,    68,
-     142,   144,    88,    89,    94,    95,    76,    99,   127,   102,
-     125,   123,   126,   128,    24,   131,   132,    17,    25,    26,
-      27,   137,   139,   140,   141,   145,    50,    11,   100,    96,
-     147,    97,     0,   136,     0,     0,     0,     0,    78
+      48,    63,    10,    45,    55,    60,    57,    79,     9,    59,
+      61,    69,    70,    23,    24,   150,    54,    50,    17,    21,
+      22,   153,    51,   139,    77,     1,     2,    78,    75,    23,
+      24,    84,    71,    72,    48,     1,     2,    87,    92,    93,
+      94,    44,    26,    86,    55,   108,    27,    28,    29,    89,
+      12,    81,    90,    21,    22,   113,    82,   114,   115,   116,
+     117,     1,     2,    23,    24,    23,    24,    15,    45,   129,
+     112,   118,    17,   110,    78,   119,    26,    52,   111,    62,
+      27,    28,    29,    76,    15,    19,    20,    16,   128,    17,
+      67,    68,   121,   131,    73,    74,    21,    22,   149,   151,
+     137,    80,    60,   120,    95,    96,    23,    24,   101,   102,
+     129,   129,   140,    83,    51,   141,   129,    25,    56,    26,
+      17,   132,   145,    27,    28,    29,    91,   109,   106,   128,
+     128,   130,    21,    22,   113,   128,   114,   115,   116,   117,
+     133,   134,    23,    24,   135,   138,    21,    22,   144,   146,
+     118,   148,   147,    78,   152,    26,    23,    24,    53,    27,
+      28,    29,    11,    97,    98,    99,   100,    25,   107,    26,
+      21,    22,   154,    27,    28,    29,   103,    64,    65,    66,
+      23,    24,   104,    85,    21,    22,   143,     0,   136,     0,
+       0,     0,     0,    26,    23,    24,     0,    27,    28,    29,
+       0,     0,     0,     0,     0,     0,     0,    26,     0,     0,
+       0,    27,    28,    29
 };
 
 static const yytype_int16 yycheck[] =
 {
-      17,    22,     4,    16,    23,    98,    41,    24,    15,    16,
-      22,    11,    12,    25,     3,     4,     5,     0,     7,     8,
-       9,    10,    11,    12,    33,    34,    35,    27,    47,    36,
-      37,    48,    21,    34,    51,    24,    25,    26,   139,     4,
-      75,    30,    31,    32,   145,     4,   139,   140,    19,     3,
-       4,     5,   145,     7,     8,     9,    10,    58,    59,    60,
-      23,    74,    26,    82,    28,    28,    23,    21,    23,    26,
-      24,    28,    26,    28,    22,    22,    30,    31,    32,    27,
-      27,    98,     3,     4,    20,    98,   103,    63,    64,    65,
-      66,     3,     4,   110,    11,    12,    98,    24,     3,     4,
-      30,    31,   123,    24,    25,    26,     3,     4,   125,    30,
-      31,    32,    24,     4,    26,   132,    21,    28,    30,    31,
-      32,    26,   139,   140,    27,    30,    31,    32,   145,    26,
-      27,     3,     4,    30,    31,    32,    21,    22,    17,    18,
-     139,   140,    61,    62,    67,    68,    29,    28,    21,    29,
-      26,    29,    26,    21,    26,    21,    23,    28,    30,    31,
-      32,    21,    27,    27,    21,     6,    20,     4,    74,    69,
-     145,    70,    -1,   126,    -1,    -1,    -1,    -1,    48
+      17,    37,     4,    16,    22,    32,    25,    44,     0,    26,
+      36,    15,    16,    13,    14,   146,    26,    23,    28,     3,
+       4,   152,    28,    23,    21,    11,    12,    24,    19,    13,
+      14,    50,    36,    37,    51,    11,    12,    54,    64,    65,
+      66,    27,    26,    27,    62,    82,    30,    31,    32,    22,
+       4,    22,    25,     3,     4,     5,    27,     7,     8,     9,
+      10,    11,    12,    13,    14,    13,    14,    23,    81,   105,
+      89,    21,    28,    22,    24,    25,    26,     4,    27,     4,
+      30,    31,    32,    20,    23,    21,    22,    26,   105,    28,
+      30,    31,   105,   110,    17,    18,     3,     4,   146,   147,
+     117,     4,   129,   105,    67,    68,    13,    14,    73,    74,
+     146,   147,   130,    29,    28,   132,   152,    24,    25,    26,
+      28,    26,   139,    30,    31,    32,    27,    29,    28,   146,
+     147,    29,     3,     4,     5,   152,     7,     8,     9,    10,
+      26,    21,    13,    14,    21,    21,     3,     4,    21,    27,
+      21,    21,    27,    24,     6,    26,    13,    14,    20,    30,
+      31,    32,     4,    69,    70,    71,    72,    24,    81,    26,
+       3,     4,   152,    30,    31,    32,    75,    33,    34,    35,
+      13,    14,    76,    51,     3,     4,   133,    -1,    21,    -1,
+      -1,    -1,    -1,    26,    13,    14,    -1,    30,    31,    32,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    26,    -1,    -1,
+      -1,    30,    31,    32
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
@@ -744,19 +756,20 @@ static const yytype_int8 yystos[] =
 {
        0,    11,    12,    39,    40,    41,    42,    43,    48,     0,
       41,    48,     4,    44,    45,    23,    26,    28,    51,    21,
-      22,     3,     4,    24,    26,    30,    31,    32,    46,    59,
-      61,    62,    63,    64,    65,    67,    68,    69,    70,    71,
-      72,    27,    42,    49,    50,    59,    73,    23,    28,     4,
-      45,    26,    51,    25,    46,    47,    59,    64,    33,    34,
-      35,    30,    31,    15,    16,    36,    37,    17,    18,    19,
-      20,    24,    52,     4,    22,    27,    29,    46,    73,    27,
-      59,    66,    22,    25,    27,    64,    64,    64,    67,    67,
-      68,    68,    68,    68,    69,    69,    70,    71,    53,    28,
-      50,    52,    29,    22,    27,    46,     5,     7,     8,     9,
-      10,    21,    25,    41,    42,    52,    54,    55,    56,    57,
-      58,    59,    61,    29,    59,    26,    26,    21,    21,    21,
-      59,    21,    23,    51,    59,    60,    72,    21,    59,    27,
-      27,    21,    55,    56,    55,     6,    56,    57
+      22,     3,     4,    13,    14,    24,    26,    30,    31,    32,
+      46,    59,    61,    62,    63,    64,    65,    66,    68,    69,
+      70,    71,    72,    73,    27,    42,    49,    50,    59,    74,
+      23,    28,     4,    45,    26,    51,    25,    46,    47,    59,
+      66,    64,     4,    61,    33,    34,    35,    30,    31,    15,
+      16,    36,    37,    17,    18,    19,    20,    21,    24,    52,
+       4,    22,    27,    29,    46,    74,    27,    59,    67,    22,
+      25,    27,    64,    64,    64,    68,    68,    69,    69,    69,
+      69,    70,    70,    71,    72,    53,    28,    50,    52,    29,
+      22,    27,    46,     5,     7,     8,     9,    10,    21,    25,
+      41,    42,    52,    54,    55,    56,    57,    58,    59,    61,
+      29,    59,    26,    26,    21,    21,    21,    59,    21,    23,
+      51,    59,    60,    73,    21,    59,    27,    27,    21,    55,
+      56,    55,     6,    56,    57
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
@@ -765,12 +778,13 @@ static const yytype_int8 yyr1[] =
        0,    38,    39,    40,    40,    40,    40,    41,    42,    42,
       43,    44,    44,    45,    45,    45,    45,    46,    46,    46,
       47,    47,    48,    48,    49,    49,    50,    50,    50,    51,
-      51,    52,    53,    53,    54,    54,    55,    55,    56,    56,
-      57,    57,    58,    58,    58,    58,    58,    58,    58,    58,
-      58,    59,    60,    61,    61,    62,    62,    62,    63,    64,
-      64,    64,    64,    65,    65,    65,    66,    66,    67,    67,
-      67,    67,    68,    68,    68,    69,    69,    69,    69,    69,
-      70,    70,    70,    71,    71,    72,    72,    73
+      51,    52,    52,    53,    53,    54,    54,    55,    55,    56,
+      56,    57,    57,    58,    58,    58,    58,    58,    58,    58,
+      58,    58,    59,    60,    61,    61,    62,    62,    62,    63,
+      64,    64,    64,    64,    64,    64,    65,    65,    65,    66,
+      66,    67,    67,    68,    68,    68,    68,    69,    69,    69,
+      70,    70,    70,    70,    70,    71,    71,    71,    72,    72,
+      73,    73,    74
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -779,12 +793,13 @@ static const yytype_int8 yyr2[] =
        0,     2,     1,     2,     2,     1,     1,     1,     1,     1,
        3,     3,     1,     2,     1,     4,     3,     1,     2,     3,
        1,     3,     5,     6,     1,     3,     2,     4,     5,     3,
-       4,     3,     0,     2,     1,     1,     1,     1,     7,     1,
-       5,     7,     4,     1,     2,     1,     5,     2,     2,     2,
-       3,     1,     1,     1,     2,     3,     1,     1,     1,     1,
-       3,     4,     2,     1,     1,     1,     1,     3,     1,     3,
-       3,     3,     1,     3,     3,     1,     3,     3,     3,     3,
-       1,     3,     3,     1,     3,     1,     3,     1
+       4,     3,     1,     0,     2,     1,     1,     1,     1,     7,
+       1,     5,     7,     4,     1,     2,     1,     5,     2,     2,
+       2,     3,     1,     1,     1,     2,     3,     1,     1,     1,
+       1,     3,     4,     2,     2,     2,     1,     1,     1,     1,
+       1,     1,     3,     1,     3,     3,     3,     1,     3,     3,
+       1,     3,     3,     3,     3,     1,     3,     3,     1,     3,
+       1,     3,     1
 };
 
 
@@ -1255,7 +1270,7 @@ yyreduce:
                     cout<<"Input : CompUnit"<<endl;
                     root=unique_ptr<AST_CompUnit>((AST_CompUnit*)((yyvsp[0].ast_baseVal)));
                 }
-#line 1259 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1274 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 3: /* CompUnit: CompUnit Decl  */
@@ -1266,7 +1281,7 @@ yyreduce:
                     ptr->list_decl.push_back(unique_ptr<AST_Base>((yyvsp[0].ast_baseVal)));
                     (yyval.ast_baseVal)=ptr; 
                 }
-#line 1270 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1285 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 4: /* CompUnit: CompUnit FuncDef  */
@@ -1277,7 +1292,7 @@ yyreduce:
                     ptr->list_func.push_back(unique_ptr<AST_Base>((yyvsp[0].ast_baseVal)));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1281 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1296 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 5: /* CompUnit: Decl  */
@@ -1288,7 +1303,7 @@ yyreduce:
                     ptr->list_decl.push_back(unique_ptr<AST_Base>((yyvsp[0].ast_baseVal)));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1292 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1307 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 6: /* CompUnit: FuncDef  */
@@ -1299,7 +1314,7 @@ yyreduce:
                     ptr->list_func.push_back(unique_ptr<AST_Base>((yyvsp[0].ast_baseVal)));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1303 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1318 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 7: /* Decl: VarDecl  */
@@ -1308,7 +1323,7 @@ yyreduce:
                     cout<<"Decl : VarDecl"<<endl;
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1312 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1327 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 8: /* BType: T_INT  */
@@ -1319,7 +1334,7 @@ yyreduce:
                     //auto btype=unique_ptr<string>(tmp);
                     (yyval.str_val)=btype;
                 }
-#line 1323 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1338 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 9: /* BType: T_VOID  */
@@ -1330,7 +1345,7 @@ yyreduce:
                     //auto btype=unique_ptr<string>(tmp);
                     (yyval.str_val)=btype;
                 }
-#line 1334 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1349 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 10: /* VarDecl: BType VarDefList ';'  */
@@ -1342,7 +1357,7 @@ yyreduce:
                     auto ptr=new AST_VarDecl(btype,varDefList);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1346 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1361 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 11: /* VarDefList: VarDefList ',' VarDef  */
@@ -1354,7 +1369,7 @@ yyreduce:
                     ptr->push(varDef);
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1358 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1373 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 12: /* VarDefList: VarDef  */
@@ -1366,7 +1381,7 @@ yyreduce:
                     ptr->push(varDef);
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1370 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1385 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 13: /* VarDef: IDENT ArrayIndexList  */
@@ -1379,7 +1394,7 @@ yyreduce:
                     ptr->arrayIndexList=unique_ptr<AST_Vec>((yyvsp[0].ast_vecVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1383 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1398 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 14: /* VarDef: IDENT  */
@@ -1391,7 +1406,7 @@ yyreduce:
                     ptr->ident=unique_ptr<string>((yyvsp[0].id_val).id);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1395 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1410 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 15: /* VarDef: IDENT ArrayIndexList '=' InitVal  */
@@ -1405,7 +1420,7 @@ yyreduce:
                     ptr->initVal=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1409 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1424 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 16: /* VarDef: IDENT '=' InitVal  */
@@ -1418,7 +1433,7 @@ yyreduce:
                     ptr->initVal=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1422 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1437 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 17: /* InitVal: Exp  */
@@ -1430,7 +1445,7 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1434 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1449 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 18: /* InitVal: '{' '}'  */
@@ -1441,7 +1456,7 @@ yyreduce:
                     ptr->tag=AST_Initial::INITVALLIST;
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1445 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1460 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 19: /* InitVal: '{' InitValList '}'  */
@@ -1453,7 +1468,7 @@ yyreduce:
                     ptr->initValList=unique_ptr<AST_Vec>((yyvsp[-1].ast_vecVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1457 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1472 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 20: /* InitValList: InitVal  */
@@ -1465,7 +1480,7 @@ yyreduce:
                     ptr->push(initVal);
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1469 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1484 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 21: /* InitValList: InitValList ',' InitVal  */
@@ -1477,38 +1492,40 @@ yyreduce:
                     ptr->push(initVal);
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1481 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1496 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 22: /* FuncDef: BType IDENT '(' ')' Block  */
 #line 218 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncDef : BType IDENT '(' ')' Block"<<endl;
-                    auto funcType=unique_ptr<string>((yyvsp[-4].str_val));
-                    auto funcName=unique_ptr<string>((yyvsp[-3].id_val).id);
-                    auto funcBlock=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
-                    auto ptr=new AST_FuncDef(funcType, funcName, funcBlock);
+                    auto ptr=new AST_FuncDef();
+                    ptr->tag=AST_FuncDef::DEF_NOPARAM;
+                    ptr->func_type=unique_ptr<string>((yyvsp[-4].str_val));
+                    ptr->func_name=unique_ptr<string>((yyvsp[-3].id_val).id);
+                    ptr->func_block=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1494 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1510 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 23: /* FuncDef: BType IDENT '(' FuncFParams ')' Block  */
-#line 227 "D:/CompilerTools/code/minic/minic.y"
+#line 228 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncDef : BType IDENT '(' FuncFParams ')' Block"<<endl;
-                    auto funcType=unique_ptr<string>((yyvsp[-5].str_val));
-                    auto funcName=unique_ptr<string>((yyvsp[-4].id_val).id);
-                    auto funcFParams=unique_ptr<AST_Vec>((yyvsp[-2].ast_vecVal));
-                    auto funcBlock=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
-                    auto ptr=new AST_FuncDef(funcType,funcName,funcFParams,funcBlock);
+                    auto ptr=new AST_FuncDef();
+                    ptr->tag=AST_FuncDef::DEF_PARAM;
+                    ptr->func_type=unique_ptr<string>((yyvsp[-5].str_val));
+                    ptr->func_name=unique_ptr<string>((yyvsp[-4].id_val).id);
+                    ptr->func_params=unique_ptr<AST_Vec>((yyvsp[-2].ast_vecVal));
+                    ptr->func_block=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1508 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1525 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 24: /* FuncFParams: FuncFParam  */
-#line 237 "D:/CompilerTools/code/minic/minic.y"
+#line 239 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncFParams : FuncFParam"<<endl;
                     auto param=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
@@ -1516,11 +1533,11 @@ yyreduce:
                     ptr->push(param);
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1520 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1537 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 25: /* FuncFParams: FuncFParams ',' FuncFParam  */
-#line 245 "D:/CompilerTools/code/minic/minic.y"
+#line 247 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncFParams : FuncFParams ',' FuncFParam"<<endl;
                     auto param=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
@@ -1528,11 +1545,11 @@ yyreduce:
                     ptr->push(param);
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1532 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1549 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 26: /* FuncFParam: BType IDENT  */
-#line 253 "D:/CompilerTools/code/minic/minic.y"
+#line 255 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncFParam  : BType IDENT"<<endl;
                     auto ptr=new AST_FuncFParam();
@@ -1541,11 +1558,11 @@ yyreduce:
                     ptr->param_name=unique_ptr<string>((yyvsp[0].id_val).id);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1545 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1562 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 27: /* FuncFParam: BType IDENT '[' ']'  */
-#line 262 "D:/CompilerTools/code/minic/minic.y"
+#line 264 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncFParam  : BType IDENT '[' ']'"<<endl;
                     auto ptr=new AST_FuncFParam();
@@ -1554,11 +1571,11 @@ yyreduce:
                     ptr->param_name=unique_ptr<string>((yyvsp[-2].id_val).id);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1558 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1575 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 28: /* FuncFParam: BType IDENT '[' ']' ArrayIndexList  */
-#line 271 "D:/CompilerTools/code/minic/minic.y"
+#line 273 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncFParam  : BType IDENT '[' ']' ArrayIndexList"<<endl;
                     auto ptr=new AST_FuncFParam();
@@ -1568,11 +1585,11 @@ yyreduce:
                     ptr->ArrayIndexList=unique_ptr<AST_Vec>((yyvsp[0].ast_vecVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1572 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1589 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 29: /* ArrayIndexList: '[' ConstExp ']'  */
-#line 282 "D:/CompilerTools/code/minic/minic.y"
+#line 284 "D:/CompilerTools/code/minic/minic.y"
                     {
                         cout<<"ArrayIndexList : '[' Exp ']'"<<endl;
                         auto exp=unique_ptr<AST_Base>((yyvsp[-1].ast_expVal));
@@ -1580,11 +1597,11 @@ yyreduce:
                         ptr->push(exp);
                         (yyval.ast_vecVal)=ptr;
                     }
-#line 1584 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1601 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 30: /* ArrayIndexList: ArrayIndexList '[' ConstExp ']'  */
-#line 290 "D:/CompilerTools/code/minic/minic.y"
+#line 292 "D:/CompilerTools/code/minic/minic.y"
                     {
                         cout<<"ArrayIndexList : ArrayIndexList '[' Exp ']'"<<endl;
                         auto ptr=(yyvsp[-3].ast_vecVal);
@@ -1592,32 +1609,42 @@ yyreduce:
                         ptr->push(exp);
                         (yyval.ast_vecVal)=ptr;
                     }
-#line 1596 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1613 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 31: /* Block: '{' BlockItemList '}'  */
-#line 298 "D:/CompilerTools/code/minic/minic.y"
+#line 300 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout << "Block : '{' BlockItemList'}'" <<endl;
                     auto blocks=unique_ptr<AST_Vec>((yyvsp[-1].ast_vecVal));
                     auto ptr=new AST_Block(blocks);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1607 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1624 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 32: /* BlockItemList: %empty  */
-#line 305 "D:/CompilerTools/code/minic/minic.y"
+  case 32: /* Block: ';'  */
+#line 307 "D:/CompilerTools/code/minic/minic.y"
+                {
+                    cout<<"Block : ;"<<endl;
+                    auto ptr=new AST_Block();
+                    (yyval.ast_baseVal)=ptr;
+                }
+#line 1634 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+    break;
+
+  case 33: /* BlockItemList: %empty  */
+#line 313 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<< "BlockItemList   :"<<endl;
                     auto ptr=new AST_Vec();
                     (yyval.ast_vecVal)=ptr;
                 }
-#line 1617 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1644 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 33: /* BlockItemList: BlockItemList BlockItem  */
-#line 311 "D:/CompilerTools/code/minic/minic.y"
+  case 34: /* BlockItemList: BlockItemList BlockItem  */
+#line 319 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<< "BlockItemList   : BlockItemList BlockItem" <<endl;
                     auto blocks=(yyvsp[-1].ast_vecVal);
@@ -1625,49 +1652,49 @@ yyreduce:
                     blocks->push(item);
                     (yyval.ast_vecVal)=blocks;
                 }
-#line 1629 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1656 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 34: /* BlockItem: Decl  */
-#line 319 "D:/CompilerTools/code/minic/minic.y"
+  case 35: /* BlockItem: Decl  */
+#line 327 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<< "------BlockItem : Decl------"<<endl;
                     auto decl=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     auto ptr=new AST_BlockItem(decl,false);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1640 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1667 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 35: /* BlockItem: Stmt  */
-#line 326 "D:/CompilerTools/code/minic/minic.y"
+  case 36: /* BlockItem: Stmt  */
+#line 334 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<< "------BlockItem : Stmt------"<<endl;
                     auto stmt=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     auto ptr=new AST_BlockItem(stmt,true);
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1651 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1678 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 36: /* Stmt: MatchedStmt  */
-#line 332 "D:/CompilerTools/code/minic/minic.y"
+  case 37: /* Stmt: MatchedStmt  */
+#line 340 "D:/CompilerTools/code/minic/minic.y"
                              {
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1659 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1686 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 37: /* Stmt: OpenStmt  */
-#line 335 "D:/CompilerTools/code/minic/minic.y"
+  case 38: /* Stmt: OpenStmt  */
+#line 343 "D:/CompilerTools/code/minic/minic.y"
                           {
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1667 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1694 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 38: /* MatchedStmt: IF '(' Exp ')' MatchedStmt ELSE MatchedStmt  */
-#line 338 "D:/CompilerTools/code/minic/minic.y"
+  case 39: /* MatchedStmt: IF '(' Exp ')' MatchedStmt ELSE MatchedStmt  */
+#line 346 "D:/CompilerTools/code/minic/minic.y"
                                                              {
                     cout<<"MatchedStmt : IF '(' Exp ')' MatchedStmt ELSE MatchedStmt"<<endl;
                     auto ptr =new AST_Stmt();
@@ -1677,20 +1704,20 @@ yyreduce:
                     ptr->else_body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1681 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1708 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 39: /* MatchedStmt: SimpleStmt  */
-#line 348 "D:/CompilerTools/code/minic/minic.y"
+  case 40: /* MatchedStmt: SimpleStmt  */
+#line 356 "D:/CompilerTools/code/minic/minic.y"
                           {
                     cout<<"MatchedStmt : SimpleStmt"<<endl;
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1690 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1717 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 40: /* OpenStmt: IF '(' Exp ')' Stmt  */
-#line 352 "D:/CompilerTools/code/minic/minic.y"
+  case 41: /* OpenStmt: IF '(' Exp ')' Stmt  */
+#line 360 "D:/CompilerTools/code/minic/minic.y"
                                       {
                     cout<<"OpenStmt : IF '(' Exp ')' Stmt"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1699,11 +1726,11 @@ yyreduce:
                     ptr->body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1703 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1730 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 41: /* OpenStmt: IF '(' Exp ')' MatchedStmt ELSE OpenStmt  */
-#line 360 "D:/CompilerTools/code/minic/minic.y"
+  case 42: /* OpenStmt: IF '(' Exp ')' MatchedStmt ELSE OpenStmt  */
+#line 368 "D:/CompilerTools/code/minic/minic.y"
                                                            {
                     cout<<"OpenStmt : IF '(' Exp ')' MatchedStmt ELSE OpenStmt"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1713,11 +1740,11 @@ yyreduce:
                     ptr->else_body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1717 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1744 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 42: /* SimpleStmt: LVal '=' Exp ';'  */
-#line 370 "D:/CompilerTools/code/minic/minic.y"
+  case 43: /* SimpleStmt: LVal '=' Exp ';'  */
+#line 378 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : LVal '=' Exp ';'"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1726,11 +1753,11 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1730 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1757 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 43: /* SimpleStmt: ';'  */
-#line 379 "D:/CompilerTools/code/minic/minic.y"
+  case 44: /* SimpleStmt: ';'  */
+#line 387 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : ';'"<<endl;
                     //TODO ????????????????????
@@ -1738,11 +1765,11 @@ yyreduce:
                     ptr->tag=AST_Stmt::EXP;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1742 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1769 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 44: /* SimpleStmt: Exp ';'  */
-#line 387 "D:/CompilerTools/code/minic/minic.y"
+  case 45: /* SimpleStmt: Exp ';'  */
+#line 395 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : Exp ';'"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1750,11 +1777,11 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1754 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1781 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 45: /* SimpleStmt: Block  */
-#line 395 "D:/CompilerTools/code/minic/minic.y"
+  case 46: /* SimpleStmt: Block  */
+#line 403 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : Block"<<endl;
                     //TODO ????????????????????
@@ -1764,11 +1791,11 @@ yyreduce:
                     (yyval.ast_baseVal)=ptr;
 
                 }
-#line 1768 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1795 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 46: /* SimpleStmt: WHILE '(' Cond ')' Stmt  */
-#line 405 "D:/CompilerTools/code/minic/minic.y"
+  case 47: /* SimpleStmt: WHILE '(' Cond ')' Stmt  */
+#line 413 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : WHILE '(' Cond ')' Stmt"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1777,44 +1804,44 @@ yyreduce:
                     ptr->body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1781 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1808 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 47: /* SimpleStmt: BREAK ';'  */
-#line 414 "D:/CompilerTools/code/minic/minic.y"
+  case 48: /* SimpleStmt: BREAK ';'  */
+#line 422 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"BREAK ';'"<<endl;
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::BREAK;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1792 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1819 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 48: /* SimpleStmt: CONT ';'  */
-#line 421 "D:/CompilerTools/code/minic/minic.y"
+  case 49: /* SimpleStmt: CONT ';'  */
+#line 429 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"CONT ';'"<<endl;
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::CONTINUE;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1803 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1830 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 49: /* SimpleStmt: RET ';'  */
-#line 428 "D:/CompilerTools/code/minic/minic.y"
+  case 50: /* SimpleStmt: RET ';'  */
+#line 436 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"RET ';'"<<endl;
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::RETURN;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1814 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1841 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 50: /* SimpleStmt: RET Exp ';'  */
-#line 435 "D:/CompilerTools/code/minic/minic.y"
+  case 51: /* SimpleStmt: RET Exp ';'  */
+#line 443 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"RET Exp ';'"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1822,22 +1849,22 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1826 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1853 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 51: /* Exp: LOrExp  */
-#line 443 "D:/CompilerTools/code/minic/minic.y"
+  case 52: /* Exp: LOrExp  */
+#line 451 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Exp : LOrExp"<<endl;
                     auto lorExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_Exp1(lorExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1837 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1864 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 52: /* Cond: LOrExp  */
-#line 450 "D:/CompilerTools/code/minic/minic.y"
+  case 53: /* Cond: LOrExp  */
+#line 458 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Cond :LOrExp"<<endl;
                     //!!!需新建cond类
@@ -1845,11 +1872,11 @@ yyreduce:
                     auto ptr=new AST_Cond(lorExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1849 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1876 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 53: /* LVal: IDENT  */
-#line 458 "D:/CompilerTools/code/minic/minic.y"
+  case 54: /* LVal: IDENT  */
+#line 466 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LVal : IDENT"<<endl;
                     auto ptr=new AST_LVal();
@@ -1857,11 +1884,11 @@ yyreduce:
                     ptr->ident=unique_ptr<string>((yyvsp[0].id_val).id);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1861 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1888 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 54: /* LVal: IDENT ArrayIndexList  */
-#line 466 "D:/CompilerTools/code/minic/minic.y"
+  case 55: /* LVal: IDENT ArrayIndexList  */
+#line 474 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LVal : IDENT ArrayIndexList"<<endl;
                     auto ptr=new AST_LVal();
@@ -1870,11 +1897,11 @@ yyreduce:
                     ptr->ident=unique_ptr<string>((yyvsp[-1].id_val).id);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1874 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1901 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 55: /* PrimaryExp: '(' Exp ')'  */
-#line 475 "D:/CompilerTools/code/minic/minic.y"
+  case 56: /* PrimaryExp: '(' Exp ')'  */
+#line 483 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"PrimaryExp  : '(' Exp ')'"<<endl;
                     auto ptr=new AST_Primary();
@@ -1882,11 +1909,11 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1886 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1913 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 56: /* PrimaryExp: LVal  */
-#line 483 "D:/CompilerTools/code/minic/minic.y"
+  case 57: /* PrimaryExp: LVal  */
+#line 491 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"PrimaryExp  : LVal"<<endl;
                     auto ptr=new AST_Primary();
@@ -1894,11 +1921,11 @@ yyreduce:
                     ptr->lval=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1898 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1925 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 57: /* PrimaryExp: Number  */
-#line 491 "D:/CompilerTools/code/minic/minic.y"
+  case 58: /* PrimaryExp: Number  */
+#line 499 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"PrimaryExp  : Number"<<endl;
                     auto ptr=new AST_Primary();
@@ -1907,42 +1934,43 @@ yyreduce:
                     (yyval.ast_expVal)=ptr;
 
                 }
-#line 1911 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1938 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 58: /* Number: NUM  */
-#line 500 "D:/CompilerTools/code/minic/minic.y"
+  case 59: /* Number: NUM  */
+#line 508 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Number : NUM"<<endl;
                     (yyval.val)=(yyvsp[0].int_val).val;
                 }
-#line 1920 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1947 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 59: /* UnaryExp: PrimaryExp  */
-#line 506 "D:/CompilerTools/code/minic/minic.y"
+  case 60: /* UnaryExp: PrimaryExp  */
+#line 514 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp :PrimaryExp"<<endl;
-                    auto primaryExp = unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
-                    auto ptr=new AST_Unary(primaryExp);
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::ONLY_P;
+                    ptr->primaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1931 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1959 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 60: /* UnaryExp: IDENT '(' ')'  */
-#line 513 "D:/CompilerTools/code/minic/minic.y"
+  case 61: /* UnaryExp: IDENT '(' ')'  */
+#line 522 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp : IDENT ( ) "<<endl;
                     auto funcName = unique_ptr<string>((yyvsp[-2].id_val).id);
                     auto ptr=new AST_FuncCall(funcName);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1942 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1970 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 61: /* UnaryExp: IDENT '(' FuncRParams ')'  */
-#line 520 "D:/CompilerTools/code/minic/minic.y"
+  case 62: /* UnaryExp: IDENT '(' FuncRParams ')'  */
+#line 529 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp : IDENT ( FuncRParams )"<<endl;
                     auto funcName = unique_ptr<string>((yyvsp[-3].id_val).id);
@@ -1950,49 +1978,101 @@ yyreduce:
                     auto ptr=new AST_FuncCall(funcName,funcRParams);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1954 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1982 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 62: /* UnaryExp: UnaryOp UnaryExp  */
-#line 528 "D:/CompilerTools/code/minic/minic.y"
+  case 63: /* UnaryExp: UnaryOp UnaryExp  */
+#line 537 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp :UnaryOp UnaryExp"<<endl;
-                    auto unaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
-                    auto ptr=new AST_Unary((yyvsp[-1].ast_op_type),unaryExp);
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::UU;
+                    ptr->op=(yyvsp[-1].ast_op_type);
+                    ptr->unaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1965 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1995 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 63: /* UnaryOp: '+'  */
-#line 535 "D:/CompilerTools/code/minic/minic.y"
+  case 64: /* UnaryExp: SelfOp LVal  */
+#line 546 "D:/CompilerTools/code/minic/minic.y"
+                {
+                    cout<<"Unary : SelfOp LVal"<<endl;
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::SELF;
+                    if((yyvsp[-1].ast_op_type)==AST_OP_INCR)
+                        ptr->op=AST_OP_LINC;
+                    else
+                        ptr->op=AST_OP_LDEC;
+                    ptr->selfExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
+                    (yyval.ast_expVal)=ptr;
+                }
+#line 2011 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+    break;
+
+  case 65: /* UnaryExp: LVal SelfOp  */
+#line 558 "D:/CompilerTools/code/minic/minic.y"
+                {
+                    cout<<"Unary : LVal SelfOp"<<endl;
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::SELF;
+                    if((yyvsp[0].ast_op_type)==AST_OP_INCR)
+                        ptr->op=AST_OP_RINC;
+                    else
+                        ptr->op=AST_OP_RDEC;
+                    ptr->selfExp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
+                    (yyval.ast_expVal)=ptr;
+                }
+#line 2027 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+    break;
+
+  case 66: /* UnaryOp: '+'  */
+#line 570 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryOp :'+'"<<endl;
                     (yyval.ast_op_type)=AST_OP_OPT;
                 }
-#line 1974 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2036 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 64: /* UnaryOp: '-'  */
-#line 540 "D:/CompilerTools/code/minic/minic.y"
+  case 67: /* UnaryOp: '-'  */
+#line 575 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryOp :'-'"<<endl;
                     (yyval.ast_op_type)=AST_OP_NEG;
                 }
-#line 1983 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2045 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 65: /* UnaryOp: '!'  */
-#line 545 "D:/CompilerTools/code/minic/minic.y"
+  case 68: /* UnaryOp: '!'  */
+#line 580 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryOp :'!'"<<endl;
                     (yyval.ast_op_type)=AST_OP_NOT;
                 }
-#line 1992 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2054 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 66: /* FuncRParams: Exp  */
-#line 550 "D:/CompilerTools/code/minic/minic.y"
+  case 69: /* SelfOp: INCR  */
+#line 585 "D:/CompilerTools/code/minic/minic.y"
+                {
+                    cout<<"SelfOp : INCR"<<endl;
+                    (yyval.ast_op_type)=AST_OP_INCR;
+                }
+#line 2063 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+    break;
+
+  case 70: /* SelfOp: DECR  */
+#line 590 "D:/CompilerTools/code/minic/minic.y"
+                {
+                    cout<<"SelfOp : DECR"<<endl;
+                    (yyval.ast_op_type)=AST_OP_DECR;
+                }
+#line 2072 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+    break;
+
+  case 71: /* FuncRParams: Exp  */
+#line 596 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncRParams : Exp"<<endl;
                     auto paramVec=new AST_Vec();
@@ -2000,11 +2080,11 @@ yyreduce:
                     paramVec->push(exp);
                     (yyval.ast_vecVal)=paramVec;
                 }
-#line 2004 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2084 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 67: /* FuncRParams: FuncRParams ',' Exp  */
-#line 558 "D:/CompilerTools/code/minic/minic.y"
+  case 72: /* FuncRParams: FuncRParams ',' Exp  */
+#line 604 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncRParams : FuncRParams , Exp"<<endl;
                     auto paramVec = (yyvsp[-2].ast_vecVal);
@@ -2012,22 +2092,22 @@ yyreduce:
                     paramVec->push(exp);
                     (yyval.ast_vecVal)=paramVec; //???
                 }
-#line 2016 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2096 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 68: /* MulExp: UnaryExp  */
-#line 566 "D:/CompilerTools/code/minic/minic.y"
+  case 73: /* MulExp: UnaryExp  */
+#line 612 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :UnaryExp"<<endl;
                     auto unaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_MulExp(unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2027 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2107 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 69: /* MulExp: MulExp '*' UnaryExp  */
-#line 573 "D:/CompilerTools/code/minic/minic.y"
+  case 74: /* MulExp: MulExp '*' UnaryExp  */
+#line 619 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :MulExp '*' UnaryExp"<<endl;
                     auto mulExp=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2035,11 +2115,11 @@ yyreduce:
                     auto ptr=new AST_MulExp(AST_OP_MUL,mulExp,unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2039 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2119 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 70: /* MulExp: MulExp '/' UnaryExp  */
-#line 581 "D:/CompilerTools/code/minic/minic.y"
+  case 75: /* MulExp: MulExp '/' UnaryExp  */
+#line 627 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :MulExp '/' UnaryExp"<<endl;
                     auto mulExp=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2047,11 +2127,11 @@ yyreduce:
                     auto ptr=new AST_MulExp(AST_OP_DIV,mulExp,unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2051 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2131 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 71: /* MulExp: MulExp '%' UnaryExp  */
-#line 589 "D:/CompilerTools/code/minic/minic.y"
+  case 76: /* MulExp: MulExp '%' UnaryExp  */
+#line 635 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :MulExp '%' UnaryExp"<<endl;
                     auto mulExp=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2059,22 +2139,22 @@ yyreduce:
                     auto ptr=new AST_MulExp(AST_OP_MOD,mulExp,unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2063 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2143 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 72: /* AddExp: MulExp  */
-#line 597 "D:/CompilerTools/code/minic/minic.y"
+  case 77: /* AddExp: MulExp  */
+#line 643 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"AddExp :MulExp "<<endl;
                     auto mul=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_AddExp(mul);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2074 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2154 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 73: /* AddExp: AddExp '+' MulExp  */
-#line 604 "D:/CompilerTools/code/minic/minic.y"
+  case 78: /* AddExp: AddExp '+' MulExp  */
+#line 650 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"AddExp :AddExp '+' MulExp"<<endl;
                     auto add=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2082,11 +2162,11 @@ yyreduce:
                     auto ptr=new AST_AddExp(AST_OP_ADD,add,mul);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2086 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2166 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 74: /* AddExp: AddExp '-' MulExp  */
-#line 612 "D:/CompilerTools/code/minic/minic.y"
+  case 79: /* AddExp: AddExp '-' MulExp  */
+#line 658 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"AddExp :AddExp '-' MulExp"<<endl;
                     auto add=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2094,22 +2174,22 @@ yyreduce:
                     auto ptr=new AST_AddExp(AST_OP_SUB,add,mul);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2098 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2178 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 75: /* RelExp: AddExp  */
-#line 620 "D:/CompilerTools/code/minic/minic.y"
+  case 80: /* RelExp: AddExp  */
+#line 666 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"RelExp :AddExp"<<endl;
                     auto add=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_RelExp(add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2109 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2189 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 76: /* RelExp: RelExp '<' AddExp  */
-#line 627 "D:/CompilerTools/code/minic/minic.y"
+  case 81: /* RelExp: RelExp '<' AddExp  */
+#line 673 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '<' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2117,11 +2197,11 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_LT,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2121 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2201 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 77: /* RelExp: RelExp '>' AddExp  */
-#line 635 "D:/CompilerTools/code/minic/minic.y"
+  case 82: /* RelExp: RelExp '>' AddExp  */
+#line 681 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '>' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2129,11 +2209,11 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_GT,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2133 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2213 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 78: /* RelExp: RelExp LE AddExp  */
-#line 643 "D:/CompilerTools/code/minic/minic.y"
+  case 83: /* RelExp: RelExp LE AddExp  */
+#line 689 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '<=' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2141,11 +2221,11 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_LE,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2145 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2225 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 79: /* RelExp: RelExp GE AddExp  */
-#line 651 "D:/CompilerTools/code/minic/minic.y"
+  case 84: /* RelExp: RelExp GE AddExp  */
+#line 697 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '>=' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2153,22 +2233,22 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_GE,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2157 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2237 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 80: /* EqExp: RelExp  */
-#line 659 "D:/CompilerTools/code/minic/minic.y"
+  case 85: /* EqExp: RelExp  */
+#line 705 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"EqExp :RelExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_EqExp(rel);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2168 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2248 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 81: /* EqExp: EqExp EQ RelExp  */
-#line 666 "D:/CompilerTools/code/minic/minic.y"
+  case 86: /* EqExp: EqExp EQ RelExp  */
+#line 712 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"EqExp :EqExp EQ RelExp"<<endl;
                     auto eq=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2176,11 +2256,11 @@ yyreduce:
                     auto ptr=new AST_EqExp(AST_OP_EQ,eq,rel);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2180 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2260 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 82: /* EqExp: EqExp NE RelExp  */
-#line 674 "D:/CompilerTools/code/minic/minic.y"
+  case 87: /* EqExp: EqExp NE RelExp  */
+#line 720 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"EqExp :EqExp NE RelExp"<<endl;
                     auto eq=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2189,22 +2269,22 @@ yyreduce:
                     (yyval.ast_expVal)=ptr;
 
                 }
-#line 2193 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2273 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 83: /* LAndExp: EqExp  */
-#line 683 "D:/CompilerTools/code/minic/minic.y"
+  case 88: /* LAndExp: EqExp  */
+#line 729 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LAndExp :EqExp"<<endl;
                     auto eq=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_LAnd(eq);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2204 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2284 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 84: /* LAndExp: LAndExp AND EqExp  */
-#line 690 "D:/CompilerTools/code/minic/minic.y"
+  case 89: /* LAndExp: LAndExp AND EqExp  */
+#line 736 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LAndExp :LAndExp AND EqExp"<<endl;
                     auto land=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2212,22 +2292,22 @@ yyreduce:
                     auto ptr=new AST_LAnd(land,eq);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2216 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2296 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 85: /* LOrExp: LAndExp  */
-#line 698 "D:/CompilerTools/code/minic/minic.y"
+  case 90: /* LOrExp: LAndExp  */
+#line 744 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LOrExp :LAndExp"<<endl;
                     auto land=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_LOr(land);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2227 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2307 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 86: /* LOrExp: LOrExp OR LAndExp  */
-#line 705 "D:/CompilerTools/code/minic/minic.y"
+  case 91: /* LOrExp: LOrExp OR LAndExp  */
+#line 751 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LOrExp :LOrExp OR LAndExp"<<endl;
                     auto land=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
@@ -2235,22 +2315,22 @@ yyreduce:
                     auto ptr=new AST_LOr(lor,land);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2239 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2319 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
-  case 87: /* ConstExp: Exp  */
-#line 713 "D:/CompilerTools/code/minic/minic.y"
+  case 92: /* ConstExp: Exp  */
+#line 759 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"ConstExp :Exp"<<endl;
                     auto Exp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_ConstExp(Exp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2250 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2330 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
 
-#line 2254 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2334 "D:/CompilerTools/code/minic/minic_yacc.cpp"
 
       default: break;
     }
@@ -2443,7 +2523,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 720 "D:/CompilerTools/code/minic/minic.y"
+#line 766 "D:/CompilerTools/code/minic/minic.y"
 
 
 // 语法识别错误要调用函数的定义

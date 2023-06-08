@@ -54,10 +54,10 @@ using namespace std;
 // 指定文法的非终结符号，<>可指定文法属性 
 %type <ast_baseVal> FuncDef Decl VarDecl VarDef Block CompUnit
 %type <ast_baseVal> BlockItem Stmt MatchedStmt OpenStmt SimpleStmt FuncFParam 
-%type <ast_expVal> ConstExp InitVal Exp UnaryExp PrimaryExp LVal
+%type <ast_expVal> ConstExp InitVal Exp UnaryExp PrimaryExp LVal SelfExp
 %type <ast_expVal> AddExp MulExp RelExp EqExp LAndExp LOrExp Cond
 %type <str_val> BType
-%type <ast_op_type> UnaryOp 
+%type <ast_op_type> UnaryOp SelfOp
 %type <val> Number
 %type <ast_vecVal> BlockItemList VarDefList FuncFParams FuncRParams InitValList ArrayIndexList
 
@@ -214,23 +214,25 @@ using namespace std;
                     ptr->push(initVal);
                     $$=ptr;
                 };
-    FuncDef     : BType IDENT '(' ')' Block
+    FuncDef     :  BType IDENT '(' ')' Block
                 {
                     cout<<"FuncDef : BType IDENT '(' ')' Block"<<endl;
-                    auto funcType=unique_ptr<string>($1);
-                    auto funcName=unique_ptr<string>($2.id);
-                    auto funcBlock=unique_ptr<AST_Base>($5);
-                    auto ptr=new AST_FuncDef(funcType, funcName, funcBlock);
+                    auto ptr=new AST_FuncDef();
+                    ptr->tag=AST_FuncDef::DEF_NOPARAM;
+                    ptr->func_type=unique_ptr<string>($1);
+                    ptr->func_name=unique_ptr<string>($2.id);
+                    ptr->func_block=unique_ptr<AST_Base>($5);
                     $$=ptr;
                 }
                 | BType IDENT '(' FuncFParams ')' Block
                 {
                     cout<<"FuncDef : BType IDENT '(' FuncFParams ')' Block"<<endl;
-                    auto funcType=unique_ptr<string>($1);
-                    auto funcName=unique_ptr<string>($2.id);
-                    auto funcFParams=unique_ptr<AST_Vec>($4);
-                    auto funcBlock=unique_ptr<AST_Base>($6);
-                    auto ptr=new AST_FuncDef(funcType,funcName,funcFParams,funcBlock);
+                    auto ptr=new AST_FuncDef();
+                    ptr->tag=AST_FuncDef::DEF_PARAM;
+                    ptr->func_type=unique_ptr<string>($1);
+                    ptr->func_name=unique_ptr<string>($2.id);
+                    ptr->func_params=unique_ptr<AST_Vec>($4);
+                    ptr->func_block=unique_ptr<AST_Base>($6);
                     $$=ptr;
                 };
     FuncFParams : FuncFParam
@@ -299,6 +301,12 @@ using namespace std;
                     cout << "Block : '{' BlockItemList'}'" <<endl;
                     auto blocks=unique_ptr<AST_Vec>($2);
                     auto ptr=new AST_Block(blocks);
+                    $$=ptr;
+                }
+                | ';'
+                {
+                    cout<<"Block : ;"<<endl;
+                    auto ptr=new AST_Block();
                     $$=ptr;
                 };
     BlockItemList   :
@@ -505,8 +513,9 @@ using namespace std;
     UnaryExp    : PrimaryExp 
                 {
                     cout<<"UnaryExp :PrimaryExp"<<endl;
-                    auto primaryExp = unique_ptr<AST_Exp>($1);
-                    auto ptr=new AST_Unary(primaryExp);
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::ONLY_P;
+                    ptr->primaryExp=unique_ptr<AST_Exp>($1);
                     $$=ptr;
                 }
                 | IDENT '(' ')'
@@ -527,10 +536,36 @@ using namespace std;
                 | UnaryOp UnaryExp
                 {
                     cout<<"UnaryExp :UnaryOp UnaryExp"<<endl;
-                    auto unaryExp=unique_ptr<AST_Exp>($2);
-                    auto ptr=new AST_Unary($1,unaryExp);
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::UU;
+                    ptr->op=$1;
+                    ptr->unaryExp=unique_ptr<AST_Exp>($2);
                     $$=ptr;
-                };
+                }
+                | SelfOp LVal
+                {
+                    cout<<"Unary : SelfOp LVal"<<endl;
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::SELF;
+                    if($1==AST_OP_INCR)
+                        ptr->op=AST_OP_LINC;
+                    else
+                        ptr->op=AST_OP_LDEC;
+                    ptr->selfExp=unique_ptr<AST_Exp>($2);
+                    $$=ptr;
+                }
+                | LVal SelfOp
+                {
+                    cout<<"Unary : LVal SelfOp"<<endl;
+                    auto ptr=new AST_Unary();
+                    ptr->tag=AST_Unary::SELF;
+                    if($2==AST_OP_INCR)
+                        ptr->op=AST_OP_RINC;
+                    else
+                        ptr->op=AST_OP_RDEC;
+                    ptr->selfExp=unique_ptr<AST_Exp>($1);
+                    $$=ptr;
+                };    
     UnaryOp     : '+'
                 {
                     cout<<"UnaryOp :'+'"<<endl;
@@ -546,6 +581,17 @@ using namespace std;
                     cout<<"UnaryOp :'!'"<<endl;
                     $$=AST_OP_NOT;
                 };
+    SelfOp      : INCR
+                {
+                    cout<<"SelfOp : INCR"<<endl;
+                    $$=AST_OP_INCR;
+                } 
+                | DECR
+                {
+                    cout<<"SelfOp : DECR"<<endl;
+                    $$=AST_OP_DECR;
+                };  
+
     FuncRParams : Exp 
                 {
                     cout<<"FuncRParams : Exp"<<endl;

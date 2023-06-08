@@ -45,7 +45,12 @@ enum ast_op_type {
     AST_OP_EQ,      // ==
     AST_OP_AND,     // &&
     AST_OP_OR,      // ||
-
+    AST_OP_LINC,    // ++a
+    AST_OP_LDEC,    // --a
+    AST_OP_RINC,    // a++
+    AST_OP_RDEC,    // a--
+    AST_OP_INCR,    // ++
+    AST_OP_DECR,    // --
 
 };
 
@@ -127,28 +132,14 @@ public:
 
 class AST_FuncDef : public AST_Base {
 public:
+    enum TAG { DECL_NOPARAM, DECL_PARAM, DEF_NOPARAM, DEF_PARAM };
+    TAG tag;
     unique_ptr<string> func_type;
     unique_ptr<string> func_name;
-    unique_ptr<AST_Vec> func_frags;
+    unique_ptr<AST_Vec> func_params;
     unique_ptr<AST_Base> func_block;
-    bool is_param = false;
-    bool is_void = false;
-
-    AST_FuncDef(unique_ptr<string> &func_type, unique_ptr<string> &func_name, unique_ptr<AST_Base> &func_block)
-        : func_type(move(func_type)), func_name(move(func_name)), func_block(move(func_block))
-    {
-        //Init();
-    }
-    AST_FuncDef(unique_ptr<string> &func_type, unique_ptr<string> &func_name, unique_ptr<AST_Vec> &func_frags, unique_ptr<AST_Base> &func_block)
-        : func_type(move(func_type)), func_name(move(func_name)), func_frags(move(func_frags)), func_block(move(func_block)), is_param(true)
-    {
-        //Init();
-    }
 
     ////virtual void done() override;
-
-private:
-    void Init();
 };
 
 class AST_FuncFParam :public AST_Base {
@@ -167,6 +158,7 @@ public:
     unique_ptr<AST_Vec> list_block;
     AST_Vec *func_params = nullptr;
 
+    AST_Block() {}
     AST_Block(unique_ptr<AST_Vec> &list_block) :
         list_block(move(list_block))
     {}
@@ -253,15 +245,24 @@ public:
     AST_Cond(unique_ptr<AST_Exp> &lor) :lor(move(lor)) {}
     ////virtual void done() override;
 };
+
+class AST_SelfExp : public AST_Exp {
+public:
+    enum ast_op_type op;
+    unique_ptr<AST_Exp> lval;
+    ////virtual void done() override;
+};
+
 //!!!!!!有问题
 class AST_Unary :public AST_Exp {
 public:
+    enum TAG { ONLY_P, UU, SELF };
+    TAG tag;
     enum ast_op_type op;
     unique_ptr<AST_Exp> primaryExp;
     unique_ptr<AST_Exp> unaryExp;
+    unique_ptr<AST_Exp> selfExp;
 
-    AST_Unary(unique_ptr<AST_Exp> &primaryExp) :primaryExp(move(primaryExp)) {}
-    AST_Unary(enum ast_op_type op, unique_ptr<AST_Exp> &unaryExp) :op(op), unaryExp(move(unaryExp)) {}
     ////virtual void done() override;
 };
 
