@@ -69,7 +69,7 @@ class AST_VarDecl;
 
 class AST_VarDef;        // expbase
 class AST_ConstExp;      // expbase
-class AST_InitVal;       // expbase
+class AST_Initial;       // expbase
 
 class AST_Exp;
 class AST_Exp1;
@@ -87,7 +87,7 @@ class AST_FuncCall;
 class AST_Base {
 public:
     virtual ~AST_Base() = default;
-    //virtual void done() = 0; // overide <<
+    virtual string done(bool option = false) = 0; // overide <<
 };
 
 class AST_Vec {
@@ -97,6 +97,7 @@ public:
     {
         vec.push_back(move(ptr));
     }
+
 };
 
 class AST_Exp :public AST_Base {
@@ -119,6 +120,7 @@ public:
         int_val = sour->int_val;
         id_val = sour->id_val;
     }
+    virtual int getValue() = 0; // overide <<
 };
 
 class AST_CompUnit : public AST_Base {
@@ -127,7 +129,7 @@ public:
     vector<unique_ptr<AST_Base>> list_decl;
 
     //AST_ComUnit() {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 class AST_FuncDef : public AST_Base {
@@ -139,7 +141,7 @@ public:
     unique_ptr<AST_Vec> func_params;
     unique_ptr<AST_Base> func_block;
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 class AST_FuncFParam :public AST_Base {
@@ -150,19 +152,24 @@ public:
     unique_ptr<string> param_name;
     unique_ptr<AST_Vec> ArrayIndexList;
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+};
+
+class ArrayIndexExpList : public AST_Base {
+public:
+    std::vector<std::unique_ptr<AST_Exp>> exps;
 };
 
 class AST_Block : public AST_Base {
 public:
     unique_ptr<AST_Vec> list_block;
     AST_Vec *func_params = nullptr;
-
+    bool is_null = true;
     AST_Block() {}
     AST_Block(unique_ptr<AST_Vec> &list_block) :
-        list_block(move(list_block))
+        list_block(move(list_block)), is_null(false)
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 class AST_BlockItem :public AST_Base {
@@ -173,7 +180,7 @@ public:
     AST_BlockItem(unique_ptr<AST_Base> &elem, bool is_stmt)
         :elem(move(elem)), is_stmt(is_stmt)
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 //合起来处理
@@ -187,7 +194,7 @@ public:
     unique_ptr<AST_Vec> block;
     enum TAG { RETURN, ASSIGN, BLOCK, EXP, WHILE, BREAK, CONTINUE, IF };
     TAG tag;
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 class AST_ConstExp :public AST_Exp {
@@ -196,7 +203,16 @@ public:
 
     AST_ConstExp(unique_ptr<AST_Exp> &exp) : exp(move(exp)) {}
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
+};
+
+class AST_Decl :public AST_Base {
+public:
+    unique_ptr<AST_Base> decl;
+
+    AST_Decl(unique_ptr<AST_Base> &decl) : decl(move(decl)) {}
+    virtual string done(bool option = false) override;
 };
 
 class AST_VarDecl : public AST_Base {
@@ -207,7 +223,7 @@ public:
     AST_VarDecl(unique_ptr<string> &list_btype, unique_ptr<AST_Vec> &list_vardecl)
         : list_btype(move(list_btype)), list_vardecl(move(list_vardecl))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 
@@ -219,7 +235,7 @@ public:
     unique_ptr<AST_Vec> arrayIndexList;   // size != 0, Array
     unique_ptr<AST_Exp> initVal;   // nullptr implies no init_val
     //void Dump(bool is_global = false) const;
-    //virtual void done() override;
+    virtual string done(bool option = false) override;
 };
 
 class AST_Initial :public AST_Exp {
@@ -228,7 +244,8 @@ public:
     unique_ptr<AST_Vec> initValList;
     enum TAG { EXP, INITVALLIST };
     TAG tag;
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_Exp1 : public AST_Exp {
@@ -236,22 +253,25 @@ public:
     unique_ptr<AST_Exp> xxx;
 
     AST_Exp1(unique_ptr<AST_Exp> &add2) :xxx(move(add2)) {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_Cond : public AST_Exp {
 public:
     unique_ptr<AST_Exp> lor;
     AST_Cond(unique_ptr<AST_Exp> &lor) :lor(move(lor)) {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
-class AST_SelfExp : public AST_Exp {
+/*class AST_SelfExp : public AST_Exp {
 public:
     enum ast_op_type op;
     unique_ptr<AST_Exp> lval;
-    ////virtual void done() override;
-};
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
+};*/
 
 //!!!!!!有问题
 class AST_Unary :public AST_Exp {
@@ -263,7 +283,8 @@ public:
     unique_ptr<AST_Exp> unaryExp;
     unique_ptr<AST_Exp> selfExp;
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_Primary : public AST_Exp {
@@ -275,7 +296,8 @@ public:
     unique_ptr<AST_Exp> exp;
     unique_ptr<AST_Exp> lval;
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_LVal :public AST_Exp {
@@ -285,7 +307,8 @@ public:
     unique_ptr<string> ident;
     unique_ptr<AST_Vec> exps;
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 //op是不是缺个*？
@@ -299,7 +322,8 @@ public:
     AST_MulExp(enum ast_op_type op, unique_ptr<AST_Exp> &mulExp, unique_ptr<AST_Exp> &unaryExp)
         : op(op), mulExp(move(mulExp)), unaryExp(move(unaryExp))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_AddExp : public AST_Exp {
@@ -311,7 +335,8 @@ public:
     AST_AddExp(enum ast_op_type op, unique_ptr<AST_Exp> &addExp, unique_ptr<AST_Exp> &mulExp) :
         op(op), addExp(move(addExp)), mulExp(move(mulExp))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_RelExp :public AST_Exp {
@@ -324,7 +349,8 @@ public:
     AST_RelExp(enum ast_op_type op, unique_ptr<AST_Exp> &relExp, unique_ptr<AST_Exp> &addExp)
         :op(op), relExp(move(relExp)), addExp(move(addExp))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 
@@ -337,7 +363,8 @@ public:
     AST_EqExp(enum ast_op_type op, unique_ptr<AST_Exp> &eqExp, unique_ptr<AST_Exp> &relExp)
         :op(op), eqExp(move(eqExp)), relExp(move(relExp))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_LAnd :public AST_Exp {
@@ -350,9 +377,9 @@ public:
     AST_LAnd(unique_ptr<AST_Exp> &landExp, unique_ptr<AST_Exp> &eqExp)
         :only_eq(false), landExp(move(landExp)), eqExp(move(eqExp))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
-
 class AST_LOr :public AST_Exp {
 public:
     bool only_land;
@@ -363,9 +390,11 @@ public:
     AST_LOr(unique_ptr<AST_Exp> &lorExp, unique_ptr<AST_Exp> &landExp)
         :only_land(false), lorExp(move(lorExp)), landExp(move(landExp))
     {}
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
+//不继承Exp了，改为Base
 class AST_FuncCall :public AST_Exp {
 public:
     unique_ptr<string> id_val;
@@ -377,7 +406,8 @@ public:
         :id_val(move(id_val)), params(move(params)), is_param(true)
     {}
 
-    ////virtual void done() override;
+    virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 #endif
 

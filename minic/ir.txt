@@ -1,12 +1,12 @@
-a = assign 5
-b = assign 2
-c = assign 2.2
-%t0 = neg a
-d = assign %t0
-%t1 = real b
-%t2 = mul c, %t1
-%t3 = real a
-%t4 = sub %t3, %t2
-%t5 = real d
-%t6 = add %t4, %t5
-call void @printI(i32 %t6)
+declare int@main() {
+	declare i32 %l0
+	%l0=2
+	declare i32 %l1
+	%l1=3
+	declare i32 %l2
+	%l0=%t3
+	%l1=%t4
+	%t5 = add %t3, %t4
+	%l2=%t5
+}
+

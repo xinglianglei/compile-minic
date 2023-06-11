@@ -22,5 +22,11 @@
   "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\main.cpp.obj -c D:\\CompilerTools\\code\\minic\\main.cpp",
   "file": "D:/CompilerTools/code/minic/main.cpp",
   "output": "CMakeFiles/minic-flex-bison.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic-flex-bison.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic-flex-bison.dir\\symbol.cpp.obj -c D:\\CompilerTools\\code\\minic\\symbol.cpp",
+  "file": "D:/CompilerTools/code/minic/symbol.cpp",
+  "output": "CMakeFiles/minic-flex-bison.dir/symbol.cpp.obj"
 }
 ]

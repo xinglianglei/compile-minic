@@ -144,6 +144,34 @@ CMakeFiles/minic-flex-bison.dir/main.cpp.obj: \
   D:/CompilerTools/msys64/mingw64/include/string.h \
   D:/CompilerTools/msys64/mingw64/include/sec_api/string_s.h \
   D:/CompilerTools/msys64/mingw64/include/getopt.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cassert \
+  D:/CompilerTools/msys64/mingw64/include/assert.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/fstream \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/codecvt.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/fstream.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/align.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bit \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uses_allocator.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unique_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tuple \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_base.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocated_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/aligned_buffer.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/concurrence.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_atomic.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_base.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cstring \
   D:/CompilerTools/msys64/mingw64/include/Windows.h \
   D:/CompilerTools/msys64/mingw64/include/sdkddkver.h \
   D:/CompilerTools/msys64/mingw64/include/excpt.h \
@@ -378,29 +406,7 @@ CMakeFiles/minic-flex-bison.dir/main.cpp.obj: \
   D:/CompilerTools/code/minic/minic_lex.h \
   D:/CompilerTools/code/minic/parser.h \
   D:/CompilerTools/code/minic/minic_yacc.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/align.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bit \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uses_allocator.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unique_ptr.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tuple \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_base.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/allocated_ptr.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/aligned_buffer.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/ext/concurrence.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_atomic.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_base.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h \
   D:/CompilerTools/code/minic/ast_minic.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cassert \
-  D:/CompilerTools/msys64/mingw64/include/assert.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/list \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_list.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/list.tcc \
@@ -409,4 +415,25 @@ CMakeFiles/minic-flex-bison.dir/main.cpp.obj: \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_bvector.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/sstream \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc \
+  D:/CompilerTools/code/minic/Symbol.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/unordered_map \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hashtable.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hashtable_policy.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/enable_special_members.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/node_handle.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unordered_map.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/erase_if.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/queue \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/deque \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_deque.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/deque.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_heap.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_queue.h \
+  D:/CompilerTools/code/minic/utils.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/set \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tree.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_set.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_multiset.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/stack \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_stack.h

@@ -224,6 +224,30 @@ minic_yacc.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.s
 .PHONY : minic_yacc.cpp.s
 
+symbol.obj: symbol.cpp.obj
+.PHONY : symbol.obj
+
+# target to build an object file
+symbol.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/symbol.cpp.obj
+.PHONY : symbol.cpp.obj
+
+symbol.i: symbol.cpp.i
+.PHONY : symbol.i
+
+# target to preprocess a source file
+symbol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/symbol.cpp.i
+.PHONY : symbol.cpp.i
+
+symbol.s: symbol.cpp.s
+.PHONY : symbol.s
+
+# target to generate assembly for a file
+symbol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/symbol.cpp.s
+.PHONY : symbol.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -245,6 +269,9 @@ help:
 	@echo ... minic_yacc.obj
 	@echo ... minic_yacc.i
 	@echo ... minic_yacc.s
+	@echo ... symbol.obj
+	@echo ... symbol.i
+	@echo ... symbol.s
 .PHONY : help
 
 

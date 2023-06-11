@@ -218,7 +218,11 @@ using namespace std;
                 {
                     cout<<"FuncDef : BType IDENT '(' ')' Block"<<endl;
                     auto ptr=new AST_FuncDef();
-                    ptr->tag=AST_FuncDef::DEF_NOPARAM;
+                    auto tmp=(AST_Block*)($5);
+                    if(tmp->is_null)
+                        ptr->tag=AST_FuncDef::DECL_NOPARAM;
+                    else
+                        ptr->tag=AST_FuncDef::DEF_NOPARAM;
                     ptr->func_type=unique_ptr<string>($1);
                     ptr->func_name=unique_ptr<string>($2.id);
                     ptr->func_block=unique_ptr<AST_Base>($5);
@@ -228,7 +232,11 @@ using namespace std;
                 {
                     cout<<"FuncDef : BType IDENT '(' FuncFParams ')' Block"<<endl;
                     auto ptr=new AST_FuncDef();
-                    ptr->tag=AST_FuncDef::DEF_PARAM;
+                    auto tmp=(AST_Block*)($6);
+                    if(tmp->is_null)
+                        ptr->tag=AST_FuncDef::DECL_NOPARAM;
+                    else
+                        ptr->tag=AST_FuncDef::DEF_NOPARAM;
                     ptr->func_type=unique_ptr<string>($1);
                     ptr->func_name=unique_ptr<string>($2.id);
                     ptr->func_params=unique_ptr<AST_Vec>($4);

@@ -1,7 +1,11 @@
 #include <string>
 #include <iostream>
-
 #include <unistd.h>
+#include <cassert>
+#include <cstdio>
+#include <fstream>
+#include <memory>
+#include <cstring>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -9,7 +13,17 @@
 
 #include "lexer.h"
 #include "parser.h"
+#include "Symbol.h"
+#include "ast_minic.h"
+#include "utils.h"
 
+using namespace std;
+
+
+extern FILE *yyin;
+extern int yyparse(unique_ptr<AST_Base> &ast);
+
+extern IRCode code_vec;
 
 bool gShowHelp = false;
 
@@ -158,6 +172,7 @@ int main(int argc, char *argv[])
 
     // 词法、语法分析生成抽象语法树AST
     unique_ptr<AST_Base> root;
+    unique_ptr<AST_CompUnit> ast;
     result = yyparse(root);
     if (0 != result) {
         printf("yyparse failed\n");
@@ -168,30 +183,26 @@ int main(int argc, char *argv[])
 
         // 遍历抽象语法树，生成抽象语法树图片
         OutputAST(ast_root, gOutputFile);
-    }
+    }*/
 
     if (gGenIr) {
+        ofstream fout(gOutputFile.c_str());
+        ast.reset((AST_CompUnit *)root.release());
+        ast->done();
 
-        InterCode IRCode;
-
-        // 产生IR
-        result = genIR(ast_root, IRCode);
-        if (!result) {
-            return -1;
-        }
-
-        // 输出IR
-        IRCode.outputIR(gOutputFile);
+        const char *str = code_vec.c_str();
+        fout << str;
+        fout.close();
     }
 
-    if (gDirectRun) {
+    /*if (gDirectRun) {
 
         // 遍历抽象语法树，进行表达式运算
         expr_calculate_show(ast_root);
-    }
+    }*/
 
 
-    // 清理抽象语法树
+    /*// 清理抽象语法树
     free_ast();
 
     // 清理符号表

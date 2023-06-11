@@ -40,6 +40,9 @@ add_executable(${PROJECT_NAME}
     ast_minic.cpp
     ast_minic.h
     main.cpp
+    utils.h
+    symbol.cpp
+    symbol.h
 )
 
 # 设置语言标准，可根据需要调整
