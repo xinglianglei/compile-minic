@@ -3,6 +3,8 @@
 #include "utils.h"
 
 IRCode code_vec;
+IRCode code_val;
+IRCode code_stmt;
 SymTabStk stk;
 MinicType::TYPE tmp;
 BlockController bc;
@@ -63,6 +65,16 @@ string AST_FuncDef::done(bool option)
         }
     }
     code_vec.append(")");
+    code_vec.append("\tentry");
+    string return_Val, return_Label;
+    if (*func_type == "int") {
+        stk.insertLocalINT("return");
+        return_Val = stk.getName("return");
+        return_Label = stk.getLabelName();
+    } else {
+        return_Label = stk.getLabelName();
+    }
+
     if (tag == AST_FuncDef::DECL_NOPARAM || tag == AST_FuncDef::DECL_PARAM)
         code_vec.append(";");
     else {
@@ -70,6 +82,11 @@ string AST_FuncDef::done(bool option)
         auto ast_block = dynamic_cast<AST_Block *>(func_block.get());
         ast_block->func_params = func_params.get();
         ast_block->done();
+        code_vec.code_label(return_Label);
+        if (*func_type == "int")
+            code_vec.append("\texit " + return_Val + "\n");
+        else
+            code_vec.append("\texit\n");
         code_vec.append("}\n\n");
     }
     return "";
@@ -124,8 +141,11 @@ string AST_Stmt::done(bool option)
         // bc.finish()写在这里不对！
         if (exp) {
             string ret_name = exp->done();
-            return ret_name;
-            //code_vec.ret(ret_name);
+            //return ret_name;
+            code_vec.append("\t%l0=" + ret_name + "\n");
+            code_vec.code_br(".L1");
+        } else {
+            code_vec.code_br(".L1");
         }
         //bc.finish();
     } else if (tag == ASSIGN) {
@@ -133,8 +153,12 @@ string AST_Stmt::done(bool option)
         string to = lval->done(true);
         code_vec.append("\t" + to + "=" + val + "\n");
     } else if (tag == BLOCK) {
-        for (auto &item : block->vec) {
-            item->done();
+        auto block_ = dynamic_cast<AST_Block *>(block.get());
+        //修改了
+        for (auto &item : block_->list_block->vec) {
+            auto blockitem = dynamic_cast<AST_BlockItem *>(item.get());
+            //if(blockitem->is_stmt)
+            blockitem->elem->done();
         }
     } else if (tag == EXP) {
         if (exp) {
@@ -151,8 +175,8 @@ string AST_Stmt::done(bool option)
 
         //bc.set();
         code_vec.code_label(while_entry);
-        string cond = exp->done();
-        code_vec.code_bc(cond, while_body, while_end);
+        string cond_ = cond->done();
+        code_vec.code_bc(cond_, while_body, while_end);
 
         //bc.set();
         code_vec.code_label(while_body);
@@ -170,7 +194,7 @@ string AST_Stmt::done(bool option)
         code_vec.code_br(wst.getEntryName());// 跳转到while_entry
         bc.finish();                // 当前IR的block设为不活跃
     } else if (tag == IF) {
-        string s = exp->done();
+        string s = cond->done();
         string t = stk.getLabelName();
         string e = stk.getLabelName();
         string j = stk.getLabelName();
@@ -208,7 +232,7 @@ string AST_LVal::done(bool option)
         if (ty->type == MinicType::INT) {
             if (option == false) {
                 string tmp = stk.getTmpName();
-                code_vec.append("\t" + stk.getName(*ident) + "=" + tmp + "\n");
+                code_vec.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
                 return tmp;
             } else {
                 return stk.getName(*ident);
@@ -379,7 +403,7 @@ string AST_Unary::done(bool option)
         string b = unaryExp->done();
         if (op == AST_OP_OPT) return b;
 
-        string op_ = op == AST_OP_SUB ? "sub" : "eq";
+        string op_ = op == AST_OP_NEG ? "neg" : "not";
         string c = stk.getTmpName();
         code_vec.code_binary(op_, c, "0", b);
         return c;
@@ -404,21 +428,33 @@ string AST_Unary::done(bool option)
             string c = stk.getTmpName();
             string op_ = "LINC";
             code_vec.code_binary(op_, c, "0", b);
+            auto self = dynamic_cast<AST_LVal *>(selfExp.get());
+            string val_id = stk.getName((*self->ident));
+            code_vec.append("\t" + val_id + "=" + c + "\n");
             return c;
         } else if (op == AST_OP_RINC) {
             string c = stk.getTmpName();
             string op_ = "RINC";
             code_vec.code_binary(op_, c, "0", b);
+            auto self = dynamic_cast<AST_LVal *>(selfExp.get());
+            string val_id = stk.getName((*self->ident));
+            code_vec.append("\t" + val_id + "=" + c + "\n");
             return b;
         } else if (op == AST_OP_LDEC) {
             string c = stk.getTmpName();
             string op_ = "LDEC";
             code_vec.code_binary(op_, c, "0", b);
+            auto self = dynamic_cast<AST_LVal *>(selfExp.get());
+            string val_id = stk.getName((*self->ident));
+            code_vec.append("\t" + val_id + "=" + c + "\n");
             return c;
         } else {
             string c = stk.getTmpName();
             string op_ = "RDEC";
             code_vec.code_binary(op_, c, "0", b);
+            auto self = dynamic_cast<AST_LVal *>(selfExp.get());
+            string val_id = stk.getName((*self->ident));
+            code_vec.append("\t" + val_id + "=" + c + "\n");
             return b;
         }
         return "";
@@ -573,9 +609,9 @@ string AST_LAnd::done(bool option)
     //bc.set();
     code_vec.code_label(true_s);
     string ret = stk.getTmpName();
-    code_vec.append(ret + "=1");
+    code_vec.append("\t" + ret + "=1" + "\n");
     code_vec.code_label(false_s);
-    code_vec.append(ret + "=0");
+    code_vec.append("\t" + ret + "=0" + "\n");
     return ret;
 }
 
@@ -613,9 +649,9 @@ string AST_LOr::done(bool option)
     //bc.set();
     code_vec.code_label(true_s);
     string ret = stk.getTmpName();
-    code_vec.append(ret + "=1");
+    code_vec.append("\t" + ret + "=1" + "\n");
     code_vec.code_label(false_s);
-    code_vec.append(ret + "=0");
+    code_vec.append("\t" + ret + "=0" + "\n");
     return ret;
 }
 

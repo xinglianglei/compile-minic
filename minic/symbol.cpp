@@ -5,7 +5,7 @@ using namespace std;
 void NameOrder::reset()
 {
     cnt_val = 0;
-    cnt_label = 2;
+    cnt_label = 1;
 }
 
 string NameOrder::getTmpName()

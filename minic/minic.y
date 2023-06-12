@@ -346,9 +346,11 @@ using namespace std;
                     $$=ptr;
                 };
     Stmt        : MatchedStmt{
+                    cout<<"Stmt:MatchedStmt"<<endl;
                     $$=$1;
                 }
                 | OpenStmt{
+                    cout<<"Stmt:OpenStmt"<<endl;
                     $$=$1;
                 };
     MatchedStmt : IF '(' Exp ')' MatchedStmt ELSE MatchedStmt{
@@ -413,7 +415,8 @@ using namespace std;
                     //TODO ????????????????????
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::BLOCK;
-                    ptr->block=unique_ptr<AST_Vec>((AST_Vec*)$1);
+                    //修改了类型
+                    ptr->block=unique_ptr<AST_Base>($1);
                     $$=ptr;
 
                 }

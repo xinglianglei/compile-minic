@@ -580,13 +580,13 @@ static const yytype_int16 yyrline[] =
        0,    65,    65,    70,    77,    84,    91,    98,   103,   110,
      117,   125,   133,   142,   151,   159,   169,   178,   186,   193,
      201,   209,   217,   231,   246,   254,   262,   271,   280,   291,
-     299,   307,   314,   321,   326,   334,   341,   348,   351,   354,
-     364,   368,   376,   385,   394,   402,   410,   420,   429,   436,
-     443,   450,   458,   465,   473,   481,   490,   498,   506,   515,
-     521,   529,   536,   544,   553,   565,   577,   582,   587,   592,
-     597,   603,   611,   619,   626,   634,   642,   650,   657,   665,
-     673,   680,   688,   696,   704,   712,   719,   727,   736,   743,
-     751,   758,   766
+     299,   307,   314,   321,   326,   334,   341,   348,   352,   356,
+     366,   370,   378,   387,   396,   404,   412,   423,   432,   439,
+     446,   453,   461,   468,   476,   484,   493,   501,   509,   518,
+     524,   532,   539,   547,   556,   568,   580,   585,   590,   595,
+     600,   606,   614,   622,   629,   637,   645,   653,   660,   668,
+     676,   683,   691,   699,   707,   715,   722,   730,   739,   746,
+     754,   761,   769
 };
 #endif
 
@@ -1688,21 +1688,23 @@ yyreduce:
   case 37: /* Stmt: MatchedStmt  */
 #line 348 "D:/CompilerTools/code/minic/minic.y"
                              {
+                    cout<<"Stmt:MatchedStmt"<<endl;
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1694 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1695 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 38: /* Stmt: OpenStmt  */
-#line 351 "D:/CompilerTools/code/minic/minic.y"
+#line 352 "D:/CompilerTools/code/minic/minic.y"
                           {
+                    cout<<"Stmt:OpenStmt"<<endl;
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1702 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1704 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 39: /* MatchedStmt: IF '(' Exp ')' MatchedStmt ELSE MatchedStmt  */
-#line 354 "D:/CompilerTools/code/minic/minic.y"
+#line 356 "D:/CompilerTools/code/minic/minic.y"
                                                              {
                     cout<<"MatchedStmt : IF '(' Exp ')' MatchedStmt ELSE MatchedStmt"<<endl;
                     auto ptr =new AST_Stmt();
@@ -1712,20 +1714,20 @@ yyreduce:
                     ptr->else_body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1716 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1718 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 40: /* MatchedStmt: SimpleStmt  */
-#line 364 "D:/CompilerTools/code/minic/minic.y"
+#line 366 "D:/CompilerTools/code/minic/minic.y"
                           {
                     cout<<"MatchedStmt : SimpleStmt"<<endl;
                     (yyval.ast_baseVal)=(yyvsp[0].ast_baseVal);
                 }
-#line 1725 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1727 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 41: /* OpenStmt: IF '(' Exp ')' Stmt  */
-#line 368 "D:/CompilerTools/code/minic/minic.y"
+#line 370 "D:/CompilerTools/code/minic/minic.y"
                                       {
                     cout<<"OpenStmt : IF '(' Exp ')' Stmt"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1734,11 +1736,11 @@ yyreduce:
                     ptr->body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1738 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1740 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 42: /* OpenStmt: IF '(' Exp ')' MatchedStmt ELSE OpenStmt  */
-#line 376 "D:/CompilerTools/code/minic/minic.y"
+#line 378 "D:/CompilerTools/code/minic/minic.y"
                                                            {
                     cout<<"OpenStmt : IF '(' Exp ')' MatchedStmt ELSE OpenStmt"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1748,11 +1750,11 @@ yyreduce:
                     ptr->else_body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1752 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1754 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 43: /* SimpleStmt: LVal '=' Exp ';'  */
-#line 386 "D:/CompilerTools/code/minic/minic.y"
+#line 388 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : LVal '=' Exp ';'"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1761,11 +1763,11 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1765 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1767 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 44: /* SimpleStmt: ';'  */
-#line 395 "D:/CompilerTools/code/minic/minic.y"
+#line 397 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : ';'"<<endl;
                     //TODO ????????????????????
@@ -1773,11 +1775,11 @@ yyreduce:
                     ptr->tag=AST_Stmt::EXP;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1777 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1779 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 45: /* SimpleStmt: Exp ';'  */
-#line 403 "D:/CompilerTools/code/minic/minic.y"
+#line 405 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : Exp ';'"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1785,25 +1787,26 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1789 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1791 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 46: /* SimpleStmt: Block  */
-#line 411 "D:/CompilerTools/code/minic/minic.y"
+#line 413 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : Block"<<endl;
                     //TODO ????????????????????
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::BLOCK;
-                    ptr->block=unique_ptr<AST_Vec>((AST_Vec*)(yyvsp[0].ast_baseVal));
+                    //修改了类型
+                    ptr->block=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
 
                 }
-#line 1803 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1806 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 47: /* SimpleStmt: WHILE '(' Cond ')' Stmt  */
-#line 421 "D:/CompilerTools/code/minic/minic.y"
+#line 424 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SimpleStmt : WHILE '(' Cond ')' Stmt"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1812,44 +1815,44 @@ yyreduce:
                     ptr->body=unique_ptr<AST_Base>((yyvsp[0].ast_baseVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1816 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1819 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 48: /* SimpleStmt: BREAK ';'  */
-#line 430 "D:/CompilerTools/code/minic/minic.y"
+#line 433 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"BREAK ';'"<<endl;
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::BREAK;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1827 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1830 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 49: /* SimpleStmt: CONT ';'  */
-#line 437 "D:/CompilerTools/code/minic/minic.y"
+#line 440 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"CONT ';'"<<endl;
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::CONTINUE;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1838 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1841 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 50: /* SimpleStmt: RET ';'  */
-#line 444 "D:/CompilerTools/code/minic/minic.y"
+#line 447 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"RET ';'"<<endl;
                     auto ptr=new AST_Stmt();
                     ptr->tag=AST_Stmt::RETURN;
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1849 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1852 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 51: /* SimpleStmt: RET Exp ';'  */
-#line 451 "D:/CompilerTools/code/minic/minic.y"
+#line 454 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"RET Exp ';'"<<endl;
                     auto ptr=new AST_Stmt();
@@ -1857,22 +1860,22 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_baseVal)=ptr;
                 }
-#line 1861 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1864 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 52: /* Exp: LOrExp  */
-#line 459 "D:/CompilerTools/code/minic/minic.y"
+#line 462 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Exp : LOrExp"<<endl;
                     auto lorExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_Exp1(lorExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1872 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1875 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 53: /* Cond: LOrExp  */
-#line 466 "D:/CompilerTools/code/minic/minic.y"
+#line 469 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Cond :LOrExp"<<endl;
                     //!!!需新建cond类
@@ -1880,11 +1883,11 @@ yyreduce:
                     auto ptr=new AST_Cond(lorExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1884 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1887 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 54: /* LVal: IDENT  */
-#line 474 "D:/CompilerTools/code/minic/minic.y"
+#line 477 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LVal : IDENT"<<endl;
                     auto ptr=new AST_LVal();
@@ -1892,11 +1895,11 @@ yyreduce:
                     ptr->ident=unique_ptr<string>((yyvsp[0].id_val).id);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1896 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1899 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 55: /* LVal: IDENT ArrayIndexList  */
-#line 482 "D:/CompilerTools/code/minic/minic.y"
+#line 485 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LVal : IDENT ArrayIndexList"<<endl;
                     auto ptr=new AST_LVal();
@@ -1905,11 +1908,11 @@ yyreduce:
                     ptr->ident=unique_ptr<string>((yyvsp[-1].id_val).id);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1909 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1912 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 56: /* PrimaryExp: '(' Exp ')'  */
-#line 491 "D:/CompilerTools/code/minic/minic.y"
+#line 494 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"PrimaryExp  : '(' Exp ')'"<<endl;
                     auto ptr=new AST_Primary();
@@ -1917,11 +1920,11 @@ yyreduce:
                     ptr->exp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1921 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1924 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 57: /* PrimaryExp: LVal  */
-#line 499 "D:/CompilerTools/code/minic/minic.y"
+#line 502 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"PrimaryExp  : LVal"<<endl;
                     auto ptr=new AST_Primary();
@@ -1929,11 +1932,11 @@ yyreduce:
                     ptr->lval=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1933 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1936 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 58: /* PrimaryExp: Number  */
-#line 507 "D:/CompilerTools/code/minic/minic.y"
+#line 510 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"PrimaryExp  : Number"<<endl;
                     auto ptr=new AST_Primary();
@@ -1942,20 +1945,20 @@ yyreduce:
                     (yyval.ast_expVal)=ptr;
 
                 }
-#line 1946 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1949 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 59: /* Number: NUM  */
-#line 516 "D:/CompilerTools/code/minic/minic.y"
+#line 519 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Number : NUM"<<endl;
                     (yyval.val)=(yyvsp[0].int_val).val;
                 }
-#line 1955 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1958 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 60: /* UnaryExp: PrimaryExp  */
-#line 522 "D:/CompilerTools/code/minic/minic.y"
+#line 525 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp :PrimaryExp"<<endl;
                     auto ptr=new AST_Unary();
@@ -1963,22 +1966,22 @@ yyreduce:
                     ptr->primaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1967 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1970 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 61: /* UnaryExp: IDENT '(' ')'  */
-#line 530 "D:/CompilerTools/code/minic/minic.y"
+#line 533 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp : IDENT ( ) "<<endl;
                     auto funcName = unique_ptr<string>((yyvsp[-2].id_val).id);
                     auto ptr=new AST_FuncCall(funcName);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1978 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1981 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 62: /* UnaryExp: IDENT '(' FuncRParams ')'  */
-#line 537 "D:/CompilerTools/code/minic/minic.y"
+#line 540 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp : IDENT ( FuncRParams )"<<endl;
                     auto funcName = unique_ptr<string>((yyvsp[-3].id_val).id);
@@ -1986,11 +1989,11 @@ yyreduce:
                     auto ptr=new AST_FuncCall(funcName,funcRParams);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 1990 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 1993 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 63: /* UnaryExp: UnaryOp UnaryExp  */
-#line 545 "D:/CompilerTools/code/minic/minic.y"
+#line 548 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryExp :UnaryOp UnaryExp"<<endl;
                     auto ptr=new AST_Unary();
@@ -1999,11 +2002,11 @@ yyreduce:
                     ptr->unaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2003 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2006 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 64: /* UnaryExp: SelfOp LVal  */
-#line 554 "D:/CompilerTools/code/minic/minic.y"
+#line 557 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Unary : SelfOp LVal"<<endl;
                     auto ptr=new AST_Unary();
@@ -2015,11 +2018,11 @@ yyreduce:
                     ptr->selfExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2019 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2022 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 65: /* UnaryExp: LVal SelfOp  */
-#line 566 "D:/CompilerTools/code/minic/minic.y"
+#line 569 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"Unary : LVal SelfOp"<<endl;
                     auto ptr=new AST_Unary();
@@ -2031,56 +2034,56 @@ yyreduce:
                     ptr->selfExp=unique_ptr<AST_Exp>((yyvsp[-1].ast_expVal));
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2035 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2038 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 66: /* UnaryOp: '+'  */
-#line 578 "D:/CompilerTools/code/minic/minic.y"
+#line 581 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryOp :'+'"<<endl;
                     (yyval.ast_op_type)=AST_OP_OPT;
                 }
-#line 2044 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2047 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 67: /* UnaryOp: '-'  */
-#line 583 "D:/CompilerTools/code/minic/minic.y"
+#line 586 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryOp :'-'"<<endl;
                     (yyval.ast_op_type)=AST_OP_NEG;
                 }
-#line 2053 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2056 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 68: /* UnaryOp: '!'  */
-#line 588 "D:/CompilerTools/code/minic/minic.y"
+#line 591 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"UnaryOp :'!'"<<endl;
                     (yyval.ast_op_type)=AST_OP_NOT;
                 }
-#line 2062 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2065 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 69: /* SelfOp: INCR  */
-#line 593 "D:/CompilerTools/code/minic/minic.y"
+#line 596 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SelfOp : INCR"<<endl;
                     (yyval.ast_op_type)=AST_OP_INCR;
                 }
-#line 2071 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2074 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 70: /* SelfOp: DECR  */
-#line 598 "D:/CompilerTools/code/minic/minic.y"
+#line 601 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"SelfOp : DECR"<<endl;
                     (yyval.ast_op_type)=AST_OP_DECR;
                 }
-#line 2080 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2083 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 71: /* FuncRParams: Exp  */
-#line 604 "D:/CompilerTools/code/minic/minic.y"
+#line 607 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncRParams : Exp"<<endl;
                     auto paramVec=new AST_Vec();
@@ -2088,11 +2091,11 @@ yyreduce:
                     paramVec->push(exp);
                     (yyval.ast_vecVal)=paramVec;
                 }
-#line 2092 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2095 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 72: /* FuncRParams: FuncRParams ',' Exp  */
-#line 612 "D:/CompilerTools/code/minic/minic.y"
+#line 615 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"FuncRParams : FuncRParams , Exp"<<endl;
                     auto paramVec = (yyvsp[-2].ast_vecVal);
@@ -2100,22 +2103,22 @@ yyreduce:
                     paramVec->push(exp);
                     (yyval.ast_vecVal)=paramVec; //???
                 }
-#line 2104 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2107 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 73: /* MulExp: UnaryExp  */
-#line 620 "D:/CompilerTools/code/minic/minic.y"
+#line 623 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :UnaryExp"<<endl;
                     auto unaryExp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_MulExp(unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2115 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2118 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 74: /* MulExp: MulExp '*' UnaryExp  */
-#line 627 "D:/CompilerTools/code/minic/minic.y"
+#line 630 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :MulExp '*' UnaryExp"<<endl;
                     auto mulExp=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2123,11 +2126,11 @@ yyreduce:
                     auto ptr=new AST_MulExp(AST_OP_MUL,mulExp,unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2127 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2130 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 75: /* MulExp: MulExp '/' UnaryExp  */
-#line 635 "D:/CompilerTools/code/minic/minic.y"
+#line 638 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :MulExp '/' UnaryExp"<<endl;
                     auto mulExp=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2135,11 +2138,11 @@ yyreduce:
                     auto ptr=new AST_MulExp(AST_OP_DIV,mulExp,unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2139 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2142 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 76: /* MulExp: MulExp '%' UnaryExp  */
-#line 643 "D:/CompilerTools/code/minic/minic.y"
+#line 646 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"MulExp :MulExp '%' UnaryExp"<<endl;
                     auto mulExp=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2147,22 +2150,22 @@ yyreduce:
                     auto ptr=new AST_MulExp(AST_OP_MOD,mulExp,unaryExp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2151 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2154 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 77: /* AddExp: MulExp  */
-#line 651 "D:/CompilerTools/code/minic/minic.y"
+#line 654 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"AddExp :MulExp "<<endl;
                     auto mul=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_AddExp(mul);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2162 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2165 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 78: /* AddExp: AddExp '+' MulExp  */
-#line 658 "D:/CompilerTools/code/minic/minic.y"
+#line 661 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"AddExp :AddExp '+' MulExp"<<endl;
                     auto add=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2170,11 +2173,11 @@ yyreduce:
                     auto ptr=new AST_AddExp(AST_OP_ADD,add,mul);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2174 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2177 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 79: /* AddExp: AddExp '-' MulExp  */
-#line 666 "D:/CompilerTools/code/minic/minic.y"
+#line 669 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"AddExp :AddExp '-' MulExp"<<endl;
                     auto add=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2182,22 +2185,22 @@ yyreduce:
                     auto ptr=new AST_AddExp(AST_OP_SUB,add,mul);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2186 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2189 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 80: /* RelExp: AddExp  */
-#line 674 "D:/CompilerTools/code/minic/minic.y"
+#line 677 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"RelExp :AddExp"<<endl;
                     auto add=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_RelExp(add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2197 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2200 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 81: /* RelExp: RelExp '<' AddExp  */
-#line 681 "D:/CompilerTools/code/minic/minic.y"
+#line 684 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '<' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2205,11 +2208,11 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_LT,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2209 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2212 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 82: /* RelExp: RelExp '>' AddExp  */
-#line 689 "D:/CompilerTools/code/minic/minic.y"
+#line 692 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '>' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2217,11 +2220,11 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_GT,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2221 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2224 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 83: /* RelExp: RelExp LE AddExp  */
-#line 697 "D:/CompilerTools/code/minic/minic.y"
+#line 700 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '<=' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2229,11 +2232,11 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_LE,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2233 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2236 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 84: /* RelExp: RelExp GE AddExp  */
-#line 705 "D:/CompilerTools/code/minic/minic.y"
+#line 708 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout <<"RelExp :RelExp '>=' AddExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2241,22 +2244,22 @@ yyreduce:
                     auto ptr=new AST_RelExp(AST_OP_GE,rel,add);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2245 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2248 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 85: /* EqExp: RelExp  */
-#line 713 "D:/CompilerTools/code/minic/minic.y"
+#line 716 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"EqExp :RelExp"<<endl;
                     auto rel=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_EqExp(rel);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2256 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2259 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 86: /* EqExp: EqExp EQ RelExp  */
-#line 720 "D:/CompilerTools/code/minic/minic.y"
+#line 723 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"EqExp :EqExp EQ RelExp"<<endl;
                     auto eq=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2264,11 +2267,11 @@ yyreduce:
                     auto ptr=new AST_EqExp(AST_OP_EQ,eq,rel);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2268 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2271 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 87: /* EqExp: EqExp NE RelExp  */
-#line 728 "D:/CompilerTools/code/minic/minic.y"
+#line 731 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"EqExp :EqExp NE RelExp"<<endl;
                     auto eq=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2277,22 +2280,22 @@ yyreduce:
                     (yyval.ast_expVal)=ptr;
 
                 }
-#line 2281 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2284 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 88: /* LAndExp: EqExp  */
-#line 737 "D:/CompilerTools/code/minic/minic.y"
+#line 740 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LAndExp :EqExp"<<endl;
                     auto eq=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_LAnd(eq);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2292 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2295 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 89: /* LAndExp: LAndExp AND EqExp  */
-#line 744 "D:/CompilerTools/code/minic/minic.y"
+#line 747 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LAndExp :LAndExp AND EqExp"<<endl;
                     auto land=unique_ptr<AST_Exp>((yyvsp[-2].ast_expVal));
@@ -2300,22 +2303,22 @@ yyreduce:
                     auto ptr=new AST_LAnd(land,eq);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2304 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2307 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 90: /* LOrExp: LAndExp  */
-#line 752 "D:/CompilerTools/code/minic/minic.y"
+#line 755 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LOrExp :LAndExp"<<endl;
                     auto land=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_LOr(land);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2315 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2318 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 91: /* LOrExp: LOrExp OR LAndExp  */
-#line 759 "D:/CompilerTools/code/minic/minic.y"
+#line 762 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"LOrExp :LOrExp OR LAndExp"<<endl;
                     auto land=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
@@ -2323,22 +2326,22 @@ yyreduce:
                     auto ptr=new AST_LOr(lor,land);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2327 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2330 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
   case 92: /* ConstExp: Exp  */
-#line 767 "D:/CompilerTools/code/minic/minic.y"
+#line 770 "D:/CompilerTools/code/minic/minic.y"
                 {
                     cout<<"ConstExp :Exp"<<endl;
                     auto Exp=unique_ptr<AST_Exp>((yyvsp[0].ast_expVal));
                     auto ptr=new AST_ConstExp(Exp);
                     (yyval.ast_expVal)=ptr;
                 }
-#line 2338 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2341 "D:/CompilerTools/code/minic/minic_yacc.cpp"
     break;
 
 
-#line 2342 "D:/CompilerTools/code/minic/minic_yacc.cpp"
+#line 2345 "D:/CompilerTools/code/minic/minic_yacc.cpp"
 
       default: break;
     }
@@ -2531,7 +2534,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 774 "D:/CompilerTools/code/minic/minic.y"
+#line 777 "D:/CompilerTools/code/minic/minic.y"
 
 
 // 语法识别错误要调用函数的定义

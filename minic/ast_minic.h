@@ -191,7 +191,8 @@ public:
     unique_ptr<AST_Exp> cond; //while/if
     unique_ptr<AST_Base> body;//while/if
     unique_ptr<AST_Base> else_body;
-    unique_ptr<AST_Vec> block;
+    //修改了类型
+    unique_ptr<AST_Base> block;
     enum TAG { RETURN, ASSIGN, BLOCK, EXP, WHILE, BREAK, CONTINUE, IF };
     TAG tag;
     virtual string done(bool option = false) override;

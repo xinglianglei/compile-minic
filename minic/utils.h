@@ -54,12 +54,12 @@ public:
 
     void code_cmp(const string &tg, const string &op, const string &str1, const string &str2)
     {
-        code += "\t" + tg + "=cmp " + op + str1 + ", " + str2 + "\n";
+        code += "\t" + tg + "=cmp " + op + " " + str1 + ", " + str2 + "\n";
     }
 
     void code_bc(const string &tg, const string &str1, const string &str2)
     {
-        code += "\tbc" + tg + ",label" + str1 + ",label" + str2 + "\n";
+        code += "\tbc " + tg + ",label" + str1 + ",label" + str2 + "\n";
     }
 
     void code_br(const string &tg)

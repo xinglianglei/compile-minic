@@ -1,12 +1,25 @@
 //int a;
-int main()
+void main(int x,int y)
 {
     int a;
     a=2;
-    int b;
-    b=3;
-    int c;
-    c=a+b;
-    return 0;
+    //int b;
+    //b=2;
+    /*if(a>=5)
+    {
+        if(a>=7)
+            a--;
+        else
+            a++;
+    }
+    else
+        a=0;*/
+    if(a>=5)
+    {
+        a--;
+    }
+    else
+        a=-a;
+    return;
 }
 //int b;
