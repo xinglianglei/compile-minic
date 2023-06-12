@@ -1,0 +1,19 @@
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %l2 ;b
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	entry
+	%l1=10
+	%t3 = neg 1
+	%l2=%t3
+	%t4=%l1
+	%t5=%l2
+	%t6 = add %t4, %t5
+	%l0 = %t6
+	exit %l0
+}
+

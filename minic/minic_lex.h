@@ -470,7 +470,7 @@ extern int yylex (void);
 #undef yyTABLES_NAME
 #endif
 
-#line 136 "D:/CompilerTools/code/minic/minic.l"
+#line 153 "D:/CompilerTools/code/minic/minic.l"
 
 
 #line 476 "D:/CompilerTools/code/minic/minic_lex.h"

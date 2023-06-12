@@ -146,7 +146,10 @@ MinicType *SymTab_t::getType(const string &ident)
 
 string SymTab_t::getName(const string &ident)
 {
-    return symbol_tb.find(ident)->second->ir_name;
+    if (symbol_tb.find(ident) != nullptr)
+        return symbol_tb.find(ident)->second->ir_name;
+    else
+        return "";
 }
 
 
@@ -249,6 +252,8 @@ string SymTabStk::getName(const string &ident)
         if (sym_tb_st[i]->exists(ident))
             break;
     }
+    if (i < 0)
+        return "";
     return sym_tb_st[i]->getName(ident);
 }
 

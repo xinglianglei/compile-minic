@@ -225,6 +225,7 @@ using namespace std;
                         ptr->tag=AST_FuncDef::DEF_NOPARAM;
                     ptr->func_type=unique_ptr<string>($1);
                     ptr->func_name=unique_ptr<string>($2.id);
+                    cout<<"函数名："+*(ptr->func_name)<<endl;
                     ptr->func_block=unique_ptr<AST_Base>($5);
                     $$=ptr;
                 }
@@ -239,6 +240,7 @@ using namespace std;
                         ptr->tag=AST_FuncDef::DEF_PARAM;
                     ptr->func_type=unique_ptr<string>($1);
                     ptr->func_name=unique_ptr<string>($2.id);
+                    cout<<"函数名："+*(ptr->func_name)<<endl;
                     ptr->func_params=unique_ptr<AST_Vec>($4);
                     ptr->func_block=unique_ptr<AST_Base>($6);
                     $$=ptr;

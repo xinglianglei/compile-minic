@@ -1,0 +1,21 @@
+declare i32 @a ;a
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %t1 
+	declare i1 %t2 
+	entry
+	@a=10
+	%t1=@a
+	%t2=cmp gt %t1, 0
+	bc %t2,label.L2,label.L4
+.L2:
+	%l0 = 1
+	br label .L1
+	br label .L4
+.L4:
+	%l0 = 0
+	br label .L1
+.L1:
+	exit %l0
+}
+

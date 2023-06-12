@@ -1,113 +1,97 @@
-declare i32 @a_0 ;a
-declare i32 @b_0 ;b
-declare i32 @c_0 ;c
-declare i32 @d_0 ;d
-declare i32 @e_0 ;e
-declare int@getint();	declare i32 %l0 
-declare int@main() {
-	declare i32 %l0 
-	declare i32 %l6 ;flag
-	declare i32 %t1 
-	declare i32 %t2 
-	declare i32 %t3 
-	declare i32 %t4 
-	declare i32 %t5 
-	declare i32 %t7 
-	declare i32 %t8 
-	declare i32 %t9 
-	declare i32 %t10 
-	declare i32 %t11 
-	declare i32 %t12 
-	declare i32 %t13 
-	declare i32 %t14 
-	declare i1 %t15 
-	declare i32 %t16 
-	declare i32 %t17 
-	declare i32 %t18 
-	declare i32 %t19 
-	declare i32 %t20 
-	declare i32 %t21 
-	declare i32 %t22 
-	declare i32 %t23 
-	declare i1 %t24 
-	declare i32 %t25 
-	declare i32 %t26 
-	declare i32 %t27 
-	declare i32 %t28 
-	declare i32 %t29 
-	declare i32 %t30 
-	declare i32 %t31 
-	declare i32 %t32 
-	declare i32 %t33 
-	declare i32 %t34 
-	declare i1 %t35 
-	declare i1 %t36 
-	declare i1 %t37 
-	declare i32 %t38 
+declare i32 @a
+declare i32 @b
+declare i32 @c
+declare i32 @d
+declare i32 @e
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %l1 ; variable: flag
+	declare i32 %t2
+	declare i32 %t3
+	declare i32 %t4
+	declare i32 %t5
+	declare i32 %t6
+	declare i32 %t7
+	declare i32 %t8
+	declare i32 %t9
+	declare i32 %t10
+	declare i32 %t11
+	declare i32 %t12
+	declare i32 %t13
+	declare i32 %t14
+	declare i32 %t15
+	declare i32 %t16
+	declare i1 %t17
+	declare i32 %t18
+	declare i32 %t19
+	declare i32 %t20
+	declare i32 %t21
+	declare i32 %t22
+	declare i32 %t23
+	declare i32 %t24
+	declare i32 %t25
+	declare i1 %t26
+	declare i32 %t27
+	declare i32 %t28
+	declare i32 %t29
+	declare i32 %t30
+	declare i32 %t31
+	declare i32 %t32
+	declare i32 %t33
+	declare i32 %t34
+	declare i1 %t35
+	declare i32 %t36
 	entry
-	%t1=call i32 @getint();
-	@a_0=%t1
-	%t2=call i32 @getint();
-	@b_0=%t2
-	%t3=call i32 @getint();
-	@c_0=%t3
-	%t4=call i32 @getint();
-	@d_0=%t4
-	%t5=call i32 @getint();
-	@e_0=%t5
-	%l6=0
-	%t7=@a_0
-	%t8=@b_0
-	%t9 = add %t7, %t8
-	%t10=@c_0
-	%t11 = add %t9, %t10
-	%t12=@d_0
-	%t13=@e_0
-	%t14 = add %t12, %t13
-	%t15 = eq %t11, %t14
-	bc %t15,label.L3,label.L2
-.L2:
-	%t16=@a_0
-	%t17=@b_0
-	%t18 = mul %t16, %t17
-	%t19=@c_0
-	%t20 = div %t18, %t19
-	%t21=@e_0
-	%t22=@d_0
-	%t23 = add %t21, %t22
-	%t24 = eq %t20, %t23
-	bc %t24,label.L6,label.L5
-.L5:
-	%t25=@a_0
-	%t26=@b_0
-	%t27=@c_0
-	%t28 = mul %t26, %t27
-	%t29 = sub %t25, %t28
-	%t30=@d_0
-	%t31=@a_0
-	%t32=@c_0
-	%t33 = div %t31, %t32
-	%t34 = sub %t30, %t33
-	%t35 = ne %t29, %t34
-	bc %t35,label.L6,label.L7
+	%t2 = call i32 @getint()
+	@a = %t2
+	%t3 = call i32 @getint()
+	@b = %t3
+	%t4 = call i32 @getint()
+	@c = %t4
+	%t5 = call i32 @getint()
+	@d = %t5
+	%t6 = call i32 @getint()
+	@e = %t6
+	%l1 = 0
+	%t7 = @b
+	%t8 = @c
+	%t9 = mul %t7, %t8
+	%t10 = @a
+	%t11 = sub %t10, %t9
+	%t12 = @a
+	%t13 = @c
+	%t14 = div %t12, %t13
+	%t15 = @d
+	%t16 = sub %t15, %t14
+	%t17 = cmp ne %t11, %t16
+	bc %t17, label .L3, label .L6
 .L6:
-	%t36=1
+	%t18 = @a
+	%t19 = @b
+	%t20 = mul %t18, %t19
+	%t21 = @c
+	%t22 = div %t20, %t21
+	%t23 = @e
+	%t24 = @d
+	%t25 = add %t23, %t24
+	%t26 = cmp eq %t22, %t25
+	bc %t26, label .L3, label .L7
 .L7:
-	%t36=0
-	bc %t36,label.L3,label.L4
+	%t27 = @a
+	%t28 = @b
+	%t29 = add %t27, %t28
+	%t30 = @c
+	%t31 = add %t29, %t30
+	%t32 = @d
+	%t33 = @e
+	%t34 = add %t32, %t33
+	%t35 = cmp eq %t31, %t34
+	bc %t35, label .L3, label .L5
 .L3:
-	%t37=1
-.L4:
-	%t37=0
-	bc %t37,label.L8,label.L10
-.L8:
-	%l6=1
-	br Label.L10
-.L10:
-	%t38=%l6
-	%l0=%t38
-	br Label.L1
-.L1:
-	exit %l0
+	%l1 = 1
+	br label .L5
+.L5:
+	%l0 = %l1
+	%t36 = %l0
+	exit %t36
 }
-

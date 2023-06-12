@@ -1,37 +1,31 @@
-declare i32 @a_0 ;a
-declare int@func(i32 %t0) {
-	declare i32 %l1 
-	declare i32 %l2 
-	declare i32 %t3 
-	declare i32 %t4 
-	declare i32 %t5 
-	%l1=t0
+declare i32 @a
+define i32 @func(i32 %t0) {
+	declare i32 %l1 ; variable: p
+	declare i32 %l2
+	declare i32 %t3
+	declare i32 %t4
+	declare i32 %t5
 	entry
-	%t3=%l1
+	%l1 = %t0
+	%t3 = %l1
 	%t4 = sub %t3, 1
-	%l1=%t4
-	%t5=%l1
-	%l0=%t5
-	br Label.L1
-.L1:
-	exit %l2
+	%l1 = %t4
+	%l2 = %l1
+	%t5 = %l2
+	exit %t5
 }
-
-declare int@main() {
-	declare i32 %l0 
-	declare i32 %l1 ;b
-	declare i32 %t2 
-	declare i32 %t3 
-	declare i32 %t4 
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %l1 ; variable: b
+	declare i32 %t2
+	declare i32 %t3
+	declare i32 %t4
 	entry
-	@a_0=10
-	%t2=@a_0
-	%t3=call i32 @func(i32 %t2);
-	%l1=%t3
-	%t4=%l1
-	%l0=%t4
-	br Label.L1
-.L1:
-	exit %l0
+	@a = 10
+	%t2 = @a
+	%t3 = call i32 @func(i32 %t2)
+	%l1 = %t3
+	%l0 = %l1
+	%t4 = %l0
+	exit %t4
 }
-

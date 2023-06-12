@@ -1,21 +1,21 @@
-declare i32 @a_0 ;a
-declare int@main() {
-	declare i32 %l0 
-	declare i32 %t1 
-	declare i1 %t2 
+declare i32 @a
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %t1
+	declare i1 %t2
+	declare i32 %t3
 	entry
-	@a_0=10
-	%t1=@a_0
-	%t2=cmp GT %t1, 0
-	bc %t2,label.L2,label.L4
+	@a = 10
+	%t1 = @a
+	%t2 = cmp gt %t1, 0
+	bc %t2, label .L3, label .L5
+.L3:
+	%l0 = 1
+	br label .L2
+.L5:
+	%l0 = 0
+	br label .L2
 .L2:
-	%l0=1
-	br Label.L1
-	br Label.L4
-.L4:
-	%l0=0
-	br Label.L1
-.L1:
-	exit %l0
+	%t3 = %l0
+	exit %t3
 }
-

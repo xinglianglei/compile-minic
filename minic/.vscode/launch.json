@@ -9,9 +9,9 @@
             "name": "GDB for Windows or Linux to IR",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/cmake-build-debug/minic-flex-bison",
+            "program": "${workspaceFolder}/cmake-build-debug/minic",
             "args": [
-                "-r",
+                "-i",
                 "test.txt"
             ],
             "stopAtEntry": true,

@@ -1,19 +1,13 @@
-/*int add(int x,int y)
-{
-    return x+y;
-}
-int main()
-{
-    int a;
+//test sub
+int a;
+
+void putint(int k);
+
+int main(){
     int b;
-    int c;
-    a=getint();
-    b=2;
-    c=add(a,b);
+    b = 2;
+    a = 10;
+    putint(b - a);
+
     return 0;
-}*/
-//int b;
-int main()
-{
-    return 3;
 }

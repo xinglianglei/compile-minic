@@ -35,6 +35,9 @@ using namespace std;
 /* 辅助定义式或者宏，后面使用时带上大括号 */
 
 num			[1-9][0-9]*|0
+Octal         0[0-7]*
+Hexadecimal   0[xX][0-9a-fA-F]+
+
 ident       [A-Za-z_][A-Za-z0-9_]*
 white		[\t\040]
 white_line  [\r\n]
@@ -76,7 +79,8 @@ white_line  [\r\n]
 "int"       {
                 cout<<yytext<<endl;
                 return T_INT;}
-"void"      {return T_VOID;}
+"void"      {cout<<yytext<<endl;
+            return T_VOID;}
 
 "("			{cout<<yytext<<endl;return '(';}
 ")"			{cout<<yytext<<endl;return ')';}
@@ -117,6 +121,19 @@ white_line  [\r\n]
                 yylval.int_val.lineno = yylineno;
                 return NUM;
             }
+{Octal}         {
+                cout<<yytext<<endl; 
+                yylval.int_val.val = strtol(yytext, nullptr, 0); 
+                cout<<yylval.int_val.val<<endl;
+                yylval.int_val.lineno = yylineno;
+                return NUM; }
+{Hexadecimal}   { 
+                cout<<"十六进制"<<endl;
+                cout<<yytext<<endl; 
+                yylval.int_val.val = strtol(yytext, nullptr, 0); 
+                cout<<yylval.int_val.val<<endl;
+                yylval.int_val.lineno = yylineno;
+                return NUM; }
 
 {ident}    { 
                 cout<<yytext<<endl;

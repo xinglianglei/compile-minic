@@ -1,0 +1,108 @@
+define i32 @ifElseIf() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %l2 ;b
+	declare i32 %t3 
+	declare i1 %t4 
+	declare i32 %t5 
+	declare i1 %t6 
+	declare i1 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i1 %t10 
+	declare i32 %t11 
+	declare i1 %t12 
+	declare i1 %t13 
+	declare i32 %t14 
+	declare i1 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i1 %t18 
+	declare i1 %t19 
+	declare i32 %t20 
+	declare i32 %t21 
+	declare i32 %t22 
+	declare i32 %t23 
+	declare i32 %t24 
+	entry
+	%l1=5
+	%l2=10
+	%t3=%l2
+	%t4=cmp eq %t3, 11
+	bc %t4,label.L3,label.L2
+.L2:
+	%t5=%l1
+	%t6=cmp eq %t5, 6
+	bc %t6,label.L3,label.L4
+.L3:
+	%t7=1
+.L4:
+	%t7=0
+	bc %t7,label.L5,label.L6
+.L5:
+	%t8=%l1
+	%l0 = %t8
+	br label .L1
+	br label .L7
+.L6:
+	%t9=%l2
+	%t10=cmp eq %t9, 10
+	bc %t10,label.L8,label.L10
+.L8:
+	%t11=%l1
+	%t12=cmp eq %t11, 1
+	bc %t12,label.L9,label.L10
+.L9:
+	%t13=1
+.L10:
+	%t13=0
+	bc %t13,label.L11,label.L12
+.L11:
+	%l1=25
+	br label .L13
+.L12:
+	%t14=%l2
+	%t15=cmp eq %t14, 10
+	bc %t15,label.L14,label.L16
+.L14:
+	%t16=%l1
+	%t17 = neg 5
+	%t18=cmp eq %t16, %t17
+	bc %t18,label.L15,label.L16
+.L15:
+	%t19=1
+.L16:
+	%t19=0
+	bc %t19,label.L17,label.L18
+.L17:
+	%t20=%l1
+	%t21 = add %t20, 15
+	%l1=%t21
+	br label .L19
+.L18:
+	%t22=%l1
+	%t23 = neg %t22
+	%l1=%t23
+	br label .L19
+.L19:
+	br label .L13
+.L13:
+	br label .L7
+.L7:
+	%t24=%l1
+	%l0 = %t24
+	br label .L1
+.L1:
+	exit %l0
+}
+
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %t1 
+	entry
+	%t1=call i32 @ifElseIf();
+	call void @putint(i32 %t1);
+	%l0 = 0
+	exit %l0
+}
+

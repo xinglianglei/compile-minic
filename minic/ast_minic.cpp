@@ -52,6 +52,10 @@ string AST_CompUnit::done(bool option)
 
 string AST_FuncDef::done(bool option)
 {
+    string name = *func_name;
+    if (stk.getName(name) != "") {
+        return "";
+    }
     stk.reset();
     string type;
     if (*func_type == "int") {
@@ -65,26 +69,7 @@ string AST_FuncDef::done(bool option)
     code_vec.append("define " + type + " @" + *func_name + "(");
     //压入一个符号表，新的作用域
     stk.push();
-    if (tag == AST_FuncDef::DECL_PARAM || tag == AST_FuncDef::DEF_PARAM) {
-        int param_num = 0;
-        for (auto &param : func_params->vec) {
-            if (param_num != 0)
-                code_vec.append(",");
-            param->done();
-            param_num++;
-        }
-        param_num = 0;
-        for (auto &param : func_params->vec) {
-            auto paramItem = dynamic_cast<AST_FuncFParam *>(param.get());
-
-            stk.insertLocalINT(*(paramItem->param_name));
-            string localName = stk.getName(*(paramItem->param_name));
-            code_localval.code_valDecl(localName, "i32");
-            code_stmt.append("\t" + localName + "=" + "t" + to_string(param_num) + "\n");
-            param_num++;
-        }
-    }
-    code_vec.append(")");
+    //保证返回值一定是l0
     string return_Val, return_Label;
     if (*func_type == "int") {
         stk.insertLocalINT("return");
@@ -95,11 +80,39 @@ string AST_FuncDef::done(bool option)
         return_Label = stk.getLabelName();
     }
 
+    if (tag == AST_FuncDef::DECL_PARAM || tag == AST_FuncDef::DEF_PARAM) {
+        int param_num = 0;
+        for (auto &param : func_params->vec) {
+            if (param_num != 0)
+                code_vec.append(",");
+            param->done();
+            param_num++;
+        }
+    }
+    code_vec.append(")");
+
     if (tag == AST_FuncDef::DECL_NOPARAM || tag == AST_FuncDef::DECL_PARAM)
-        code_vec.append(";");
+        code_vec.append(";\n");
     else {
         code_vec.append(" {\n");
         code_stmt.append("\tentry\n");
+        //解决函数形参赋值局部变量
+        int param_num;
+        if (type == "i32")
+            param_num = 1;
+        else
+            param_num = 0;
+        if (tag == AST_FuncDef::DEF_PARAM) {
+            for (auto &param : func_params->vec) {
+                auto paramItem = dynamic_cast<AST_FuncFParam *>(param.get());
+
+                stk.insertLocalINT(*(paramItem->param_name));
+                string localName = stk.getName(*(paramItem->param_name));
+                code_localval.code_valDecl(localName, "i32");
+                code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
+                param_num++;
+            }
+        }
         auto ast_block = dynamic_cast<AST_Block *>(func_block.get());
         ast_block->func_params = func_params.get();
         ast_block->done();
@@ -440,12 +453,21 @@ string AST_Unary::done(bool option)
     } else if (tag == UU) {
         string b = unaryExp->done();
         if (op == AST_OP_OPT) return b;
+        //分类讨论了，取负和取非，没有取非运算，所以用比较来代替!!!
+        if (op == AST_OP_NEG) {
+            string op_ = "neg";
+            string c = stk.getTmpName();
+            code_tmpval.code_valDecl(c, "i32");
+            //code_stmt.code_binary(op_, c, "", b);
+            code_stmt.append("\t" + c + " = " + op_ + " " + b + "\n");
+            return c;
+        } else {
+            string c = stk.getTmpName();
+            code_tmpval.code_valDecl(c, "i1");
+            code_stmt.code_cmp(c, "eq", b, "0");
+            return c;
+        }
 
-        string op_ = op == AST_OP_NEG ? "neg" : "not";
-        string c = stk.getTmpName();
-        code_tmpval.code_valDecl(c, "i32");
-        code_stmt.code_binary(op_, c, "0", b);
-        return c;
     } else {
         /*// Func_Call
         string name = stk.getName(ident);
@@ -576,16 +598,16 @@ string AST_RelExp::done(bool option)
     string op_;
     switch (op) {
     case AST_OP_LT:
-        op_ = "LT";
+        op_ = "lt";
         break;
     case AST_OP_GT:
-        op_ = "GT";
+        op_ = "gt";
         break;
     case AST_OP_LE:
-        op_ = "LE";
+        op_ = "le";
         break;
     case AST_OP_GE:
-        op_ = "GE";
+        op_ = "ge";
         break;
     }
     string dest = stk.getTmpName();
@@ -618,7 +640,8 @@ string AST_EqExp::done(bool option)
     string op_ = op == AST_OP_EQ ? "eq" : "ne";
     string dest = stk.getTmpName();
     code_tmpval.code_valDecl(dest, "i1");
-    code_stmt.code_binary(op_, dest, a, b);
+    code_stmt.code_cmp(dest, op_, a, b);
+    //code_stmt.code_binary(op_, dest, a, b);
     return dest;
 }
 
@@ -749,7 +772,7 @@ string AST_FuncCall::done(bool option)
         code_tmpval.code_valDecl(return_val, "i32");
         code_stmt.append("\t" + return_val + "=call " + type + " " + func_name + "(");
     } else {
-        type = "";
+        type = "void";
         code_stmt.append("\tcall " + type + " " + func_name + "(");
     }
     if (is_param) {
