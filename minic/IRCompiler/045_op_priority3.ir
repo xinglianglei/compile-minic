@@ -1,0 +1,27 @@
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %l2 ;b
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	entry
+	%l1=10
+	%l2=30
+	%t3=%l1
+	%t4 = neg 0, 5
+	%t5 = sub %t3, %t4
+	%t6=%l2
+	%t7 = add %t5, %t6
+	%t8 = neg 0, 5
+	%t9 = add %t7, %t8
+	%l0=%t9
+	br Label.L1
+.L1:
+	exit %l0
+}
+

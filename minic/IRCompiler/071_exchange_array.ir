@@ -1,0 +1,73 @@
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;m
+	declare i32 %l2 ;n
+	declare i32 %l3 ;i
+	declare i32 %l4 ;j
+	declare i32 %t5 
+	declare i1 %t6 
+	declare i32 %t7 
+	declare i1 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i1 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	entry
+	%l1=0
+	br Label.L2
+.L2:
+	%t5=%l1
+	%t6=cmp LT %t5, 5
+	bc %t6,label.L3,label.L4
+.L3:
+	%l2=0
+	br Label.L5
+.L5:
+	%t7=%l2
+	%t8=cmp LT %t7, 5
+	bc %t8,label.L6,label.L7
+.L6:
+	%t9=%l1
+	%t10 = add %t9, 1
+	=%t10
+	%t11=%l2
+	%t12 = add %t11, 1
+	%l2=%t12
+	br Label.L5
+.L7:
+	%t13=%l1
+	%t14 = add %t13, 1
+	%l1=%t14
+	br Label.L2
+.L4:
+	%l1=2
+	%l2=3
+	%l4=0
+	br Label.L8
+.L8:
+	%t15=%l4
+	%t16=cmp LT %t15, 5
+	bc %t16,label.L9,label.L10
+.L9:
+	%l3=
+	=
+	%t17=%l3
+	=%t17
+	%t18=%l4
+	%t19 = add %t18, 1
+	%l4=%t19
+	br Label.L8
+.L10:
+	%l0=
+	br Label.L1
+.L1:
+	exit %l0
+}
+

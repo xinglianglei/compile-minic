@@ -1,0 +1,76 @@
+declare i32 @N_0 ;N
+declare i32 @newline_0 ;newline
+declare int@factor(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %l3 ;i
+	declare i32 %l4 ;sum
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i1 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i1 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	%l1=t0
+	entry
+	%l4=0
+	%l3=1
+	br Label.L2
+.L2:
+	%t5=%l3
+	%t6=%l1
+	%t7 = add %t6, 1
+	%t8=cmp LT %t5, %t7
+	bc %t8,label.L3,label.L4
+.L3:
+	%t9=%l1
+	%t10=%l3
+	%t11 = mod %t9, %t10
+	%t12 = eq %t11, 0
+	bc %t12,label.L5,label.L7
+.L5:
+	%t13=%l4
+	%t14=%l3
+	%t15 = add %t13, %t14
+	%l4=%t15
+	br Label.L7
+.L7:
+	%t16=%l3
+	%t17 = add %t16, 1
+	%l3=%t17
+	br Label.L2
+.L4:
+	%t18=%l4
+	%l0=%t18
+	br Label.L1
+.L1:
+	exit %l2
+}
+
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %l2 ;m
+	declare i32 %l3 ;t
+	declare i32 %t4 
+	declare i32 %t5 
+	entry
+	@N_0=4
+	@newline_0=10
+	%l2=1478
+	%t4=%l2
+	%t5=call i32 @factor(i32 %t4);
+	%l0=%t5
+	br Label.L1
+.L1:
+	exit %l0
+}
+

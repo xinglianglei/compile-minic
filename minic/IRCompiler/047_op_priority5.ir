@@ -1,0 +1,111 @@
+declare i32 @a_0 ;a
+declare i32 @b_0 ;b
+declare i32 @c_0 ;c
+declare i32 @d_0 ;d
+declare i32 @e_0 ;e
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;flag
+	declare i32 %t2 
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i1 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i1 %t21 
+	declare i32 %t22 
+	declare i32 %t23 
+	declare i32 %t24 
+	declare i32 %t25 
+	declare i32 %t26 
+	declare i32 %t27 
+	declare i32 %t28 
+	declare i32 %t29 
+	declare i32 %t30 
+	declare i32 %t31 
+	declare i1 %t32 
+	declare i1 %t33 
+	declare i1 %t34 
+	declare i32 %t35 
+	declare i32 %t36 
+	entry
+	@a_0=1
+	@b_0=0
+	@c_0=1
+	@d_0=2
+	@e_0=4
+	%l1=0
+	%t2=@a_0
+	%t3=@b_0
+	%t4=@c_0
+	%t5 = mul %t3, %t4
+	%t6 = sub %t2, %t5
+	%t7=@d_0
+	%t8=@a_0
+	%t9=@c_0
+	%t10 = div %t8, %t9
+	%t11 = sub %t7, %t10
+	%t12 = eq %t6, %t11
+	bc %t12,label.L3,label.L2
+.L2:
+	%t13=@a_0
+	%t14=@b_0
+	%t15 = mul %t13, %t14
+	%t16=@c_0
+	%t17 = div %t15, %t16
+	%t18=@e_0
+	%t19=@d_0
+	%t20 = add %t18, %t19
+	%t21 = eq %t17, %t20
+	bc %t21,label.L5,label.L7
+.L5:
+	%t22=@a_0
+	%t23=@a_0
+	%t24=@b_0
+	%t25 = add %t23, %t24
+	%t26 = mul %t22, %t25
+	%t27=@c_0
+	%t28 = add %t26, %t27
+	%t29=@d_0
+	%t30=@e_0
+	%t31 = add %t29, %t30
+	%t32=cmp LE %t28, %t31
+	bc %t32,label.L6,label.L7
+.L6:
+	%t33=1
+.L7:
+	%t33=0
+	bc %t33,label.L3,label.L4
+.L3:
+	%t34=1
+.L4:
+	%t34=0
+	bc %t34,label.L8,label.L10
+.L8:
+	%l1=1
+	br Label.L10
+.L10:
+	%t35=%l1
+	call  @putint(i32 %t35);
+	%t36=%l1
+	%l0=%t36
+	br Label.L1
+.L1:
+	exit %l0
+}
+

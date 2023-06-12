@@ -1,0 +1,8 @@
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %t1
+	entry
+	%l0 = 3
+	%t1 = %l0
+	exit %t1
+}

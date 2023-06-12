@@ -1,0 +1,14 @@
+declare int@main() {
+	declare i32 %l0 
+	entry
+	=0
+	=1
+	=2
+	=3
+	=4
+	%l0=
+	br Label.L1
+.L1:
+	exit %l0
+}
+

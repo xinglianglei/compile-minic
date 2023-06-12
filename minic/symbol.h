@@ -7,11 +7,11 @@
 using namespace std;
 
 class NameOrder {
-private:
+public:
     int cnt_val;
     int cnt_label;
     unordered_map<string, int> no;
-public:
+
     NameOrder() :cnt_val(0), cnt_label(2) {}
     void reset();
     string getTmpName();
@@ -70,13 +70,15 @@ public:
 };
 
 class SymTabStk {
-private:
+public:
     deque<unique_ptr<SymTab_t>> sym_tb_st;
     NameOrder nm;
-public:
+
     const int UNKNOWN = -1;
     void push();
+    //void push_block();
     void pop();
+    //void pop_block();
     void reset();
     void insert(Sym_t *symbol);
     //插入全局变量

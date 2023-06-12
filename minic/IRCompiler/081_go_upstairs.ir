@@ -1,0 +1,69 @@
+declare int@climbStairs(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %l6 ;i
+	declare i32 %t3 
+	declare i1 %t4 
+	declare i32 %t5 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i1 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	%l1=t0
+	entry
+	%t3=%l1
+	%t4=cmp LT %t3, 4
+	bc %t4,label.L2,label.L4
+.L2:
+	%t5=%l1
+	%l0=%t5
+	br Label.L1
+	br Label.L4
+.L4:
+	=0
+	=1
+	=2
+	%l6=3
+	br Label.L5
+.L5:
+	%t7=%l6
+	%t8=%l1
+	%t9 = add %t8, 1
+	%t10=cmp LT %t7, %t9
+	bc %t10,label.L6,label.L7
+.L6:
+	%t11 = add , 
+	=%t11
+	%t12=%l6
+	%t13 = add %t12, 1
+	%l6=%t13
+	br Label.L5
+.L7:
+	%l0=
+	br Label.L1
+.L1:
+	exit %l2
+}
+
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;res
+	declare i32 %l2 ;n
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	entry
+	%l2=5
+	%t3=%l2
+	%t4=call i32 @climbStairs(i32 %t3);
+	%l1=%t4
+	%t5=%l1
+	%l0=%t5
+	br Label.L1
+.L1:
+	exit %l0
+}
+

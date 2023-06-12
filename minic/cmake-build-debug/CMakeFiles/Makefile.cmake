@@ -48,5 +48,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/minic-flex-bison.dir/DependInfo.cmake"
+  "CMakeFiles/minic.dir/DependInfo.cmake"
   )

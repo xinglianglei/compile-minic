@@ -1,9 +1,15 @@
+/*
+一点说明
+code_vec=code_vec+code_localval+code_tmpval+code_stmt;
+*/
+
 #include "ast_minic.h"
 #include "symbol.h"
 #include "utils.h"
 
 IRCode code_vec;
-IRCode code_val;
+IRCode code_localval;
+IRCode code_tmpval;
 IRCode code_stmt;
 SymTabStk stk;
 MinicType::TYPE tmp;
@@ -47,12 +53,16 @@ string AST_CompUnit::done(bool option)
 string AST_FuncDef::done(bool option)
 {
     stk.reset();
-    if (*func_type == "int")
+    string type;
+    if (*func_type == "int") {
         tmp = MinicType::FUNC_INT;
-    else
+        type = "i32";
+    } else {
         tmp = MinicType::FUNC_VOID;
+        type = "void";
+    }
     stk.insertFunc(*func_name, tmp); //函数表
-    code_vec.append("declare " + *func_type + "@" + *func_name + "(");
+    code_vec.append("define " + type + " @" + *func_name + "(");
     //压入一个符号表，新的作用域
     stk.push();
     if (tag == AST_FuncDef::DECL_PARAM || tag == AST_FuncDef::DEF_PARAM) {
@@ -63,13 +73,23 @@ string AST_FuncDef::done(bool option)
             param->done();
             param_num++;
         }
+        param_num = 0;
+        for (auto &param : func_params->vec) {
+            auto paramItem = dynamic_cast<AST_FuncFParam *>(param.get());
+
+            stk.insertLocalINT(*(paramItem->param_name));
+            string localName = stk.getName(*(paramItem->param_name));
+            code_localval.code_valDecl(localName, "i32");
+            code_stmt.append("\t" + localName + "=" + "t" + to_string(param_num) + "\n");
+            param_num++;
+        }
     }
     code_vec.append(")");
-    code_vec.append("\tentry");
     string return_Val, return_Label;
     if (*func_type == "int") {
         stk.insertLocalINT("return");
         return_Val = stk.getName("return");
+        code_localval.code_valDecl(return_Val, "i32");
         return_Label = stk.getLabelName();
     } else {
         return_Label = stk.getLabelName();
@@ -79,24 +99,36 @@ string AST_FuncDef::done(bool option)
         code_vec.append(";");
     else {
         code_vec.append(" {\n");
+        code_stmt.append("\tentry\n");
         auto ast_block = dynamic_cast<AST_Block *>(func_block.get());
         ast_block->func_params = func_params.get();
         ast_block->done();
-        code_vec.code_label(return_Label);
+        if (stk.nm.cnt_label > 2)
+            code_stmt.code_label(return_Label);
         if (*func_type == "int")
-            code_vec.append("\texit " + return_Val + "\n");
+            code_stmt.append("\texit " + return_Val + "\n");
         else
-            code_vec.append("\texit\n");
-        code_vec.append("}\n\n");
+            code_stmt.append("\texit\n");
+        code_stmt.append("}\n\n");
     }
+    code_vec.append(code_localval.code);
+    code_vec.append(code_tmpval.code);
+    code_vec.append(code_stmt.code);
+    code_localval.code.clear();
+    code_tmpval.code.clear();
+    code_stmt.code.clear();
     return "";
 }
 
 string AST_FuncFParam::done(bool option)
 {
-    if (tag == AST_FuncFParam::VARIABLE)
-        code_vec.append(*param_type + *param_name);
-    else {
+    if (tag == AST_FuncFParam::VARIABLE) {
+        string tmpName = stk.getTmpName();
+        code_vec.append("i32 " + tmpName);
+        //stk.insertLocalINT(*param_name);
+        //string localName = stk.getName(*param_name);
+        //code_stmt.append("\t" + localName + "=" + tmpName + "\n");
+    } else {
         code_vec.append(*param_type + *param_name);
         int param_num = 0;
         for (auto &index : (*ArrayIndexList).vec) {
@@ -142,16 +174,18 @@ string AST_Stmt::done(bool option)
         if (exp) {
             string ret_name = exp->done();
             //return ret_name;
-            code_vec.append("\t%l0=" + ret_name + "\n");
-            code_vec.code_br(".L1");
+            code_stmt.append("\t%l0 = " + ret_name + "\n");
+            if (stk.nm.cnt_label > 2) {
+                code_stmt.code_br(".L1");
+            }
         } else {
-            code_vec.code_br(".L1");
+            code_stmt.code_br(".L1");
         }
         //bc.finish();
     } else if (tag == ASSIGN) {
         string val = exp->done();
         string to = lval->done(true);
-        code_vec.append("\t" + to + "=" + val + "\n");
+        code_stmt.append("\t" + to + "=" + val + "\n");
     } else if (tag == BLOCK) {
         auto block_ = dynamic_cast<AST_Block *>(block.get());
         //修改了
@@ -171,54 +205,54 @@ string AST_Stmt::done(bool option)
 
         wst.append(while_entry, while_body, while_end);
 
-        code_vec.code_br(while_entry);
+        code_stmt.code_br(while_entry);
 
         //bc.set();
-        code_vec.code_label(while_entry);
+        code_stmt.code_label(while_entry);
         string cond_ = cond->done();
-        code_vec.code_bc(cond_, while_body, while_end);
+        code_stmt.code_bc(cond_, while_body, while_end);
 
         //bc.set();
-        code_vec.code_label(while_body);
+        code_stmt.code_label(while_body);
         body->done();
         if (bc.alive())
-            code_vec.code_br(while_entry);
+            code_stmt.code_br(while_entry);
 
         bc.set();
-        code_vec.code_label(while_end);
+        code_stmt.code_label(while_end);
         wst.quit(); // 该while处理已结束，退栈
     } else if (tag == BREAK) {
-        code_vec.code_br(wst.getEndName());  // 跳转到while_end
+        code_stmt.code_br(wst.getEndName());  // 跳转到while_end
         bc.finish();                // 当前IR的block设为不活跃
     } else if (tag == CONTINUE) {
-        code_vec.code_br(wst.getEntryName());// 跳转到while_entry
+        code_stmt.code_br(wst.getEntryName());// 跳转到while_entry
         bc.finish();                // 当前IR的block设为不活跃
     } else if (tag == IF) {
         string s = cond->done();
         string t = stk.getLabelName();
         string e = stk.getLabelName();
         string j = stk.getLabelName();
-        code_vec.code_bc(s, t, else_body == nullptr ? j : e);
+        code_stmt.code_bc(s, t, else_body == nullptr ? j : e);
 
         // IF Stmt
         bc.set();
-        code_vec.code_label(t);
+        code_stmt.code_label(t);
         body->done();
         if (bc.alive())
-            code_vec.code_br(j);
+            code_stmt.code_br(j);
 
         // else stmt
         if (else_body != nullptr) {
             bc.set();
-            code_vec.code_label(e);
+            code_stmt.code_label(e);
             else_body->done();
             if (bc.alive())
-                code_vec.code_br(j);
+                code_stmt.code_br(j);
 
         }
         // end
         bc.set();
-        code_vec.code_label(j);
+        code_stmt.code_label(j);
     }
     return"";
 
@@ -232,21 +266,24 @@ string AST_LVal::done(bool option)
         if (ty->type == MinicType::INT) {
             if (option == false) {
                 string tmp = stk.getTmpName();
-                code_vec.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
+                code_tmpval.code_valDecl(tmp, "i32");
+                code_stmt.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
                 return tmp;
             } else {
                 return stk.getName(*ident);
             }
         } else {
-            // func(ident)
+            // func(ident) 参数的类型不一定，可能是i32 i8 i1
             if (ty->value == -1) {
                 string tmp = stk.getTmpName();
-                code_vec.append(tmp + "=" + stk.getName(*ident));;
+                code_tmpval.code_valDecl(tmp, "i32");
+                code_stmt.append(tmp + "=" + stk.getName(*ident));;
                 return tmp;
             }
             string tmp = stk.getTmpName();
+            code_tmpval.code_valDecl(tmp, "i32");
             string tmp2 = stk.getName(*ident);
-            code_vec.append(tmp + "*" + tmp2);
+            code_stmt.append(tmp + "*" + tmp2);
             return tmp;
         }
     } else {/*
@@ -334,13 +371,14 @@ string AST_VarDef::done(bool option)
         if (option) {
             stk.insertGlobalINT(*ident);
             string name = stk.getName(*ident);
-            code_vec.code_globalInt(name);
+            code_vec.code_globalInt(name, "i32", ";" + *ident);
         }
 
         else {
             stk.insertLocalINT(*ident);
             string name = stk.getName(*ident);
-            code_vec.code_valDecl(name);
+            code_localval.code_valDecl(name, "i32", ";" + *ident);
+            //code_stmt.code_valDecl(name, "i32");
         }
     }
 
@@ -405,7 +443,8 @@ string AST_Unary::done(bool option)
 
         string op_ = op == AST_OP_NEG ? "neg" : "not";
         string c = stk.getTmpName();
-        code_vec.code_binary(op_, c, "0", b);
+        code_tmpval.code_valDecl(c, "i32");
+        code_stmt.code_binary(op_, c, "0", b);
         return c;
     } else {
         /*// Func_Call
@@ -426,35 +465,39 @@ string AST_Unary::done(bool option)
         string b = selfExp->done();
         if (op == AST_OP_LINC) {
             string c = stk.getTmpName();
+            code_tmpval.code_valDecl(c, "i32");
             string op_ = "LINC";
-            code_vec.code_binary(op_, c, "0", b);
+            code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_vec.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.append("\t" + val_id + "=" + c + "\n");
             return c;
         } else if (op == AST_OP_RINC) {
             string c = stk.getTmpName();
+            code_tmpval.code_valDecl(c, "i32");
             string op_ = "RINC";
-            code_vec.code_binary(op_, c, "0", b);
+            code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_vec.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.append("\t" + val_id + "=" + c + "\n");
             return b;
         } else if (op == AST_OP_LDEC) {
             string c = stk.getTmpName();
+            code_tmpval.code_valDecl(c, "i32");
             string op_ = "LDEC";
-            code_vec.code_binary(op_, c, "0", b);
+            code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_vec.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.append("\t" + val_id + "=" + c + "\n");
             return c;
         } else {
             string c = stk.getTmpName();
+            code_tmpval.code_valDecl(c, "i32");
             string op_ = "RDEC";
-            code_vec.code_binary(op_, c, "0", b);
+            code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_vec.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.append("\t" + val_id + "=" + c + "\n");
             return b;
         }
         return "";
@@ -488,7 +531,8 @@ string AST_MulExp::done(bool option)
     string op_ = op == AST_OP_MUL ? "mul" : (op == AST_OP_DIV ? "div" : "mod");
 
     c = stk.getTmpName();
-    code_vec.code_binary(op_, c, a, b);
+    code_tmpval.code_valDecl(c, "i32");
+    code_stmt.code_binary(op_, c, a, b);
     return c;
 }
 
@@ -512,7 +556,8 @@ string AST_AddExp::done(bool option)
     string op_ = op == AST_OP_ADD ? "add" : "sub";
 
     c = stk.getTmpName();
-    code_vec.code_binary(op_, c, a, b);
+    code_tmpval.code_valDecl(c, "i32");
+    code_stmt.code_binary(op_, c, a, b);
     return c;
 }
 
@@ -544,7 +589,8 @@ string AST_RelExp::done(bool option)
         break;
     }
     string dest = stk.getTmpName();
-    code_vec.code_cmp(dest, op_, a, b);
+    code_tmpval.code_valDecl(dest, "i1");
+    code_stmt.code_cmp(dest, op_, a, b);
     return dest;
 }
 
@@ -571,7 +617,8 @@ string AST_EqExp::done(bool option)
     string a = eqExp->done(), b = relExp->done();
     string op_ = op == AST_OP_EQ ? "eq" : "ne";
     string dest = stk.getTmpName();
-    code_vec.code_binary(op_, dest, a, b);
+    code_tmpval.code_valDecl(dest, "i1");
+    code_stmt.code_binary(op_, dest, a, b);
     return dest;
 }
 
@@ -596,22 +643,23 @@ string AST_LAnd::done(bool option)
     string true_s = stk.getLabelName();
     string false_s = stk.getLabelName();
 
-    code_vec.code_bc(lhs, s_1, false_s);
-    code_vec.code_label(s_1);
+    code_stmt.code_bc(lhs, s_1, false_s);
+    code_stmt.code_label(s_1);
 
     //sbc.set();
     string rhs = eqExp->done();
     //string tmp = stk.getTmpName();
-    code_vec.code_bc(rhs, true_s, false_s);
+    code_stmt.code_bc(rhs, true_s, false_s);
     //stk.store(tmp, result);
     //stk.jump(end_s);
 
     //bc.set();
-    code_vec.code_label(true_s);
+    code_stmt.code_label(true_s);
     string ret = stk.getTmpName();
-    code_vec.append("\t" + ret + "=1" + "\n");
-    code_vec.code_label(false_s);
-    code_vec.append("\t" + ret + "=0" + "\n");
+    code_tmpval.code_valDecl(ret, "i1");
+    code_stmt.append("\t" + ret + "=1" + "\n");
+    code_stmt.code_label(false_s);
+    code_stmt.append("\t" + ret + "=0" + "\n");
     return ret;
 }
 
@@ -636,22 +684,23 @@ string AST_LOr::done(bool option)
     string true_s = stk.getLabelName();
     string false_s = stk.getLabelName();
 
-    code_vec.code_bc(lhs, true_s, s_1);
-    code_vec.code_label(s_1);
+    code_stmt.code_bc(lhs, true_s, s_1);
+    code_stmt.code_label(s_1);
 
     //sbc.set();
     string rhs = lorExp->done();
     //string tmp = stk.getTmpName();
-    code_vec.code_bc(rhs, true_s, false_s);
+    code_stmt.code_bc(rhs, true_s, false_s);
     //stk.store(tmp, result);
     //stk.jump(end_s);
 
     //bc.set();
-    code_vec.code_label(true_s);
+    code_stmt.code_label(true_s);
     string ret = stk.getTmpName();
-    code_vec.append("\t" + ret + "=1" + "\n");
-    code_vec.code_label(false_s);
-    code_vec.append("\t" + ret + "=0" + "\n");
+    code_tmpval.code_valDecl(ret, "i1");
+    code_stmt.append("\t" + ret + "=1" + "\n");
+    code_stmt.code_label(false_s);
+    code_stmt.append("\t" + ret + "=0" + "\n");
     return ret;
 }
 
@@ -685,32 +734,43 @@ int AST_Initial::getValue()
 
 string AST_FuncCall::done(bool option)
 {
+    vector<string> args;
     if (is_param) {
         for (auto &rparam : params->vec)
-            rparam->done();
+            args.push_back(rparam->done());
     }
 
     string func_name = stk.getName(*id_val);
-    MinicType *func_type = stk.getType(func_name);
-    string type;
-    if (func_type->type == MinicType::FUNC_INT)
+    MinicType *func_type = stk.getType(*id_val);
+    string type, return_val;
+    if (func_type->type == MinicType::FUNC_INT) {
         type = "i32";
-    else
+        return_val = stk.getTmpName();
+        code_tmpval.code_valDecl(return_val, "i32");
+        code_stmt.append("\t" + return_val + "=call " + type + " " + func_name + "(");
+    } else {
         type = "";
-    code_vec.append("call " + type + " " + func_name + "(");
-
+        code_stmt.append("\tcall " + type + " " + func_name + "(");
+    }
     if (is_param) {
         int param_cnt = 0;
         for (auto &param : params->vec) {
             auto param_ast = dynamic_cast<AST_Exp1 *>(param.get());
-            if (param_cnt++ > 0) {
-                cout << ", ";
+            if (param_cnt > 0) {
+                code_stmt.append(", ");
             }
-            code_vec.append(param_ast->done());
+            //这个地方的变量类型可调！！！
+            string tmp = args[param_cnt];
+            code_stmt.append("i32 " + tmp);
+            param_cnt++;
         }
     }
+    code_stmt.append(");\n");
+    if (func_type->type == MinicType::FUNC_INT) {
+        return return_val;
+    } else
+        return "";
 
-    cout << ");" << endl;
 }
 
 int AST_FuncCall::getValue()

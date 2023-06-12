@@ -1,0 +1,25 @@
+declare i32 @a_0 ;a
+declare i32 @b_0 ;b
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;c
+	declare i32 %l2 ;a
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	entry
+	@a_0=3
+	@b_0=5
+	%l2=5
+	%t3=%l2
+	%t4=@b_0
+	%t5 = add %t3, %t4
+	%l1=%t5
+	%t6=%l1
+	%l0=%t6
+	br Label.L1
+.L1:
+	exit %l0
+}
+

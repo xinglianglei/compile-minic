@@ -1,0 +1,113 @@
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@func(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %t3 
+	declare i1 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	%l1=t0
+	entry
+	%t3=%l1
+	%t4=cmp LE %t3, 50
+	bc %t4,label.L2,label.L3
+.L2:
+	%t5=%l1
+	call  @putint(i32 %t5);
+	%l0=1
+	br Label.L1
+	br Label.L4
+.L3:
+	%t6=%l1
+	call  @putint(i32 %t6);
+	%l0=0
+	br Label.L1
+	br Label.L4
+.L4:
+.L1:
+	exit %l2
+}
+
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %t2 
+	declare i1 %t3 
+	declare i32 %t4 
+	declare i1 %t5 
+	declare i1 %t6 
+	declare i32 %t7 
+	declare i1 %t8 
+	declare i1 %t9 
+	declare i32 %t10 
+	declare i1 %t11 
+	declare i32 %t12 
+	declare i1 %t13 
+	declare i32 %t14 
+	declare i1 %t15 
+	declare i1 %t16 
+	declare i1 %t17 
+	entry
+	%t2=call i32 @func(i32 50);
+	%t3 = eq %t2, 1
+	bc %t3,label.L2,label.L4
+.L2:
+	%t4=call i32 @func(i32 100);
+	%t5 = eq %t4, 0
+	bc %t5,label.L3,label.L4
+.L3:
+	%t6=1
+.L4:
+	%t6=0
+	bc %t6,label.L6,label.L5
+.L5:
+	%t7=call i32 @func(i32 0);
+	%t8 = eq %t7, 1
+	bc %t8,label.L6,label.L7
+.L6:
+	%t9=1
+.L7:
+	%t9=0
+	bc %t9,label.L8,label.L9
+.L8:
+	%l1=0
+	br Label.L10
+.L9:
+	%l1=1
+	br Label.L10
+.L10:
+	%t10=call i32 @func(i32 1);
+	%t11 = eq %t10, 1
+	bc %t11,label.L12,label.L11
+.L11:
+	%t12=call i32 @func(i32 50);
+	%t13 = eq %t12, 1
+	bc %t13,label.L14,label.L16
+.L14:
+	%t14=call i32 @func(i32 40);
+	%t15 = eq %t14, 1
+	bc %t15,label.L15,label.L16
+.L15:
+	%t16=1
+.L16:
+	%t16=0
+	bc %t16,label.L12,label.L13
+.L12:
+	%t17=1
+.L13:
+	%t17=0
+	bc %t17,label.L17,label.L18
+.L17:
+	%l1=0
+	br Label.L19
+.L18:
+	%l1=1
+	br Label.L19
+.L19:
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

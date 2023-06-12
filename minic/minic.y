@@ -234,9 +234,9 @@ using namespace std;
                     auto ptr=new AST_FuncDef();
                     auto tmp=(AST_Block*)($6);
                     if(tmp->is_null)
-                        ptr->tag=AST_FuncDef::DECL_NOPARAM;
+                        ptr->tag=AST_FuncDef::DECL_PARAM;
                     else
-                        ptr->tag=AST_FuncDef::DEF_NOPARAM;
+                        ptr->tag=AST_FuncDef::DEF_PARAM;
                     ptr->func_type=unique_ptr<string>($1);
                     ptr->func_name=unique_ptr<string>($2.id);
                     ptr->func_params=unique_ptr<AST_Vec>($4);

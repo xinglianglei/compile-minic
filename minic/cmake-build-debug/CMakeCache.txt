@@ -134,7 +134,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=minic-flex-bison
+CMAKE_PROJECT_NAME:STATIC=minic
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0.0.1
@@ -266,6 +266,15 @@ minic-flex-bison_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 minic-flex-bison_SOURCE_DIR:STATIC=D:/CompilerTools/code/minic
+
+//Value Computed by CMake
+minic_BINARY_DIR:STATIC=D:/CompilerTools/code/minic/cmake-build-debug
+
+//Value Computed by CMake
+minic_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+minic_SOURCE_DIR:STATIC=D:/CompilerTools/code/minic
 
 
 ########################

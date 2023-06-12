@@ -1,0 +1,72 @@
+declare int@fun(i32 %t0,i32 %t1) {
+	declare i32 %l2 
+	declare i32 %l3 
+	declare i32 %l4 
+	declare i32 %l5 ;rem
+	declare i32 %t6 
+	declare i1 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	%l2=t0
+	%l3=t1
+	entry
+	br Label.L2
+.L2:
+	%t6=%l3
+	%t7=cmp GT %t6, 0
+	bc %t7,label.L3,label.L4
+.L3:
+	%t8=%l2
+	%t9=%l3
+	%t10 = mod %t8, %t9
+	%l5=%t10
+	%t11=%l3
+	%l2=%t11
+	%t12=%l5
+	%l3=%t12
+	br Label.L2
+.L4:
+	%t13=%l2
+	%l0=%t13
+	br Label.L1
+.L1:
+	exit %l4
+}
+
+declare int@getint();	declare i32 %l0 
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare void@putch(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;n
+	declare i32 %l2 ;m
+	declare i32 %l3 ;num
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	entry
+	%t4=call i32 @getint();
+	%l2=%t4
+	%t5=call i32 @getint();
+	%l1=%t5
+	%t6=%l2
+	%t7=%l1
+	%t8=call i32 @fun(i32 %t6, i32 %t7);
+	%l3=%t8
+	%t9=%l3
+	call  @putint(i32 %t9);
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

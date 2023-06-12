@@ -8,7 +8,7 @@
 using namespace std;
 
 class IRCode {
-private:
+public:
     string code;
 
 public:
@@ -32,24 +32,24 @@ public:
         code += "exit " + str + "\n";
     }
 
-    void code_globalInt(const string &name)
+    void code_globalInt(const string &name, const string &type, const string &info = "")
     {
-        code += "declare i32 " + name + "\n";
+        code += "declare " + type + " " + name + " " + info + "\n";
     }
 
-    void code_globalArray(const string &name, const string &type)
+    void code_globalArray(const string &name, const string &type, const string &info = "")
     {
-        code += "declare i32 " + name + type + "\n";
+        code += "declare i32 " + name + type + " " + info + "\n";
     }
 
-    void code_valDecl(const string &name)
+    void code_valDecl(const string &name, const string &type, const string &info = "")
     {
-        code += "\tdeclare i32 " + name + "\n";
+        code += "\tdeclare " + type + " " + name + " " + info + "\n";
     }
 
-    void code_arrayDecl(const string &name, const string &type)
+    void code_arrayDecl(const string &name, const string &type, const string &info = "")
     {
-        code += "\tdeclare i32 " + name + type + "\n";
+        code += "\tdeclare i32 " + name + type + " " + info + "\n";
     }
 
     void code_cmp(const string &tg, const string &op, const string &str1, const string &str2)
@@ -64,7 +64,7 @@ public:
 
     void code_br(const string &tg)
     {
-        code += "\tbr Label" + tg + "\n";
+        code += "\tbr label " + tg + "\n";
     }
 
     void code_call(const std::string &to, const std::string &func, const std::vector<std::string> &params)

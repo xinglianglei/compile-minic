@@ -21,11 +21,12 @@ string NameOrder::getLocalName()
 string NameOrder::getGlobalName(const string &s)
 {
     auto i = no.find(s);
-    if (i == no.end()) {
+    return "@" + s;
+    /*if (i == no.end()) {
         no.insert(make_pair(s, 1));
         return "@" + s + "_0";
     }
-    return "@" + s + "_" + to_string(i->second++);
+    return "@" + s + "_" + to_string(i->second++);*/
 }
 string NameOrder::getLabelName()
 {
@@ -153,6 +154,11 @@ void SymTabStk::push()
 {
     sym_tb_st.emplace_back(new SymTab_t());
 }
+/*
+void SymTabStk::push_block()
+{
+    sym_tb_st.emplace_back(new SymTab_t());
+}*/
 
 void SymTabStk::pop()
 {

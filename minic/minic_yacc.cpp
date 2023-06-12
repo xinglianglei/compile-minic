@@ -1520,9 +1520,9 @@ yyreduce:
                     auto ptr=new AST_FuncDef();
                     auto tmp=(AST_Block*)((yyvsp[0].ast_baseVal));
                     if(tmp->is_null)
-                        ptr->tag=AST_FuncDef::DECL_NOPARAM;
+                        ptr->tag=AST_FuncDef::DECL_PARAM;
                     else
-                        ptr->tag=AST_FuncDef::DEF_NOPARAM;
+                        ptr->tag=AST_FuncDef::DEF_PARAM;
                     ptr->func_type=unique_ptr<string>((yyvsp[-5].str_val));
                     ptr->func_name=unique_ptr<string>((yyvsp[-4].id_val).id);
                     ptr->func_params=unique_ptr<AST_Vec>((yyvsp[-2].ast_vecVal));

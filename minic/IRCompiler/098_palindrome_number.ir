@@ -1,0 +1,101 @@
+declare int@palindrome(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %l3 ;j
+	declare i32 %l4 ;flag
+	declare i32 %t5 
+	declare i1 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i1 %t13 
+	declare i1 %t14 
+	declare i1 %t15 
+	declare i32 %t16 
+	%l1=t0
+	entry
+	%l3=0
+	br Label.L2
+.L2:
+	%t5=%l3
+	%t6=cmp LT %t5, 4
+	bc %t6,label.L3,label.L4
+.L3:
+	%t7=%l1
+	%t8 = mod %t7, 10
+	=%t8
+	%t9=%l1
+	%t10 = div %t9, 10
+	%l1=%t10
+	%t11=%l3
+	%t12 = add %t11, 1
+	%l3=%t12
+	br Label.L2
+.L4:
+	%t13 = eq , 
+	bc %t13,label.L5,label.L7
+.L5:
+	%t14 = eq , 
+	bc %t14,label.L6,label.L7
+.L6:
+	%t15=1
+.L7:
+	%t15=0
+	bc %t15,label.L8,label.L9
+.L8:
+	%l4=1
+	br Label.L10
+.L9:
+	%l4=0
+	br Label.L10
+.L10:
+	%t16=%l4
+	%l0=%t16
+	br Label.L1
+.L1:
+	exit %l2
+}
+
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;test
+	declare i32 %l2 ;flag
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i1 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	entry
+	%l1=1221
+	%t3=%l1
+	%t4=call i32 @palindrome(i32 %t3);
+	%l2=%t4
+	%t5=%l2
+	%t6 = eq %t5, 1
+	bc %t6,label.L2,label.L3
+.L2:
+	%t7=%l1
+	call  @putint(i32 %t7);
+	br Label.L4
+.L3:
+	%l2=0
+	%t8=%l2
+	call  @putint(i32 %t8);
+	br Label.L4
+.L4:
+	%l2=10
+	%t9=%l2
+	call  @putch(i32 %t9);
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

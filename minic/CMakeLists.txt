@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 # 设置工程名，也就是可执行程序的名字，不含后缀
-set(PROJECT_NAME minic-flex-bison)
+set(PROJECT_NAME minic)
 
 # 设置工程属性，如版本，开发语言等
 project(${PROJECT_NAME} VERSION 1.0.0.1 LANGUAGES CXX)

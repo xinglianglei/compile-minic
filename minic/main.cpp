@@ -65,7 +65,7 @@ std::string trim(const std::string &str)
 int ArgsAnalysis(int argc, char *argv[])
 {
     int ch;
-    const char options[] = "ho:arR";
+    const char options[] = "ho:aiR";
 
     opterr = 1;
 
@@ -81,7 +81,7 @@ lb_check:
         case 'h':
             gShowHelp = true;
             break;
-        case 'r':
+        case 'i':
             // 产生中间IR
             gGenIr = 1;
             break;
@@ -166,7 +166,8 @@ int main(int argc, char *argv[])
 
     // 若指定有参数，则作为词法分析的输入文件
     if ((yyin = fopen(gInputFile.c_str(), "r")) == nullptr) {
-        printf("Can't open file %s\n", gInputFile.c_str());
+        //printf("Can't open file %s\n", gInputFile.c_str());
+        perror("打开文件test.txt失败啦");
         return -1;
     }
 

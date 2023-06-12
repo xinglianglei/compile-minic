@@ -1,0 +1,84 @@
+declare int@dec2bin(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %l3 ;res
+	declare i32 %l4 ;k
+	declare i32 %l5 ;i
+	declare i32 %l6 ;temp
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i1 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i32 %t21 
+	%l1=t0
+	entry
+	%l3=0
+	%l4=1
+	%t7=%l1
+	%l6=%t7
+	br Label.L2
+.L2:
+	%t8=%l6
+	%t9 = ne %t8, 0
+	bc %t9,label.L3,label.L4
+.L3:
+	%t10=%l6
+	%t11 = mod %t10, 2
+	%l5=%t11
+	%t12=%l4
+	%t13=%l5
+	%t14 = mul %t12, %t13
+	%t15=%l3
+	%t16 = add %t14, %t15
+	%l3=%t16
+	%t17=%l4
+	%t18 = mul %t17, 10
+	%l4=%t18
+	%t19=%l6
+	%t20 = div %t19, 2
+	%l6=%t20
+	br Label.L2
+.L4:
+	%t21=%l3
+	%l0=%t21
+	br Label.L1
+.L1:
+	exit %l2
+}
+
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %l2 ;res
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	entry
+	%l1=400
+	%t3=%l1
+	%t4=call i32 @dec2bin(i32 %t3);
+	%l2=%t4
+	%t5=%l2
+	call  @putint(i32 %t5);
+	%l2=10
+	%t6=%l2
+	call  @putch(i32 %t6);
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

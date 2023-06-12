@@ -1,0 +1,112 @@
+int
+BType : T_INT
+ifElseIf
+(
+)
+{
+BlockItemList   :
+int
+BType : T_INT
+a
+;
+VarDef : IDENT
+VarDefList  : VarDefList ',' VarDef
+VarDecl : BType VarDefList ';'
+Decl : VarDecl
+------BlockItem : Decl------
+BlockItemList   : BlockItemList BlockItem
+a
+=
+LVal : IDENT
+5
+Number : NUM
+PrimaryExp  : Number
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+;
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :RelExp
+LAndExp :EqExp
+LOrExp :LAndExp
+Exp : LOrExp
+SimpleStmt : LVal '=' Exp ';'
+MatchedStmt : SimpleStmt
+Stmt:MatchedStmt
+------BlockItem : Stmt------
+BlockItemList   : BlockItemList BlockItem
+int
+BType : T_INT
+b
+;
+VarDef : IDENT
+VarDefList  : VarDefList ',' VarDef
+VarDecl : BType VarDefList ';'
+Decl : VarDecl
+------BlockItem : Decl------
+BlockItemList   : BlockItemList BlockItem
+b
+=
+LVal : IDENT
+10
+Number : NUM
+PrimaryExp  : Number
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+;
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :RelExp
+LAndExp :EqExp
+LOrExp :LAndExp
+Exp : LOrExp
+SimpleStmt : LVal '=' Exp ';'
+MatchedStmt : SimpleStmt
+Stmt:MatchedStmt
+------BlockItem : Stmt------
+BlockItemList   : BlockItemList BlockItem
+if
+(
+a
+==
+LVal : IDENT
+PrimaryExp  : LVal
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :RelExp
+6
+Number : NUM
+PrimaryExp  : Number
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+||
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :EqExp EQ RelExp
+LAndExp :EqExp
+LOrExp :LAndExp
+b
+==
+LVal : IDENT
+PrimaryExp  : LVal
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :RelExp
+0
+Number : NUM
+PrimaryExp  : Number
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+xb
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :EqExp EQ RelExp
+LAndExp :EqExp
+LOrExp :LOrExp OR LAndExp
+Exp : LOrExp
+error: syntax error
+yyparse failed

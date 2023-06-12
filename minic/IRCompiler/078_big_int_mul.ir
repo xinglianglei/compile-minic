@@ -1,0 +1,265 @@
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %l2 ;j
+	declare i32 %l3 ;t
+	declare i32 %l4 ;n
+	declare i32 %l5 ;temp
+	declare i32 %l6 ;len1
+	declare i32 %l7 ;len2
+	declare i32 %t8 
+	declare i1 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	declare i1 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	declare i1 %t19 
+	declare i32 %t20 
+	declare i32 %t21 
+	declare i32 %t22 
+	declare i32 %t23 
+	declare i32 %t24 
+	declare i32 %t25 
+	declare i32 %t26 
+	declare i32 %t27 
+	declare i1 %t28 
+	declare i32 %t29 
+	declare i32 %t30 
+	declare i32 %t31 
+	declare i32 %t32 
+	declare i32 %t33 
+	declare i32 %t34 
+	declare i1 %t35 
+	declare i32 %t36 
+	declare i32 %t37 
+	declare i32 %t38 
+	declare i32 %t39 
+	declare i1 %t40 
+	declare i32 %t41 
+	declare i32 %t42 
+	declare i32 %t43 
+	declare i32 %t44 
+	declare i1 %t45 
+	declare i32 %t46 
+	declare i32 %t47 
+	declare i32 %t48 
+	declare i32 %t49 
+	declare i32 %t50 
+	declare i32 %t51 
+	declare i32 %t52 
+	declare i32 %t53 
+	declare i32 %t54 
+	declare i32 %t55 
+	declare i32 %t56 
+	declare i32 %t57 
+	declare i32 %t58 
+	declare i32 %t59 
+	declare i32 %t60 
+	declare i1 %t61 
+	declare i32 %t62 
+	declare i32 %t63 
+	declare i32 %t64 
+	declare i32 %t65 
+	declare i32 %t66 
+	declare i1 %t67 
+	declare i32 %t68 
+	declare i32 %t69 
+	entry
+	%l6=20
+	%l7=20
+	=1
+	=2
+	=3
+	=4
+	=5
+	=6
+	=7
+	=8
+	=9
+	=0
+	=1
+	=2
+	=3
+	=4
+	=5
+	=6
+	=7
+	=8
+	=9
+	=0
+	=2
+	=3
+	=4
+	=2
+	=5
+	=7
+	=9
+	=9
+	=0
+	=1
+	=9
+	=8
+	=7
+	=6
+	=4
+	=3
+	=2
+	=1
+	=2
+	=2
+	%l1=0
+	br Label.L2
+.L2:
+	%t8=%l1
+	%t9=cmp LT %t8, 40
+	bc %t9,label.L3,label.L4
+.L3:
+	=0
+	%t10=%l1
+	%t11 = add %t10, 1
+	%l1=%t11
+	br Label.L2
+.L4:
+	%l1=0
+	br Label.L5
+.L5:
+	%t12=%l1
+	%t13=%l6
+	%t14=cmp LT %t12, %t13
+	bc %t14,label.L6,label.L7
+.L6:
+	=
+	%t15=%l1
+	%t16 = add %t15, 1
+	%l1=%t16
+	br Label.L5
+.L7:
+	%l1=0
+	br Label.L8
+.L8:
+	%t17=%l1
+	%t18=%l7
+	%t19=cmp LT %t17, %t18
+	bc %t19,label.L9,label.L10
+.L9:
+	=
+	%t20=%l1
+	%t21 = add %t20, 1
+	%l1=%t21
+	br Label.L8
+.L10:
+	%t22=%l6
+	%t23=%l7
+	%t24 = add %t22, %t23
+	%t25 = sub %t24, 1
+	%l4=%t25
+	%l1=0
+	br Label.L11
+.L11:
+	%t26=%l1
+	%t27=%l4
+	%t28=cmp LE %t26, %t27
+	bc %t28,label.L12,label.L13
+.L12:
+	=0
+	%t29=%l1
+	%t30 = add %t29, 1
+	%l1=%t30
+	br Label.L11
+.L13:
+	%l5=0
+	%t31=%l7
+	%t32 = sub %t31, 1
+	%l1=%t32
+	br Label.L14
+.L14:
+	%t33=%l1
+	%t34 = neg 0, 1
+	%t35=cmp GT %t33, %t34
+	bc %t35,label.L15,label.L16
+.L15:
+	%l3=
+	%t36=%l6
+	%t37 = sub %t36, 1
+	%l2=%t37
+	br Label.L17
+.L17:
+	%t38=%l2
+	%t39 = neg 0, 1
+	%t40=cmp GT %t38, %t39
+	bc %t40,label.L18,label.L19
+.L18:
+	%t41=%l3
+	%t42 = mul %t41, 
+	%t43 = add , %t42
+	%l5=%t43
+	%t44=%l5
+	%t45=cmp GE %t44, 10
+	bc %t45,label.L20,label.L21
+.L20:
+	%t46=%l5
+	=%t46
+	%t47=%l5
+	%t48 = div %t47, 10
+	%t49 = add , %t48
+	=%t49
+	br Label.L22
+.L21:
+	%t50=%l5
+	=%t50
+	br Label.L22
+.L22:
+	%t51=%l2
+	%t52 = sub %t51, 1
+	%l2=%t52
+	%t53=%l4
+	%t54 = sub %t53, 1
+	%l4=%t54
+	br Label.L17
+.L19:
+	%t55=%l4
+	%t56=%l6
+	%t57 = add %t55, %t56
+	%t58 = sub %t57, 1
+	%l4=%t58
+	%t59=%l1
+	%t60 = sub %t59, 1
+	%l1=%t60
+	br Label.L14
+.L16:
+	%t61 = ne , 0
+	bc %t61,label.L23,label.L25
+.L23:
+	call  @putint(i32 );
+	br Label.L25
+.L25:
+	%l1=1
+	br Label.L26
+.L26:
+	%t62=%l1
+	%t63=%l6
+	%t64=%l7
+	%t65 = add %t63, %t64
+	%t66 = sub %t65, 1
+	%t67=cmp LE %t62, %t66
+	bc %t67,label.L27,label.L28
+.L27:
+	call  @putint(i32 );
+	%t68=%l1
+	%t69 = add %t68, 1
+	%l1=%t69
+	br Label.L26
+.L28:
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

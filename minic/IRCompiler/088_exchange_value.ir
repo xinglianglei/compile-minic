@@ -1,0 +1,47 @@
+declare i32 @n_0 ;n
+declare int@getint();	declare i32 %l0 
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare void@putch(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %l2 ;j
+	declare i32 %l5 ;temp
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	entry
+	%t3=call i32 @getint();
+	%l1=%t3
+	%t4=call i32 @getint();
+	%l2=%t4
+	%t6=%l1
+	%l5=%t6
+	%t7=%l2
+	%l1=%t7
+	%t8=%l5
+	%l2=%t8
+	%t9=%l1
+	call  @putint(i32 %t9);
+	%l5=10
+	%t10=%l5
+	call  @putch(i32 %t10);
+	%t11=%l2
+	call  @putint(i32 %t11);
+	%l5=10
+	%t12=%l5
+	call  @putch(i32 %t12);
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

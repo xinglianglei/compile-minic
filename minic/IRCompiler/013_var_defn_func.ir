@@ -1,0 +1,24 @@
+declare int@defn() {
+	declare i32 %l0 
+	entry
+	%l0=4
+	br Label.L1
+.L1:
+	exit %l0
+}
+
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %t2 
+	declare i32 %t3 
+	entry
+	%t2=call i32 @defn();
+	%l1=%t2
+	%t3=%l1
+	%l0=%t3
+	br Label.L1
+.L1:
+	exit %l0
+}
+

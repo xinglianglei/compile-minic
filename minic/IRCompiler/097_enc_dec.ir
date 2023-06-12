@@ -1,0 +1,97 @@
+declare int@enc(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %t3 
+	declare i1 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	%l1=t0
+	entry
+	%t3=%l1
+	%t4=cmp GT %t3, 25
+	bc %t4,label.L2,label.L3
+.L2:
+	%t5=%l1
+	%t6 = add %t5, 60
+	%l1=%t6
+	br Label.L4
+.L3:
+	%t7=%l1
+	%t8 = sub %t7, 15
+	%l1=%t8
+	br Label.L4
+.L4:
+	%t9=%l1
+	%l0=%t9
+	br Label.L1
+.L1:
+	exit %l2
+}
+
+declare int@dec(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 
+	declare i32 %t3 
+	declare i1 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	%l1=t0
+	entry
+	%t3=%l1
+	%t4=cmp GT %t3, 85
+	bc %t4,label.L2,label.L3
+.L2:
+	%t5=%l1
+	%t6 = sub %t5, 59
+	%l1=%t6
+	br Label.L4
+.L3:
+	%t7=%l1
+	%t8 = add %t7, 14
+	%l1=%t8
+	br Label.L4
+.L4:
+	%t9=%l1
+	%l0=%t9
+	br Label.L1
+.L1:
+	exit %l2
+}
+
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %l2 ;res
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	entry
+	%l1=400
+	%t3=%l1
+	%t4=call i32 @enc(i32 %t3);
+	%l2=%t4
+	%t5=%l2
+	%t6=call i32 @dec(i32 %t5);
+	%l2=%t6
+	%t7=%l2
+	call  @putint(i32 %t7);
+	%l2=10
+	%t8=%l2
+	call  @putch(i32 %t8);
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = D:\CompilerTools\code\minic\cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/minic-flex-bison.dir/all
+all: CMakeFiles/minic.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -70,34 +70,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/minic-flex-bison.dir/clean
+clean: CMakeFiles/minic.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/minic-flex-bison.dir
+# Target rules for target CMakeFiles/minic.dir
 
 # All Build rule for target.
-CMakeFiles/minic-flex-bison.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target minic-flex-bison"
-.PHONY : CMakeFiles/minic-flex-bison.dir/all
+CMakeFiles/minic.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target minic"
+.PHONY : CMakeFiles/minic.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/minic-flex-bison.dir/rule: cmake_check_build_system
+CMakeFiles/minic.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/minic-flex-bison.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/minic.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/minic-flex-bison.dir/rule
+.PHONY : CMakeFiles/minic.dir/rule
 
 # Convenience name for target.
-minic-flex-bison: CMakeFiles/minic-flex-bison.dir/rule
-.PHONY : minic-flex-bison
+minic: CMakeFiles/minic.dir/rule
+.PHONY : minic
 
 # clean rule for target.
-CMakeFiles/minic-flex-bison.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/clean
-.PHONY : CMakeFiles/minic-flex-bison.dir/clean
+CMakeFiles/minic.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/clean
+.PHONY : CMakeFiles/minic.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

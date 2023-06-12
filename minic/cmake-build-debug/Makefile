@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named minic-flex-bison
+# Target rules for targets named minic
 
 # Build rule for target.
-minic-flex-bison: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 minic-flex-bison
-.PHONY : minic-flex-bison
+minic: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 minic
+.PHONY : minic
 
 # fast build rule for target.
-minic-flex-bison/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/build
-.PHONY : minic-flex-bison/fast
+minic/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/build
+.PHONY : minic/fast
 
 ast_minic.obj: ast_minic.cpp.obj
 .PHONY : ast_minic.obj
 
 # target to build an object file
 ast_minic.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/ast_minic.cpp.obj
 .PHONY : ast_minic.cpp.obj
 
 ast_minic.i: ast_minic.cpp.i
@@ -141,7 +141,7 @@ ast_minic.i: ast_minic.cpp.i
 
 # target to preprocess a source file
 ast_minic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/ast_minic.cpp.i
 .PHONY : ast_minic.cpp.i
 
 ast_minic.s: ast_minic.cpp.s
@@ -149,7 +149,7 @@ ast_minic.s: ast_minic.cpp.s
 
 # target to generate assembly for a file
 ast_minic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/ast_minic.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/ast_minic.cpp.s
 .PHONY : ast_minic.cpp.s
 
 main.obj: main.cpp.obj
@@ -157,7 +157,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -165,7 +165,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -173,7 +173,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 minic_lex.obj: minic_lex.cpp.obj
@@ -181,7 +181,7 @@ minic_lex.obj: minic_lex.cpp.obj
 
 # target to build an object file
 minic_lex.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_lex.cpp.obj
 .PHONY : minic_lex.cpp.obj
 
 minic_lex.i: minic_lex.cpp.i
@@ -189,7 +189,7 @@ minic_lex.i: minic_lex.cpp.i
 
 # target to preprocess a source file
 minic_lex.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_lex.cpp.i
 .PHONY : minic_lex.cpp.i
 
 minic_lex.s: minic_lex.cpp.s
@@ -197,7 +197,7 @@ minic_lex.s: minic_lex.cpp.s
 
 # target to generate assembly for a file
 minic_lex.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_lex.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_lex.cpp.s
 .PHONY : minic_lex.cpp.s
 
 minic_yacc.obj: minic_yacc.cpp.obj
@@ -205,7 +205,7 @@ minic_yacc.obj: minic_yacc.cpp.obj
 
 # target to build an object file
 minic_yacc.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_yacc.cpp.obj
 .PHONY : minic_yacc.cpp.obj
 
 minic_yacc.i: minic_yacc.cpp.i
@@ -213,7 +213,7 @@ minic_yacc.i: minic_yacc.cpp.i
 
 # target to preprocess a source file
 minic_yacc.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_yacc.cpp.i
 .PHONY : minic_yacc.cpp.i
 
 minic_yacc.s: minic_yacc.cpp.s
@@ -221,7 +221,7 @@ minic_yacc.s: minic_yacc.cpp.s
 
 # target to generate assembly for a file
 minic_yacc.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/minic_yacc.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_yacc.cpp.s
 .PHONY : minic_yacc.cpp.s
 
 symbol.obj: symbol.cpp.obj
@@ -229,7 +229,7 @@ symbol.obj: symbol.cpp.obj
 
 # target to build an object file
 symbol.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/symbol.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/symbol.cpp.obj
 .PHONY : symbol.cpp.obj
 
 symbol.i: symbol.cpp.i
@@ -237,7 +237,7 @@ symbol.i: symbol.cpp.i
 
 # target to preprocess a source file
 symbol.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/symbol.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/symbol.cpp.i
 .PHONY : symbol.cpp.i
 
 symbol.s: symbol.cpp.s
@@ -245,7 +245,7 @@ symbol.s: symbol.cpp.s
 
 # target to generate assembly for a file
 symbol.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic-flex-bison.dir\build.make CMakeFiles/minic-flex-bison.dir/symbol.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/symbol.cpp.s
 .PHONY : symbol.cpp.s
 
 # Help Target
@@ -256,7 +256,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... minic-flex-bison
+	@echo ... minic
 	@echo ... ast_minic.obj
 	@echo ... ast_minic.i
 	@echo ... ast_minic.s

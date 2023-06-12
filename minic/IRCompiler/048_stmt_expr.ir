@@ -1,0 +1,46 @@
+declare i32 @k_0 ;k
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %t2 
+	declare i1 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	entry
+	%l1=0
+	%l1=1
+	br Label.L2
+.L2:
+	%t2=%l1
+	%t3=cmp LE %t2, 9
+	bc %t3,label.L3,label.L4
+.L3:
+	%t4=%l1
+	%t5 = add %t4, 1
+	%l1=%t5
+	%t6=%l1
+	%t7 = add %t6, 1
+	%t8=%l1
+	%t9=%l1
+	%t10 = add %t8, %t9
+	%l1=%t10
+	br Label.L2
+.L4:
+	%t11=%l1
+	call  @putint(i32 %t11);
+	%t12=%l1
+	%l0=%t12
+	br Label.L1
+.L1:
+	exit %l0
+}
+

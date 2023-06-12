@@ -1,25 +1,19 @@
-//int a;
-void main(int x,int y)
+/*int add(int x,int y)
+{
+    return x+y;
+}
+int main()
 {
     int a;
-    a=2;
-    //int b;
-    //b=2;
-    /*if(a>=5)
-    {
-        if(a>=7)
-            a--;
-        else
-            a++;
-    }
-    else
-        a=0;*/
-    if(a>=5)
-    {
-        a--;
-    }
-    else
-        a=-a;
-    return;
-}
+    int b;
+    int c;
+    a=getint();
+    b=2;
+    c=add(a,b);
+    return 0;
+}*/
 //int b;
+int main()
+{
+    return 3;
+}

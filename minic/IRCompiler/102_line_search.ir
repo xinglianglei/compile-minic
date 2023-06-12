@@ -1,0 +1,127 @@
+declare int@getint();	declare i32 %l0 
+declare void@putint(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare void@putch(i32 %t0);	declare i32 %l1 
+	%l1=t0
+declare int@main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %l2 ;sum
+	declare i32 %l9 ;x
+	declare i32 %l10 ;high
+	declare i32 %l11 ;low
+	declare i32 %l12 ;mid
+	declare i32 %l13 ;n
+	declare i32 %l21 ;flag
+	declare i32 %l22 ;j
+	declare i32 %t3 
+	declare i1 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i32 %t23 
+	declare i1 %t24 
+	declare i32 %t25 
+	declare i1 %t26 
+	declare i1 %t27 
+	declare i32 %t28 
+	declare i1 %t29 
+	declare i32 %t30 
+	declare i32 %t31 
+	declare i32 %t32 
+	declare i32 %t33 
+	declare i1 %t34 
+	declare i32 %t35 
+	declare i32 %t36 
+	declare i32 %t37 
+	entry
+	%l2=0
+	%l1=0
+	br Label.L2
+.L2:
+	%t3=%l1
+	%t4=cmp LT %t3, 10
+	bc %t4,label.L3,label.L4
+.L3:
+	%t5=%l1
+	%t6 = add %t5, 1
+	=%t6
+	%t7=%l1
+	%t8 = add %t7, 1
+	%l1=%t8
+	br Label.L2
+.L4:
+	%l13=10
+	%t14=call i32 @getint();
+	%l9=%t14
+	%t15=%l13
+	%t16 = sub %t15, 1
+	%l10=%t16
+	%l11=0
+	%t17=%l10
+	%t18=%l11
+	%t19 = add %t17, %t18
+	%t20 = div %t19, 2
+	%l12=%t20
+	%l21=0
+	%l1=0
+	%l22=0
+	br Label.L5
+.L5:
+	%t23=%l1
+	%t24=cmp LT %t23, 10
+	bc %t24,label.L8,label.L10
+.L8:
+	%t25=%l21
+	%t26 = eq %t25, 0
+	bc %t26,label.L9,label.L10
+.L9:
+	%t27=1
+.L10:
+	%t27=0
+	bc %t27,label.L6,label.L7
+.L6:
+	%t28=%l9
+	%t29 = eq , %t28
+	bc %t29,label.L11,label.L13
+.L11:
+	%l21=1
+	%t30=%l1
+	%l22=%t30
+	br Label.L13
+.L13:
+	%t31=%l1
+	%t32 = add %t31, 1
+	%l1=%t32
+	br Label.L5
+.L7:
+	%t33=%l21
+	%t34 = eq %t33, 1
+	bc %t34,label.L14,label.L15
+.L14:
+	%t35=%l22
+	call  @putint(i32 %t35);
+	br Label.L16
+.L15:
+	%l9=0
+	%t36=%l9
+	call  @putint(i32 %t36);
+	br Label.L16
+.L16:
+	%l9=10
+	%t37=%l9
+	call  @putch(i32 %t37);
+	%l0=0
+	br Label.L1
+.L1:
+	exit %l0
+}
+

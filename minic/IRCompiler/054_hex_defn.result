@@ -1,0 +1,34 @@
+int
+BType : T_INT
+main
+(
+)
+{
+BlockItemList   :
+int
+BType : T_INT
+a
+;
+VarDef : IDENT
+VarDefList  : VarDefList ',' VarDef
+VarDecl : BType VarDefList ';'
+Decl : VarDecl
+------BlockItem : Decl------
+BlockItemList   : BlockItemList BlockItem
+a
+=
+LVal : IDENT
+0
+Number : NUM
+PrimaryExp  : Number
+UnaryExp :PrimaryExp
+MulExp :UnaryExp
+xf
+AddExp :MulExp 
+RelExp :AddExp
+EqExp :RelExp
+LAndExp :EqExp
+LOrExp :LAndExp
+Exp : LOrExp
+error: syntax error
+yyparse failed
