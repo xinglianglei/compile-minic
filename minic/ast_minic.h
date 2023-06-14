@@ -92,6 +92,7 @@ public:
 
 class AST_Vec {
 public:
+    bool is_zero;
     vector<unique_ptr<AST_Base>> vec;
     void push(unique_ptr<AST_Base> &ptr)
     {
@@ -148,6 +149,7 @@ class AST_FuncFParam :public AST_Base {
 public:
     enum TAG { VARIABLE, ARRAY };
     TAG tag;
+    //bool is_zero;
     unique_ptr<string> param_type;
     unique_ptr<string> param_name;
     unique_ptr<AST_Vec> ArrayIndexList;

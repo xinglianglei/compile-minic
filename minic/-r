@@ -97,17 +97,20 @@ define i32 @main() {
 	%t39 = add %t38, 0
 	%t40 = mul %t39, 4
 	%t41 = add %l5, %t40
-	%t43=*%t37
-	%t42 = add %t43, *%t41
+	%t43=*%t41
+	%t42 = add *%t37, %t43
+	%t42 = add *%t37, *%t41
 	%t44 = mul 0, 2
 	%t45 = add %t44, 1
 	%t46 = mul %t45, 4
 	%t47 = add %l5, %t46
 	%t48 = add %t42, *%t47
+	%t48 = add %t42, *%t47
 	%t49 = mul 2, 2
 	%t50 = add %t49, 0
 	%t51 = mul %t50, 4
 	%t52 = add %l1, %t51
+	%t53 = add %t48, *%t52
 	%t53 = add %t48, *%t52
 	%l0 = %t53
 	exit %l0

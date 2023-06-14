@@ -15,6 +15,10 @@ SymTabStk stk;
 MinicType::TYPE tmp;
 BlockController bc;
 WhileStack wst;
+FuncTabStack fts;
+
+
+// 1 表示形参; 2表示实参; 0表示内部
 
 string AST_CompUnit::done(bool option)
 {
@@ -80,6 +84,7 @@ string AST_FuncDef::done(bool option)
         return_Label = stk.getLabelName();
     }
 
+    //开启形参
     if (tag == AST_FuncDef::DECL_PARAM || tag == AST_FuncDef::DEF_PARAM) {
         int param_num = 0;
         for (auto &param : func_params->vec) {
@@ -89,6 +94,7 @@ string AST_FuncDef::done(bool option)
             param_num++;
         }
     }
+    //关闭形参
     code_vec.append(")");
 
     if (tag == AST_FuncDef::DECL_NOPARAM || tag == AST_FuncDef::DECL_PARAM)
@@ -103,15 +109,49 @@ string AST_FuncDef::done(bool option)
         else
             param_num = 0;
         if (tag == AST_FuncDef::DEF_PARAM) {
+            FuncTab *functab = new FuncTab(*func_name);
             for (auto &param : func_params->vec) {
                 auto paramItem = dynamic_cast<AST_FuncFParam *>(param.get());
+                cout << (paramItem->tag == AST_FuncFParam::VARIABLE) << endl;
+                if (paramItem->tag == AST_FuncFParam::VARIABLE) {
+                    stk.insertLocalINT(*(paramItem->param_name));
+                    string localName = stk.getName(*(paramItem->param_name));
+                    code_localval.code_valDecl(localName, "i32");
+                    code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
+                    param_num++;
 
-                stk.insertLocalINT(*(paramItem->param_name));
-                string localName = stk.getName(*(paramItem->param_name));
-                code_localval.code_valDecl(localName, "i32");
-                code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
-                param_num++;
+                    //记录
+                    Func_t *func_t = new Func_t("i32", *(paramItem->param_name));
+                    functab->insert(*func_t);
+                } else {
+                    //获取数组维度
+                    vector<int> len;
+                    for (auto &ce : paramItem->ArrayIndexList->vec) {
+                        auto ce_ = dynamic_cast<AST_Exp *>(ce.get());
+                        len.push_back(ce_->getValue());
+                    }
+                    //获取数组类型
+                    string array_type = stk.getArrayType(len);
+                    //修正数组类型
+                    if (paramItem->ArrayIndexList->is_zero) {
+                        array_type.replace(0, 1, "[0][");
+                    } else {
+                        array_type.replace(0, 3, "[0]");
+                    }
+                    //插入局部变量,注意这里插入数组，不是INT
+                    stk.insertLocalArray(*(paramItem->param_name), len, MinicType::ARRAY);
+                    //找到局部变量
+                    string localName = stk.getName(*(paramItem->param_name));
+                    //插入定义语句
+                    code_localval.code_arrayDecl(localName, array_type, " ;" + *(paramItem->param_name));
+
+                    //记录
+                    Func_t *func_t = new Func_t("array", *(paramItem->param_name), array_type);
+                    functab->insert(*func_t);
+                }
             }
+            //插入函数栈
+            fts.insert(*functab);
         }
         auto ast_block = dynamic_cast<AST_Block *>(func_block.get());
         ast_block->func_params = func_params.get();
@@ -147,9 +187,16 @@ string AST_FuncFParam::done(bool option)
         for (auto &index : (*ArrayIndexList).vec) {
             auto index_exp = dynamic_cast<AST_ConstExp *>(index.get());
             string val = (index_exp->get_value());
-            if (param_num == 0)
-                code_vec.append("[0]");
-            else {
+            if (param_num == 0) {
+                if (ArrayIndexList->is_zero) {
+                    code_vec.append("[0]");
+                    code_vec.append("[" + val + "]");
+                    param_num++;
+                } else {
+                    code_vec.append("[0]");
+                    param_num++;
+                }
+            } else {
                 code_vec.append("[" + val + "]");
                 param_num++;
             }
@@ -196,9 +243,18 @@ string AST_Stmt::done(bool option)
         }
         //bc.finish();
     } else if (tag == ASSIGN) {
+
         string val = exp->done();
         string to = lval->done(true);
-        code_stmt.append("\t" + to + "=" + val + "\n");
+        string flag = "*";
+        //同指针，换右值
+        if ((val.find(flag) != string::npos) && (to.find(flag) != string::npos)) {
+            string tmp = stk.getTmpName();
+            code_tmpval.code_valDecl(tmp, "i32");
+            code_stmt.append("\t" + tmp + "=" + val + "\n");
+            code_stmt.append("\t" + to + "=" + tmp + "\n");
+        } else
+            code_stmt.append("\t" + to + "=" + val + "\n");
     } else if (tag == BLOCK) {
         auto block_ = dynamic_cast<AST_Block *>(block.get());
         //修改了
@@ -286,52 +342,94 @@ string AST_LVal::done(bool option)
                 return stk.getName(*ident);
             }
         } else {
+            FuncTab functab = fts.findFunc(fts.current_func);
+            string paramType = functab.func_Params[fts.cnt].param_ArrayType;
             // func(ident) 参数的类型不一定，可能是i32 i8 i1
             if (ty->value == -1) {
                 string tmp = stk.getTmpName();
-                code_tmpval.code_valDecl(tmp, "i32");
-                code_stmt.append(tmp + "=" + stk.getName(*ident));;
+                code_tmpval.code_arrayDecl(tmp, paramType, " ;*ident");
+                code_stmt.append(tmp + "=" + stk.getName(*ident) + "\n");
                 return tmp;
             }
             string tmp = stk.getTmpName();
-            code_tmpval.code_valDecl(tmp, "i32");
-            string tmp2 = stk.getName(*ident);
-            code_stmt.append(tmp + "*" + tmp2);
+            code_tmpval.code_arrayDecl(tmp, paramType, " ;*ident");
+            code_stmt.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
             return tmp;
         }
-    } else {/*
+    } else {
         vector<string> index;
         vector<int> len;
 
-        for (auto &e : exps) {
+        for (auto &e : exps->vec) {
             index.push_back(e->done());
         }
 
-        MinicType *ty = stk.getType(ident);
-        ty->getArrayType(len);
+        MinicType *type = stk.getType(*ident);
+        type->getArrayType(len);
 
-        // hint: len可以是-1开头的，说明这个数组是函数中使用的参数
-        // 如 a[-1][3][2],表明a是参数 a[][3][2], 即 *[3][2].
-        // 此时第一步不能用getelemptr，而应该getptr
+        //找到数组对应的局部变量
+        string tmp_val = stk.getName(*ident);
+        //找到数组的维度
+        string tmp_type = stk.getArrayType(len);
+        //code_tmpval.code_arrayDecl(tmp_val, tmp_type, " ;" + *ident);
+        //string first_indexed = stk.getTmpName();
+        //code_stmt.append(tmp_val + "=" + name);
+        //这是两个用来计算数组地址的乘加临时变量
+        string tmp_name, tmp_name1;
+        //cout << tmp_type << endl;
+        tmp_name1 = index[0];
+        if (index.size() == 0) {
+            return tmp_val;
+        }
 
+        for (int i = 0; i < index.size() - 1; i++) {
+            tmp_name = stk.getTmpName();
+            cout << tmp_name << endl;
+            code_tmpval.code_valDecl(tmp_name, "i32");
+            code_stmt.code_binary("mul", tmp_name, tmp_name1, to_string(len[i + 1]));
+            tmp_name1 = stk.getTmpName();
+            code_tmpval.code_valDecl(tmp_name1, "i32");
+            code_stmt.code_binary("add", tmp_name1, tmp_name, index[i + 1]);
+        }
+
+        tmp_name = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_name, "i32");
+        code_stmt.code_binary("mul", tmp_name, tmp_name1, "4");
+        //装着数组元素的地址
+        string location = stk.getTmpName();
+        code_tmpval.code_valDecl(location, "i32*");
+        code_stmt.code_binary("add", location, tmp_val, tmp_name);
+        if (index.size() < len.size())
+            return location;
+        else
+            return "*" + location;
+
+        /*//装着数组的首地址的局部变量
         string name = stk.getName(*ident);
-        string tmp;
         if (len.size() != 0 && len[0] == 0) {
-            vector<int> sublen(len.begin() + 1, len.end());
+            //vector<int> sublen(len.begin() + 1, len.end());
+            //声明数组的临时变量，装着数组首地址
             string tmp_val = stk.getTmpName();
-            ks.load(tmp_val, name);
-            string first_indexed = st.getTmpName();
-            ks.getptr(first_indexed, tmp_val, index[0]);
-            if (index.size() > 1) {
-                tmp = getElemPtr(
-                    first_indexed,
-                    vector<string>(
-                        index.begin() + 1, index.end()
-                    )
-                );
-            } else {
-                tmp = first_indexed;
+            string tmp_type = stk.getArrayType(len);
+            code_tmpval.code_arrayDecl(tmp_val, tmp_type, " ;" + *ident);
+            string first_indexed = stk.getTmpName();
+            code_stmt.append(tmp_val + "=" + name);
+            //这是两个用来计算数组地址的乘加临时变量
+            string tmp_name, tmp_name1;
+            for (int i = 0; i < index.size()-1; i++) {
+                tmp_name = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp_name, "i32*");
+                code_stmt.code_binary("mul", tmp_name, index[i], to_string(len[i+1]));
+                tmp_name1 = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp_name, "i32*");
+                code_stmt.code_binary("add", tmp_name1, tmp_name, index[i+1]);
             }
+            //装着数组元素的地址
+            string location = stk.getTmpName();
+            code_tmpval.code_valDecl(location, "i32*");
+            code_stmt.code_binary("add", location, tmp_val, tmp_name1);
+
+            return location;
 
         } else {
             tmp = getElemPtr(name, index);
@@ -348,7 +446,6 @@ string AST_LVal::done(bool option)
         string tmp2 = st.getTmpName();
         ks.load(tmp2, tmp);
         return tmp2;*/
-        return "";
     }
 }
 
@@ -378,6 +475,7 @@ string AST_VarDecl::done(bool option)
     return "";
 }
 
+//增加了对数组的处理
 string AST_VarDef::done(bool option)
 {
     if (tag == AST_VarDef::VARIABLE) {
@@ -392,6 +490,40 @@ string AST_VarDef::done(bool option)
             string name = stk.getName(*ident);
             code_localval.code_valDecl(name, "i32", ";" + *ident);
             //code_stmt.code_valDecl(name, "i32");
+        }
+    } else {
+        vector<int> len;
+        for (auto &ce : arrayIndexList->vec) {
+            auto ce_ = dynamic_cast<AST_Exp *>(ce.get());
+            //cout << ce_->getValue() << endl;
+            len.push_back(ce_->getValue());
+        }
+        if (option) {
+            stk.insertGlobalArray(*ident, len, MinicType::ARRAY);
+
+            string name = stk.getName(*ident);
+            string array_type = stk.getArrayType(len);
+
+            int tot_len = 1;
+            for (auto i : len) tot_len *= i;
+            string *init = new string[tot_len];
+            for (int i = 0; i < tot_len; ++i)
+                init[i] = "0";
+
+            code_vec.code_globalArray(name, array_type, " ;" + *ident);
+        } else {
+            stk.insertLocalArray(*ident, len, MinicType::ARRAY);
+
+            string name = stk.getName(*ident);
+            string array_type = stk.getArrayType(len);
+
+            int tot_len = 1;
+            for (auto i : len) tot_len *= i;
+            string *init = new string[tot_len];
+            for (int i = 0; i < tot_len; ++i)
+                init[i] = "0";
+
+            code_localval.code_arrayDecl(name, array_type, " ;" + *ident);
         }
     }
 
@@ -574,12 +706,29 @@ string AST_AddExp::done(bool option)
 
     a = addExp->done();
     b = mulExp->done();
-
+    string flag = "*";
     string op_ = op == AST_OP_ADD ? "add" : "sub";
 
     c = stk.getTmpName();
     code_tmpval.code_valDecl(c, "i32");
-    code_stmt.code_binary(op_, c, a, b);
+
+    string tmp_a, tmp_b;
+    if ((a.find(flag) != string::npos)) {
+        tmp_a = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_a, "i32");
+        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+    } else {
+        tmp_a = a;
+    }
+    if ((b.find(flag) != string::npos)) {
+        tmp_b = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_b, "i32");
+        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+    } else {
+        tmp_b = b;
+    }
+    code_stmt.code_binary(op_, c, tmp_a, tmp_b);
+
     return c;
 }
 
@@ -757,10 +906,14 @@ int AST_Initial::getValue()
 
 string AST_FuncCall::done(bool option)
 {
+    fts.current_func = *id_val;
     vector<string> args;
+    fts.cnt = 0;
     if (is_param) {
-        for (auto &rparam : params->vec)
+        for (auto &rparam : params->vec) {
             args.push_back(rparam->done());
+            fts.cnt++;
+        }
     }
 
     string func_name = stk.getName(*id_val);
@@ -777,16 +930,39 @@ string AST_FuncCall::done(bool option)
     }
     if (is_param) {
         int param_cnt = 0;
-        for (auto &param : params->vec) {
-            auto param_ast = dynamic_cast<AST_Exp1 *>(param.get());
-            if (param_cnt > 0) {
-                code_stmt.append(", ");
+        FuncTab functab = fts.findFunc(*id_val);
+        if (functab.is_none == true) {
+            string param_type;
+            for (auto &param : params->vec) {
+                //param_type = functab.func_Params[param_cnt].param_Type;
+                auto param_ast = dynamic_cast<AST_Exp1 *>(param.get());
+                if (param_cnt > 0) {
+                    code_stmt.append(", ");
+                }
+                //这个地方的变量类型可调！！！
+                string tmp = args[param_cnt];
+                code_stmt.append("i32 " + tmp);
+                param_cnt++;
             }
-            //这个地方的变量类型可调！！！
-            string tmp = args[param_cnt];
-            code_stmt.append("i32 " + tmp);
-            param_cnt++;
+        } else {
+            string param_type;
+            for (auto &param : params->vec) {
+                param_type = functab.func_Params[param_cnt].param_Type;
+                auto param_ast = dynamic_cast<AST_Exp1 *>(param.get());
+                if (param_cnt > 0) {
+                    code_stmt.append(", ");
+                }
+                //这个地方的变量类型可调！！！
+                string tmp = args[param_cnt];
+                if (param_type == "i32")
+                    code_stmt.append("i32 " + tmp);
+                else
+                    code_stmt.append("i32 " + tmp + functab.func_Params[param_cnt].param_ArrayType);
+                param_cnt++;
+            }
         }
+
+
     }
     code_stmt.append(");\n");
     if (func_type->type == MinicType::FUNC_INT) {

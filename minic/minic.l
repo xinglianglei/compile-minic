@@ -124,14 +124,14 @@ white_line  [\r\n]
 {Octal}         {
                 cout<<yytext<<endl; 
                 yylval.int_val.val = strtol(yytext, nullptr, 0); 
-                cout<<yylval.int_val.val<<endl;
+                //cout<<yylval.int_val.val<<endl;
                 yylval.int_val.lineno = yylineno;
                 return NUM; }
 {Hexadecimal}   { 
-                cout<<"十六进制"<<endl;
+                //cout<<"十六进制"<<endl;
                 cout<<yytext<<endl; 
                 yylval.int_val.val = strtol(yytext, nullptr, 0); 
-                cout<<yylval.int_val.val<<endl;
+                //cout<<yylval.int_val.val<<endl;
                 yylval.int_val.lineno = yylineno;
                 return NUM; }
 

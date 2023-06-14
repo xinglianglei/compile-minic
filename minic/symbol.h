@@ -18,6 +18,8 @@ public:
     string getLocalName();
     string getGlobalName(const string &s);
     string getLabelName();
+    string getTmpArrayName(const vector<int> &vec);
+    string getTmpPtrName();
 };
 
 
@@ -99,6 +101,37 @@ public:
 
     string getTmpName();   // inherit from name manager
     string getLabelName(); // inherit from name manager
+    string getArrayType(const vector<int> &vec);
+    string getTmpArrayName(const vector<int> &vec);
+    string getTmpPtrName();
     //string getLocalName(const string &ident);   // aux var name, such as @short_circuit_res,shouldn't insert it into Symbol table.
     ///*string getGlobalName(const string &var); // aux var name, such as @short_circuit
 };
+
+class Func_t {
+public:
+    string param_Type;
+    string param_Name;
+    string param_ArrayType;
+    Func_t();
+    Func_t(string param_Type, string param_Name, string param_ArrayType = "") : param_Type(param_Type), param_Name(param_Name), param_ArrayType(param_ArrayType) {}
+};
+
+class FuncTab {
+public:
+    string func_Name;
+    vector<Func_t> func_Params;
+    bool is_none = false;
+    FuncTab(string func_Name) :func_Name(func_Name) {}
+    void insert(Func_t func_t);
+};
+
+class FuncTabStack {
+public:
+    string current_func;//当前函数名
+    int cnt;//当前函数参数
+    vector<FuncTab> func_Tabs;
+    FuncTab findFunc(const string &func_Name);
+    void insert(FuncTab func_Tab);
+};
+

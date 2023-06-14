@@ -46,13 +46,16 @@ define i32 @main() {
 	declare i32 %t44 
 	declare i32 %t45 
 	declare i32 %t46 
-	declare i32* %t47 
-	declare i32 %t48 
+	declare i32 %t47 
+	declare i32* %t48 
 	declare i32 %t49 
 	declare i32 %t50 
 	declare i32 %t51 
-	declare i32* %t52 
+	declare i32 %t52 
 	declare i32 %t53 
+	declare i32* %t54 
+	declare i32 %t55 
+	declare i32 %t56 
 	entry
 	%t6 = mul 2, 2
 	%t7 = add %t6, 0
@@ -98,18 +101,21 @@ define i32 @main() {
 	%t40 = mul %t39, 4
 	%t41 = add %l5, %t40
 	%t43=*%t37
-	%t42 = add %t43, *%t41
-	%t44 = mul 0, 2
-	%t45 = add %t44, 1
-	%t46 = mul %t45, 4
-	%t47 = add %l5, %t46
-	%t48 = add %t42, *%t47
-	%t49 = mul 2, 2
-	%t50 = add %t49, 0
-	%t51 = mul %t50, 4
-	%t52 = add %l1, %t51
-	%t53 = add %t48, *%t52
-	%l0 = %t53
+	%t44=*%t41
+	%t42 = add %t43, %t44
+	%t45 = mul 0, 2
+	%t46 = add %t45, 1
+	%t47 = mul %t46, 4
+	%t48 = add %l5, %t47
+	%t50=*%t48
+	%t49 = add %t42, %t50
+	%t51 = mul 2, 2
+	%t52 = add %t51, 0
+	%t53 = mul %t52, 4
+	%t54 = add %l1, %t53
+	%t56=*%t54
+	%t55 = add %t49, %t56
+	%l0 = %t55
 	exit %l0
 }
 

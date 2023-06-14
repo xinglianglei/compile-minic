@@ -33,6 +33,20 @@ string NameOrder::getLabelName()
     return ".L" + to_string(cnt_label++);
 }
 
+string NameOrder::getTmpArrayName(const vector<int> &vec)
+{
+    std::string ans = "";
+    for (int i = vec.size() - 1; i >= 0; --i) {
+        ans = "[" + ans + std::to_string(vec[i]) + "]";
+    }
+    return "%t" + ans + to_string(cnt_val++);
+}
+
+string NameOrder::getTmpPtrName()
+{
+    return "%t" + to_string(cnt_val++);
+}
+
 MinicType::MinicType() :type(INT), value(-1), next(nullptr) {}
 
 MinicType::MinicType(TYPE _t) :type(_t), value(-1), next(nullptr) {}
@@ -73,8 +87,9 @@ void MinicType::getArrayType(vector<int> &len)
 {
     len.clear();
     MinicType *p = this;
+    //注意这里一定是p->value!!!
     while (p->next != nullptr && (p->type == ARRAY)) {
-        len.push_back(value);
+        len.push_back(p->value);
         p = p->next;
     }
     return;
@@ -277,3 +292,44 @@ string SymTabStk::getLabelName()
 {
     return nm.getGlobalName(var);
 }*/
+
+string SymTabStk::getArrayType(const vector<int> &vec)
+{
+    // int a[w0][w1]...[wn-1]
+    std::string ans = "";
+    for (int i = 0; i < vec.size(); ++i) {
+        ans = ans + "[" + to_string(vec[i]) + "]";
+    }
+    return ans;
+}
+string SymTabStk::getTmpArrayName(const vector<int> &vec)
+{
+    return nm.getTmpArrayName(vec);
+}
+
+string SymTabStk::getTmpPtrName()
+{
+    return nm.getTmpPtrName();
+}
+
+FuncTab FuncTabStack::findFunc(const string &func_Name)
+{
+    for (auto func : func_Tabs) {
+        if (func.func_Name == func_Name) {
+            return func;
+        }
+    }
+    FuncTab tmp("");
+    tmp.is_none = true;
+    return tmp;
+}
+
+void FuncTabStack::insert(FuncTab func_Tab)
+{
+    func_Tabs.push_back(func_Tab);
+}
+
+void FuncTab::insert(Func_t func_t)
+{
+    func_Params.push_back(func_t);
+}

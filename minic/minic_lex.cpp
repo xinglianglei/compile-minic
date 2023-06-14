@@ -1082,7 +1082,7 @@ YY_RULE_SETUP
 {
                 cout<<yytext<<endl; 
                 yylval.int_val.val = strtol(yytext, nullptr, 0); 
-                cout<<yylval.int_val.val<<endl;
+                //cout<<yylval.int_val.val<<endl;
                 yylval.int_val.lineno = yylineno;
                 return NUM; }
 	YY_BREAK
@@ -1090,10 +1090,10 @@ case 42:
 YY_RULE_SETUP
 #line 130 "D:/CompilerTools/code/minic/minic.l"
 { 
-                cout<<"十六进制"<<endl;
+                //cout<<"十六进制"<<endl;
                 cout<<yytext<<endl; 
                 yylval.int_val.val = strtol(yytext, nullptr, 0); 
-                cout<<yylval.int_val.val<<endl;
+                //cout<<yylval.int_val.val<<endl;
                 yylval.int_val.lineno = yylineno;
                 return NUM; }
 	YY_BREAK

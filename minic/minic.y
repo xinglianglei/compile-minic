@@ -261,6 +261,7 @@ using namespace std;
                     ptr->push(param);
                     $$=ptr;
                 };
+    //这里的第一个数组维度可以没有,也可以有
     FuncFParam  : BType IDENT
                 {
                     cout<<"FuncFParam  : BType IDENT"<<endl;
@@ -270,7 +271,18 @@ using namespace std;
                     ptr->param_name=unique_ptr<string>($2.id);
                     $$=ptr;
                 }   
-                | BType IDENT '[' ']'
+                | BType IDENT ArrayIndexList
+                {
+                    cout<<"FuncFParam  : BType IDENT '[' ']'"<<endl;
+                    auto ptr=new AST_FuncFParam();
+                    ptr->tag=AST_FuncFParam::ARRAY;
+                    ptr->param_type=unique_ptr<string>($1);
+                    ptr->param_name=unique_ptr<string>($2.id);
+                    ptr->ArrayIndexList=unique_ptr<AST_Vec>($3);
+                    //ptr->is_zero=$3->is_zero;
+                    $$=ptr;
+                };
+                /*BType IDENT '[' ']'
                 {
                     cout<<"FuncFParam  : BType IDENT '[' ']'"<<endl;
                     auto ptr=new AST_FuncFParam();
@@ -288,14 +300,42 @@ using namespace std;
                     ptr->param_name=unique_ptr<string>($2.id);
                     ptr->ArrayIndexList=unique_ptr<AST_Vec>($5);
                     $$=ptr;
-                };
-                //！！！这里应该是constexp
-    ArrayIndexList : '[' ConstExp ']'
+                }
+                | BType IDENT '[' ConstExp ']'
+                {
+                    cout<<"FuncFParam  : BType IDENT '['ConstExp ']'"<<endl;
+                    auto exp=unique_ptr<AST_Base>($4);
+                    auto ptr=new AST_FuncFParam();
+                    ptr->tag=AST_FuncFParam::ARRAY;
+                    ptr->param_type=unique_ptr<string>($1);
+                    ptr->param_name=unique_ptr<string>($2.id);
+                    $$=ptr;
+                }
+                | BType IDENT '[' ConstExp ']' ArrayIndexList
+                {
+                    cout<<"FuncFParam  : BType IDENT '[' ConstExp ']' ArrayIndexList"<<endl;
+                    auto ptr=new AST_FuncFParam();
+                    ptr->tag=AST_FuncFParam::ARRAY;
+                    ptr->param_type=unique_ptr<string>($1);
+                    ptr->param_name=unique_ptr<string>($2.id);
+                    ptr->ArrayIndexList=unique_ptr<AST_Vec>($5);
+                    $$=ptr;
+                }*/;
+                //！！！这里应该是constexp,!!!
+    ArrayIndexList : '['  ']'
+                    {
+                        cout<<"ArrayIndexList : '['  ']'"<<endl;
+                        auto ptr=new AST_Vec();
+                        ptr->is_zero=true;
+                        $$=ptr;
+                    } 
+                    | '[' ConstExp ']'
                     {
                         cout<<"ArrayIndexList : '[' Exp ']'"<<endl;
                         auto exp=unique_ptr<AST_Base>($2);
                         auto ptr=new AST_Vec();
                         ptr->push(exp);
+                        ptr->is_zero=false;
                         $$=ptr;
                     } 
                     | ArrayIndexList '[' ConstExp ']'
