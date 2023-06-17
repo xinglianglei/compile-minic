@@ -32,6 +32,7 @@ string AST_CompUnit::done(bool option)
     cout << "decl @putarray(i32, *i32)" << endl;
     cout << "decl @putch(*i8)" << endl;
 
+    //增加了内置函数调用的形参类型记录
     stk.insertFunc(string("getint"), MinicType::FUNC_INT);
     stk.insertFunc(string("getch"), MinicType::FUNC_INT);
     stk.insertFunc(string("getarray"), MinicType::FUNC_INT);
@@ -39,6 +40,40 @@ string AST_CompUnit::done(bool option)
     stk.insertFunc(string("putch"), MinicType::FUNC_VOID);
     stk.insertFunc(string("putarray"), MinicType::FUNC_VOID);
     stk.insertFunc(string("putch"), MinicType::FUNC_VOID);
+
+    //int getint()
+    FuncTab *functab = new FuncTab("getint");
+    fts.insert(*functab);
+
+    //int getarray(int a[])
+    functab = new FuncTab("getarray");
+    Func_t *func_t = new Func_t("array", "a", "[0]");
+    functab->insert(*func_t);
+    fts.insert(*functab);
+
+    //int getch()
+    functab = new FuncTab("getch");
+    fts.insert(*functab);
+
+    //void putint(int a)
+    functab = new FuncTab("putint");
+    func_t = new Func_t("i32", "a");
+    functab->insert(*func_t);
+    fts.insert(*functab);
+
+    //void putch(int a)
+    functab = new FuncTab("putch");
+    func_t = new Func_t("i32", "a");
+    functab->insert(*func_t);
+    fts.insert(*functab);
+
+    //void putarray(int n,int a[])
+    functab = new FuncTab("putarray");
+    func_t = new Func_t("i32", "n");
+    functab->insert(*func_t);
+    func_t = new Func_t("array", "a[]", "[0]");
+    functab->insert(*func_t);
+    fts.insert(*functab);
 
     for (auto &decl : this->list_decl) {
         //!!!这里没有const变量，需要可以加,这里还有待修正
@@ -285,8 +320,16 @@ string AST_Stmt::done(bool option)
         stk.insert_Label();
         string s = cond->done();
         //注意!!!
-        if (flag == 0)
-            code_stmt.code_bc(s, while_body, while_end);
+        if (flag == 0) {
+            string tmp_s;
+            if (s.find("*") != string::npos) {
+                tmp_s = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp_s, "i32");
+                code_stmt.append("\t" + tmp_s + "=" + s + "\n");
+            } else tmp_s = s;
+            code_stmt.code_bc(tmp_s, while_body, while_end);
+        }
+
         for (auto index : stk.lab_t.back()->t_line) {
             code_stmt.code.replace(index, 3, while_body);
         }
@@ -319,8 +362,15 @@ string AST_Stmt::done(bool option)
         //短路回填,顺序还没撸出来
         stk.insert_Label();
         string s = cond->done();
-        if (flag == 0)
-            code_stmt.code_bc(s, t, else_body == nullptr ? j : e);
+        if (flag == 0) {
+            string tmp_s;
+            if (s.find("*") != string::npos) {
+                tmp_s = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp_s, "i32");
+                code_stmt.append("\t" + tmp_s + "=" + s + "\n");
+            } else tmp_s = s;
+            code_stmt.code_bc(tmp_s, t, else_body == nullptr ? j : e);
+        }
         for (auto index : stk.lab_t.back()->t_line) {
             code_stmt.code.replace(index, 3, t);
         }
@@ -431,10 +481,11 @@ string AST_LVal::done(bool option)
         string location = stk.getTmpName();
         code_tmpval.code_valDecl(location, "i32*");
         code_stmt.code_binary("add", location, tmp_val, tmp_name);
-        if (index.size() < len.size())
+        //统一处理
+        /*if (index.size() < len.size())
             return location;
-        else
-            return "*" + location;
+        else*/
+        return "*" + location;
 
         /*//装着数组的首地址的局部变量
         string name = stk.getName(*ident);
@@ -628,7 +679,13 @@ string AST_Unary::done(bool option)
         } else {
             string c = stk.getTmpName();
             code_tmpval.code_valDecl(c, "i1");
-            code_stmt.code_cmp(c, "eq", b, "0");
+            if (b.find("*") != string::npos) {
+                string tmp = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp, "i32");
+                code_stmt.append("\t" + tmp + "=" + b + "\n");
+                code_stmt.code_cmp(c, "eq", tmp, "0");
+            } else
+                code_stmt.code_cmp(c, "eq", b, "0");
             return c;
         }
 
@@ -793,7 +850,18 @@ string AST_RelExp::done(bool option)
     }
     string dest = stk.getTmpName();
     code_tmpval.code_valDecl(dest, "i1");
-    code_stmt.code_cmp(dest, op_, a, b);
+    string tmp_a, tmp_b;
+    if (a.find("*") != string::npos) {
+        tmp_a = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_a, "i32");
+        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+    } else tmp_a = a;
+    if (b.find("*") != string::npos) {
+        tmp_b = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_b, "i32");
+        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+    } else tmp_b = b;
+    code_stmt.code_cmp(dest, op_, tmp_a, tmp_b);
     return dest;
 }
 
@@ -821,7 +889,18 @@ string AST_EqExp::done(bool option)
     string op_ = op == AST_OP_EQ ? "eq" : "ne";
     string dest = stk.getTmpName();
     code_tmpval.code_valDecl(dest, "i1");
-    code_stmt.code_cmp(dest, op_, a, b);
+    string tmp_a, tmp_b;
+    if (a.find("*") != string::npos) {
+        tmp_a = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_a, "i32");
+        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+    } else tmp_a = a;
+    if (b.find("*") != string::npos) {
+        tmp_b = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_b, "i32");
+        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+    } else tmp_b = b;
+    code_stmt.code_cmp(dest, op_, tmp_a, tmp_b);
     //code_stmt.code_binary(op_, dest, a, b);
     return dest;
 }
@@ -852,7 +931,14 @@ string AST_LAnd::done(bool option)
     string true_s = ".LT";
     string false_s = ".LF";
 
-    code_stmt.code_bc(lhs, s_1, false_s);
+    //处理为指针的情况
+    string tmp_lhs;
+    if (lhs.find("*") != string::npos) {
+        tmp_lhs = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_lhs, "i32");
+        code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
+    } else tmp_lhs = lhs;
+    code_stmt.code_bc(tmp_lhs, s_1, false_s);
 
     //获取false_s中F的位置
     stk.insert_F(code_stmt.code.size() - 4);
@@ -864,7 +950,14 @@ string AST_LAnd::done(bool option)
         return rhs;
     }
     //string tmp = stk.getTmpName();
-    code_stmt.code_bc(rhs, true_s, false_s);
+    //处理为指针的情况
+    string tmp_rhs;
+    if (rhs.find("*") != string::npos) {
+        tmp_rhs = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_rhs, "i32");
+        code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
+    } else tmp_rhs = rhs;
+    code_stmt.code_bc(tmp_rhs, true_s, false_s);
     //获取true_s中T的位置 false_s中F的位置
     stk.insert_F(code_stmt.code.size() - 4);
     stk.insert_T(code_stmt.code.size() - 13);
@@ -908,7 +1001,14 @@ string AST_LOr::done(bool option)
     string true_s = ".LT";
     string false_s = ".LF";
 
-    code_stmt.code_bc(lhs, true_s, s_1);
+    //处理为指针的情况
+    string tmp_lhs;
+    if (lhs.find("*") != string::npos) {
+        tmp_lhs = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_lhs, "i32");
+        code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
+    } else tmp_lhs = lhs;
+    code_stmt.code_bc(tmp_lhs, true_s, s_1);
     //获取true_s中T的位置
     stk.insert_T(code_stmt.code.size() - 13);
     code_stmt.code_label(s_1);
@@ -916,7 +1016,14 @@ string AST_LOr::done(bool option)
     //sbc.set();
     string rhs = lorExp->done();
     //string tmp = stk.getTmpName();
-    code_stmt.code_bc(rhs, true_s, false_s);
+    //处理为指针的情况
+    string tmp_rhs;
+    if (rhs.find("*") != string::npos) {
+        tmp_rhs = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_rhs, "i32");
+        code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
+    } else tmp_rhs = rhs;
+    code_stmt.code_bc(tmp_rhs, true_s, false_s);
     //获取true_s中T的位置 false_s中F的位置
     stk.insert_T(code_stmt.code.size() - 13);
     stk.insert_F(code_stmt.code.size() - 4);
@@ -967,9 +1074,23 @@ string AST_FuncCall::done(bool option)
     fts.current_func = *id_val;
     vector<string> args;
     fts.cnt = 0;
+    //如果参数是i32但是返回值为*i32，需要赋给临时变量
     if (is_param) {
+        int param_cnt = 0;
+        FuncTab functab = fts.findFunc(*id_val);
+        string param_type;
+        string tmp_result;
         for (auto &rparam : params->vec) {
-            args.push_back(rparam->done());
+            param_type = functab.func_Params[param_cnt].param_Type;
+            string result = rparam->done();
+            if (param_type == "i32") {
+                if (result.find("*") != string::npos) {
+                    tmp_result = stk.getTmpName();
+                    code_tmpval.code_valDecl(tmp_result, "i32");
+                    code_stmt.append("\t" + tmp_result + "=" + result + "\n");
+                } else tmp_result = result;
+            } else tmp_result = result;
+            args.push_back(tmp_result);
             fts.cnt++;
         }
     }

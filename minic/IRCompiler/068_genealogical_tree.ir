@@ -1,175 +1,234 @@
-declare int@getint();	declare i32 %l0 
-declare void@putint(i32 %t0);	declare i32 %l1 
-	%l1=t0
-declare void@putch(i32 %t0);	declare i32 %l1 
-	%l1=t0
-declare void@topo(i32 %t0) {
-	declare i32 %l1 
-	declare i32 %l2 ;m
-	declare i32 %l3 ;t
-	declare i32 %l4 ;i
-	declare i32 %l5 ;j
-	declare i32 %t6 
-	declare i32 %t7 
-	declare i1 %t8 
-	declare i32 %t9 
-	declare i32 %t10 
-	declare i1 %t11 
-	declare i1 %t12 
-	declare i32 %t13 
-	declare i32 %t14 
-	declare i32 %t15 
-	declare i32 %t16 
-	declare i32 %t17 
-	declare i32 %t18 
-	declare i32 %t19 
-	declare i32 %t20 
-	declare i32 %t21 
-	declare i1 %t22 
-	declare i32 %t23 
-	declare i32 %t24 
-	declare i32 %t25 
-	declare i32 %t26 
-	declare i32 %t27 
-	declare i32 %t28 
-	declare i32 %t29 
-	declare i1 %t30 
-	declare i32 %t31 
-	declare i32 %t32 
-	%l1=t0
+declare i32 @map[10][10]
+declare i32 @indegree[10]
+declare i32 @queue[10]
+define void @topo(i32 %t0) {
+	declare i32 %l1 ; variable: n
+	declare i32 %l2 ; variable: m
+	declare i32 %l3 ; variable: t
+	declare i32 %l4 ; variable: i
+	declare i32 %l5 ; variable: j
+	declare i32 %t6
+	declare i32 %t7
+	declare i1 %t8
+	declare i32 %t9
+	declare i32 %t10
+	declare i1 %t11
+	declare i32 %t12
+	declare i32* %t13
+	declare i32 %t14
+	declare i32 %t15
+	declare i1 %t16
+	declare i32 %t17
+	declare i32 %t18
+	declare i32 %t19
+	declare i32* %t20
+	declare i32 %t21
+	declare i32 %t22
+	declare i32 %t23
+	declare i32 %t24
+	declare i32* %t25
+	declare i32 %t26
+	declare i32 %t27
+	declare i32 %t28
+	declare i1 %t29
+	declare i32 %t30
+	declare i32 %t31
+	declare i32 %t32
+	declare i32* %t33
+	declare i32 %t34
+	declare i32 %t35
+	declare i1 %t36
+	declare i32 %t37
+	declare i32* %t38
+	declare i32 %t39
+	declare i32 %t40
+	declare i32* %t41
+	declare i32 %t42
+	declare i32 %t43
+	declare i32 %t44
+	declare i32 %t45
+	declare i32 %t46
+	declare i32 %t47
+	declare i32 %t48
+	declare i32 %t49
+	declare i32 %t50
+	declare i1 %t51
+	declare i32 %t52
+	declare i32* %t53
+	declare i32 %t54
+	declare i32 %t55
+	declare i32 %t56
+	declare i32 %t57
 	entry
-	%l2=0
-	%l3=0
-	%l4=1
-	%l5=1
-	br Label.L2
-.L2:
-	%t6=%l4
-	%t7=%l1
-	%t8=cmp LE %t6, %t7
-	bc %t8,label.L3,label.L4
+	%l1 = %t0
+	%l2 = 0
+	%l3 = 0
+	%l4 = 1
+	%l5 = 1
+	br label .L3
 .L3:
-	%l5=1
-	br Label.L5
-.L5:
-	%t9=%l5
-	%t10=%l1
-	%t11=cmp LE %t9, %t10
-	bc %t11,label.L6,label.L7
-.L6:
-	%t12 = eq , 0
-	bc %t12,label.L8,label.L10
-.L8:
-	%t13=%l5
-	%l2=%t13
-	br Label.L7
-.L10:
-	%t14=%l5
-	%t15 = add %t14, 1
-	%l5=%t15
-	br Label.L5
-.L7:
-	%t16=%l2
-	=%t16
-	%t17=%l3
-	%t18 = add %t17, 1
-	%l3=%t18
-	%t19 = neg 0, 1
-	=%t19
-	%l5=1
-	br Label.L11
-.L11:
-	%t20=%l5
-	%t21=%l1
-	%t22=cmp LE %t20, %t21
-	bc %t22,label.L12,label.L13
-.L12:
-	bc ,label.L14,label.L16
-.L14:
-	%t23 = sub , 1
-	=%t23
-	br Label.L16
-.L16:
-	%t24=%l5
-	%t25 = add %t24, 1
-	%l5=%t25
-	br Label.L11
-.L13:
-	%t26=%l4
-	%t27 = add %t26, 1
-	%l4=%t27
-	br Label.L2
+	%t6 = %l4
+	%t7 = %l1
+	%t8 = cmp le %t6, %t7
+	bc %t8, label .L4, label .L5
 .L4:
-	%l4=0
-	br Label.L17
+	%l5 = 1
+	br label .L6
+.L6:
+	%t9 = %l5
+	%t10 = %l1
+	%t11 = cmp le %t9, %t10
+	bc %t11, label .L7, label .L8
+.L7:
+	%t12 = mul %l5, 4
+	%t13 = add @indegree, %t12
+	%t15 = *%t13
+	%t16 = cmp eq %t15, 0
+	bc %t16, label .L9, label .L11
+.L9:
+	%l2 = %l5
+	br label .L8
+.L11:
+	%t17 = %l5
+	%t18 = add %t17, 1
+	%l5 = %t18
+	br label .L6
+.L8:
+	%t19 = mul %l3, 4
+	%t20 = add @queue, %t19
+	*%t20 = %l2
+	%t22 = %l3
+	%t23 = add %t22, 1
+	%l3 = %t23
+	%t24 = mul %l2, 4
+	%t25 = add @indegree, %t24
+	*%t25 = -1
+	%l5 = 1
+	br label .L12
+.L12:
+	%t27 = %l5
+	%t28 = %l1
+	%t29 = cmp le %t27, %t28
+	bc %t29, label .L13, label .L14
+.L13:
+	%t30 = mul %l2, 10
+	%t31 = add %t30, %l5
+	%t32 = mul %t31, 4
+	%t33 = add @map, %t32
+	%t35 = *%t33
+	%t36 = cmp ne %t35, 0
+	bc %t36, label .L15, label .L17
+.L15:
+	%t37 = mul %l5, 4
+	%t38 = add @indegree, %t37
+	%t40 = mul %l5, 4
+	%t41 = add @indegree, %t40
+	%t43 = *%t41
+	%t44 = sub %t43, 1
+	*%t38 = %t44
+	br label .L17
 .L17:
-	%t28=%l4
-	%t29=%l1
-	%t30=cmp LT %t28, %t29
-	bc %t30,label.L18,label.L19
+	%t45 = %l5
+	%t46 = add %t45, 1
+	%l5 = %t46
+	br label .L12
+.L14:
+	%t47 = %l4
+	%t48 = add %t47, 1
+	%l4 = %t48
+	br label .L3
+.L5:
+	%l4 = 0
+	br label .L18
 .L18:
-	call  @putint(i32 );
-	call  @putch(i32 10);
-	%t31=%l4
-	%t32 = add %t31, 1
-	%l4=%t32
-	br Label.L17
+	%t49 = %l4
+	%t50 = %l1
+	%t51 = cmp lt %t49, %t50
+	bc %t51, label .L19, label .L2
 .L19:
-.L1:
+	%t52 = mul %l4, 4
+	%t53 = add @queue, %t52
+	%t55 = *%t53
+	call void @putint(i32 %t55)
+	call void @putch(i32 10)
+	%t56 = %l4
+	%t57 = add %t56, 1
+	%l4 = %t57
+	br label .L18
+.L2:
 	exit
 }
-
-declare int@main() {
-	declare i32 %l0 
-	declare i32 %l1 ;n
-	declare i32 %l2 ;p
-	declare i32 %l3 ;i
-	declare i32 %t4 
-	declare i32 %t5 
-	declare i1 %t6 
-	declare i32 %t7 
-	declare i32 %t8 
-	declare i1 %t9 
-	declare i32 %t10 
-	declare i32 %t11 
-	declare i32 %t12 
-	declare i32 %t13 
-	declare i32 %t14 
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %l1 ; variable: n
+	declare i32 %l2 ; variable: p
+	declare i32 %l3 ; variable: i
+	declare i32 %t4
+	declare i32 %t5
+	declare i1 %t6
+	declare i32 %t7
+	declare i32 %t8
+	declare i1 %t9
+	declare i32 %t10
+	declare i32 %t11
+	declare i32 %t12
+	declare i32* %t13
+	declare i32 %t14
+	declare i32 %t15
+	declare i32* %t16
+	declare i32 %t17
+	declare i32 %t18
+	declare i32* %t19
+	declare i32 %t20
+	declare i32 %t21
+	declare i32 %t22
+	declare i32 %t23
+	declare i32 %t24
+	declare i32 %t25
+	declare i32 %t26
+	declare i32 %t27
 	entry
-	%l3=1
-	%l1=5
-	br Label.L2
-.L2:
-	%t4=%l3
-	%t5=%l1
-	%t6=cmp LE %t4, %t5
-	bc %t6,label.L3,label.L4
+	%l3 = 1
+	%l1 = 5
+	br label .L3
 .L3:
-	%t7=call i32 @getint();
-	%l2=%t7
-	br Label.L5
-.L5:
-	%t8=%l2
-	%t9 = ne %t8, 0
-	bc %t9,label.L6,label.L7
-.L6:
-	=1
-	%t10 = add , 1
-	=%t10
-	%t11=call i32 @getint();
-	%l2=%t11
-	br Label.L5
-.L7:
-	%t12=%l3
-	%t13 = add %t12, 1
-	%l3=%t13
-	br Label.L2
+	%t4 = %l3
+	%t5 = %l1
+	%t6 = cmp le %t4, %t5
+	bc %t6, label .L4, label .L5
 .L4:
-	%t14=%l1
-	call  @topo(i32 %t14);
-	%l0=0
-	br Label.L1
-.L1:
-	exit %l0
+	%t7 = call i32 @getint()
+	%l2 = %t7
+	br label .L6
+.L6:
+	%t8 = %l2
+	%t9 = cmp ne %t8, 0
+	bc %t9, label .L7, label .L8
+.L7:
+	%t10 = mul %l3, 10
+	%t11 = add %t10, %l2
+	%t12 = mul %t11, 4
+	%t13 = add @map, %t12
+	*%t13 = 1
+	%t15 = mul %l2, 4
+	%t16 = add @indegree, %t15
+	%t18 = mul %l2, 4
+	%t19 = add @indegree, %t18
+	%t21 = *%t19
+	%t22 = add %t21, 1
+	*%t16 = %t22
+	%t23 = call i32 @getint()
+	%l2 = %t23
+	br label .L6
+.L8:
+	%t24 = %l3
+	%t25 = add %t24, 1
+	%l3 = %t25
+	br label .L3
+.L5:
+	%t26 = %l1
+	call void @topo(i32 %t26)
+	%l0 = 0
+	%t27 = %l0
+	exit %t27
 }
-
