@@ -524,49 +524,6 @@ string AST_LVal::done(bool option)
             return location;
         else*/
         return "*" + location;
-
-        /*//装着数组的首地址的局部变量
-        string name = stk.getName(*ident);
-        if (len.size() != 0 && len[0] == 0) {
-            //vector<int> sublen(len.begin() + 1, len.end());
-            //声明数组的临时变量，装着数组首地址
-            string tmp_val = stk.getTmpName();
-            string tmp_type = stk.getArrayType(len);
-            code_tmpval.code_arrayDecl(tmp_val, tmp_type, " ;" + *ident);
-            string first_indexed = stk.getTmpName();
-            code_stmt.append(tmp_val + "=" + name);
-            //这是两个用来计算数组地址的乘加临时变量
-            string tmp_name, tmp_name1;
-            for (int i = 0; i < index.size()-1; i++) {
-                tmp_name = stk.getTmpName();
-                code_tmpval.code_valDecl(tmp_name, "i32*");
-                code_stmt.code_binary("mul", tmp_name, index[i], to_string(len[i+1]));
-                tmp_name1 = stk.getTmpName();
-                code_tmpval.code_valDecl(tmp_name, "i32*");
-                code_stmt.code_binary("add", tmp_name1, tmp_name, index[i+1]);
-            }
-            //装着数组元素的地址
-            string location = stk.getTmpName();
-            code_tmpval.code_valDecl(location, "i32*");
-            code_stmt.code_binary("add", location, tmp_val, tmp_name1);
-
-            return location;
-
-        } else {
-            tmp = getElemPtr(name, index);
-        }
-
-
-        if (index.size() < len.size()) {
-            // 一定是作为函数参数即实参使用，因为下标不完整
-            string real_param = st.getTmpName();
-            ks.getelemptr(real_param, tmp, "0");
-            return real_param;
-        }
-        if (dump_ptr) return tmp;
-        string tmp2 = st.getTmpName();
-        ks.load(tmp2, tmp);
-        return tmp2;*/
     }
 }
 
@@ -812,8 +769,19 @@ string AST_MulExp::done(bool option)
     string op_ = op == AST_OP_MUL ? "mul" : (op == AST_OP_DIV ? "div" : "mod");
 
     c = stk.getTmpName();
+    string tmp_a, tmp_b;
+    if (a.find("*") != string::npos) {
+        tmp_a = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_a, "i32");
+        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+    } else tmp_a = a;
+    if (b.find("*") != string::npos) {
+        tmp_b = stk.getTmpName();
+        code_tmpval.code_valDecl(tmp_b, "i32");
+        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+    } else tmp_b = b;
     code_tmpval.code_valDecl(c, "i32");
-    code_stmt.code_binary(op_, c, a, b);
+    code_stmt.code_binary(op_, c, tmp_a, tmp_b);
     return c;
 }
 
