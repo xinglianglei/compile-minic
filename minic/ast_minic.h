@@ -185,19 +185,21 @@ public:
     virtual string done(bool option = false) override;
 };
 
-//合起来处理
-class AST_Stmt : public AST_Base {
+//合起来处理,转了一下类型捏
+class AST_Stmt : public AST_Exp {
 public:
     unique_ptr<AST_Exp> exp;
+    unique_ptr<AST_Exp> exp2;
     unique_ptr<AST_Exp> lval;
     unique_ptr<AST_Exp> cond; //while/if
     unique_ptr<AST_Base> body;//while/if
     unique_ptr<AST_Base> else_body;
     //修改了类型
     unique_ptr<AST_Base> block;
-    enum TAG { RETURN, ASSIGN, BLOCK, EXP, WHILE, BREAK, CONTINUE, IF };
+    enum TAG { RETURN, ASSIGN, BLOCK, EXP, WHILE, BREAK, CONTINUE, IF, FOR };
     TAG tag;
     virtual string done(bool option = false) override;
+    virtual int getValue() override;
 };
 
 class AST_ConstExp :public AST_Exp {

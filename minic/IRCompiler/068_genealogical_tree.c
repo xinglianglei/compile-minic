@@ -52,7 +52,7 @@ int main()
 	int n, p;
 	int i;
 	i = 1;
-	n = 5;
+	n = 1;
 
 	while (i <= n) {
 		p = getint();

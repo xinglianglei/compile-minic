@@ -43,7 +43,7 @@ using namespace std;
 %token <int_val> NUM
 %token <id_val> IDENT
 
-%token IF ELSE WHILE
+%token IF ELSE WHILE FOR
 %token BREAK CONT RET
 
 %token T_INT T_VOID
@@ -53,9 +53,10 @@ using namespace std;
 
 // 指定文法的非终结符号，<>可指定文法属性 
 %type <ast_baseVal> FuncDef Decl VarDecl VarDef Block CompUnit
-%type <ast_baseVal> BlockItem Stmt MatchedStmt OpenStmt SimpleStmt FuncFParam 
+%type <ast_baseVal> BlockItem FuncFParam 
 %type <ast_expVal> ConstExp InitVal Exp UnaryExp PrimaryExp LVal SelfExp
 %type <ast_expVal> AddExp MulExp RelExp EqExp LAndExp LOrExp Cond
+%type <ast_expVal> Stmt MatchedStmt OpenStmt SimpleStmt
 %type <str_val> BType
 %type <ast_op_type> UnaryOp SelfOp
 %type <val> Number
@@ -499,7 +500,18 @@ using namespace std;
                     ptr->tag=AST_Stmt::RETURN;
                     ptr->exp=unique_ptr<AST_Exp>($2);
                     $$=ptr;
-                };
+                }
+                | FOR '(' SimpleStmt ';' Cond ';' SimpleStmt ')' Block 
+                {
+                    cout<<"SimpleStmt = FOR '(' Exp Cond Exp ')' Block"<<endl;
+                    auto ptr=new AST_Stmt();
+                    ptr->tag=AST_Stmt::FOR;
+                    ptr->exp=unique_ptr<AST_Exp>($3);
+                    ptr->cond=unique_ptr<AST_Exp>($5);
+                    ptr->exp2=unique_ptr<AST_Exp>($7);
+                    ptr->body=unique_ptr<AST_Base>($9);
+                    $$=ptr;
+                }
     Exp         : LOrExp
                 {
                     cout<<"Exp : LOrExp"<<endl;

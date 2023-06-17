@@ -1,0 +1,335 @@
+declare i32 @M ;M
+declare i32 @L ;L
+declare i32 @N ;N
+define i32 @add(i32 %t1[0],i32 %t2[0],i32 %t3[0],i32 %t4[0],i32 %t5[0],i32 %t6[0],i32 %t7[0],i32 %t8[0],i32 %t9[0]) {
+	declare i32 %l0 
+	declare i32 %l10[0]  ;a0
+	declare i32 %l11[0]  ;a1
+	declare i32 %l12[0]  ;a2
+	declare i32 %l13[0]  ;b0
+	declare i32 %l14[0]  ;b1
+	declare i32 %l15[0]  ;b2
+	declare i32 %l16[0]  ;c0
+	declare i32 %l17[0]  ;c1
+	declare i32 %l18[0]  ;c2
+	declare i32 %l19 ;i
+	declare i32 %t20 
+	declare i32 %t21 
+	declare i1 %t22 
+	declare i32 %t23 
+	declare i32 %t24 
+	declare i32* %t25 
+	declare i32 %t26 
+	declare i32 %t27 
+	declare i32* %t28 
+	declare i32 %t29 
+	declare i32 %t30 
+	declare i32 %t31 
+	declare i32 %t32 
+	declare i32 %t33 
+	declare i32* %t34 
+	declare i32 %t35 
+	declare i32 %t36 
+	declare i32* %t37 
+	declare i32 %t38 
+	declare i32 %t39 
+	declare i32* %t40 
+	declare i32 %t41 
+	declare i32 %t42 
+	declare i32 %t43 
+	declare i32 %t44 
+	declare i32 %t45 
+	declare i32* %t46 
+	declare i32 %t47 
+	declare i32 %t48 
+	declare i32* %t49 
+	declare i32 %t50 
+	declare i32 %t51 
+	declare i32* %t52 
+	declare i32 %t53 
+	declare i32 %t54 
+	declare i32 %t55 
+	declare i32 %t56 
+	declare i32 %t57 
+	declare i32* %t58 
+	declare i32 %t59 
+	declare i32 %t60 
+	entry
+	%l10=%t1
+	%l11=%t2
+	%l12=%t3
+	%l13=%t4
+	%l14=%t5
+	%l15=%t6
+	%l16=%t7
+	%l17=%t8
+	%l18=%t9
+	%l19=0
+	br label .L2
+.L2:
+	%t20=%l19
+	%t21=@M
+	%t22=cmp lt %t20, %t21
+	bc %t22,label.L3,label.L4
+.L3:
+	%t23=%l19
+	%t24 = mul %t23, 4
+	%t25 = add %l10, %t24
+	%t26=%l19
+	%t27 = mul %t26, 4
+	%t28 = add %l13, %t27
+	%t30=*%t25
+	%t31=*%t28
+	%t29 = add %t30, %t31
+	%t32=%l19
+	%t33 = mul %t32, 4
+	%t34 = add %l16, %t33
+	*%t34=%t29
+	%t35=%l19
+	%t36 = mul %t35, 4
+	%t37 = add %l11, %t36
+	%t38=%l19
+	%t39 = mul %t38, 4
+	%t40 = add %l14, %t39
+	%t42=*%t37
+	%t43=*%t40
+	%t41 = add %t42, %t43
+	%t44=%l19
+	%t45 = mul %t44, 4
+	%t46 = add %l17, %t45
+	*%t46=%t41
+	%t47=%l19
+	%t48 = mul %t47, 4
+	%t49 = add %l12, %t48
+	%t50=%l19
+	%t51 = mul %t50, 4
+	%t52 = add %l15, %t51
+	%t54=*%t49
+	%t55=*%t52
+	%t53 = add %t54, %t55
+	%t56=%l19
+	%t57 = mul %t56, 4
+	%t58 = add %l18, %t57
+	*%t58=%t53
+	%t59=%l19
+	%t60 = add %t59, 1
+	%l19=%t60
+	br label .L2
+.L4:
+	%l0 = 0
+	br label .L1
+.L1:
+	exit %l0
+}
+
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %l1[3]  ;a0
+	declare i32 %l2[3]  ;a1
+	declare i32 %l3[3]  ;a2
+	declare i32 %l4[3]  ;b0
+	declare i32 %l5[3]  ;b1
+	declare i32 %l6[3]  ;b2
+	declare i32 %l7[6]  ;c0
+	declare i32 %l8[3]  ;c1
+	declare i32 %l9[3]  ;c2
+	declare i32 %l10 ;i
+	declare i32 %l50 ;x
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i1 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32* %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i32* %t21 
+	declare i32 %t22 
+	declare i32 %t23 
+	declare i32 %t24 
+	declare i32* %t25 
+	declare i32 %t26 
+	declare i32 %t27 
+	declare i32 %t28 
+	declare i32* %t29 
+	declare i32 %t30 
+	declare i32 %t31 
+	declare i32 %t32 
+	declare i32* %t33 
+	declare i32 %t34 
+	declare i32 %t35 
+	declare i32 %t36 
+	declare i32* %t37 
+	declare i32 %t38 
+	declare i32 %t39 
+	declare i32 %t40[0]  ;*ident
+	declare i32 %t41[0]  ;*ident
+	declare i32 %t42[0]  ;*ident
+	declare i32 %t43[0]  ;*ident
+	declare i32 %t44[0]  ;*ident
+	declare i32 %t45[0]  ;*ident
+	declare i32 %t46[0]  ;*ident
+	declare i32 %t47[0]  ;*ident
+	declare i32 %t48[0]  ;*ident
+	declare i32 %t49 
+	declare i32 %t51 
+	declare i32 %t52 
+	declare i1 %t53 
+	declare i32 %t54 
+	declare i32 %t55 
+	declare i32* %t56 
+	declare i32 %t57 
+	declare i32 %t58 
+	declare i32 %t59 
+	declare i32 %t60 
+	declare i32 %t61 
+	declare i32 %t62 
+	declare i1 %t63 
+	declare i32 %t64 
+	declare i32 %t65 
+	declare i32* %t66 
+	declare i32 %t67 
+	declare i32 %t68 
+	declare i32 %t69 
+	declare i32 %t70 
+	declare i32 %t71 
+	declare i32 %t72 
+	declare i1 %t73 
+	declare i32 %t74 
+	declare i32 %t75 
+	declare i32* %t76 
+	declare i32 %t77 
+	declare i32 %t78 
+	declare i32 %t79 
+	declare i32 %t80 
+	entry
+	@N=3
+	@M=3
+	@L=3
+	%l10=0
+	br label .L2
+.L2:
+	%t11=%l10
+	%t12=@M
+	%t13=cmp lt %t11, %t12
+	bc %t13,label.L3,label.L4
+.L3:
+	%t14=%l10
+	%t15=%l10
+	%t16 = mul %t15, 4
+	%t17 = add %l1, %t16
+	*%t17=%t14
+	%t18=%l10
+	%t19=%l10
+	%t20 = mul %t19, 4
+	%t21 = add %l2, %t20
+	*%t21=%t18
+	%t22=%l10
+	%t23=%l10
+	%t24 = mul %t23, 4
+	%t25 = add %l3, %t24
+	*%t25=%t22
+	%t26=%l10
+	%t27=%l10
+	%t28 = mul %t27, 4
+	%t29 = add %l4, %t28
+	*%t29=%t26
+	%t30=%l10
+	%t31=%l10
+	%t32 = mul %t31, 4
+	%t33 = add %l5, %t32
+	*%t33=%t30
+	%t34=%l10
+	%t35=%l10
+	%t36 = mul %t35, 4
+	%t37 = add %l6, %t36
+	*%t37=%t34
+	%t38=%l10
+	%t39 = add %t38, 1
+	%l10=%t39
+	br label .L2
+.L4:
+	%t40=%l1
+	%t41=%l2
+	%t42=%l3
+	%t43=%l4
+	%t44=%l5
+	%t45=%l6
+	%t46=%l7
+	%t47=%l8
+	%t48=%l9
+	%t49=call i32 @add(i32 %t40[0], i32 %t41[0], i32 %t42[0], i32 %t43[0], i32 %t44[0], i32 %t45[0], i32 %t46[0], i32 %t47[0], i32 %t48[0]);
+	%l10=%t49
+	br label .L5
+.L5:
+	%t51=%l10
+	%t52=@N
+	%t53=cmp lt %t51, %t52
+	bc %t53,label.L6,label.L7
+.L6:
+	%t54=%l10
+	%t55 = mul %t54, 4
+	%t56 = add %l7, %t55
+	%l50=*%t56
+	%t57=%l50
+	call void @putint(i32 %t57);
+	%t58=%l10
+	%t59 = add %t58, 1
+	%l10=%t59
+	br label .L5
+.L7:
+	%l50=10
+	%t60=%l50
+	call void @putch(i32 %t60);
+	%l10=0
+	br label .L8
+.L8:
+	%t61=%l10
+	%t62=@N
+	%t63=cmp lt %t61, %t62
+	bc %t63,label.L9,label.L10
+.L9:
+	%t64=%l10
+	%t65 = mul %t64, 4
+	%t66 = add %l8, %t65
+	%l50=*%t66
+	%t67=%l50
+	call void @putint(i32 %t67);
+	%t68=%l10
+	%t69 = add %t68, 1
+	%l10=%t69
+	br label .L8
+.L10:
+	%l50=10
+	%t70=%l50
+	call void @putch(i32 %t70);
+	%l10=0
+	br label .L11
+.L11:
+	%t71=%l10
+	%t72=@N
+	%t73=cmp lt %t71, %t72
+	bc %t73,label.L12,label.L13
+.L12:
+	%t74=%l10
+	%t75 = mul %t74, 4
+	%t76 = add %l9, %t75
+	%l50=*%t76
+	%t77=%l50
+	call void @putint(i32 %t77);
+	%t78=%l10
+	%t79 = add %t78, 1
+	%l10=%t79
+	br label .L11
+.L13:
+	%l50=10
+	%t80=%l50
+	call void @putch(i32 %t80);
+	%l0 = 0
+	br label .L1
+.L1:
+	exit %l0
+}
+

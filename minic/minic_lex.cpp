@@ -374,8 +374,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 47
-#define YY_END_OF_BUFFER 48
+#define YY_NUM_RULES 48
+#define YY_END_OF_BUFFER 49
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -383,18 +383,18 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[94] =
+static const flex_int16_t yy_accept[97] =
     {   0,
-        0,    0,    0,    0,   48,   46,   44,   45,   45,   35,
-       23,   36,   13,   14,   19,   20,   38,   22,   21,   40,
-       40,   39,   28,   26,   27,   43,   15,   16,   43,   43,
-       43,   43,   43,   43,   43,   17,   37,   18,    3,    3,
-        3,   44,   45,   32,   33,   24,   25,    1,    0,   41,
-        0,   40,   30,   31,   29,   43,   43,   43,   43,    5,
-       43,   43,   43,   43,   34,    3,    3,    2,    0,    4,
-       42,   43,   43,   43,   11,   43,   43,   43,   43,   43,
-        6,   43,   12,   43,    8,   43,   43,    7,   43,   10,
-       43,    9,    0
+        0,    0,    0,    0,   49,   47,   45,   46,   46,   36,
+       24,   37,   14,   15,   20,   21,   39,   23,   22,   41,
+       41,   40,   29,   27,   28,   44,   16,   17,   44,   44,
+       44,   44,   44,   44,   44,   44,   18,   38,   19,    3,
+        3,    3,   45,   46,   33,   34,   25,   26,    1,    0,
+       42,    0,   41,   31,   32,   30,   44,   44,   44,   44,
+       44,    5,   44,   44,   44,   44,   35,    3,    3,    2,
+        0,    4,   43,   44,   44,   44,   11,   12,   44,   44,
+       44,   44,   44,    6,   44,   13,   44,    8,   44,   44,
+        7,   44,   10,   44,    9,    0
 
     } ;
 
@@ -439,88 +439,92 @@ static const YY_CHAR yy_meta[48] =
         4,    4,    4,    4,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[99] =
+static const flex_int16_t yy_base[102] =
     {   0,
-        0,    0,   45,   46,  131,  132,  128,   47,   49,  109,
-      132,  121,  132,  132,  132,  116,  132,  113,   44,   44,
-       46,  132,  105,  104,  103,    0,  132,  132,   83,   83,
-       84,   32,   88,   80,   84,  132,   70,  132,  112,  111,
-       99,  110,   62,  132,  132,  132,  132,  132,  108,   55,
-        0,   57,  132,  132,  132,    0,   79,   72,   68,    0,
-       66,   65,   71,   70,  132,  100,   99,  132,   98,  132,
-        0,   73,   58,   67,    0,   55,   66,   59,   59,   59,
-        0,   53,    0,   60,    0,   53,   52,    0,   40,    0,
-       36,    0,  132,   74,   76,   80,   84,   54
+        0,    0,   45,   46,  133,  134,  130,   47,   49,  111,
+      134,  123,  134,  134,  134,  118,  134,  115,   44,   44,
+       46,  134,  107,  106,  105,    0,  134,  134,   85,   85,
+       86,   83,   32,   89,   81,   85,  134,   71,  134,  113,
+      112,  100,  111,   62,  134,  134,  134,  134,  134,  109,
+       55,    0,   57,  134,  134,  134,    0,   80,   73,   69,
+       69,    0,   66,   65,   71,   70,  134,  100,   99,  134,
+       98,  134,    0,   73,   58,   67,    0,    0,   55,   66,
+       59,   59,   59,    0,   53,    0,   60,    0,   53,   52,
+        0,   40,    0,   36,    0,  134,   74,   76,   80,   84,
 
+       54
     } ;
 
-static const flex_int16_t yy_def[99] =
+static const flex_int16_t yy_def[102] =
     {   0,
-       93,    1,   94,   94,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   95,   93,   93,   95,   95,
-       95,   95,   95,   95,   95,   93,   93,   93,   96,   96,
-       93,   93,   93,   93,   93,   93,   93,   93,   97,   93,
-       98,   93,   93,   93,   93,   95,   95,   95,   95,   95,
-       95,   95,   95,   95,   93,   96,   96,   93,   97,   93,
-       98,   95,   95,   95,   95,   95,   95,   95,   95,   95,
-       95,   95,   95,   95,   95,   95,   95,   95,   95,   95,
-       95,   95,    0,   93,   93,   93,   93,   93
+       96,    1,   97,   97,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   98,   96,   96,   98,   98,
+       98,   98,   98,   98,   98,   98,   96,   96,   96,   99,
+       99,   96,   96,   96,   96,   96,   96,   96,   96,  100,
+       96,  101,   96,   96,   96,   96,   98,   98,   98,   98,
+       98,   98,   98,   98,   98,   98,   96,   99,   99,   96,
+      100,   96,  101,   98,   98,   98,   98,   98,   98,   98,
+       98,   98,   98,   98,   98,   98,   98,   98,   98,   98,
+       98,   98,   98,   98,   98,    0,   96,   96,   96,   96,
 
+       96
     } ;
 
-static const flex_int16_t yy_nxt[180] =
+static const flex_int16_t yy_nxt[182] =
     {   0,
         6,    7,    8,    9,   10,   11,   12,   13,   14,   15,
        16,   17,   18,   19,   20,   21,   21,   22,   23,   24,
        25,   26,   26,   26,   27,   28,   26,   29,   30,   26,
-       31,   26,   26,   32,   26,   26,   26,   26,   33,   26,
-       26,   26,   34,   35,   36,   37,   38,   40,   40,   43,
-       43,   43,   43,   48,   41,   41,   71,   49,   50,   50,
-       52,   52,   52,   60,   43,   43,   92,   51,   61,   50,
-       50,   52,   52,   52,   39,   39,   39,   39,   56,   56,
-       66,   91,   66,   66,   69,   69,   69,   69,   90,   89,
-       88,   87,   86,   85,   84,   83,   82,   81,   80,   79,
+       31,   32,   26,   33,   26,   26,   26,   26,   34,   26,
+       26,   26,   35,   36,   37,   38,   39,   41,   41,   44,
+       44,   44,   44,   49,   42,   42,   73,   50,   51,   51,
+       53,   53,   53,   62,   44,   44,   95,   52,   63,   51,
+       51,   53,   53,   53,   40,   40,   40,   40,   57,   57,
+       68,   94,   68,   68,   71,   71,   71,   71,   93,   92,
+       91,   90,   89,   88,   87,   86,   85,   84,   83,   82,
 
-       70,   67,   67,   78,   77,   76,   75,   74,   73,   72,
-       70,   42,   68,   67,   67,   65,   64,   63,   62,   59,
-       58,   57,   55,   54,   53,   47,   46,   45,   44,   42,
-       93,    5,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93
+       72,   69,   69,   81,   80,   79,   78,   77,   76,   75,
+       74,   72,   43,   70,   69,   69,   67,   66,   65,   64,
+       61,   60,   59,   58,   56,   55,   54,   48,   47,   46,
+       45,   43,   96,    5,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96
     } ;
 
-static const flex_int16_t yy_chk[180] =
+static const flex_int16_t yy_chk[182] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    3,    4,    8,
-        8,    9,    9,   19,    3,    4,   98,   19,   20,   20,
-       21,   21,   21,   32,   43,   43,   91,   20,   32,   50,
-       50,   52,   52,   52,   94,   94,   94,   94,   95,   95,
-       96,   89,   96,   96,   97,   97,   97,   97,   87,   86,
-       84,   82,   80,   79,   78,   77,   76,   74,   73,   72,
+        8,    9,    9,   19,    3,    4,  101,   19,   20,   20,
+       21,   21,   21,   33,   44,   44,   94,   20,   33,   51,
+       51,   53,   53,   53,   97,   97,   97,   97,   98,   98,
+       99,   92,   99,   99,  100,  100,  100,  100,   90,   89,
+       87,   85,   83,   82,   81,   80,   79,   76,   75,   74,
 
-       69,   67,   66,   64,   63,   62,   61,   59,   58,   57,
-       49,   42,   41,   40,   39,   37,   35,   34,   33,   31,
-       30,   29,   25,   24,   23,   18,   16,   12,   10,    7,
-        5,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
-       93,   93,   93,   93,   93,   93,   93,   93,   93
+       71,   69,   68,   66,   65,   64,   63,   61,   60,   59,
+       58,   50,   43,   42,   41,   40,   38,   36,   35,   34,
+       32,   31,   30,   29,   25,   24,   23,   18,   16,   12,
+       10,    7,    5,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
+       96
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[48] =
+static const flex_int32_t yy_rule_can_match_eol[49] =
     {   0,
 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 1, 0, 0,     };
+    0, 0, 0, 0, 0, 0, 1, 0, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -550,7 +554,7 @@ char *yytext;
 #include "parser.h"
 
 using namespace std;
-#line 553 "D:/CompilerTools/code/minic/minic_lex.cpp"
+#line 557 "D:/CompilerTools/code/minic/minic_lex.cpp"
 /* 使它不要添加默认的规则,这样输入无法被给定的规则完全匹配时，词法分析器可以报告一个错误 */
 /* 产生yywrap函数 */
 /* flex 生成的扫描器用全局变量yylineno 维护着输入文件的当前行编号 */
@@ -561,7 +565,7 @@ using namespace std;
 
 /* 辅助定义式或者宏，后面使用时带上大括号 */
 /* 正规式定义 */
-#line 564 "D:/CompilerTools/code/minic/minic_lex.cpp"
+#line 568 "D:/CompilerTools/code/minic/minic_lex.cpp"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -781,7 +785,7 @@ YY_DECL
 	{
 #line 47 "D:/CompilerTools/code/minic/minic.l"
 
-#line 784 "D:/CompilerTools/code/minic/minic_lex.cpp"
+#line 788 "D:/CompilerTools/code/minic/minic_lex.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -808,13 +812,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 94 )
+				if ( yy_current_state >= 97 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 132 );
+		while ( yy_base[yy_current_state] != 134 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -920,155 +924,160 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 79 "D:/CompilerTools/code/minic/minic.l"
+#line 78 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return FOR;}
+	YY_BREAK
+case 12:
+YY_RULE_SETUP
+#line 80 "D:/CompilerTools/code/minic/minic.l"
 {
                 cout<<yytext<<endl;
                 return T_INT;}
 	YY_BREAK
-case 12:
-YY_RULE_SETUP
-#line 82 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;
-            return T_VOID;}
-	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 85 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '(';}
+#line 83 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;
+            return T_VOID;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 86 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return ')';}
+{cout<<yytext<<endl;return '(';}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 87 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '[';}
+{cout<<yytext<<endl;return ')';}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 88 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return ']';}
+{cout<<yytext<<endl;return '[';}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 89 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '{';}
+{cout<<yytext<<endl;return ']';}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 90 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '}';}
+{cout<<yytext<<endl;return '{';}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 92 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '*';}
+#line 91 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '}';}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 93 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '+';}
+{cout<<yytext<<endl;return '*';}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 94 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '/';}
+{cout<<yytext<<endl;return '+';}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 95 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '-';}
+{cout<<yytext<<endl;return '/';}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 96 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '%';}
+{cout<<yytext<<endl;return '-';}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 97 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return INCR;}
+{cout<<yytext<<endl;return '%';}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 98 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return DECR;}
+{cout<<yytext<<endl;return INCR;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 100 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '=';}
+#line 99 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return DECR;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 102 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '>';}
+#line 101 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '=';}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 103 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '<';}
+{cout<<yytext<<endl;return '>';}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 104 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return GE;}
+{cout<<yytext<<endl;return '<';}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 105 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return LE;}
+{cout<<yytext<<endl;return GE;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 106 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return EQ;}
+{cout<<yytext<<endl;return LE;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 107 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return NE;}
+{cout<<yytext<<endl;return EQ;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 108 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return AND;}
+{cout<<yytext<<endl;return NE;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 109 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return OR;}
+{cout<<yytext<<endl;return AND;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 111 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '!';}
+#line 110 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return OR;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 112 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '&';}
+{cout<<yytext<<endl;return '!';}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 113 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return '|';}
+{cout<<yytext<<endl;return '&';}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 115 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return ',';}
+#line 114 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return '|';}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 116 "D:/CompilerTools/code/minic/minic.l"
-{cout<<yytext<<endl;return ';';}
+{cout<<yytext<<endl;return ',';}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 118 "D:/CompilerTools/code/minic/minic.l"
+#line 117 "D:/CompilerTools/code/minic/minic.l"
+{cout<<yytext<<endl;return ';';}
+	YY_BREAK
+case 41:
+YY_RULE_SETUP
+#line 119 "D:/CompilerTools/code/minic/minic.l"
 {
                 cout<<yytext<<endl;
                 yylval.int_val.val = (int)strtol(yytext, (char **)NULL, 10);
@@ -1076,21 +1085,10 @@ YY_RULE_SETUP
                 return NUM;
             }
 	YY_BREAK
-case 41:
-YY_RULE_SETUP
-#line 124 "D:/CompilerTools/code/minic/minic.l"
-{
-                cout<<yytext<<endl; 
-                yylval.int_val.val = strtol(yytext, nullptr, 0); 
-                //cout<<yylval.int_val.val<<endl;
-                yylval.int_val.lineno = yylineno;
-                return NUM; }
-	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 130 "D:/CompilerTools/code/minic/minic.l"
-{ 
-                //cout<<"十六进制"<<endl;
+#line 125 "D:/CompilerTools/code/minic/minic.l"
+{
                 cout<<yytext<<endl; 
                 yylval.int_val.val = strtol(yytext, nullptr, 0); 
                 //cout<<yylval.int_val.val<<endl;
@@ -1099,7 +1097,18 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 138 "D:/CompilerTools/code/minic/minic.l"
+#line 131 "D:/CompilerTools/code/minic/minic.l"
+{ 
+                //cout<<"十六进制"<<endl;
+                cout<<yytext<<endl; 
+                yylval.int_val.val = strtol(yytext, nullptr, 0); 
+                //cout<<yylval.int_val.val<<endl;
+                yylval.int_val.lineno = yylineno;
+                return NUM; }
+	YY_BREAK
+case 44:
+YY_RULE_SETUP
+#line 139 "D:/CompilerTools/code/minic/minic.l"
 { 
                 cout<<yytext<<endl;
                 yylval.id_val.id = new string(yytext); 
@@ -1107,31 +1116,31 @@ YY_RULE_SETUP
                 return IDENT; 
             }
 	YY_BREAK
-case 44:
-YY_RULE_SETUP
-#line 145 "D:/CompilerTools/code/minic/minic.l"
-;
-	YY_BREAK
 case 45:
-/* rule 45 can match eol */
 YY_RULE_SETUP
-#line 147 "D:/CompilerTools/code/minic/minic.l"
+#line 146 "D:/CompilerTools/code/minic/minic.l"
 ;
 	YY_BREAK
 case 46:
+/* rule 46 can match eol */
 YY_RULE_SETUP
-#line 149 "D:/CompilerTools/code/minic/minic.l"
+#line 148 "D:/CompilerTools/code/minic/minic.l"
+;
+	YY_BREAK
+case 47:
+YY_RULE_SETUP
+#line 150 "D:/CompilerTools/code/minic/minic.l"
 {
                 printf("Line %d: Invalid char %s\n", yylineno, yytext);
                 return YYUNDEF;
             }
 	YY_BREAK
-case 47:
+case 48:
 YY_RULE_SETUP
-#line 153 "D:/CompilerTools/code/minic/minic.l"
+#line 154 "D:/CompilerTools/code/minic/minic.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1134 "D:/CompilerTools/code/minic/minic_lex.cpp"
+#line 1143 "D:/CompilerTools/code/minic/minic_lex.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1428,7 +1437,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 94 )
+			if ( yy_current_state >= 97 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1456,11 +1465,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 94 )
+		if ( yy_current_state >= 97 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 93);
+	yy_is_jam = (yy_current_state == 96);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -2148,6 +2157,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 153 "D:/CompilerTools/code/minic/minic.l"
+#line 154 "D:/CompilerTools/code/minic/minic.l"
 
 

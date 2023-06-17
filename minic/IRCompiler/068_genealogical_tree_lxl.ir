@@ -204,7 +204,7 @@ define i32 @main() {
 	declare i32 %t27 
 	entry
 	%l3=1
-	%l1=5
+	%l1=1
 	br label .L2
 .L2:
 	%t4=%l3

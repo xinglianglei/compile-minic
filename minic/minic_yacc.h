@@ -67,19 +67,20 @@ extern int yydebug;
     IF = 260,                      /* IF  */
     ELSE = 261,                    /* ELSE  */
     WHILE = 262,                   /* WHILE  */
-    BREAK = 263,                   /* BREAK  */
-    CONT = 264,                    /* CONT  */
-    RET = 265,                     /* RET  */
-    T_INT = 266,                   /* T_INT  */
-    T_VOID = 267,                  /* T_VOID  */
-    INCR = 268,                    /* INCR  */
-    DECR = 269,                    /* DECR  */
-    GE = 270,                      /* GE  */
-    LE = 271,                      /* LE  */
-    EQ = 272,                      /* EQ  */
-    NE = 273,                      /* NE  */
-    AND = 274,                     /* AND  */
-    OR = 275                       /* OR  */
+    FOR = 263,                     /* FOR  */
+    BREAK = 264,                   /* BREAK  */
+    CONT = 265,                    /* CONT  */
+    RET = 266,                     /* RET  */
+    T_INT = 267,                   /* T_INT  */
+    T_VOID = 268,                  /* T_VOID  */
+    INCR = 269,                    /* INCR  */
+    DECR = 270,                    /* DECR  */
+    GE = 271,                      /* GE  */
+    LE = 272,                      /* LE  */
+    EQ = 273,                      /* EQ  */
+    NE = 274,                      /* NE  */
+    AND = 275,                     /* AND  */
+    OR = 276                       /* OR  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -99,7 +100,7 @@ union YYSTYPE
     string *str_val;
     int val;
 
-#line 103 "D:/CompilerTools/code/minic/minic_yacc.h"
+#line 104 "D:/CompilerTools/code/minic/minic_yacc.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -75,6 +75,7 @@ white_line  [\r\n]
 "break"     {cout<<yytext<<endl;return BREAK;}
 "continue"  {cout<<yytext<<endl;return CONT;}
 "return"    {cout<<yytext<<endl;return RET;}
+"for"       {cout<<yytext<<endl;return FOR;}
 
 "int"       {
                 cout<<yytext<<endl;

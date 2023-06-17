@@ -87,35 +87,15 @@ public:
     const char *c_str() { return code.c_str(); }
 };
 
-class BlockController {
-private:
-    bool f = true;
-public:
-    bool alive()
-    {
-        return f;
-    }
-
-    void finish()
-    {
-        f = false;
-    }
-
-    void set()
-    {
-        f = true;
-    }
-};
-
-class WhileName {
+class While_t {
 public:
     string entry_name, body_name, end_name;
-    WhileName(const std::string &_entry, const std::string &_body, const std::string &_end) : entry_name(_entry), body_name(_body), end_name(_end) {}
+    While_t(const std::string &_entry, const std::string &_body, const std::string &_end) : entry_name(_entry), body_name(_body), end_name(_end) {}
 };
 
 class WhileStack {
 private:
-    stack<WhileName> whiles;
+    stack<While_t> whiles;
 public:
     void append(const std::string &_entry, const std::string &_body, const std::string &_end)
     {
@@ -136,5 +116,41 @@ public:
     string getEndName()
     {
         return whiles.top().end_name;
+    }
+};
+
+class For_t {
+public:
+    string entry_name, body_name, c_name, end_name;
+    For_t(const std::string &_entry, const std::string &_body, const std::string &_c, const std::string &_end) : entry_name(_entry), body_name(_body), c_name(_c), end_name(_end) {}
+};
+
+class ForStack {
+private:
+    stack<For_t> fors;
+public:
+    void append(const std::string &_entry, const std::string &_body, const std::string &_c, const std::string &_end)
+    {
+        fors.emplace(_entry, _body, _c, _end);
+    }
+    void quit()
+    {
+        fors.pop();
+    }
+    string getEntryName()
+    {
+        return fors.top().entry_name;
+    }
+    string getBodyName()
+    {
+        return fors.top().body_name;
+    }
+    string getCName()
+    {
+        return fors.top().c_name;
+    }
+    string getEndName()
+    {
+        return fors.top().end_name;
     }
 };

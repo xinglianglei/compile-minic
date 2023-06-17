@@ -13,8 +13,8 @@ IRCode code_tmpval;
 IRCode code_stmt;
 SymTabStk stk;
 MinicType::TYPE tmp;
-BlockController bc;
 WhileStack wst;
+ForStack forst;
 FuncTabStack fts;
 int flag = 0;//用来指示是否是条件
 
@@ -121,13 +121,13 @@ string AST_FuncDef::done(bool option)
     }
 
     //开启形参
+    int params_num = 0;//后续处理空字符组会用到
     if (tag == AST_FuncDef::DECL_PARAM || tag == AST_FuncDef::DEF_PARAM) {
-        int param_num = 0;
         for (auto &param : func_params->vec) {
-            if (param_num != 0)
+            if (params_num != 0)
                 code_vec.append(",");
             param->done();
-            param_num++;
+            params_num++;
         }
     }
     //关闭形参
@@ -148,7 +148,7 @@ string AST_FuncDef::done(bool option)
             FuncTab *functab = new FuncTab(*func_name);
             for (auto &param : func_params->vec) {
                 auto paramItem = dynamic_cast<AST_FuncFParam *>(param.get());
-                cout << (paramItem->tag == AST_FuncFParam::VARIABLE) << endl;
+                //cout << (paramItem->tag == AST_FuncFParam::VARIABLE) << endl;
                 if (paramItem->tag == AST_FuncFParam::VARIABLE) {
                     stk.insertLocalINT(*(paramItem->param_name));
                     string localName = stk.getName(*(paramItem->param_name));
@@ -166,11 +166,14 @@ string AST_FuncDef::done(bool option)
                         auto ce_ = dynamic_cast<AST_Exp *>(ce.get());
                         len.push_back(ce_->getValue());
                     }
+                    /*if (paramItem->ArrayIndexList->vec.size() == 0) {
+                        len.push_back(0);
+                    }*/
                     //获取数组类型
                     string array_type = stk.getArrayType(len);
                     //修正数组类型
                     if (paramItem->ArrayIndexList->is_zero) {
-                        array_type.replace(0, 1, "[0][");
+                        array_type.replace(0, 1, "[0]");
                     } else {
                         array_type.replace(0, 3, "[0]");
                     }
@@ -180,10 +183,11 @@ string AST_FuncDef::done(bool option)
                     string localName = stk.getName(*(paramItem->param_name));
                     //插入定义语句
                     code_localval.code_arrayDecl(localName, array_type, " ;" + *(paramItem->param_name));
-
+                    code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
                     //记录
                     Func_t *func_t = new Func_t("array", *(paramItem->param_name), array_type);
                     functab->insert(*func_t);
+                    param_num++;
                 }
             }
             //插入函数栈
@@ -218,25 +222,32 @@ string AST_FuncFParam::done(bool option)
         //string localName = stk.getName(*param_name);
         //code_stmt.append("\t" + localName + "=" + tmpName + "\n");
     } else {
-        code_vec.append(*param_type + *param_name);
+        string tmpName = stk.getTmpName();
+        code_vec.append("i32 " + tmpName);
         int param_num = 0;
-        for (auto &index : (*ArrayIndexList).vec) {
-            auto index_exp = dynamic_cast<AST_ConstExp *>(index.get());
-            string val = (index_exp->get_value());
-            if (param_num == 0) {
-                if (ArrayIndexList->is_zero) {
-                    code_vec.append("[0]");
+        //处理空数组
+        if ((*ArrayIndexList).vec.size() > 0) {
+            for (auto &index : (*ArrayIndexList).vec) {
+                auto index_exp = dynamic_cast<AST_ConstExp *>(index.get());
+                string val = (index_exp->get_value());
+                if (param_num == 0) {
+                    if (ArrayIndexList->is_zero) {
+                        code_vec.append("[0]");
+                        code_vec.append("[" + val + "]");
+                        param_num++;
+                    } else {
+                        code_vec.append("[0]");
+                        param_num++;
+                    }
+                } else {
                     code_vec.append("[" + val + "]");
                     param_num++;
-                } else {
-                    code_vec.append("[0]");
-                    param_num++;
                 }
-            } else {
-                code_vec.append("[" + val + "]");
-                param_num++;
             }
+        } else {
+            code_vec.append("[0]");
         }
+
     }
     return "";
 }
@@ -264,9 +275,7 @@ string AST_BlockItem::done(bool option)
 
 string AST_Stmt::done(bool option)
 {
-    //if (!bc.alive()) return;
     if (tag == RETURN) {
-        // bc.finish()写在这里不对！
         if (exp) {
             string ret_name = exp->done();
             //return ret_name;
@@ -277,7 +286,6 @@ string AST_Stmt::done(bool option)
         } else {
             code_stmt.code_br(".L1");
         }
-        //bc.finish();
     } else if (tag == ASSIGN) {
 
         string val = exp->done();
@@ -313,7 +321,6 @@ string AST_Stmt::done(bool option)
 
         code_stmt.code_br(while_entry);
 
-        //bc.set();
         code_stmt.code_label(while_entry);
         //string cond_ = cond->done();
         //code_stmt.code_bc(cond_, while_body, while_end);
@@ -337,22 +344,17 @@ string AST_Stmt::done(bool option)
             code_stmt.code.replace(index, 3, while_end);
         }
 
-        //bc.set();
         code_stmt.code_label(while_body);
         body->done();
-        if (bc.alive())
-            code_stmt.code_br(while_entry);
+        code_stmt.code_br(while_entry);
 
-        bc.set();
         code_stmt.code_label(while_end);
         wst.quit(); // 该while处理已结束，退栈
         flag = 0;
     } else if (tag == BREAK) {
         code_stmt.code_br(wst.getEndName());  // 跳转到while_end
-        bc.finish();                // 当前IR的block设为不活跃
     } else if (tag == CONTINUE) {
         code_stmt.code_br(wst.getEntryName());// 跳转到while_entry
-        bc.finish();                // 当前IR的block设为不活跃
     } else if (tag == IF) {
         flag = 0;
         string t = stk.getLabelName();
@@ -385,26 +387,62 @@ string AST_Stmt::done(bool option)
         }
 
         // IF Stmt
-        bc.set();
         code_stmt.code_label(t);
         body->done();
-        if (bc.alive())
-            code_stmt.code_br(j);
+        code_stmt.code_br(j);
 
         // else stmt
         if (else_body != nullptr) {
-            bc.set();
             code_stmt.code_label(e);
             else_body->done();
-            if (bc.alive())
-                code_stmt.code_br(j);
+            code_stmt.code_br(j);
 
         }
         // end
-        bc.set();
         code_stmt.code_label(j);
+        flag = 0;
+    } else if (tag == FOR) {
+        flag = 0;
+        string s = stk.getLabelName();
+        string b = stk.getLabelName();
+        string c = stk.getLabelName();
+        string e = stk.getLabelName();
+        exp->done();
+        //wst.append(while_entry, while_body, while_end);
+        forst.append(s, b, c, e);
+        //入口
+        code_stmt.code_br(s);
+
+        code_stmt.code_label(s);
+        stk.insert_Label();
+        string cond_ = cond->done();
+
+        if (flag == 0) {
+            string tmp_cond;
+            if (cond_.find("*") != string::npos) {
+                tmp_cond = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp_cond, "i32");
+                code_stmt.append("\t" + tmp_cond + "=" + cond_ + "\n");
+            } else tmp_cond = cond_;
+            code_stmt.code_bc(tmp_cond, b, e);
+        }
+
+        for (auto index : stk.lab_t.back()->t_line) {
+            code_stmt.code.replace(index, 3, b);
+        }
+        for (auto index : stk.lab_t.back()->f_line) {
+            code_stmt.code.replace(index, 3, e);
+        }
+        code_stmt.code_label(b);
+        body->done();
+        code_stmt.code_br(s);
+
+        code_stmt.code_label(c);
+        exp2->done();
+        code_stmt.code_label(e);
+        wst.quit(); // 该while处理已结束，退栈
+        flag = 0;
     }
-    flag = 0;
     return"";
 
 }
@@ -944,7 +982,6 @@ string AST_LAnd::done(bool option)
     stk.insert_F(code_stmt.code.size() - 4);
     code_stmt.code_label(s_1);
 
-    //sbc.set();
     string rhs = landExp->done(true);
     if (option) {
         return rhs;
@@ -965,7 +1002,6 @@ string AST_LAnd::done(bool option)
     //stk.store(tmp, result);
     //stk.jump(end_s);
 
-    //bc.set();
     /*code_stmt.code_label(true_s);
     string ret = stk.getTmpName();
     code_tmpval.code_valDecl(ret, "i1");
@@ -1013,7 +1049,6 @@ string AST_LOr::done(bool option)
     stk.insert_T(code_stmt.code.size() - 13);
     code_stmt.code_label(s_1);
 
-    //sbc.set();
     string rhs = lorExp->done();
     //string tmp = stk.getTmpName();
     //处理为指针的情况
@@ -1031,7 +1066,6 @@ string AST_LOr::done(bool option)
     //stk.store(tmp, result);
     //stk.jump(end_s);
 
-    //bc.set();
     /*code_stmt.code_label(true_s);
     string ret = stk.getTmpName();
     code_tmpval.code_valDecl(ret, "i1");
@@ -1152,6 +1186,11 @@ string AST_FuncCall::done(bool option)
 }
 
 int AST_FuncCall::getValue()
+{
+    return -1;
+}
+
+int AST_Stmt::getValue()
 {
     return -1;
 }
