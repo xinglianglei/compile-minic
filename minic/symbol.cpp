@@ -167,6 +167,16 @@ string SymTab_t::getName(const string &ident)
         return "";
 }
 
+void Label_t::insert_T(int index)
+{
+    t_line.push_back(index);
+}
+
+void Label_t::insert_F(int index)
+{
+    f_line.push_back(index);
+}
+
 
 void SymTabStk::push()
 {
@@ -310,6 +320,21 @@ string SymTabStk::getTmpArrayName(const vector<int> &vec)
 string SymTabStk::getTmpPtrName()
 {
     return nm.getTmpPtrName();
+}
+
+void SymTabStk::insert_Label()
+{
+    lab_t.emplace_back(new Label_t());
+}
+
+void SymTabStk::insert_T(int index)
+{
+    lab_t.back()->insert_T(index);
+}
+
+void SymTabStk::insert_F(int index)
+{
+    lab_t.back()->insert_F(index);
 }
 
 FuncTab FuncTabStack::findFunc(const string &func_Name)

@@ -16,6 +16,7 @@ MinicType::TYPE tmp;
 BlockController bc;
 WhileStack wst;
 FuncTabStack fts;
+int flag = 0;//用来指示是否是条件
 
 
 // 1 表示形参; 2表示实参; 0表示内部
@@ -268,6 +269,7 @@ string AST_Stmt::done(bool option)
             exp->done();
         }
     } else if (tag == WHILE) {
+        flag = 0;
         string while_entry = stk.getLabelName();
         string while_body = stk.getLabelName();
         string while_end = stk.getLabelName();
@@ -278,8 +280,19 @@ string AST_Stmt::done(bool option)
 
         //bc.set();
         code_stmt.code_label(while_entry);
-        string cond_ = cond->done();
-        code_stmt.code_bc(cond_, while_body, while_end);
+        //string cond_ = cond->done();
+        //code_stmt.code_bc(cond_, while_body, while_end);
+        stk.insert_Label();
+        string s = cond->done();
+        //注意!!!
+        if (flag == 0)
+            code_stmt.code_bc(s, while_body, while_end);
+        for (auto index : stk.lab_t.back()->t_line) {
+            code_stmt.code.replace(index, 3, while_body);
+        }
+        for (auto index : stk.lab_t.back()->f_line) {
+            code_stmt.code.replace(index, 3, while_end);
+        }
 
         //bc.set();
         code_stmt.code_label(while_body);
@@ -290,6 +303,7 @@ string AST_Stmt::done(bool option)
         bc.set();
         code_stmt.code_label(while_end);
         wst.quit(); // 该while处理已结束，退栈
+        flag = 0;
     } else if (tag == BREAK) {
         code_stmt.code_br(wst.getEndName());  // 跳转到while_end
         bc.finish();                // 当前IR的block设为不活跃
@@ -297,11 +311,28 @@ string AST_Stmt::done(bool option)
         code_stmt.code_br(wst.getEntryName());// 跳转到while_entry
         bc.finish();                // 当前IR的block设为不活跃
     } else if (tag == IF) {
-        string s = cond->done();
+        flag = 0;
         string t = stk.getLabelName();
         string e = stk.getLabelName();
         string j = stk.getLabelName();
-        code_stmt.code_bc(s, t, else_body == nullptr ? j : e);
+
+        //短路回填,顺序还没撸出来
+        stk.insert_Label();
+        string s = cond->done();
+        if (flag == 0)
+            code_stmt.code_bc(s, t, else_body == nullptr ? j : e);
+        for (auto index : stk.lab_t.back()->t_line) {
+            code_stmt.code.replace(index, 3, t);
+        }
+        if (else_body != nullptr) {
+            for (auto index : stk.lab_t.back()->f_line) {
+                code_stmt.code.replace(index, 3, e);
+            }
+        } else {
+            for (auto index : stk.lab_t.back()->f_line) {
+                code_stmt.code.replace(index, 3, j);
+            }
+        }
 
         // IF Stmt
         bc.set();
@@ -323,6 +354,7 @@ string AST_Stmt::done(bool option)
         bc.set();
         code_stmt.code_label(j);
     }
+    flag = 0;
     return"";
 
 }
@@ -810,29 +842,44 @@ string AST_LAnd::done(bool option)
     code_vec.alloc(result);
     stk.store("0", result);*/
 
-    string lhs = landExp->done();
+    //标志
+    flag++;
+
+    string lhs = eqExp->done();
     string s_1 = stk.getLabelName();
-    string true_s = stk.getLabelName();
-    string false_s = stk.getLabelName();
+    //string true_s = stk.getLabelName();
+    //string false_s = stk.getLabelName();
+    string true_s = ".LT";
+    string false_s = ".LF";
 
     code_stmt.code_bc(lhs, s_1, false_s);
+
+    //获取false_s中F的位置
+    stk.insert_F(code_stmt.code.size() - 4);
     code_stmt.code_label(s_1);
 
     //sbc.set();
-    string rhs = eqExp->done();
+    string rhs = landExp->done(true);
+    if (option) {
+        return rhs;
+    }
     //string tmp = stk.getTmpName();
     code_stmt.code_bc(rhs, true_s, false_s);
+    //获取true_s中T的位置 false_s中F的位置
+    stk.insert_F(code_stmt.code.size() - 4);
+    stk.insert_T(code_stmt.code.size() - 13);
+
     //stk.store(tmp, result);
     //stk.jump(end_s);
 
     //bc.set();
-    code_stmt.code_label(true_s);
+    /*code_stmt.code_label(true_s);
     string ret = stk.getTmpName();
     code_tmpval.code_valDecl(ret, "i1");
     code_stmt.append("\t" + ret + "=1" + "\n");
     code_stmt.code_label(false_s);
-    code_stmt.append("\t" + ret + "=0" + "\n");
-    return ret;
+    code_stmt.append("\t" + ret + "=0" + "\n");*/
+    return rhs;
 }
 
 int AST_LAnd::getValue()
@@ -844,36 +891,47 @@ int AST_LAnd::getValue()
 
 string AST_LOr::done(bool option)
 {
+    //只有cond过来的exp需要直接输出
     if (only_land == true) return landExp->done();
 
     // 修改支持短路逻辑
     /*string result = stk.getVarName("SCRES");
     code_vec.alloc(result);
     stk.store("0", result);*/
+    //标志
+    flag++;
 
-    string lhs = landExp->done();
+    string lhs = landExp->done(true);
     string s_1 = stk.getLabelName();
-    string true_s = stk.getLabelName();
-    string false_s = stk.getLabelName();
+    //string true_s = stk.getLabelName();
+    //string false_s = stk.getLabelName();
+    string true_s = ".LT";
+    string false_s = ".LF";
 
     code_stmt.code_bc(lhs, true_s, s_1);
+    //获取true_s中T的位置
+    stk.insert_T(code_stmt.code.size() - 13);
     code_stmt.code_label(s_1);
 
     //sbc.set();
     string rhs = lorExp->done();
     //string tmp = stk.getTmpName();
     code_stmt.code_bc(rhs, true_s, false_s);
+    //获取true_s中T的位置 false_s中F的位置
+    stk.insert_T(code_stmt.code.size() - 13);
+    stk.insert_F(code_stmt.code.size() - 4);
+
     //stk.store(tmp, result);
     //stk.jump(end_s);
 
     //bc.set();
-    code_stmt.code_label(true_s);
+    /*code_stmt.code_label(true_s);
     string ret = stk.getTmpName();
     code_tmpval.code_valDecl(ret, "i1");
     code_stmt.append("\t" + ret + "=1" + "\n");
     code_stmt.code_label(false_s);
-    code_stmt.append("\t" + ret + "=0" + "\n");
-    return ret;
+    code_stmt.append("\t" + ret + "=0" + "\n");*/
+    return rhs;
 }
 
 int AST_LOr::getValue()

@@ -71,9 +71,19 @@ public:
 
 };
 
+class Label_t {
+public:
+    vector<int> t_line;
+    vector<int> f_line;
+
+    void insert_T(int index);
+    void insert_F(int index);
+};
+
 class SymTabStk {
 public:
     deque<unique_ptr<SymTab_t>> sym_tb_st;
+    deque<unique_ptr<Label_t>> lab_t;
     NameOrder nm;
 
     const int UNKNOWN = -1;
@@ -106,6 +116,10 @@ public:
     string getTmpPtrName();
     //string getLocalName(const string &ident);   // aux var name, such as @short_circuit_res,shouldn't insert it into Symbol table.
     ///*string getGlobalName(const string &var); // aux var name, such as @short_circuit
+    void insert_Label();
+    void insert_T(int index);
+    void insert_F(int index);
+
 };
 
 class Func_t {
