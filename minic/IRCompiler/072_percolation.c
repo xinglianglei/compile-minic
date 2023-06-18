@@ -1,6 +1,7 @@
 int array[110];
 int n;
-void init(int n) {
+void init(int n)
+{
   int i;
   i = 1;
   while (i <= n * n + 1) {
@@ -13,7 +14,8 @@ int getint();
 void putint(int k);
 void putch(int k);
 
-int findfa(int a) {
+int findfa(int a)
+{
   if (array[a] == a)
     return a;
   else {
@@ -21,14 +23,16 @@ int findfa(int a) {
     return array[a];
   }
 }
-void mmerge(int a, int b) {
+void mmerge(int a, int b)
+{
   int m;
   int n;
   m = findfa(a);
   n = findfa(b);
   if (m != n) array[m] = n;
 }
-int main() {
+int main()
+{
   int t, m;
   int a, b;
   t = 1;

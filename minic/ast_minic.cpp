@@ -337,11 +337,17 @@ string AST_Stmt::done(bool option)
             code_stmt.code_bc(tmp_s, while_body, while_end);
         }
 
-        for (auto index : stk.lab_t.back()->t_line) {
-            code_stmt.code.replace(index, 3, while_body);
-        }
         for (auto index : stk.lab_t.back()->f_line) {
-            code_stmt.code.replace(index, 3, while_end);
+            if (while_end.size() > 3)
+                code_stmt.code.replace(index, 4, while_end);
+            else
+                code_stmt.code.replace(index, 3, while_end);
+        }
+        for (auto index : stk.lab_t.back()->t_line) {
+            if (while_body.size() > 3)
+                code_stmt.code.replace(index, 4, while_body);
+            else
+                code_stmt.code.replace(index, 3, while_body);
         }
 
         code_stmt.code_label(while_body);
@@ -373,17 +379,27 @@ string AST_Stmt::done(bool option)
             } else tmp_s = s;
             code_stmt.code_bc(tmp_s, t, else_body == nullptr ? j : e);
         }
-        for (auto index : stk.lab_t.back()->t_line) {
-            code_stmt.code.replace(index, 3, t);
-        }
+
         if (else_body != nullptr) {
             for (auto index : stk.lab_t.back()->f_line) {
-                code_stmt.code.replace(index, 3, e);
+                if (e.size() > 3)
+                    code_stmt.code.replace(index, 4, e);
+                else
+                    code_stmt.code.replace(index, 3, e);
             }
         } else {
             for (auto index : stk.lab_t.back()->f_line) {
-                code_stmt.code.replace(index, 3, j);
+                if (j.size() > 3)
+                    code_stmt.code.replace(index, 4, j);
+                else
+                    code_stmt.code.replace(index, 3, j);
             }
+        }
+        for (auto index : stk.lab_t.back()->t_line) {
+            if (t.size() > 3)
+                code_stmt.code.replace(index, 4, t);
+            else
+                code_stmt.code.replace(index, 3, t);
         }
 
         // IF Stmt
@@ -947,7 +963,7 @@ string AST_LAnd::done(bool option)
     code_stmt.code_bc(tmp_lhs, s_1, false_s);
 
     //获取false_s中F的位置
-    stk.insert_F(code_stmt.code.size() - 4);
+    stk.insert_F(code_stmt.code.size() - 5);
     code_stmt.code_label(s_1);
 
     string rhs = landExp->done(true);
@@ -964,8 +980,8 @@ string AST_LAnd::done(bool option)
     } else tmp_rhs = rhs;
     code_stmt.code_bc(tmp_rhs, true_s, false_s);
     //获取true_s中T的位置 false_s中F的位置
-    stk.insert_F(code_stmt.code.size() - 4);
-    stk.insert_T(code_stmt.code.size() - 13);
+    stk.insert_F(code_stmt.code.size() - 5);
+    stk.insert_T(code_stmt.code.size() - 15);
 
     //stk.store(tmp, result);
     //stk.jump(end_s);
@@ -1014,7 +1030,10 @@ string AST_LOr::done(bool option)
     } else tmp_lhs = lhs;
     code_stmt.code_bc(tmp_lhs, true_s, s_1);
     //获取true_s中T的位置
-    stk.insert_T(code_stmt.code.size() - 13);
+    if (s_1.size() > 3)
+        stk.insert_T(code_stmt.code.size() - 16);
+    else
+        stk.insert_T(code_stmt.code.size() - 15);
     code_stmt.code_label(s_1);
 
     string rhs = lorExp->done();
@@ -1028,8 +1047,9 @@ string AST_LOr::done(bool option)
     } else tmp_rhs = rhs;
     code_stmt.code_bc(tmp_rhs, true_s, false_s);
     //获取true_s中T的位置 false_s中F的位置
-    stk.insert_T(code_stmt.code.size() - 13);
-    stk.insert_F(code_stmt.code.size() - 4);
+
+    stk.insert_T(code_stmt.code.size() - 15);
+    stk.insert_F(code_stmt.code.size() - 5);
 
     //stk.store(tmp, result);
     //stk.jump(end_s);

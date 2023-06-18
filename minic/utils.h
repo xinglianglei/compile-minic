@@ -59,7 +59,7 @@ public:
 
     void code_bc(const string &tg, const string &str1, const string &str2)
     {
-        code += "\tbc " + tg + ",label" + str1 + ",label" + str2 + "\n";
+        code += "\tbc " + tg + ",label" + str1 + " ,label" + str2 + " \n";
     }
 
     void code_br(const string &tg)
