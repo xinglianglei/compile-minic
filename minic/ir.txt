@@ -1,28 +1,34 @@
-declare i32 @n ;n
 define i32 @main() {
 	declare i32 %l0 
 	declare i32 %l1 ;a
-	declare i32 %l2 ;b
-	declare i32 %t3 
+	declare i32 %t2 
+	declare i1 %t3 
 	declare i32 %t4 
-	declare i1 %t5 
-	declare i1 %t6 
+	declare i32 %t5 
+	declare i32 %t6 
 	declare i1 %t7 
+	declare i32 %t8 
 	entry
-	%l1=1
-	%l2=2
-	%t3=%l1
-	%t4=%l2
-	%t5=cmp lt %t3, %t4
-	%t6=cmp eq %t5, 0
-	%t7=cmp eq %t6, 0
-	bc %t7,label.L2 ,label.L4 
+	br label .L2
 .L2:
-	%l0 = 0
-	br label .L1
+	%t2=%l1
+	%t3=cmp gt %t2, 1
+	bc %t3,label.L3 ,label.L4 
+.L3:
+	%t4=%l1
+	%t5 = RDEC 0, %t4
+	%l1=%t5
+	%t6=%l1
+	%t7=cmp lt %t6, 2
+	bc %t7,label.L5 ,label.L7 
+.L5:
 	br label .L4
+	br label .L7
+.L7:
+	br label .L2
 .L4:
-	%l0 = 1
+	%t8=%l1
+	%l0 = %t8
 	br label .L1
 .L1:
 	exit %l0

@@ -121,36 +121,28 @@ public:
 
 class For_t {
 public:
-    string entry_name, body_name, c_name, end_name;
-    For_t(const std::string &_entry, const std::string &_body, const std::string &_c, const std::string &_end) : entry_name(_entry), body_name(_body), c_name(_c), end_name(_end) {}
+    string c_name, b_name;
+    For_t(const std::string &c_name, const std::string &b_name) : c_name(c_name), b_name(b_name) {}
 };
 
 class ForStack {
 private:
     stack<For_t> fors;
 public:
-    void append(const std::string &_entry, const std::string &_body, const std::string &_c, const std::string &_end)
+    void append(const std::string &c_name, const std::string &b_name)
     {
-        fors.emplace(_entry, _body, _c, _end);
+        fors.emplace(c_name, b_name);
     }
     void quit()
     {
         fors.pop();
     }
-    string getEntryName()
-    {
-        return fors.top().entry_name;
-    }
-    string getBodyName()
-    {
-        return fors.top().body_name;
-    }
-    string getCName()
+    string getContinueName()
     {
         return fors.top().c_name;
     }
-    string getEndName()
+    string getBreakName()
     {
-        return fors.top().end_name;
+        return fors.top().b_name;
     }
 };

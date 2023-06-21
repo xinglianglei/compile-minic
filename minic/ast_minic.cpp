@@ -317,7 +317,7 @@ string AST_Stmt::done(bool option)
         string while_body = stk.getLabelName();
         string while_end = stk.getLabelName();
 
-        wst.append(while_entry, while_body, while_end);
+        forst.append(while_entry, while_end);
 
         code_stmt.code_br(while_entry);
 
@@ -355,12 +355,12 @@ string AST_Stmt::done(bool option)
         code_stmt.code_br(while_entry);
 
         code_stmt.code_label(while_end);
-        wst.quit(); // 该while处理已结束，退栈
+        forst.quit(); // 该while处理已结束，退栈
         flag = 0;
     } else if (tag == BREAK) {
-        code_stmt.code_br(wst.getEndName());  // 跳转到while_end
+        code_stmt.code_br(forst.getBreakName());  // 跳转到while_end
     } else if (tag == CONTINUE) {
-        code_stmt.code_br(wst.getEntryName());// 跳转到while_entry
+        code_stmt.code_br(forst.getContinueName());// 跳转到while_entry
     } else if (tag == IF) {
         flag = 0;
         string t = stk.getLabelName();
@@ -425,7 +425,7 @@ string AST_Stmt::done(bool option)
         string e = stk.getLabelName();
         exp->done();
         //wst.append(while_entry, while_body, while_end);
-        forst.append(s, b, c, e);
+        forst.append(s, e);
         //入口
         code_stmt.code_br(s);
 
@@ -455,12 +455,12 @@ string AST_Stmt::done(bool option)
 
         code_stmt.code_label(c);
         exp2->done();
+        code_stmt.code_br(b);
         code_stmt.code_label(e);
-        wst.quit(); // 该while处理已结束，退栈
+        forst.quit(); // 该while处理已结束，退栈
         flag = 0;
     }
     return"";
-
 }
 
 string AST_LVal::done(bool option)

@@ -1,25 +1,10 @@
-int n;
-int k;
-int l[2][3];
-int add(int a[][2]);
-int add(int a[][2])
-{
-    return 0;
-}
 int main()
 {
     int a;
-    a = 1;
-    int b;
-    if (a == 1) {
-        b = 2;
-    } else {
-        b = 3;
+    while (a > 1) {
+        a--;
+        if (a < 2)
+            break;
     }
-    while (a < b) {
-        a++;
-        break;
-    }
-    b = add(1, a[1][2]);
     return a;
 }
