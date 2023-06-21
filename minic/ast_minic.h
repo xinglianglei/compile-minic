@@ -1,7 +1,7 @@
 #ifndef AST_H
 #define AST_H
 
-
+#include <gvc.h>
 #include <cassert>
 #include <iostream>
 #include <list>
@@ -88,6 +88,7 @@ class AST_Base {
 public:
     virtual ~AST_Base() = default;
     virtual string done(bool option = false) = 0; // overide <<
+    virtual Agnode_t *gen_graph(bool option = false) = 0; // overide <<
 };
 
 class AST_Vec {
@@ -122,6 +123,7 @@ public:
         id_val = sour->id_val;
     }
     virtual int getValue() = 0; // overide <<
+    virtual Agnode_t *gen_graph(bool option = false) override; // overide <<
 };
 
 class AST_CompUnit : public AST_Base {
@@ -131,6 +133,7 @@ public:
 
     //AST_ComUnit() {}
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_FuncDef : public AST_Base {
@@ -143,6 +146,7 @@ public:
     unique_ptr<AST_Base> func_block;
 
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_FuncFParam :public AST_Base {
@@ -155,6 +159,7 @@ public:
     unique_ptr<AST_Vec> ArrayIndexList;
 
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class ArrayIndexExpList : public AST_Base {
@@ -172,6 +177,7 @@ public:
         list_block(move(list_block)), is_null(false)
     {}
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_BlockItem :public AST_Base {
@@ -183,6 +189,7 @@ public:
         :elem(move(elem)), is_stmt(is_stmt)
     {}
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 //合起来处理,转了一下类型捏
@@ -200,6 +207,7 @@ public:
     TAG tag;
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_ConstExp :public AST_Exp {
@@ -210,6 +218,7 @@ public:
 
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_Decl :public AST_Base {
@@ -218,6 +227,7 @@ public:
 
     AST_Decl(unique_ptr<AST_Base> &decl) : decl(move(decl)) {}
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_VarDecl : public AST_Base {
@@ -229,6 +239,7 @@ public:
         : list_btype(move(list_btype)), list_vardecl(move(list_vardecl))
     {}
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 
@@ -241,6 +252,7 @@ public:
     unique_ptr<AST_Exp> initVal;   // nullptr implies no init_val
     //void Dump(bool is_global = false) const;
     virtual string done(bool option = false) override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_Initial :public AST_Exp {
@@ -251,6 +263,7 @@ public:
     TAG tag;
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_Exp1 : public AST_Exp {
@@ -260,6 +273,7 @@ public:
     AST_Exp1(unique_ptr<AST_Exp> &add2) :xxx(move(add2)) {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_Cond : public AST_Exp {
@@ -268,6 +282,7 @@ public:
     AST_Cond(unique_ptr<AST_Exp> &lor) :lor(move(lor)) {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 /*class AST_SelfExp : public AST_Exp {
@@ -290,6 +305,7 @@ public:
 
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_Primary : public AST_Exp {
@@ -303,6 +319,7 @@ public:
 
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_LVal :public AST_Exp {
@@ -314,6 +331,7 @@ public:
 
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 //op是不是缺个*？
@@ -329,6 +347,7 @@ public:
     {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_AddExp : public AST_Exp {
@@ -342,6 +361,7 @@ public:
     {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_RelExp :public AST_Exp {
@@ -356,6 +376,7 @@ public:
     {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 
@@ -370,6 +391,7 @@ public:
     {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 class AST_LAnd :public AST_Exp {
@@ -384,6 +406,7 @@ public:
     {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 class AST_LOr :public AST_Exp {
 public:
@@ -397,6 +420,7 @@ public:
     {}
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 
 //不继承Exp了，改为Base
@@ -413,6 +437,9 @@ public:
 
     virtual string done(bool option = false) override;
     virtual int getValue() override;
+    virtual Agnode_t *gen_graph(bool option = false) override;
 };
 #endif
+
+Agnode_t *OutputAST(AST_CompUnit *root, const std::string filePath);
 

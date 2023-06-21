@@ -152,6 +152,30 @@ ast_minic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/ast_minic.cpp.s
 .PHONY : ast_minic.cpp.s
 
+graph_minic.obj: graph_minic.cpp.obj
+.PHONY : graph_minic.obj
+
+# target to build an object file
+graph_minic.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/graph_minic.cpp.obj
+.PHONY : graph_minic.cpp.obj
+
+graph_minic.i: graph_minic.cpp.i
+.PHONY : graph_minic.i
+
+# target to preprocess a source file
+graph_minic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/graph_minic.cpp.i
+.PHONY : graph_minic.cpp.i
+
+graph_minic.s: graph_minic.cpp.s
+.PHONY : graph_minic.s
+
+# target to generate assembly for a file
+graph_minic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/graph_minic.cpp.s
+.PHONY : graph_minic.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -260,6 +284,9 @@ help:
 	@echo ... ast_minic.obj
 	@echo ... ast_minic.i
 	@echo ... ast_minic.s
+	@echo ... graph_minic.obj
+	@echo ... graph_minic.i
+	@echo ... graph_minic.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

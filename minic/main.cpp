@@ -13,7 +13,7 @@
 
 #include "lexer.h"
 #include "parser.h"
-#include "Symbol.h"
+#include "symbol.h"
 #include "ast_minic.h"
 #include "utils.h"
 
@@ -180,11 +180,10 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    /*if (gShowAST) {
-
+    if (gShowAST) {
         // 遍历抽象语法树，生成抽象语法树图片
-        OutputAST(ast_root, gOutputFile);
-    }*/
+        OutputAST((AST_CompUnit *)root.release(), gOutputFile);
+    }
 
     if (gGenIr) {
         ofstream fout(gOutputFile.c_str());

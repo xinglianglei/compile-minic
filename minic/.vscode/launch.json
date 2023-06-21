@@ -37,7 +37,7 @@
             "name": "GDB for Windows or Linux to minic",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/cmake-build-debug/minic-flex-bison",
+            "program": "${workspaceFolder}/cmake-build-debug/minic",
             "args": [
                 "-R",
                 "test.txt"
@@ -65,7 +65,7 @@
             "name": "GDB for Windows or Linux to AST",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/cmake-build-debug/minic-flex-bison",
+            "program": "${workspaceFolder}/cmake-build-debug/minic",
             "args": [
                 "-a",
                 "test.txt"
@@ -93,7 +93,7 @@
             "name": "LLDB for Mac to minic",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/cmake-build-debug/minic-flex-bison",
+            "program": "${workspaceFolder}/cmake-build-debug/minic",
             "args": [
                 "-R",
                 "test.txt"

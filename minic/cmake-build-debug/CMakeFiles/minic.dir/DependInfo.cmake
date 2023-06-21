@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/CompilerTools/code/minic/ast_minic.cpp" "CMakeFiles/minic.dir/ast_minic.cpp.obj" "gcc" "CMakeFiles/minic.dir/ast_minic.cpp.obj.d"
+  "D:/CompilerTools/code/minic/graph_minic.cpp" "CMakeFiles/minic.dir/graph_minic.cpp.obj" "gcc" "CMakeFiles/minic.dir/graph_minic.cpp.obj.d"
   "D:/CompilerTools/code/minic/main.cpp" "CMakeFiles/minic.dir/main.cpp.obj" "gcc" "CMakeFiles/minic.dir/main.cpp.obj.d"
   "D:/CompilerTools/code/minic/minic_lex.cpp" "CMakeFiles/minic.dir/minic_lex.cpp.obj" "gcc" "CMakeFiles/minic.dir/minic_lex.cpp.obj.d"
   "D:/CompilerTools/code/minic/minic_yacc.cpp" "CMakeFiles/minic.dir/minic_yacc.cpp.obj" "gcc" "CMakeFiles/minic.dir/minic_yacc.cpp.obj.d"

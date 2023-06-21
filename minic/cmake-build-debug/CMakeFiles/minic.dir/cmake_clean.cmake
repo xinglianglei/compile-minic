@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/minic.dir/ast_minic.cpp.obj"
   "CMakeFiles/minic.dir/ast_minic.cpp.obj.d"
+  "CMakeFiles/minic.dir/graph_minic.cpp.obj"
+  "CMakeFiles/minic.dir/graph_minic.cpp.obj.d"
   "CMakeFiles/minic.dir/main.cpp.obj"
   "CMakeFiles/minic.dir/main.cpp.obj.d"
   "CMakeFiles/minic.dir/minic_lex.cpp.obj"

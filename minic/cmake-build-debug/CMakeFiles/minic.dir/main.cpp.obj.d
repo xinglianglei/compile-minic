@@ -406,6 +406,36 @@ CMakeFiles/minic.dir/main.cpp.obj: D:/CompilerTools/code/minic/main.cpp \
   D:/CompilerTools/code/minic/parser.h \
   D:/CompilerTools/code/minic/minic_yacc.h \
   D:/CompilerTools/code/minic/ast_minic.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/gvc.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/types.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/geom.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/arith.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/math.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/cmath \
+  D:/CompilerTools/msys64/mingw64/include/math.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/specfun.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/limits \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/gamma.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/special_function_util.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/bessel_function.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/beta_function.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/ell_integral.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/exp_integral.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/hypergeometric.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/legendre_function.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/modified_bessel_func.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/poly_hermite.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/poly_laguerre.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/tr1/riemann_zeta.tcc \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/gvcext.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/pathgeom.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/textspan.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/cgraph.h \
+  D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/inttypes.h \
+  D:/CompilerTools/msys64/mingw64/include/inttypes.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/cdt.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/usershape.h \
+  D:/CompilerTools/msys64/mingw64/include/graphviz/gvplugin.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/list \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_list.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/list.tcc \
@@ -415,7 +445,7 @@ CMakeFiles/minic.dir/main.cpp.obj: D:/CompilerTools/code/minic/main.cpp \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/sstream \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc \
-  D:/CompilerTools/code/minic/Symbol.h \
+  D:/CompilerTools/code/minic/symbol.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/unordered_map \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hashtable.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/hashtable_policy.h \

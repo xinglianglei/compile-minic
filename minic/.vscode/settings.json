@@ -109,6 +109,7 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "*.def": "cpp",
-        "*.txt": "c"
+        "*.txt": "c",
+        "cassert": "cpp"
     }
 }

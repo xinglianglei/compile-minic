@@ -90,7 +90,7 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/CompilerTools/code/minic/cmake-build-
 CMAKE_GNUtoMS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/calculator-flex-bison
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/minic
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=D:/CompilerTools/msys64/mingw64/bin/ld.exe
@@ -248,24 +248,6 @@ Graphviz_INCLUDE_DIR:PATH=D:/CompilerTools/msys64/mingw64/include/graphviz
 
 //Path to a library.
 Graphviz_PATHPLAN_LIBRARY:FILEPATH=D:/CompilerTools/msys64/mingw64/lib/libpathplan.dll.a
-
-//Value Computed by CMake
-calculator-flex-bison_BINARY_DIR:STATIC=D:/CompilerTools/code/minic/cmake-build-debug
-
-//Value Computed by CMake
-calculator-flex-bison_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-calculator-flex-bison_SOURCE_DIR:STATIC=D:/CompilerTools/code/minic
-
-//Value Computed by CMake
-minic-flex-bison_BINARY_DIR:STATIC=D:/CompilerTools/code/minic/cmake-build-debug
-
-//Value Computed by CMake
-minic-flex-bison_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-minic-flex-bison_SOURCE_DIR:STATIC=D:/CompilerTools/code/minic
 
 //Value Computed by CMake
 minic_BINARY_DIR:STATIC=D:/CompilerTools/code/minic/cmake-build-debug

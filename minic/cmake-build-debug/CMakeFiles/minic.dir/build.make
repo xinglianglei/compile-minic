@@ -112,11 +112,26 @@ CMakeFiles/minic.dir/minic_yacc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minic.dir/minic_yacc.cpp.s"
 	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\CompilerTools\code\minic\minic_yacc.cpp -o CMakeFiles\minic.dir\minic_yacc.cpp.s
 
+CMakeFiles/minic.dir/graph_minic.cpp.obj: CMakeFiles/minic.dir/flags.make
+CMakeFiles/minic.dir/graph_minic.cpp.obj: CMakeFiles/minic.dir/includes_CXX.rsp
+CMakeFiles/minic.dir/graph_minic.cpp.obj: D:/CompilerTools/code/minic/graph_minic.cpp
+CMakeFiles/minic.dir/graph_minic.cpp.obj: CMakeFiles/minic.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/minic.dir/graph_minic.cpp.obj"
+	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minic.dir/graph_minic.cpp.obj -MF CMakeFiles\minic.dir\graph_minic.cpp.obj.d -o CMakeFiles\minic.dir\graph_minic.cpp.obj -c D:\CompilerTools\code\minic\graph_minic.cpp
+
+CMakeFiles/minic.dir/graph_minic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minic.dir/graph_minic.cpp.i"
+	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\CompilerTools\code\minic\graph_minic.cpp > CMakeFiles\minic.dir\graph_minic.cpp.i
+
+CMakeFiles/minic.dir/graph_minic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minic.dir/graph_minic.cpp.s"
+	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\CompilerTools\code\minic\graph_minic.cpp -o CMakeFiles\minic.dir\graph_minic.cpp.s
+
 CMakeFiles/minic.dir/ast_minic.cpp.obj: CMakeFiles/minic.dir/flags.make
 CMakeFiles/minic.dir/ast_minic.cpp.obj: CMakeFiles/minic.dir/includes_CXX.rsp
 CMakeFiles/minic.dir/ast_minic.cpp.obj: D:/CompilerTools/code/minic/ast_minic.cpp
 CMakeFiles/minic.dir/ast_minic.cpp.obj: CMakeFiles/minic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/minic.dir/ast_minic.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/minic.dir/ast_minic.cpp.obj"
 	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minic.dir/ast_minic.cpp.obj -MF CMakeFiles\minic.dir\ast_minic.cpp.obj.d -o CMakeFiles\minic.dir\ast_minic.cpp.obj -c D:\CompilerTools\code\minic\ast_minic.cpp
 
 CMakeFiles/minic.dir/ast_minic.cpp.i: cmake_force
@@ -131,7 +146,7 @@ CMakeFiles/minic.dir/main.cpp.obj: CMakeFiles/minic.dir/flags.make
 CMakeFiles/minic.dir/main.cpp.obj: CMakeFiles/minic.dir/includes_CXX.rsp
 CMakeFiles/minic.dir/main.cpp.obj: D:/CompilerTools/code/minic/main.cpp
 CMakeFiles/minic.dir/main.cpp.obj: CMakeFiles/minic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/minic.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/minic.dir/main.cpp.obj"
 	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minic.dir/main.cpp.obj -MF CMakeFiles\minic.dir\main.cpp.obj.d -o CMakeFiles\minic.dir\main.cpp.obj -c D:\CompilerTools\code\minic\main.cpp
 
 CMakeFiles/minic.dir/main.cpp.i: cmake_force
@@ -146,7 +161,7 @@ CMakeFiles/minic.dir/symbol.cpp.obj: CMakeFiles/minic.dir/flags.make
 CMakeFiles/minic.dir/symbol.cpp.obj: CMakeFiles/minic.dir/includes_CXX.rsp
 CMakeFiles/minic.dir/symbol.cpp.obj: D:/CompilerTools/code/minic/symbol.cpp
 CMakeFiles/minic.dir/symbol.cpp.obj: CMakeFiles/minic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/minic.dir/symbol.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/minic.dir/symbol.cpp.obj"
 	D:\CompilerTools\msys64\mingw64\bin\clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minic.dir/symbol.cpp.obj -MF CMakeFiles\minic.dir\symbol.cpp.obj.d -o CMakeFiles\minic.dir\symbol.cpp.obj -c D:\CompilerTools\code\minic\symbol.cpp
 
 CMakeFiles/minic.dir/symbol.cpp.i: cmake_force
@@ -161,6 +176,7 @@ CMakeFiles/minic.dir/symbol.cpp.s: cmake_force
 minic_OBJECTS = \
 "CMakeFiles/minic.dir/minic_lex.cpp.obj" \
 "CMakeFiles/minic.dir/minic_yacc.cpp.obj" \
+"CMakeFiles/minic.dir/graph_minic.cpp.obj" \
 "CMakeFiles/minic.dir/ast_minic.cpp.obj" \
 "CMakeFiles/minic.dir/main.cpp.obj" \
 "CMakeFiles/minic.dir/symbol.cpp.obj"
@@ -170,6 +186,7 @@ minic_EXTERNAL_OBJECTS =
 
 minic.exe: CMakeFiles/minic.dir/minic_lex.cpp.obj
 minic.exe: CMakeFiles/minic.dir/minic_yacc.cpp.obj
+minic.exe: CMakeFiles/minic.dir/graph_minic.cpp.obj
 minic.exe: CMakeFiles/minic.dir/ast_minic.cpp.obj
 minic.exe: CMakeFiles/minic.dir/main.cpp.obj
 minic.exe: CMakeFiles/minic.dir/symbol.cpp.obj
@@ -181,7 +198,7 @@ minic.exe: D:/CompilerTools/msys64/mingw64/lib/libpathplan.dll.a
 minic.exe: CMakeFiles/minic.dir/linkLibs.rsp
 minic.exe: CMakeFiles/minic.dir/objects1.rsp
 minic.exe: CMakeFiles/minic.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable minic.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\CompilerTools\code\minic\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable minic.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\minic.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

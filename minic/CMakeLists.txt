@@ -37,6 +37,7 @@ add_executable(${PROJECT_NAME}
     minic_yacc.h
     lexer.h
     parser.h
+    graph_minic.cpp
     ast_minic.cpp
     ast_minic.h
     main.cpp
