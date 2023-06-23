@@ -17,6 +17,11 @@ public:
         code += str;
     }
 
+    void code_single(const string &op, const string &tg, const string &str1)
+    {
+        code += "\t" + tg + " = " + op + " " + str1 + "\n";
+    }
+
     void code_binary(const string &op, const string &tg, const string &str1, const string &str2)
     {
         code += "\t" + tg + " = " + op + " " + str1 + ", " + str2 + "\n";
@@ -27,9 +32,14 @@ public:
         code += label + ":\n";
     }
 
-    void code_ret(const string &str)
+    void code_assign(const string &str, const string &str1)
     {
-        code += "exit " + str + "\n";
+        code += "\t" + str + "=" + str1 + "\n";
+    }
+
+    void code_exit(const string &str)
+    {
+        code += "\texit " + str + "\n";
     }
 
     void code_globalInt(const string &name, const string &type, const string &info = "")
@@ -70,9 +80,9 @@ public:
     void code_call(const std::string &to, const std::string &func, const std::vector<std::string> &params)
     {
         if (to.length()) {
-            code += "\t" + to + " = call i32";
+            code += "\t" + to + " = call i32 ";
         } else {
-            code += "\tcall void";
+            code += "\tcall void ";
         }
         code += func + '(';
         if (params.size()) {

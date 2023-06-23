@@ -18,11 +18,11 @@ define i32 @isdigit(i32 %t1) {
 	%l2=%t1
 	%t3=%l2
 	%t4=cmp le %t3, 57
-	bc %t4,label.L5,label.L4
+	bc %t4,label.L5 ,label.L4 
 .L5:
 	%t5=%l2
 	%t6=cmp ge %t5, 48
-	bc %t6,label.L2,label.L4
+	bc %t6,label.L2 ,label.L4 
 .L2:
 	%l0 = 1
 	br label .L1
@@ -55,7 +55,7 @@ define i32 @power(i32 %t1,i32 %t2) {
 .L2:
 	%t6=%l4
 	%t7=cmp ne %t6, 0
-	bc %t7,label.L3,label.L4
+	bc %t7,label.L3 ,label.L4 
 .L3:
 	%t8=%l5
 	%t9=%l3
@@ -100,11 +100,11 @@ define i32 @getstr(i32 %t1[0]) {
 .L2:
 	%t6=%l3
 	%t7=cmp ne %t6, 10
-	bc %t7,label.L5,label.L4
+	bc %t7,label.L5 ,label.L4 
 .L5:
 	%t8=%l3
 	%t9=cmp ne %t8, 13
-	bc %t9,label.L3,label.L4
+	bc %t9,label.L3 ,label.L4 
 .L3:
 	%t10=%l3
 	%t11=%l5
@@ -283,7 +283,7 @@ define i32 @find() {
 	@ii=%t11
 	%t12=@chat
 	%t13=cmp eq %t12, 0
-	bc %t13,label.L2,label.L4
+	bc %t13,label.L2 ,label.L4 
 .L2:
 	%l0 = 0
 	br label .L1
@@ -301,7 +301,7 @@ define i32 @main() {
 	declare i32 %l215 ;c
 	declare i32 %l265 ;a
 	declare i32 %l266 ;b
-	declare i32 %l215 ;c
+	declare i32 %l267 ;c
 	declare i32 %t2[0]  ;*ident
 	declare i32 %t3 
 	declare i32 %t4 
@@ -663,7 +663,7 @@ define i32 @main() {
 	%t4=@i
 	%t5=%l1
 	%t6=cmp lt %t4, %t5
-	bc %t6,label.L3,label.L4
+	bc %t6,label.L3 ,label.L4 
 .L3:
 	%t7=@i
 	%t8 = mul %t7, 4
@@ -671,7 +671,7 @@ define i32 @main() {
 	%t10=*%t9
 	%t11=call i32 @isdigit(i32 %t10);
 	%t12=cmp eq %t11, 1
-	bc %t12,label.L5,label.L6
+	bc %t12,label.L5 ,label.L6 
 .L5:
 	%t13=@i
 	%t14 = mul %t13, 4
@@ -691,7 +691,7 @@ define i32 @main() {
 	%t24 = add %l2, %t23
 	%t26=*%t24
 	%t25=cmp eq %t26, 40
-	bc %t25,label.L8,label.L10
+	bc %t25,label.L8 ,label.L10 
 .L8:
 	call void @chapush(i32 40);
 	br label .L10
@@ -701,7 +701,7 @@ define i32 @main() {
 	%t29 = add %l2, %t28
 	%t31=*%t29
 	%t30=cmp eq %t31, 94
-	bc %t30,label.L11,label.L13
+	bc %t30,label.L11 ,label.L13 
 .L11:
 	call void @chapush(i32 94);
 	br label .L13
@@ -711,7 +711,7 @@ define i32 @main() {
 	%t34 = add %l2, %t33
 	%t36=*%t34
 	%t35=cmp eq %t36, 41
-	bc %t35,label.L14,label.L16
+	bc %t35,label.L14 ,label.L16 
 .L14:
 	%t37=call i32 @chapop();
 	@c=%t37
@@ -719,7 +719,7 @@ define i32 @main() {
 .L17:
 	%t38=@c
 	%t39=cmp ne %t38, 40
-	bc %t39,label.L18,label.L19
+	bc %t39,label.L18 ,label.L19 
 .L18:
 	%t40=@ii
 	%t41 = mul %t40, 4
@@ -745,7 +745,7 @@ define i32 @main() {
 	%t53 = add %l2, %t52
 	%t55=*%t53
 	%t54=cmp eq %t55, 43
-	bc %t54,label.L20,label.L22
+	bc %t54,label.L20 ,label.L22 
 .L20:
 	br label .L23
 .L23:
@@ -754,50 +754,50 @@ define i32 @main() {
 	%t58 = add @chas, %t57
 	%t60=*%t58
 	%t59=cmp eq %t60, 94
-	bc %t59,label..L24label.L26
+	bc %t59,label.L24,label.L26 
 .L26:
 	%t61=@chat
 	%t62 = mul %t61, 4
 	%t63 = add @chas, %t62
 	%t65=*%t63
 	%t64=cmp eq %t65, 37
-	bc %t64,label.L24,label.L27
+	bc %t64,label.L24,label.L27 
 .L27:
 	%t66=@chat
 	%t67 = mul %t66, 4
 	%t68 = add @chas, %t67
 	%t70=*%t68
 	%t69=cmp eq %t70, 47
-	bc %t69,labe.L24T,label.L28
+	bc %t69,label.L24,label.L28 
 .L28:
 	%t71=@chat
 	%t72 = mul %t71, 4
 	%t73 = add @chas, %t72
 	%t75=*%t73
 	%t74=cmp eq %t75, 42
-	bc %t74,lab.L24LT,label.L29
+	bc %t74,label.L24,label.L29 
 .L29:
 	%t76=@chat
 	%t77 = mul %t76, 4
 	%t78 = add @chas, %t77
 	%t80=*%t78
 	%t79=cmp eq %t80, 45
-	bc %t79,la.L24.LT,label.L30
+	bc %t79,label.L24,label.L30 
 .L30:
 	%t81=@chat
 	%t82 = mul %t81, 4
 	%t83 = add @chas, %t82
 	%t85=*%t83
 	%t84=cmp eq %t85, 43
-	bc %t84,.L24el.LT.L25bel.LF
-	bc %t84.L24bel..L25label.LF
-	bc %t8.L24abe.L25T,label.LF
-	bc %t.L24la.L25.LT,label.LF
-	bc %.L24,.L25el.LT,label.LF
+	bc %t84,label.L24,label.L25
+	bc %t84,label.L24,label.L25
+	bc %t84,label.L24,label.L25
+	bc %t84,label.L24,label.L25
+	bc %t84,label.L24,label.L25
 .L24:
 	%t86=call i32 @find();
 	%t87=cmp eq %t86, 0
-	bc %t87,label.L31,label.L33
+	bc %t87,label.L31 ,label.L33 
 .L31:
 	br label .L25
 	br label .L33
@@ -812,7 +812,7 @@ define i32 @main() {
 	%t90 = add %l2, %t89
 	%t92=*%t90
 	%t91=cmp eq %t92, 45
-	bc %t91,label.L34,label.L36
+	bc %t91,label.L34 ,label.L36 
 .L34:
 	br label .L37
 .L37:
@@ -821,50 +821,50 @@ define i32 @main() {
 	%t95 = add @chas, %t94
 	%t97=*%t95
 	%t96=cmp eq %t97, 94
-	bc %t96,label..L38label.L40
+	bc %t96,label.L38,label.L40 
 .L40:
 	%t98=@chat
 	%t99 = mul %t98, 4
 	%t100 = add @chas, %t99
 	%t102=*%t100
 	%t101=cmp eq %t102, 37
-	bc %t101,label.L38,label.L41
+	bc %t101,label.L38,label.L41 
 .L41:
 	%t103=@chat
 	%t104 = mul %t103, 4
 	%t105 = add @chas, %t104
 	%t107=*%t105
 	%t106=cmp eq %t107, 47
-	bc %t106,labe.L38T,label.L42
+	bc %t106,label.L38,label.L42 
 .L42:
 	%t108=@chat
 	%t109 = mul %t108, 4
 	%t110 = add @chas, %t109
 	%t112=*%t110
 	%t111=cmp eq %t112, 42
-	bc %t111,lab.L38LT,label.L43
+	bc %t111,label.L38,label.L43 
 .L43:
 	%t113=@chat
 	%t114 = mul %t113, 4
 	%t115 = add @chas, %t114
 	%t117=*%t115
 	%t116=cmp eq %t117, 45
-	bc %t116,la.L38.LT,label.L44
+	bc %t116,label.L38,label.L44 
 .L44:
 	%t118=@chat
 	%t119 = mul %t118, 4
 	%t120 = add @chas, %t119
 	%t122=*%t120
 	%t121=cmp eq %t122, 43
-	bc %t121,.L38el.LT.L39bel.LF
-	bc %t121.L38bel..L39label.LF
-	bc %t12.L38abe.L39T,label.LF
-	bc %t1.L38la.L39.LT,label.LF
-	bc %t.L38,.L39el.LT,label.LF
+	bc %t121,label.L38,label.L39
+	bc %t121,label.L38,label.L39
+	bc %t121,label.L38,label.L39
+	bc %t121,label.L38,label.L39
+	bc %t121,label.L38,label.L39
 .L38:
 	%t123=call i32 @find();
 	%t124=cmp eq %t123, 0
-	bc %t124,label.L45,label.L47
+	bc %t124,label.L45 ,label.L47 
 .L45:
 	br label .L39
 	br label .L47
@@ -879,7 +879,7 @@ define i32 @main() {
 	%t127 = add %l2, %t126
 	%t129=*%t127
 	%t128=cmp eq %t129, 42
-	bc %t128,label.L48,label.L50
+	bc %t128,label.L48 ,label.L50 
 .L48:
 	br label .L51
 .L51:
@@ -888,34 +888,34 @@ define i32 @main() {
 	%t132 = add @chas, %t131
 	%t134=*%t132
 	%t133=cmp eq %t134, 94
-	bc %t133,label..L52label.L54
+	bc %t133,label.L52,label.L54 
 .L54:
 	%t135=@chat
 	%t136 = mul %t135, 4
 	%t137 = add @chas, %t136
 	%t139=*%t137
 	%t138=cmp eq %t139, 37
-	bc %t138,label.L52,label.L55
+	bc %t138,label.L52,label.L55 
 .L55:
 	%t140=@chat
 	%t141 = mul %t140, 4
 	%t142 = add @chas, %t141
 	%t144=*%t142
 	%t143=cmp eq %t144, 47
-	bc %t143,labe.L52T,label.L56
+	bc %t143,label.L52,label.L56 
 .L56:
 	%t145=@chat
 	%t146 = mul %t145, 4
 	%t147 = add @chas, %t146
 	%t149=*%t147
 	%t148=cmp eq %t149, 42
-	bc %t148,la.L52.LT,l.L53l.LF
-	bc %t148,l.L52l.LT.L53bel.LF
-	bc %t148,.L52el..L53label.LF
+	bc %t148,label.L52,label.L53
+	bc %t148,label.L52,label.L53
+	bc %t148,label.L52,label.L53
 .L52:
 	%t150=call i32 @find();
 	%t151=cmp eq %t150, 0
-	bc %t151,label.L57,label.L59
+	bc %t151,label.L57 ,label.L59 
 .L57:
 	br label .L53
 	br label .L59
@@ -930,7 +930,7 @@ define i32 @main() {
 	%t154 = add %l2, %t153
 	%t156=*%t154
 	%t155=cmp eq %t156, 47
-	bc %t155,label.L60,label.L62
+	bc %t155,label.L60 ,label.L62 
 .L60:
 	br label .L63
 .L63:
@@ -939,34 +939,34 @@ define i32 @main() {
 	%t159 = add @chas, %t158
 	%t161=*%t159
 	%t160=cmp eq %t161, 94
-	bc %t160,label..L64label.L66
+	bc %t160,label.L64,label.L66 
 .L66:
 	%t162=@chat
 	%t163 = mul %t162, 4
 	%t164 = add @chas, %t163
 	%t166=*%t164
 	%t165=cmp eq %t166, 37
-	bc %t165,label.L64,label.L67
+	bc %t165,label.L64,label.L67 
 .L67:
 	%t167=@chat
 	%t168 = mul %t167, 4
 	%t169 = add @chas, %t168
 	%t171=*%t169
 	%t170=cmp eq %t171, 47
-	bc %t170,labe.L64T,label.L68
+	bc %t170,label.L64,label.L68 
 .L68:
 	%t172=@chat
 	%t173 = mul %t172, 4
 	%t174 = add @chas, %t173
 	%t176=*%t174
 	%t175=cmp eq %t176, 42
-	bc %t175,la.L64.LT,l.L65l.LF
-	bc %t175,l.L64l.LT.L65bel.LF
-	bc %t175,.L64el..L65label.LF
+	bc %t175,label.L64,label.L65
+	bc %t175,label.L64,label.L65
+	bc %t175,label.L64,label.L65
 .L64:
 	%t177=call i32 @find();
 	%t178=cmp eq %t177, 0
-	bc %t178,label.L69,label.L71
+	bc %t178,label.L69 ,label.L71 
 .L69:
 	br label .L65
 	br label .L71
@@ -981,7 +981,7 @@ define i32 @main() {
 	%t181 = add %l2, %t180
 	%t183=*%t181
 	%t182=cmp eq %t183, 37
-	bc %t182,label.L72,label.L74
+	bc %t182,label.L72 ,label.L74 
 .L72:
 	br label .L75
 .L75:
@@ -990,34 +990,34 @@ define i32 @main() {
 	%t186 = add @chas, %t185
 	%t188=*%t186
 	%t187=cmp eq %t188, 94
-	bc %t187,label..L76label.L78
+	bc %t187,label.L76,label.L78 
 .L78:
 	%t189=@chat
 	%t190 = mul %t189, 4
 	%t191 = add @chas, %t190
 	%t193=*%t191
 	%t192=cmp eq %t193, 37
-	bc %t192,label.L76,label.L79
+	bc %t192,label.L76,label.L79 
 .L79:
 	%t194=@chat
 	%t195 = mul %t194, 4
 	%t196 = add @chas, %t195
 	%t198=*%t196
 	%t197=cmp eq %t198, 47
-	bc %t197,labe.L76T,label.L80
+	bc %t197,label.L76,label.L80 
 .L80:
 	%t199=@chat
 	%t200 = mul %t199, 4
 	%t201 = add @chas, %t200
 	%t203=*%t201
 	%t202=cmp eq %t203, 42
-	bc %t202,la.L76.LT,l.L77l.LF
-	bc %t202,l.L76l.LT.L77bel.LF
-	bc %t202,.L76el..L77label.LF
+	bc %t202,label.L76,label.L77
+	bc %t202,label.L76,label.L77
+	bc %t202,label.L76,label.L77
 .L76:
 	%t204=call i32 @find();
 	%t205=cmp eq %t204, 0
-	bc %t205,label.L81,label.L83
+	bc %t205,label.L81 ,label.L83 
 .L81:
 	br label .L77
 	br label .L83
@@ -1045,7 +1045,7 @@ define i32 @main() {
 .L84:
 	%t213=@chat
 	%t214=cmp gt %t213, 0
-	bc %t214,label.L85,label.L86
+	bc %t214,label.L85 ,label.L86 
 .L85:
 	%t216=call i32 @chapop();
 	%l215=%t216
@@ -1076,53 +1076,53 @@ define i32 @main() {
 	%t232 = add @get2, %t231
 	%t234=*%t232
 	%t233=cmp ne %t234, 64
-	bc %t233,label.L88,label.L89
+	bc %t233,label.L88 ,label.L89 
 .L88:
 	%t235=@i
 	%t236 = mul %t235, 4
 	%t237 = add @get2, %t236
 	%t239=*%t237
 	%t238=cmp eq %t239, 94
-	bc %t238,label..L90label.L93
+	bc %t238,label.L90,label.L93 
 .L93:
 	%t240=@i
 	%t241 = mul %t240, 4
 	%t242 = add @get2, %t241
 	%t244=*%t242
 	%t243=cmp eq %t244, 37
-	bc %t243,label.L90,label.L94
+	bc %t243,label.L90,label.L94 
 .L94:
 	%t245=@i
 	%t246 = mul %t245, 4
 	%t247 = add @get2, %t246
 	%t249=*%t247
 	%t248=cmp eq %t249, 47
-	bc %t248,labe.L90T,label.L95
+	bc %t248,label.L90,label.L95 
 .L95:
 	%t250=@i
 	%t251 = mul %t250, 4
 	%t252 = add @get2, %t251
 	%t254=*%t252
 	%t253=cmp eq %t254, 42
-	bc %t253,lab.L90LT,label.L96
+	bc %t253,label.L90,label.L96 
 .L96:
 	%t255=@i
 	%t256 = mul %t255, 4
 	%t257 = add @get2, %t256
 	%t259=*%t257
 	%t258=cmp eq %t259, 45
-	bc %t258,la.L90.LT,label.L97
+	bc %t258,label.L90,label.L97 
 .L97:
 	%t260=@i
 	%t261 = mul %t260, 4
 	%t262 = add @get2, %t261
 	%t264=*%t262
 	%t263=cmp eq %t264, 43
-	bc %t263,.L90el.LT.L91bel.LF
-	bc %t263.L90bel..L91label.LF
-	bc %t26.L90abe.L91T,label.LF
-	bc %t2.L90la.L91.LT,label.LF
-	bc %t.L90,.L91el.LT,label.LF
+	bc %t263,label.L90,label.L91
+	bc %t263,label.L90,label.L91
+	bc %t263,label.L90,label.L91
+	bc %t263,label.L90,label.L91
+	bc %t263,label.L90,label.L91
 .L90:
 	%t268=call i32 @intpop();
 	%l265=%t268
@@ -1133,12 +1133,12 @@ define i32 @main() {
 	%t272 = add @get2, %t271
 	%t274=*%t272
 	%t273=cmp eq %t274, 43
-	bc %t273,label.L98,label.L100
+	bc %t273,label.L98 ,label.L100 
 .L98:
 	%t275=%l265
 	%t276=%l266
 	%t277 = add %t275, %t276
-	%l215=%t277
+	%l267=%t277
 	br label .L100
 .L100:
 	%t278=@i
@@ -1146,12 +1146,12 @@ define i32 @main() {
 	%t280 = add @get2, %t279
 	%t282=*%t280
 	%t281=cmp eq %t282, 45
-	bc %t281,label.L101,label.L103
+	bc %t281,label.L101 ,label.L103 
 .L101:
 	%t283=%l266
 	%t284=%l265
 	%t285 = sub %t283, %t284
-	%l215=%t285
+	%l267=%t285
 	br label .L103
 .L103:
 	%t286=@i
@@ -1159,12 +1159,12 @@ define i32 @main() {
 	%t288 = add @get2, %t287
 	%t290=*%t288
 	%t289=cmp eq %t290, 42
-	bc %t289,label.L104,label.L106
+	bc %t289,label.L104 ,label.L106 
 .L104:
 	%t291=%l265
 	%t292=%l266
 	%t293 = mul %t291, %t292
-	%l215=%t293
+	%l267=%t293
 	br label .L106
 .L106:
 	%t294=@i
@@ -1172,12 +1172,12 @@ define i32 @main() {
 	%t296 = add @get2, %t295
 	%t298=*%t296
 	%t297=cmp eq %t298, 47
-	bc %t297,label.L107,label.L109
+	bc %t297,label.L107 ,label.L109 
 .L107:
 	%t299=%l266
 	%t300=%l265
 	%t301 = div %t299, %t300
-	%l215=%t301
+	%l267=%t301
 	br label .L109
 .L109:
 	%t302=@i
@@ -1185,12 +1185,12 @@ define i32 @main() {
 	%t304 = add @get2, %t303
 	%t306=*%t304
 	%t305=cmp eq %t306, 37
-	bc %t305,label.L110,label.L112
+	bc %t305,label.L110 ,label.L112 
 .L110:
 	%t307=%l266
 	%t308=%l265
 	%t309 = mod %t307, %t308
-	%l215=%t309
+	%l267=%t309
 	br label .L112
 .L112:
 	%t310=@i
@@ -1198,15 +1198,15 @@ define i32 @main() {
 	%t312 = add @get2, %t311
 	%t314=*%t312
 	%t313=cmp eq %t314, 94
-	bc %t313,label.L113,label.L115
+	bc %t313,label.L113 ,label.L115 
 .L113:
 	%t315=%l266
 	%t316=%l265
 	%t317=call i32 @power(i32 %t315, i32 %t316);
-	%l215=%t317
+	%l267=%t317
 	br label .L115
 .L115:
-	%t318=%l215
+	%t318=%l267
 	call void @intpush(i32 %t318);
 	br label .L92
 .L91:
@@ -1215,7 +1215,7 @@ define i32 @main() {
 	%t321 = add @get2, %t320
 	%t323=*%t321
 	%t322=cmp ne %t323, 32
-	bc %t322,label.L116,label.L118
+	bc %t322,label.L116 ,label.L118 
 .L116:
 	%t324=@i
 	%t325 = mul %t324, 4
@@ -1233,7 +1233,7 @@ define i32 @main() {
 	%t333 = add @get2, %t332
 	%t335=*%t333
 	%t334=cmp ne %t335, 32
-	bc %t334,label.L120,label.L121
+	bc %t334,label.L120 ,label.L121 
 .L120:
 	%t336=@i
 	%t337=@ii

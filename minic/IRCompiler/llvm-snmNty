@@ -1,0 +1,114 @@
+@g = global i32 0, align 4
+define i32 @func(i32 %t0) {
+.L1:
+	%l1 = alloca i32, align 4
+	%l2 = alloca i32, align 4
+	store i32 %t0, i32* %l2, align 4
+	%t3 = load i32, i32* @g, align 4
+	%t4 = load i32, i32* %l2, align 4
+	%t5 = add nsw i32 %t3, %t4
+	store i32 %t5, i32* @g, align 4
+	%t6 = load i32, i32* @g, align 4
+	call void @putint(i32 %t6)
+	%t7 = load i32, i32* @g, align 4
+	store i32 %t7, i32* %l1, align 4
+	%t8 = load i32, i32* %l1, align 4
+	ret i32 %t8
+}
+define i32 @main() {
+.L22:
+	%l0 = alloca i32, align 4
+	%l1 = alloca i32, align 4
+	%t2 = call i32 (...) @getint()
+	store i32 %t2, i32* %l1, align 4
+	%t3 = load i32, i32* %l1, align 4
+	%t4 = call i32 @func(i32 %t3)
+	%t25 = icmp ne i32 %t4, 0
+	br i1 %t25, label %.L5, label %.L3
+.L5:
+	%t5 = load i32, i32* %l1, align 4
+	%t6 = icmp sgt i32 %t5, 10
+	br i1 %t6, label %.L2, label %.L3
+.L2:
+	store i32 1, i32* %l1, align 4
+	br label %.L4
+.L3:
+	store i32 0, i32* %l1, align 4
+	br label %.L4
+.L4:
+	%t7 = call i32 (...) @getint()
+	store i32 %t7, i32* %l1, align 4
+	%t8 = load i32, i32* %l1, align 4
+	%t9 = call i32 @func(i32 %t8)
+	%t26 = icmp ne i32 %t9, 0
+	br i1 %t26, label %.L9, label %.L7
+.L9:
+	%t10 = load i32, i32* %l1, align 4
+	%t11 = icmp sgt i32 %t10, 11
+	br i1 %t11, label %.L6, label %.L7
+.L6:
+	store i32 1, i32* %l1, align 4
+	br label %.L8
+.L7:
+	store i32 0, i32* %l1, align 4
+	br label %.L8
+.L8:
+	%t12 = call i32 (...) @getint()
+	store i32 %t12, i32* %l1, align 4
+	%t13 = load i32, i32* %l1, align 4
+	%t14 = call i32 @func(i32 %t13)
+	%t27 = icmp ne i32 %t14, 0
+	br i1 %t27, label %.L10, label %.L13
+.L13:
+	%t15 = load i32, i32* %l1, align 4
+	%t16 = icmp sle i32 %t15, 99
+	br i1 %t16, label %.L10, label %.L11
+.L10:
+	store i32 1, i32* %l1, align 4
+	br label %.L12
+.L11:
+	store i32 0, i32* %l1, align 4
+	br label %.L12
+.L12:
+	%t17 = call i32 (...) @getint()
+	store i32 %t17, i32* %l1, align 4
+	%t18 = load i32, i32* %l1, align 4
+	%t19 = call i32 @func(i32 %t18)
+	%t28 = icmp ne i32 %t19, 0
+	br i1 %t28, label %.L14, label %.L17
+.L17:
+	%t20 = load i32, i32* %l1, align 4
+	%t21 = icmp sle i32 %t20, 100
+	br i1 %t21, label %.L14, label %.L15
+.L14:
+	store i32 1, i32* %l1, align 4
+	br label %.L16
+.L15:
+	store i32 0, i32* %l1, align 4
+	br label %.L16
+.L16:
+	%t22 = call i32 @func(i32 100)
+	%t29 = icmp ne i32 %t22, 0
+	br i1 %t29, label %.L21, label %.L19
+.L21:
+	%t23 = call i32 @func(i32 99)
+	%t24 = icmp eq i32 %t23, 0
+	br i1 %t24, label %.L18, label %.L19
+.L18:
+	store i32 1, i32* %l1, align 4
+	br label %.L20
+.L19:
+	store i32 0, i32* %l1, align 4
+	br label %.L20
+.L20:
+	store i32 0, i32* %l0, align 4
+	%t30 = load i32, i32* %l0, align 4
+	ret i32 %t30
+}
+declare i32 @getint(...);
+declare i32 @getch(...);
+declare void @putint(i32);
+declare void @putch(i32);
+declare void @putstr(i8*);
+declare i32 @getarray(i32*);
+declare void @putarray(i32, i32*);

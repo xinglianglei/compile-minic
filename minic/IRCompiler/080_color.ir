@@ -1,432 +1,619 @@
-declare int@getint();	declare i32 %l0 
-declare void@putint(i32 %t0);	declare i32 %l1 
-	%l1=t0
-declare void@putch(i32 %t0);	declare i32 %l1 
-	%l1=t0
-declare int@equal(i32 %t0,i32 %t1) {
-	declare i32 %l2 
-	declare i32 %l3 
-	declare i32 %l4 
-	declare i32 %t5 
-	declare i32 %t6 
-	declare i1 %t7 
-	%l2=t0
-	%l3=t1
+declare i32 @dp[18][18][18][18][18][7]
+declare i32 @list[200]
+declare i32 @cns[20]
+define i32 @equal(i32 %t0, i32 %t1) {
+	declare i32 %l2 ; variable: a
+	declare i32 %l3 ; variable: b
+	declare i32 %l4
+	declare i32 %t5
+	declare i32 %t6
+	declare i1 %t7
+	declare i32 %t8
 	entry
-	%t5=%l2
-	%t6=%l3
-	%t7 = eq %t5, %t6
-	bc %t7,label.L2,label.L4
-.L2:
-	%l0=1
-	br Label.L1
-	br Label.L4
-.L4:
-	%l0=0
-	br Label.L1
-.L1:
-	exit %l4
-}
-
-declare int@dfs(i32 %t0,i32 %t1,i32 %t2,i32 %t3,i32 %t4,i32 %t5) {
-	declare i32 %l6 
-	declare i32 %l7 
-	declare i32 %l8 
-	declare i32 %l9 
-	declare i32 %l10 
-	declare i32 %l11 
-	declare i32 %l12 
-	declare i32 %l25 ;ans
-	declare i32 %t13 
-	declare i1 %t14 
-	declare i32 %t15 
-	declare i32 %t16 
-	declare i32 %t17 
-	declare i32 %t18 
-	declare i32 %t19 
-	declare i32 %t20 
-	declare i32 %t21 
-	declare i32 %t22 
-	declare i32 %t23 
-	declare i1 %t24 
-	declare i32 %t26 
-	declare i32 %t27 
-	declare i32 %t28 
-	declare i32 %t29 
-	declare i32 %t30 
-	declare i32 %t31 
-	declare i32 %t32 
-	declare i32 %t33 
-	declare i32 %t34 
-	declare i32 %t35 
-	declare i32 %t36 
-	declare i32 %t37 
-	declare i32 %t38 
-	declare i32 %t39 
-	declare i32 %t40 
-	declare i32 %t41 
-	declare i32 %t42 
-	declare i32 %t43 
-	declare i32 %t44 
-	declare i32 %t45 
-	declare i32 %t46 
-	declare i32 %t47 
-	declare i32 %t48 
-	declare i32 %t49 
-	declare i32 %t50 
-	declare i32 %t51 
-	declare i32 %t52 
-	declare i32 %t53 
-	declare i32 %t54 
-	declare i32 %t55 
-	declare i32 %t56 
-	declare i32 %t57 
-	declare i32 %t58 
-	declare i32 %t59 
-	declare i32 %t60 
-	declare i32 %t61 
-	declare i32 %t62 
-	declare i32 %t63 
-	declare i32 %t64 
-	declare i32 %t65 
-	declare i32 %t66 
-	declare i32 %t67 
-	declare i32 %t68 
-	declare i32 %t69 
-	declare i32 %t70 
-	declare i32 %t71 
-	declare i32 %t72 
-	declare i32 %t73 
-	declare i32 %t74 
-	declare i32 %t75 
-	declare i32 %t76 
-	declare i32 %t77 
-	declare i32 %t78 
-	declare i32 %t79 
-	declare i32 %t80 
-	declare i32 %t81 
-	declare i32 %t82 
-	declare i32 %t83 
-	declare i32 %t84 
-	declare i32 %t85 
-	declare i32 %t86 
-	declare i32 %t87 
-	declare i32 %t88 
-	declare i32 %t89 
-	declare i32 %t90 
-	declare i32 %t91 
-	declare i32 %t92 
-	declare i32 %t93 
-	declare i32 %t94 
-	declare i32 %t95 
-	declare i32 %t96 
-	declare i32 %t97 
-	declare i32 %t98 
-	declare i32 %t99 
-	declare i32 %t100 
-	declare i32 %t101 
-	declare i32 %t102 
-	declare i32 %t103 
-	declare i32 %t104 
-	declare i32 %t105 
-	declare i32 %t106 
-	declare i32 %t107 
-	declare i32 %t108 
-	%l6=t0
-	%l7=t1
-	%l8=t2
-	%l9=t3
-	%l10=t4
-	%l11=t5
-	entry
-	%t13 = neg 0, 1
-	%t14 = ne , %t13
-	bc %t14,label.L2,label.L4
-.L2:
-	%l0=
-	br Label.L1
-	br Label.L4
-.L4:
-	%t15=%l6
-	%t16=%l7
-	%t17 = add %t15, %t16
-	%t18=%l8
-	%t19 = add %t17, %t18
-	%t20=%l9
-	%t21 = add %t19, %t20
-	%t22=%l10
-	%t23 = add %t21, %t22
-	%t24 = eq %t23, 0
-	bc %t24,label.L5,label.L7
-.L5:
-	%l0=1
-	br Label.L1
-	br Label.L7
-.L7:
-	%l25=0
-	%t26=%l6
-	bc %t26,label.L8,label.L10
-.L8:
-	%t27=%l25
-	%t28=%l6
-	%t29=%l11
-	%t30=call i32 @equal(i32 %t29, i32 2);
-	%t31 = sub %t28, %t30
-	%t32=%l6
-	%t33 = sub %t32, 1
-	%t34=%l7
-	%t35=%l8
-	%t36=%l9
-	%t37=%l10
-	%t38=call i32 @dfs(i32 %t33, i32 %t34, i32 %t35, i32 %t36, i32 %t37, i32 1);
-	%t39 = mul %t31, %t38
-	%t40 = add %t27, %t39
-	%t41 = mod %t40, 1000000007
-	%l25=%t41
-	br Label.L10
-.L10:
-	%t42=%l7
-	bc %t42,label.L11,label.L13
-.L11:
-	%t43=%l25
-	%t44=%l7
-	%t45=%l11
-	%t46=call i32 @equal(i32 %t45, i32 3);
-	%t47 = sub %t44, %t46
-	%t48=%l6
-	%t49 = add %t48, 1
-	%t50=%l7
-	%t51 = sub %t50, 1
-	%t52=%l8
-	%t53=%l9
-	%t54=%l10
-	%t55=call i32 @dfs(i32 %t49, i32 %t51, i32 %t52, i32 %t53, i32 %t54, i32 2);
-	%t56 = mul %t47, %t55
-	%t57 = add %t43, %t56
-	%t58 = mod %t57, 1000000007
-	%l25=%t58
-	br Label.L13
-.L13:
-	%t59=%l8
-	bc %t59,label.L14,label.L16
-.L14:
-	%t60=%l25
-	%t61=%l8
-	%t62=%l11
-	%t63=call i32 @equal(i32 %t62, i32 4);
-	%t64 = sub %t61, %t63
-	%t65=%l6
-	%t66=%l7
-	%t67 = add %t66, 1
-	%t68=%l8
-	%t69 = sub %t68, 1
-	%t70=%l9
-	%t71=%l10
-	%t72=call i32 @dfs(i32 %t65, i32 %t67, i32 %t69, i32 %t70, i32 %t71, i32 3);
-	%t73 = mul %t64, %t72
-	%t74 = add %t60, %t73
-	%t75 = mod %t74, 1000000007
-	%l25=%t75
-	br Label.L16
-.L16:
-	%t76=%l9
-	bc %t76,label.L17,label.L19
-.L17:
-	%t77=%l25
-	%t78=%l9
-	%t79=%l11
-	%t80=call i32 @equal(i32 %t79, i32 5);
-	%t81 = sub %t78, %t80
-	%t82=%l6
-	%t83=%l7
-	%t84=%l8
-	%t85 = add %t84, 1
-	%t86=%l9
-	%t87 = sub %t86, 1
-	%t88=%l10
-	%t89=call i32 @dfs(i32 %t82, i32 %t83, i32 %t85, i32 %t87, i32 %t88, i32 4);
-	%t90 = mul %t81, %t89
-	%t91 = add %t77, %t90
-	%t92 = mod %t91, 1000000007
-	%l25=%t92
-	br Label.L19
-.L19:
-	%t93=%l10
-	bc %t93,label.L20,label.L22
-.L20:
-	%t94=%l25
-	%t95=%l10
-	%t96=%l6
-	%t97=%l7
-	%t98=%l8
-	%t99=%l9
-	%t100 = add %t99, 1
-	%t101=%l10
-	%t102 = sub %t101, 1
-	%t103=call i32 @dfs(i32 %t96, i32 %t97, i32 %t98, i32 %t100, i32 %t102, i32 5);
-	%t104 = mul %t95, %t103
-	%t105 = add %t94, %t104
-	%t106 = mod %t105, 1000000007
-	%l25=%t106
-	br Label.L22
-.L22:
-	%t107=%l25
-	%t108 = mod %t107, 1000000007
-	=%t108
-	%l0=
-	br Label.L1
-.L1:
-	exit %l12
-}
-
-declare int@main() {
-	declare i32 %l0 
-	declare i32 %l1 ;n
-	declare i32 %l2 ;i
-	declare i32 %l6 ;j
-	declare i32 %l9 ;k
-	declare i32 %l12 ;l
-	declare i32 %l15 ;m
-	declare i32 %l18 ;h
-	declare i32 %l41 ;ans
-	declare i32 %t3 
-	declare i32 %t4 
-	declare i1 %t5 
-	declare i32 %t7 
-	declare i1 %t8 
-	declare i32 %t10 
-	declare i1 %t11 
-	declare i32 %t13 
-	declare i1 %t14 
-	declare i32 %t16 
-	declare i1 %t17 
-	declare i32 %t19 
-	declare i1 %t20 
-	declare i32 %t21 
-	declare i32 %t22 
-	declare i32 %t23 
-	declare i32 %t24 
-	declare i32 %t25 
-	declare i32 %t26 
-	declare i32 %t27 
-	declare i32 %t28 
-	declare i32 %t29 
-	declare i32 %t30 
-	declare i32 %t31 
-	declare i32 %t32 
-	declare i32 %t33 
-	declare i32 %t34 
-	declare i32 %t35 
-	declare i1 %t36 
-	declare i32 %t37 
-	declare i32 %t38 
-	declare i32 %t39 
-	declare i32 %t40 
-	declare i32 %t42 
-	declare i32 %t43 
-	declare i32 %t44 
-	entry
-	%t3=call i32 @getint();
-	%l1=%t3
-	%l2=0
-	br Label.L2
-.L2:
-	%t4=%l2
-	%t5=cmp LT %t4, 18
-	bc %t5,label.L3,label.L4
+	%l2 = %t0
+	%l3 = %t1
+	%t5 = %l2
+	%t6 = %l3
+	%t7 = cmp eq %t5, %t6
+	bc %t7, label .L3, label .L5
 .L3:
-	%l6=0
-	br Label.L5
+	%l4 = 1
+	br label .L2
 .L5:
-	%t7=%l6
-	%t8=cmp LT %t7, 18
-	bc %t8,label.L6,label.L7
-.L6:
-	%l9=0
-	br Label.L8
-.L8:
-	%t10=%l9
-	%t11=cmp LT %t10, 18
-	bc %t11,label.L9,label.L10
-.L9:
-	%l12=0
-	br Label.L11
-.L11:
-	%t13=%l12
-	%t14=cmp LT %t13, 18
-	bc %t14,label.L12,label.L13
-.L12:
-	%l15=0
-	br Label.L14
-.L14:
-	%t16=%l15
-	%t17=cmp LT %t16, 18
-	bc %t17,label.L15,label.L16
-.L15:
-	%l18=0
-	br Label.L17
-.L17:
-	%t19=%l18
-	%t20=cmp LT %t19, 7
-	bc %t20,label.L18,label.L19
-.L18:
-	%t21 = neg 0, 1
-	=%t21
-	%t22=%l18
-	%t23 = add %t22, 1
-	%l18=%t23
-	br Label.L17
-.L19:
-	%t24=%l15
-	%t25 = add %t24, 1
-	%l15=%t25
-	br Label.L14
-.L16:
-	%t26=%l12
-	%t27 = add %t26, 1
-	%l12=%t27
-	br Label.L11
-.L13:
-	%t28=%l9
-	%t29 = add %t28, 1
-	%l9=%t29
-	br Label.L8
-.L10:
-	%t30=%l6
-	%t31 = add %t30, 1
-	%l6=%t31
-	br Label.L5
-.L7:
-	%t32=%l2
-	%t33 = add %t32, 1
-	%l2=%t33
-	br Label.L2
-.L4:
-	%l2=0
-	br Label.L20
-.L20:
-	%t34=%l2
-	%t35=%l1
-	%t36=cmp LT %t34, %t35
-	bc %t36,label.L21,label.L22
-.L21:
-	%t37=call i32 @getint();
-	=%t37
-	%t38 = add , 1
-	=%t38
-	%t39=%l2
-	%t40 = add %t39, 1
-	%l2=%t40
-	br Label.L20
-.L22:
-	%t42=call i32 @dfs(i32 , i32 , i32 , i32 , i32 , i32 0);
-	%l41=%t42
-	%t43=%l41
-	call  @putint(i32 %t43);
-	%t44=%l41
-	%l0=%t44
-	br Label.L1
-.L1:
-	exit %l0
+	%l4 = 0
+	br label .L2
+.L2:
+	%t8 = %l4
+	exit %t8
 }
-
+define i32 @dfs(i32 %t0, i32 %t1, i32 %t2, i32 %t3, i32 %t4, i32 %t5) {
+	declare i32 %l6 ; variable: a
+	declare i32 %l7 ; variable: b
+	declare i32 %l8 ; variable: c
+	declare i32 %l9 ; variable: d
+	declare i32 %l10 ; variable: e
+	declare i32 %l11 ; variable: last
+	declare i32 %l12
+	declare i32 %l13 ; variable: ans
+	declare i32 %t14
+	declare i32 %t15
+	declare i32 %t16
+	declare i32 %t17
+	declare i32 %t18
+	declare i32 %t19
+	declare i32 %t20
+	declare i32 %t21
+	declare i32 %t22
+	declare i32 %t23
+	declare i32 %t24
+	declare i32* %t25
+	declare i32 %t26
+	declare i32 %t27
+	declare i1 %t28
+	declare i32 %t29
+	declare i32 %t30
+	declare i32 %t31
+	declare i32 %t32
+	declare i32 %t33
+	declare i32 %t34
+	declare i32 %t35
+	declare i32 %t36
+	declare i32 %t37
+	declare i32 %t38
+	declare i32 %t39
+	declare i32* %t40
+	declare i32 %t41
+	declare i32 %t42
+	declare i32 %t43
+	declare i32 %t44
+	declare i32 %t45
+	declare i32 %t46
+	declare i32 %t47
+	declare i32 %t48
+	declare i32 %t49
+	declare i32 %t50
+	declare i32 %t51
+	declare i1 %t52
+	declare i32 %t53
+	declare i1 %t54
+	declare i32 %t55
+	declare i32 %t56
+	declare i32 %t57
+	declare i32 %t58
+	declare i32 %t59
+	declare i32 %t60
+	declare i32 %t61
+	declare i32 %t62
+	declare i32 %t63
+	declare i32 %t64
+	declare i32 %t65
+	declare i32 %t66
+	declare i32 %t67
+	declare i32 %t68
+	declare i32 %t69
+	declare i32 %t70
+	declare i1 %t71
+	declare i32 %t72
+	declare i32 %t73
+	declare i32 %t74
+	declare i32 %t75
+	declare i32 %t76
+	declare i32 %t77
+	declare i32 %t78
+	declare i32 %t79
+	declare i32 %t80
+	declare i32 %t81
+	declare i32 %t82
+	declare i32 %t83
+	declare i32 %t84
+	declare i32 %t85
+	declare i32 %t86
+	declare i32 %t87
+	declare i32 %t88
+	declare i1 %t89
+	declare i32 %t90
+	declare i32 %t91
+	declare i32 %t92
+	declare i32 %t93
+	declare i32 %t94
+	declare i32 %t95
+	declare i32 %t96
+	declare i32 %t97
+	declare i32 %t98
+	declare i32 %t99
+	declare i32 %t100
+	declare i32 %t101
+	declare i32 %t102
+	declare i32 %t103
+	declare i32 %t104
+	declare i32 %t105
+	declare i32 %t106
+	declare i1 %t107
+	declare i32 %t108
+	declare i32 %t109
+	declare i32 %t110
+	declare i32 %t111
+	declare i32 %t112
+	declare i32 %t113
+	declare i32 %t114
+	declare i32 %t115
+	declare i32 %t116
+	declare i32 %t117
+	declare i32 %t118
+	declare i32 %t119
+	declare i32 %t120
+	declare i32 %t121
+	declare i32 %t122
+	declare i32 %t123
+	declare i32 %t124
+	declare i1 %t125
+	declare i32 %t126
+	declare i32 %t127
+	declare i32 %t128
+	declare i32 %t129
+	declare i32 %t130
+	declare i32 %t131
+	declare i32 %t132
+	declare i32 %t133
+	declare i32 %t134
+	declare i32 %t135
+	declare i32 %t136
+	declare i32 %t137
+	declare i32 %t138
+	declare i32 %t139
+	declare i32 %t140
+	declare i32 %t141
+	declare i32 %t142
+	declare i32 %t143
+	declare i32 %t144
+	declare i32 %t145
+	declare i32 %t146
+	declare i32 %t147
+	declare i32 %t148
+	declare i32 %t149
+	declare i32* %t150
+	declare i32 %t151
+	declare i32 %t152
+	declare i32 %t153
+	declare i32 %t154
+	declare i32 %t155
+	declare i32 %t156
+	declare i32 %t157
+	declare i32 %t158
+	declare i32 %t159
+	declare i32 %t160
+	declare i32 %t161
+	declare i32 %t162
+	declare i32 %t163
+	declare i32 %t164
+	declare i32* %t165
+	declare i32 %t166
+	declare i32 %t167
+	declare i32 %t168
+	entry
+	%l6 = %t0
+	%l7 = %t1
+	%l8 = %t2
+	%l9 = %t3
+	%l10 = %t4
+	%l11 = %t5
+	%t14 = mul %l6, 18
+	%t15 = add %t14, %l7
+	%t16 = mul %t15, 18
+	%t17 = add %t16, %l8
+	%t18 = mul %t17, 18
+	%t19 = add %t18, %l9
+	%t20 = mul %t19, 18
+	%t21 = add %t20, %l10
+	%t22 = mul %t21, 7
+	%t23 = add %t22, %l11
+	%t24 = mul %t23, 4
+	%t25 = add @dp, %t24
+	%t27 = *%t25
+	%t28 = cmp ne %t27, -1
+	bc %t28, label .L3, label .L5
+.L3:
+	%t29 = mul %l6, 18
+	%t30 = add %t29, %l7
+	%t31 = mul %t30, 18
+	%t32 = add %t31, %l8
+	%t33 = mul %t32, 18
+	%t34 = add %t33, %l9
+	%t35 = mul %t34, 18
+	%t36 = add %t35, %l10
+	%t37 = mul %t36, 7
+	%t38 = add %t37, %l11
+	%t39 = mul %t38, 4
+	%t40 = add @dp, %t39
+	%t42 = *%t40
+	%l12 = %t42
+	br label .L2
+.L5:
+	%t43 = %l6
+	%t44 = %l7
+	%t45 = add %t43, %t44
+	%t46 = %l8
+	%t47 = add %t45, %t46
+	%t48 = %l9
+	%t49 = add %t47, %t48
+	%t50 = %l10
+	%t51 = add %t49, %t50
+	%t52 = cmp eq %t51, 0
+	bc %t52, label .L6, label .L8
+.L6:
+	%l12 = 1
+	br label .L2
+.L8:
+	%l13 = 0
+	%t53 = %l6
+	%t54 = cmp ne %t53, 0
+	bc %t54, label .L9, label .L11
+.L9:
+	%t55 = %l11
+	%t56 = call i32 @equal(i32 %t55,i32 2)
+	%t57 = %l6
+	%t58 = sub %t57, %t56
+	%t59 = %l6
+	%t60 = sub %t59, 1
+	%t61 = %l7
+	%t62 = %l8
+	%t63 = %l9
+	%t64 = %l10
+	%t65 = call i32 @dfs(i32 %t60,i32 %t61,i32 %t62,i32 %t63,i32 %t64,i32 1)
+	%t66 = mul %t58, %t65
+	%t67 = %l13
+	%t68 = add %t67, %t66
+	%t69 = mod %t68, 1000000007
+	%l13 = %t69
+	br label .L11
+.L11:
+	%t70 = %l7
+	%t71 = cmp ne %t70, 0
+	bc %t71, label .L12, label .L14
+.L12:
+	%t72 = %l11
+	%t73 = call i32 @equal(i32 %t72,i32 3)
+	%t74 = %l7
+	%t75 = sub %t74, %t73
+	%t76 = %l6
+	%t77 = add %t76, 1
+	%t78 = %l7
+	%t79 = sub %t78, 1
+	%t80 = %l8
+	%t81 = %l9
+	%t82 = %l10
+	%t83 = call i32 @dfs(i32 %t77,i32 %t79,i32 %t80,i32 %t81,i32 %t82,i32 2)
+	%t84 = mul %t75, %t83
+	%t85 = %l13
+	%t86 = add %t85, %t84
+	%t87 = mod %t86, 1000000007
+	%l13 = %t87
+	br label .L14
+.L14:
+	%t88 = %l8
+	%t89 = cmp ne %t88, 0
+	bc %t89, label .L15, label .L17
+.L15:
+	%t90 = %l11
+	%t91 = call i32 @equal(i32 %t90,i32 4)
+	%t92 = %l8
+	%t93 = sub %t92, %t91
+	%t94 = %l7
+	%t95 = add %t94, 1
+	%t96 = %l8
+	%t97 = sub %t96, 1
+	%t98 = %l6
+	%t99 = %l9
+	%t100 = %l10
+	%t101 = call i32 @dfs(i32 %t98,i32 %t95,i32 %t97,i32 %t99,i32 %t100,i32 3)
+	%t102 = mul %t93, %t101
+	%t103 = %l13
+	%t104 = add %t103, %t102
+	%t105 = mod %t104, 1000000007
+	%l13 = %t105
+	br label .L17
+.L17:
+	%t106 = %l9
+	%t107 = cmp ne %t106, 0
+	bc %t107, label .L18, label .L20
+.L18:
+	%t108 = %l11
+	%t109 = call i32 @equal(i32 %t108,i32 5)
+	%t110 = %l9
+	%t111 = sub %t110, %t109
+	%t112 = %l8
+	%t113 = add %t112, 1
+	%t114 = %l9
+	%t115 = sub %t114, 1
+	%t116 = %l6
+	%t117 = %l7
+	%t118 = %l10
+	%t119 = call i32 @dfs(i32 %t116,i32 %t117,i32 %t113,i32 %t115,i32 %t118,i32 4)
+	%t120 = mul %t111, %t119
+	%t121 = %l13
+	%t122 = add %t121, %t120
+	%t123 = mod %t122, 1000000007
+	%l13 = %t123
+	br label .L20
+.L20:
+	%t124 = %l10
+	%t125 = cmp ne %t124, 0
+	bc %t125, label .L21, label .L23
+.L21:
+	%t126 = %l9
+	%t127 = add %t126, 1
+	%t128 = %l10
+	%t129 = sub %t128, 1
+	%t130 = %l6
+	%t131 = %l7
+	%t132 = %l8
+	%t133 = call i32 @dfs(i32 %t130,i32 %t131,i32 %t132,i32 %t127,i32 %t129,i32 5)
+	%t134 = %l10
+	%t135 = mul %t134, %t133
+	%t136 = %l13
+	%t137 = add %t136, %t135
+	%t138 = mod %t137, 1000000007
+	%l13 = %t138
+	br label .L23
+.L23:
+	%t139 = mul %l6, 18
+	%t140 = add %t139, %l7
+	%t141 = mul %t140, 18
+	%t142 = add %t141, %l8
+	%t143 = mul %t142, 18
+	%t144 = add %t143, %l9
+	%t145 = mul %t144, 18
+	%t146 = add %t145, %l10
+	%t147 = mul %t146, 7
+	%t148 = add %t147, %l11
+	%t149 = mul %t148, 4
+	%t150 = add @dp, %t149
+	%t152 = %l13
+	%t153 = mod %t152, 1000000007
+	*%t150 = %t153
+	%t154 = mul %l6, 18
+	%t155 = add %t154, %l7
+	%t156 = mul %t155, 18
+	%t157 = add %t156, %l8
+	%t158 = mul %t157, 18
+	%t159 = add %t158, %l9
+	%t160 = mul %t159, 18
+	%t161 = add %t160, %l10
+	%t162 = mul %t161, 7
+	%t163 = add %t162, %l11
+	%t164 = mul %t163, 4
+	%t165 = add @dp, %t164
+	%t167 = *%t165
+	%l12 = %t167
+	br label .L2
+.L2:
+	%t168 = %l12
+	exit %t168
+}
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %l1 ; variable: n
+	declare i32 %l2 ; variable: i
+	declare i32 %l3 ; variable: j
+	declare i32 %l4 ; variable: k
+	declare i32 %l5 ; variable: l
+	declare i32 %l6 ; variable: m
+	declare i32 %l7 ; variable: h
+	declare i32 %l8 ; variable: ans
+	declare i32 %t9
+	declare i32 %t10
+	declare i1 %t11
+	declare i32 %t12
+	declare i1 %t13
+	declare i32 %t14
+	declare i1 %t15
+	declare i32 %t16
+	declare i1 %t17
+	declare i32 %t18
+	declare i1 %t19
+	declare i32 %t20
+	declare i1 %t21
+	declare i32 %t22
+	declare i32 %t23
+	declare i32 %t24
+	declare i32 %t25
+	declare i32 %t26
+	declare i32 %t27
+	declare i32 %t28
+	declare i32 %t29
+	declare i32 %t30
+	declare i32 %t31
+	declare i32 %t32
+	declare i32* %t33
+	declare i32 %t34
+	declare i32 %t35
+	declare i32 %t36
+	declare i32 %t37
+	declare i32 %t38
+	declare i32 %t39
+	declare i32 %t40
+	declare i32 %t41
+	declare i32 %t42
+	declare i32 %t43
+	declare i32 %t44
+	declare i32 %t45
+	declare i32 %t46
+	declare i32 %t47
+	declare i32 %t48
+	declare i1 %t49
+	declare i32 %t50
+	declare i32* %t51
+	declare i32 %t52
+	declare i32 %t53
+	declare i32 %t54
+	declare i32* %t55
+	declare i32 %t56
+	declare i32 %t57
+	declare i32 %t58
+	declare i32* %t59
+	declare i32 %t60
+	declare i32 %t61
+	declare i32* %t62
+	declare i32 %t63
+	declare i32 %t64
+	declare i32 %t65
+	declare i32* %t66
+	declare i32 %t67
+	declare i32 %t68
+	declare i32 %t69
+	declare i32 %t70
+	declare i32 %t71
+	declare i32* %t72
+	declare i32 %t73
+	declare i32* %t74
+	declare i32 %t75
+	declare i32* %t76
+	declare i32 %t77
+	declare i32* %t78
+	declare i32 %t79
+	declare i32* %t80
+	declare i32 %t81
+	declare i32 %t82
+	declare i32 %t83
+	declare i32 %t84
+	declare i32 %t85
+	declare i32 %t86
+	declare i32 %t87
+	declare i32 %t88
+	declare i32 %t89
+	entry
+	%t9 = call i32 @getint()
+	%l1 = %t9
+	%l2 = 0
+	br label .L3
+.L3:
+	%t10 = %l2
+	%t11 = cmp lt %t10, 18
+	bc %t11, label .L4, label .L5
+.L4:
+	%l3 = 0
+	br label .L6
+.L6:
+	%t12 = %l3
+	%t13 = cmp lt %t12, 18
+	bc %t13, label .L7, label .L8
+.L7:
+	%l4 = 0
+	br label .L9
+.L9:
+	%t14 = %l4
+	%t15 = cmp lt %t14, 18
+	bc %t15, label .L10, label .L11
+.L10:
+	%l5 = 0
+	br label .L12
+.L12:
+	%t16 = %l5
+	%t17 = cmp lt %t16, 18
+	bc %t17, label .L13, label .L14
+.L13:
+	%l6 = 0
+	br label .L15
+.L15:
+	%t18 = %l6
+	%t19 = cmp lt %t18, 18
+	bc %t19, label .L16, label .L17
+.L16:
+	%l7 = 0
+	br label .L18
+.L18:
+	%t20 = %l7
+	%t21 = cmp lt %t20, 7
+	bc %t21, label .L19, label .L20
+.L19:
+	%t22 = mul %l2, 18
+	%t23 = add %t22, %l3
+	%t24 = mul %t23, 18
+	%t25 = add %t24, %l4
+	%t26 = mul %t25, 18
+	%t27 = add %t26, %l5
+	%t28 = mul %t27, 18
+	%t29 = add %t28, %l6
+	%t30 = mul %t29, 7
+	%t31 = add %t30, %l7
+	%t32 = mul %t31, 4
+	%t33 = add @dp, %t32
+	*%t33 = -1
+	%t35 = %l7
+	%t36 = add %t35, 1
+	%l7 = %t36
+	br label .L18
+.L20:
+	%t37 = %l6
+	%t38 = add %t37, 1
+	%l6 = %t38
+	br label .L15
+.L17:
+	%t39 = %l5
+	%t40 = add %t39, 1
+	%l5 = %t40
+	br label .L12
+.L14:
+	%t41 = %l4
+	%t42 = add %t41, 1
+	%l4 = %t42
+	br label .L9
+.L11:
+	%t43 = %l3
+	%t44 = add %t43, 1
+	%l3 = %t44
+	br label .L6
+.L8:
+	%t45 = %l2
+	%t46 = add %t45, 1
+	%l2 = %t46
+	br label .L3
+.L5:
+	%l2 = 0
+	br label .L21
+.L21:
+	%t47 = %l2
+	%t48 = %l1
+	%t49 = cmp lt %t47, %t48
+	bc %t49, label .L22, label .L23
+.L22:
+	%t50 = mul %l2, 4
+	%t51 = add @list, %t50
+	%t53 = call i32 @getint()
+	*%t51 = %t53
+	%t54 = mul %l2, 4
+	%t55 = add @list, %t54
+	%t57 = *%t55
+	%t58 = mul %t57, 4
+	%t59 = add @cns, %t58
+	%t61 = mul %l2, 4
+	%t62 = add @list, %t61
+	%t64 = *%t62
+	%t65 = mul %t64, 4
+	%t66 = add @cns, %t65
+	%t68 = *%t66
+	%t69 = add %t68, 1
+	*%t59 = %t69
+	%t70 = %l2
+	%t71 = add %t70, 1
+	%l2 = %t71
+	br label .L21
+.L23:
+	%t72 = add @cns, 4
+	%t74 = add @cns, 8
+	%t76 = add @cns, 12
+	%t78 = add @cns, 16
+	%t80 = add @cns, 20
+	%t82 = *%t72
+	%t83 = *%t74
+	%t84 = *%t76
+	%t85 = *%t78
+	%t86 = *%t80
+	%t87 = call i32 @dfs(i32 %t82,i32 %t83,i32 %t84,i32 %t85,i32 %t86,i32 0)
+	%l8 = %t87
+	%t88 = %l8
+	call void @putint(i32 %t88)
+	%l0 = %l8
+	%t89 = %l0
+	exit %t89
+}

@@ -1,0 +1,132 @@
+declare i32 @g ;g
+define i32 @func(i32 %t1) {
+	declare i32 %l0 
+	declare i32 %l2 
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	entry
+	%l2=%t1
+	%t3=@g
+	%t4=%l2
+	%t5 = add %t3, %t4
+	@g=%t5
+	%t6=@g
+	call void @putint(i32 %t6);
+	%t7=@g
+	%l0 = %t7
+	exit %l0
+}
+
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %l1 ;i
+	declare i32 %t2 
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i1 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i1 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i1 %t16 
+	declare i32 %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i1 %t21 
+	declare i32 %t22 
+	declare i32 %t23 
+	declare i1 %t24 
+	entry
+	%t2=call i32 @getint();
+	%l1=%t2
+	%t3=%l1
+	%t4=call i32 @func(i32 %t3);
+	bc %t4,label.L5 ,label.L3 
+.L5:
+	%t5=%l1
+	%t6=cmp gt %t5, 10
+	bc %t6,label.L2 ,label.L3 
+.L2:
+	%l1=1
+	br label .L4
+.L3:
+	%l1=0
+	br label .L4
+.L4:
+	%t7=call i32 @getint();
+	%l1=%t7
+	%t8=%l1
+	%t9=call i32 @func(i32 %t8);
+	bc %t9,label.L9 ,label.L7 
+.L9:
+	%t10=%l1
+	%t11=cmp gt %t10, 11
+	bc %t11,label.L6 ,label.L7 
+.L6:
+	%l1=1
+	br label .L8
+.L7:
+	%l1=0
+	br label .L8
+.L8:
+	%t12=call i32 @getint();
+	%l1=%t12
+	%t13=%l1
+	%t14=call i32 @func(i32 %t13);
+	bc %t14,label.L10,label.L13 
+.L13:
+	%t15=%l1
+	%t16=cmp le %t15, 99
+	bc %t16,label.L10,label.L11
+.L10:
+	%l1=1
+	br label .L12
+.L11:
+	%l1=0
+	br label .L12
+.L12:
+	%t17=call i32 @getint();
+	%l1=%t17
+	%t18=%l1
+	%t19=call i32 @func(i32 %t18);
+	bc %t19,label.L14,label.L17 
+.L17:
+	%t20=%l1
+	%t21=cmp le %t20, 100
+	bc %t21,label.L14,label.L15
+.L14:
+	%l1=1
+	br label .L16
+.L15:
+	%l1=0
+	br label .L16
+.L16:
+	%t22=call i32 @func(i32 100);
+	bc %t22,label.L21 ,label.L19
+.L21:
+	%t23=call i32 @func(i32 99);
+	%t24=cmp eq %t23, 0
+	bc %t24,label.L18,label.L19
+.L18:
+	%l1=1
+	br label .L20
+.L19:
+	%l1=0
+	br label .L20
+.L20:
+	%l0 = 0
+	br label .L1
+.L1:
+	exit %l0
+}
+

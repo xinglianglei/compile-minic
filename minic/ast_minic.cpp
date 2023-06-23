@@ -153,7 +153,8 @@ string AST_FuncDef::done(bool option)
                     stk.insertLocalINT(*(paramItem->param_name));
                     string localName = stk.getName(*(paramItem->param_name));
                     code_localval.code_valDecl(localName, "i32");
-                    code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
+                    code_stmt.code_assign(localName, "%t" + to_string(param_num));
+                    //code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
                     param_num++;
 
                     //记录
@@ -183,7 +184,8 @@ string AST_FuncDef::done(bool option)
                     string localName = stk.getName(*(paramItem->param_name));
                     //插入定义语句
                     code_localval.code_arrayDecl(localName, array_type, " ;" + *(paramItem->param_name));
-                    code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
+                    code_stmt.code_assign(localName, "%t" + to_string(param_num));
+                    //code_stmt.append("\t" + localName + "=" + "%t" + to_string(param_num) + "\n");
                     //记录
                     Func_t *func_t = new Func_t("array", *(paramItem->param_name), array_type);
                     functab->insert(*func_t);
@@ -199,9 +201,11 @@ string AST_FuncDef::done(bool option)
         if (stk.nm.cnt_label > 2)
             code_stmt.code_label(return_Label);
         if (*func_type == "int")
-            code_stmt.append("\texit " + return_Val + "\n");
+            code_stmt.code_exit(return_Val);
+        //code_stmt.append("\texit " + return_Val + "\n");
         else
-            code_stmt.append("\texit\n");
+            code_stmt.code_exit("");
+        //code_stmt.append("\texit\n");
         code_stmt.append("}\n\n");
     }
     code_vec.append(code_localval.code);
@@ -279,7 +283,8 @@ string AST_Stmt::done(bool option)
         if (exp) {
             string ret_name = exp->done();
             //return ret_name;
-            code_stmt.append("\t%l0 = " + ret_name + "\n");
+            code_stmt.code_assign("%l0", ret_name);
+            //code_stmt.append("\t%l0 = " + ret_name + "\n");
             if (stk.nm.cnt_label > 2) {
                 code_stmt.code_br(".L1");
             }
@@ -295,10 +300,13 @@ string AST_Stmt::done(bool option)
         if ((val.find(flag) != string::npos) && (to.find(flag) != string::npos)) {
             string tmp = stk.getTmpName();
             code_tmpval.code_valDecl(tmp, "i32");
-            code_stmt.append("\t" + tmp + "=" + val + "\n");
-            code_stmt.append("\t" + to + "=" + tmp + "\n");
+            code_stmt.code_assign(tmp, val);
+            //code_stmt.append("\t" + tmp + "=" + val + "\n");
+            code_stmt.code_assign(to, tmp);
+            //code_stmt.append("\t" + to + "=" + tmp + "\n");
         } else
-            code_stmt.append("\t" + to + "=" + val + "\n");
+            code_stmt.code_assign(to, val);
+        //code_stmt.append("\t" + to + "=" + val + "\n");
     } else if (tag == BLOCK) {
         auto block_ = dynamic_cast<AST_Block *>(block.get());
         //修改了
@@ -312,6 +320,7 @@ string AST_Stmt::done(bool option)
             exp->done();
         }
     } else if (tag == WHILE) {
+        stk.push();
         flag = 0;
         string while_entry = stk.getLabelName();
         string while_body = stk.getLabelName();
@@ -332,7 +341,8 @@ string AST_Stmt::done(bool option)
             if (s.find("*") != string::npos) {
                 tmp_s = stk.getTmpName();
                 code_tmpval.code_valDecl(tmp_s, "i32");
-                code_stmt.append("\t" + tmp_s + "=" + s + "\n");
+                code_stmt.code_assign(tmp_s, s);
+                //code_stmt.append("\t" + tmp_s + "=" + s + "\n");
             } else tmp_s = s;
             code_stmt.code_bc(tmp_s, while_body, while_end);
         }
@@ -357,11 +367,13 @@ string AST_Stmt::done(bool option)
         code_stmt.code_label(while_end);
         forst.quit(); // 该while处理已结束，退栈
         flag = 0;
+        stk.pop();
     } else if (tag == BREAK) {
         code_stmt.code_br(forst.getBreakName());  // 跳转到while_end
     } else if (tag == CONTINUE) {
         code_stmt.code_br(forst.getContinueName());// 跳转到while_entry
     } else if (tag == IF) {
+        stk.push();
         flag = 0;
         string t = stk.getLabelName();
         string e = stk.getLabelName();
@@ -375,7 +387,8 @@ string AST_Stmt::done(bool option)
             if (s.find("*") != string::npos) {
                 tmp_s = stk.getTmpName();
                 code_tmpval.code_valDecl(tmp_s, "i32");
-                code_stmt.append("\t" + tmp_s + "=" + s + "\n");
+                code_stmt.code_assign(tmp_s, s);
+                //code_stmt.append("\t" + tmp_s + "=" + s + "\n");
             } else tmp_s = s;
             code_stmt.code_bc(tmp_s, t, else_body == nullptr ? j : e);
         }
@@ -417,7 +430,9 @@ string AST_Stmt::done(bool option)
         // end
         code_stmt.code_label(j);
         flag = 0;
+        stk.pop();
     } else if (tag == FOR) {
+        stk.push();
         flag = 0;
         string s = stk.getLabelName();
         string b = stk.getLabelName();
@@ -438,7 +453,8 @@ string AST_Stmt::done(bool option)
             if (cond_.find("*") != string::npos) {
                 tmp_cond = stk.getTmpName();
                 code_tmpval.code_valDecl(tmp_cond, "i32");
-                code_stmt.append("\t" + tmp_cond + "=" + cond_ + "\n");
+                code_stmt.code_assign(tmp_cond, cond_);
+                //code_stmt.append("\t" + tmp_cond + "=" + cond_ + "\n");
             } else tmp_cond = cond_;
             code_stmt.code_bc(tmp_cond, b, e);
         }
@@ -459,6 +475,7 @@ string AST_Stmt::done(bool option)
         code_stmt.code_label(e);
         forst.quit(); // 该while处理已结束，退栈
         flag = 0;
+        stk.pop();
     }
     return"";
 }
@@ -472,7 +489,8 @@ string AST_LVal::done(bool option)
             if (option == false) {
                 string tmp = stk.getTmpName();
                 code_tmpval.code_valDecl(tmp, "i32");
-                code_stmt.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
+                code_stmt.code_assign(tmp, stk.getName(*ident));
+                //code_stmt.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
                 return tmp;
             } else {
                 return stk.getName(*ident);
@@ -484,12 +502,14 @@ string AST_LVal::done(bool option)
             if (ty->value == -1) {
                 string tmp = stk.getTmpName();
                 code_tmpval.code_arrayDecl(tmp, paramType, " ;*ident");
-                code_stmt.append(tmp + "=" + stk.getName(*ident) + "\n");
+                code_stmt.code_assign(tmp, stk.getName(*ident));
+                //code_stmt.append(tmp + "=" + stk.getName(*ident) + "\n");
                 return tmp;
             }
             string tmp = stk.getTmpName();
             code_tmpval.code_arrayDecl(tmp, paramType, " ;*ident");
-            code_stmt.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
+            code_stmt.code_assign(tmp, stk.getName(*ident));
+            //code_stmt.append("\t" + tmp + "=" + stk.getName(*ident) + "\n");
             return tmp;
         }
     } else {
@@ -497,7 +517,15 @@ string AST_LVal::done(bool option)
         vector<int> len;
 
         for (auto &e : exps->vec) {
-            index.push_back(e->done());
+            string tmp_ = e->done();
+            if (tmp_.find("*") != string::npos) {
+                string tmp = stk.getTmpName();
+                code_tmpval.code_valDecl(tmp, "i32");
+                code_stmt.code_assign(tmp, tmp_);
+                //code_stmt.append("\t" + tmp + "=" + tmp_ + "\n");
+                tmp_ = tmp;
+            }
+            index.push_back(tmp_);
         }
 
         MinicType *type = stk.getType(*ident);
@@ -522,6 +550,7 @@ string AST_LVal::done(bool option)
             tmp_name = stk.getTmpName();
             cout << tmp_name << endl;
             code_tmpval.code_valDecl(tmp_name, "i32");
+
             code_stmt.code_binary("mul", tmp_name, tmp_name1, to_string(len[i + 1]));
             tmp_name1 = stk.getTmpName();
             code_tmpval.code_valDecl(tmp_name1, "i32");
@@ -685,7 +714,7 @@ string AST_Unary::done(bool option)
             string c = stk.getTmpName();
             code_tmpval.code_valDecl(c, "i32");
             //code_stmt.code_binary(op_, c, "", b);
-            code_stmt.append("\t" + c + " = " + op_ + " " + b + "\n");
+            code_stmt.code_single(op_, c, b);
             return c;
         } else {
             string c = stk.getTmpName();
@@ -693,7 +722,8 @@ string AST_Unary::done(bool option)
             if (b.find("*") != string::npos) {
                 string tmp = stk.getTmpName();
                 code_tmpval.code_valDecl(tmp, "i32");
-                code_stmt.append("\t" + tmp + "=" + b + "\n");
+                code_stmt.code_assign(tmp, b);
+                //code_stmt.append("\t" + tmp + "=" + b + "\n");
                 code_stmt.code_cmp(c, "eq", tmp, "0");
             } else
                 code_stmt.code_cmp(c, "eq", b, "0");
@@ -724,7 +754,8 @@ string AST_Unary::done(bool option)
             code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_stmt.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.code_assign(val_id, c);
+            //code_stmt.append("\t" + val_id + "=" + c + "\n");
             return c;
         } else if (op == AST_OP_RINC) {
             string c = stk.getTmpName();
@@ -733,7 +764,8 @@ string AST_Unary::done(bool option)
             code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_stmt.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.code_assign(val_id, c);
+            //code_stmt.append("\t" + val_id + "=" + c + "\n");
             return b;
         } else if (op == AST_OP_LDEC) {
             string c = stk.getTmpName();
@@ -742,7 +774,8 @@ string AST_Unary::done(bool option)
             code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_stmt.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.code_assign(val_id, c);
+            //code_stmt.append("\t" + val_id + "=" + c + "\n");
             return c;
         } else {
             string c = stk.getTmpName();
@@ -751,7 +784,8 @@ string AST_Unary::done(bool option)
             code_stmt.code_binary(op_, c, "0", b);
             auto self = dynamic_cast<AST_LVal *>(selfExp.get());
             string val_id = stk.getName((*self->ident));
-            code_stmt.append("\t" + val_id + "=" + c + "\n");
+            code_stmt.code_assign(val_id, c);
+            //code_stmt.append("\t" + val_id + "=" + c + "\n");
             return b;
         }
         return "";
@@ -789,12 +823,14 @@ string AST_MulExp::done(bool option)
     if (a.find("*") != string::npos) {
         tmp_a = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_a, "i32");
-        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+        code_stmt.code_assign(tmp_a, a);
+        //code_stmt.append("\t" + tmp_a + "=" + a + "\n");
     } else tmp_a = a;
     if (b.find("*") != string::npos) {
         tmp_b = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_b, "i32");
-        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+        code_stmt.code_assign(tmp_b, b);
+        //code_stmt.append("\t" + tmp_b + "=" + b + "\n");
     } else tmp_b = b;
     code_tmpval.code_valDecl(c, "i32");
     code_stmt.code_binary(op_, c, tmp_a, tmp_b);
@@ -827,14 +863,16 @@ string AST_AddExp::done(bool option)
     if ((a.find(flag) != string::npos)) {
         tmp_a = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_a, "i32");
-        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+        code_stmt.code_assign(tmp_a, a);
+        //code_stmt.append("\t" + tmp_a + "=" + a + "\n");
     } else {
         tmp_a = a;
     }
     if ((b.find(flag) != string::npos)) {
         tmp_b = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_b, "i32");
-        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+        code_stmt.code_assign(tmp_b, b);
+        //code_stmt.append("\t" + tmp_b + "=" + b + "\n");
     } else {
         tmp_b = b;
     }
@@ -876,12 +914,14 @@ string AST_RelExp::done(bool option)
     if (a.find("*") != string::npos) {
         tmp_a = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_a, "i32");
-        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+        code_stmt.code_assign(tmp_a, a);
+        //code_stmt.append("\t" + tmp_a + "=" + a + "\n");
     } else tmp_a = a;
     if (b.find("*") != string::npos) {
         tmp_b = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_b, "i32");
-        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+        code_stmt.code_assign(tmp_b, b);
+        //code_stmt.append("\t" + tmp_b + "=" + b + "\n");
     } else tmp_b = b;
     code_stmt.code_cmp(dest, op_, tmp_a, tmp_b);
     return dest;
@@ -915,12 +955,14 @@ string AST_EqExp::done(bool option)
     if (a.find("*") != string::npos) {
         tmp_a = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_a, "i32");
-        code_stmt.append("\t" + tmp_a + "=" + a + "\n");
+        code_stmt.code_assign(tmp_a, a);
+        //code_stmt.append("\t" + tmp_a + "=" + a + "\n");
     } else tmp_a = a;
     if (b.find("*") != string::npos) {
         tmp_b = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_b, "i32");
-        code_stmt.append("\t" + tmp_b + "=" + b + "\n");
+        code_stmt.code_assign(tmp_b, b);
+        //code_stmt.append("\t" + tmp_b + "=" + b + "\n");
     } else tmp_b = b;
     code_stmt.code_cmp(dest, op_, tmp_a, tmp_b);
     //code_stmt.code_binary(op_, dest, a, b);
@@ -958,7 +1000,8 @@ string AST_LAnd::done(bool option)
     if (lhs.find("*") != string::npos) {
         tmp_lhs = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_lhs, "i32");
-        code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
+        code_stmt.code_assign(tmp_lhs, lhs);
+        //code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
     } else tmp_lhs = lhs;
     code_stmt.code_bc(tmp_lhs, s_1, false_s);
 
@@ -976,7 +1019,8 @@ string AST_LAnd::done(bool option)
     if (rhs.find("*") != string::npos) {
         tmp_rhs = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_rhs, "i32");
-        code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
+        code_stmt.code_assign(tmp_rhs, rhs);
+        //code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
     } else tmp_rhs = rhs;
     code_stmt.code_bc(tmp_rhs, true_s, false_s);
     //获取true_s中T的位置 false_s中F的位置
@@ -1026,7 +1070,8 @@ string AST_LOr::done(bool option)
     if (lhs.find("*") != string::npos) {
         tmp_lhs = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_lhs, "i32");
-        code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
+        code_stmt.code_assign(tmp_lhs, lhs);
+        //code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
     } else tmp_lhs = lhs;
     code_stmt.code_bc(tmp_lhs, true_s, s_1);
     //获取true_s中T的位置
@@ -1043,7 +1088,8 @@ string AST_LOr::done(bool option)
     if (rhs.find("*") != string::npos) {
         tmp_rhs = stk.getTmpName();
         code_tmpval.code_valDecl(tmp_rhs, "i32");
-        code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
+        code_stmt.code_assign(tmp_rhs, rhs);
+        //code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
     } else tmp_rhs = rhs;
     code_stmt.code_bc(tmp_rhs, true_s, false_s);
     //获取true_s中T的位置 false_s中F的位置
@@ -1091,7 +1137,7 @@ int AST_Initial::getValue()
     return exp->getValue();
 }
 
-string AST_FuncCall::done(bool option)
+/*string AST_FuncCall::done(bool option)
 {
     fts.current_func = *id_val;
     vector<string> args;
@@ -1170,9 +1216,66 @@ string AST_FuncCall::done(bool option)
         return return_val;
     } else
         return "";
+}*/
 
+string AST_FuncCall::done(bool option)
+{
+    fts.current_func = *id_val;
+    vector<string> args;
+    fts.cnt = 0;
+    //如果参数是i32但是返回值为*i32，需要赋给临时变量
+    if (is_param) {
+        int param_cnt = 0;
+        FuncTab functab = fts.findFunc(*id_val);
+        string param_type;
+        string tmp_result;
+        for (auto &rparam : params->vec) {
+            param_type = functab.func_Params[param_cnt].param_Type;
+            string result = rparam->done();
+
+            if (param_type == "i32") {
+                if (result.find("*") != string::npos) {
+                    tmp_result = stk.getTmpName();
+                    code_tmpval.code_valDecl(tmp_result, "i32");
+                    code_stmt.code_assign(tmp_result, result);
+                    //code_stmt.append("\t" + tmp_result + "=" + result + "\n");
+                } else tmp_result = result;
+            } else tmp_result = result;
+
+            param_type = functab.func_Params[param_cnt].param_Type;
+            auto param_ast = dynamic_cast<AST_Exp1 *>(rparam.get());
+            //这个地方的变量类型可调！！！
+            //string tmp = args[param_cnt];
+            if (param_type == "i32")
+                args.push_back("i32 " + tmp_result);
+            //code_stmt.append("i32 " + tmp);
+            else
+                args.push_back("i32 " + tmp_result + functab.func_Params[param_cnt].param_ArrayType);
+            //code_stmt.append("i32 " + tmp + functab.func_Params[param_cnt].param_ArrayType);
+            param_cnt++;
+            fts.cnt++;
+        }
+    }
+    string func_name = stk.getName(*id_val);
+    MinicType *func_type = stk.getType(*id_val);
+    string type, return_val;
+    if (func_type->type == MinicType::FUNC_INT) {
+        //type = "i32";
+        return_val = stk.getTmpName();
+        code_tmpval.code_valDecl(return_val, "i32");
+        //code_stmt.append("\t" + return_val + "=call " + type + " " + func_name + "(");
+        code_stmt.code_call(return_val, func_name, args);
+    } else {
+        //type = "void";
+        //code_stmt.append("\tcall " + type + " " + func_name + "(");
+        code_stmt.code_call("", func_name, args);
+    }
+
+    if (func_type->type == MinicType::FUNC_INT) {
+        return return_val;
+    } else
+        return "";
 }
-
 int AST_FuncCall::getValue()
 {
     return -1;

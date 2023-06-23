@@ -1,0 +1,92 @@
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %l1 ;a
+	declare i32 %l2 ;b
+	declare i32 %l3 ;c
+	declare i32 %l4 ;d
+	declare i32 %l5 ;result
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i1 %t10 
+	declare i32 %t11 
+	declare i32 %t12 
+	declare i32 %t13 
+	declare i1 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i1 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i32 %t21 
+	declare i32 %t22 
+	declare i1 %t23 
+	declare i32 %t24 
+	declare i32 %t25 
+	declare i32 %t26 
+	declare i1 %t27 
+	declare i32 %t28 
+	declare i32 %t29 
+	declare i32 %t30 
+	declare i1 %t31 
+	declare i32 %t32 
+	entry
+	%l1=5
+	%l2=5
+	%l3=1
+	%t6 = neg 2
+	%l4=%t6
+	%l5=2
+	%t7=%l3
+	%t8 = add %t7, 3
+	%t9 = mod %t8, 2
+	%t10=cmp ne %t9, 0
+	bc %t10,label.L5 ,label.L4 
+.L5:
+	%t11=%l1
+	%t12=%l2
+	%t13 = sub %t11, %t12
+	%t14=cmp ne %t13, 0
+	bc %t14,label.L2 ,label.L6 
+.L6:
+	%t15=%l4
+	%t16 = mul %t15, 1
+	%t17 = div %t16, 2
+	%t18=cmp lt %t17, 0
+	bc %t18,label.L2 ,label.L4 
+.L2:
+	%t19=%l5
+	call void @putint(i32 %t19);
+	br label .L4
+.L4:
+	%t20=%l3
+	%t21 = add %t20, 2
+	%t22 = mod %t21, 2
+	%t23=cmp ne %t22, 0
+	bc %t23,label.L10 ,label.L9 
+.L10:
+	%t24=%l1
+	%t25=%l2
+	%t26 = sub %t24, %t25
+	%t27=cmp ne %t26, 0
+	bc %t27,label.L7 ,label.L11 
+.L11:
+	%t28=%l4
+	%t29 = mod %t28, 2
+	%t30 = add %t29, 67
+	%t31=cmp lt %t30, 0
+	bc %t31,label.L7 ,label.L9 
+.L7:
+	%l5=4
+	%t32=%l5
+	call void @putint(i32 %t32);
+	br label .L9
+.L9:
+	%l0 = 0
+	br label .L1
+.L1:
+	exit %l0
+}
+

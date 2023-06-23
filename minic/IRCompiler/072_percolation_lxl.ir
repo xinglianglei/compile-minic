@@ -1,0 +1,478 @@
+declare i32 @array[110]  ;array
+declare i32 @n ;n
+define void @init(i32 %t0) {
+	declare i32 %l1 
+	declare i32 %l2 ;i
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i1 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32* %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	entry
+	%l1=%t0
+	%l2=1
+	br label .L2
+.L2:
+	%t3=%l2
+	%t4=%l1
+	%t5=%l1
+	%t6 = mul %t4, %t5
+	%t7 = add %t6, 1
+	%t8=cmp le %t3, %t7
+	bc %t8,label.L3 ,label.L4 
+.L3:
+	%t9 = neg 1
+	%t10=%l2
+	%t11 = mul %t10, 4
+	%t12 = add @array, %t11
+	*%t12=%t9
+	%t13=%l2
+	%t14 = add %t13, 1
+	%l2=%t14
+	br label .L2
+.L4:
+.L1:
+	exit
+}
+
+define i32 @findfa(i32 %t1) {
+	declare i32 %l0 
+	declare i32 %l2 
+	declare i32 %t3 
+	declare i32 %t4 
+	declare i32* %t5 
+	declare i32 %t6 
+	declare i1 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i32* %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32* %t17 
+	declare i32 %t18 
+	declare i32 %t19 
+	declare i32* %t20 
+	entry
+	%l2=%t1
+	%t3=%l2
+	%t4 = mul %t3, 4
+	%t5 = add @array, %t4
+	%t6=%l2
+	%t8=*%t5
+	%t7=cmp eq %t8, %t6
+	bc %t7,label.L2 ,label.L3 
+.L2:
+	%t9=%l2
+	%l0 = %t9
+	br label .L1
+	br label .L4
+.L3:
+	%t10=%l2
+	%t11 = mul %t10, 4
+	%t12 = add @array, %t11
+	%t13=*%t12
+	%t14=call i32 @findfa(i32 %t13);
+	%t15=%l2
+	%t16 = mul %t15, 4
+	%t17 = add @array, %t16
+	*%t17=%t14
+	%t18=%l2
+	%t19 = mul %t18, 4
+	%t20 = add @array, %t19
+	%l0 = *%t20
+	br label .L1
+	br label .L4
+.L4:
+.L1:
+	exit %l0
+}
+
+define void @mmerge(i32 %t0,i32 %t1) {
+	declare i32 %l2 
+	declare i32 %l3 
+	declare i32 %l4 ;m
+	declare i32 %l5 ;n
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t8 
+	declare i32 %t9 
+	declare i32 %t10 
+	declare i32 %t11 
+	declare i1 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32* %t16 
+	entry
+	%l2=%t0
+	%l3=%t1
+	%t6=%l2
+	%t7=call i32 @findfa(i32 %t6);
+	%l4=%t7
+	%t8=%l3
+	%t9=call i32 @findfa(i32 %t8);
+	%l5=%t9
+	%t10=%l4
+	%t11=%l5
+	%t12=cmp ne %t10, %t11
+	bc %t12,label.L2 ,label.L4 
+.L2:
+	%t13=%l5
+	%t14=%l4
+	%t15 = mul %t14, 4
+	%t16 = add @array, %t15
+	*%t16=%t13
+	br label .L4
+.L4:
+.L1:
+	exit
+}
+
+define i32 @main() {
+	declare i32 %l0 
+	declare i32 %l1 ;t
+	declare i32 %l2 ;m
+	declare i32 %l3 ;a
+	declare i32 %l4 ;b
+	declare i32 %l8 ;i
+	declare i32 %l9 ;flag
+	declare i32 %l11 ;k
+	declare i32 %l23 ;loc
+	declare i32 %l117 ;tmp
+	declare i32 %t5 
+	declare i32 %t6 
+	declare i32 %t7 
+	declare i32 %t10 
+	declare i32 %t12 
+	declare i32 %t13 
+	declare i32 %t14 
+	declare i32 %t15 
+	declare i32 %t16 
+	declare i32 %t17 
+	declare i1 %t18 
+	declare i32 %t19 
+	declare i32 %t20 
+	declare i32 %t21 
+	declare i1 %t22 
+	declare i32 %t24 
+	declare i32 %t25 
+	declare i32 %t26 
+	declare i32 %t27 
+	declare i32 %t28 
+	declare i32 %t29 
+	declare i32 %t30 
+	declare i32 %t31 
+	declare i32 %t32 
+	declare i32* %t33 
+	declare i32 %t34 
+	declare i1 %t35 
+	declare i32 %t36 
+	declare i32* %t37 
+	declare i32 %t38 
+	declare i32 %t39 
+	declare i32 %t40 
+	declare i1 %t41 
+	declare i32 %t42 
+	declare i32 %t43 
+	declare i32 %t44 
+	declare i32* %t45 
+	declare i32 %t46 
+	declare i32 %t47 
+	declare i32 %t48 
+	declare i32 %t49 
+	declare i32 %t50 
+	declare i32* %t51 
+	declare i32 %t52 
+	declare i1 %t53 
+	declare i32 %t54 
+	declare i32 %t55 
+	declare i32 %t56 
+	declare i1 %t57 
+	declare i32 %t58 
+	declare i32 %t59 
+	declare i32 %t60 
+	declare i32 %t61 
+	declare i32 %t62 
+	declare i32 %t63 
+	declare i32* %t64 
+	declare i32 %t65 
+	declare i1 %t66 
+	declare i32 %t67 
+	declare i32 %t68 
+	declare i1 %t69 
+	declare i32 %t70 
+	declare i32 %t71 
+	declare i32 %t72 
+	declare i32 %t73 
+	declare i32 %t74 
+	declare i32 %t75 
+	declare i32 %t76 
+	declare i32* %t77 
+	declare i32 %t78 
+	declare i1 %t79 
+	declare i32 %t80 
+	declare i32 %t81 
+	declare i32 %t82 
+	declare i1 %t83 
+	declare i32 %t84 
+	declare i32 %t85 
+	declare i32 %t86 
+	declare i32 %t87 
+	declare i32 %t88 
+	declare i32 %t89 
+	declare i32 %t90 
+	declare i32 %t91 
+	declare i32* %t92 
+	declare i32 %t93 
+	declare i1 %t94 
+	declare i32 %t95 
+	declare i32 %t96 
+	declare i1 %t97 
+	declare i32 %t98 
+	declare i32 %t99 
+	declare i32 %t100 
+	declare i32 %t101 
+	declare i32 %t102 
+	declare i32 %t103 
+	declare i32 %t104 
+	declare i1 %t105 
+	declare i32 %t106 
+	declare i32 %t107 
+	declare i32* %t108 
+	declare i32 %t109 
+	declare i1 %t110 
+	declare i32 %t111 
+	declare i32 %t112 
+	declare i32* %t113 
+	declare i32 %t114 
+	declare i1 %t115 
+	declare i32 %t116 
+	declare i32 %t118 
+	declare i32 %t119 
+	declare i32 %t120 
+	declare i32 %t121 
+	declare i32 %t122 
+	declare i32 %t123 
+	declare i1 %t124 
+	declare i32 %t125 
+	entry
+	%l1=1
+	br label .L2
+.L2:
+	%t5=%l1
+	bc %t5,label.L3 ,label.L4 
+.L3:
+	%t6=%l1
+	%t7 = sub %t6, 1
+	%l1=%t7
+	%l1=4
+	%l2=10
+	%l8=0
+	%l9=0
+	%t10=%l1
+	call void @init(i32 %t10);
+	%t12=%l1
+	%t13=%l1
+	%t14 = mul %t12, %t13
+	%t15 = add %t14, 1
+	%l11=%t15
+	br label .L5
+.L5:
+	%t16=%l8
+	%t17=%l2
+	%t18=cmp lt %t16, %t17
+	bc %t18,label.L6 ,label.L7 
+.L6:
+	%t19=call i32 @getint();
+	%l3=%t19
+	%t20=call i32 @getint();
+	%l4=%t20
+	%t21=%l9
+	%t22=cmp eq %t21, 0
+	bc %t22,label.L8 ,label.L10 
+.L8:
+	%t24=%l1
+	%t25=%l3
+	%t26 = sub %t25, 1
+	%t27 = mul %t24, %t26
+	%t28=%l4
+	%t29 = add %t27, %t28
+	%l23=%t29
+	%t30=%l23
+	%t31=%l23
+	%t32 = mul %t31, 4
+	%t33 = add @array, %t32
+	*%t33=%t30
+	%t34=%l3
+	%t35=cmp eq %t34, 1
+	bc %t35,label.L11 ,label.L13 
+.L11:
+	%t36 = mul 0, 4
+	%t37 = add @array, %t36
+	*%t37=0
+	%t38=%l23
+	call void @mmerge(i32 %t38, i32 0);
+	br label .L13
+.L13:
+	%t39=%l3
+	%t40=%l1
+	%t41=cmp eq %t39, %t40
+	bc %t41,label.L14 ,label.L16 
+.L14:
+	%t42=%l11
+	%t43=%l11
+	%t44 = mul %t43, 4
+	%t45 = add @array, %t44
+	*%t45=%t42
+	%t46=%l23
+	%t47=%l11
+	call void @mmerge(i32 %t46, i32 %t47);
+	br label .L16
+.L16:
+	%t48=%l23
+	%t49 = add %t48, 1
+	%t50 = mul %t49, 4
+	%t51 = add @array, %t50
+	%t52 = neg 1
+	%t54=*%t51
+	%t53=cmp ne %t54, %t52
+	bc %t53,label.L20 ,label.L19
+.L20:
+	%t55=%l4
+	%t56=%l1
+	%t57=cmp lt %t55, %t56
+	bc %t57,label.L17,label.L19
+.L17:
+	%t58=%l23
+	%t59=%l23
+	%t60 = add %t59, 1
+	call void @mmerge(i32 %t58, i32 %t60);
+	br label .L19
+.L19:
+	%t61=%l23
+	%t62 = sub %t61, 1
+	%t63 = mul %t62, 4
+	%t64 = add @array, %t63
+	%t65 = neg 1
+	%t67=*%t64
+	%t66=cmp ne %t67, %t65
+	bc %t66,label.L24 ,label.L23
+.L24:
+	%t68=%l4
+	%t69=cmp gt %t68, 1
+	bc %t69,label.L21,label.L23
+.L21:
+	%t70=%l23
+	%t71=%l23
+	%t72 = sub %t71, 1
+	call void @mmerge(i32 %t70, i32 %t72);
+	br label .L23
+.L23:
+	%t73=%l23
+	%t74=%l1
+	%t75 = add %t73, %t74
+	%t76 = mul %t75, 4
+	%t77 = add @array, %t76
+	%t78 = neg 1
+	%t80=*%t77
+	%t79=cmp ne %t80, %t78
+	bc %t79,label.L28 ,label.L27
+.L28:
+	%t81=%l3
+	%t82=%l1
+	%t83=cmp lt %t81, %t82
+	bc %t83,label.L25,label.L27
+.L25:
+	%t84=%l23
+	%t85=%l23
+	%t86=%l1
+	%t87 = add %t85, %t86
+	call void @mmerge(i32 %t84, i32 %t87);
+	br label .L27
+.L27:
+	%t88=%l23
+	%t89=%l1
+	%t90 = sub %t88, %t89
+	%t91 = mul %t90, 4
+	%t92 = add @array, %t91
+	%t93 = neg 1
+	%t95=*%t92
+	%t94=cmp ne %t95, %t93
+	bc %t94,label.L32 ,label.L31
+.L32:
+	%t96=%l3
+	%t97=cmp gt %t96, 1
+	bc %t97,label.L29,label.L31
+.L29:
+	%t98=%l23
+	%t99=%l23
+	%t100=%l1
+	%t101 = sub %t99, %t100
+	call void @mmerge(i32 %t98, i32 %t101);
+	br label .L31
+.L31:
+	%t102=call i32 @findfa(i32 0);
+	%t103=%l11
+	%t104=call i32 @findfa(i32 %t103);
+	%t105=cmp eq %t102, %t104
+	bc %t105,label.L36 ,label.L35
+.L36:
+	%t106=%l11
+	%t107 = mul %t106, 4
+	%t108 = add @array, %t107
+	%t109 = neg 1
+	%t111=*%t108
+	%t110=cmp ne %t111, %t109
+	bc %t110,label.L37 ,label.L35
+.L37:
+	%t112 = mul 0, 4
+	%t113 = add @array, %t112
+	%t114 = neg 1
+	%t116=*%t113
+	%t115=cmp ne %t116, %t114
+	bc %t115,label.L33,label.L35
+.L33:
+	%l9=1
+	%t118=%l8
+	%t119 = add %t118, 1
+	%l117=%t119
+	%t120=%l117
+	call void @putint(i32 %t120);
+	call void @putch(i32 10);
+	br label .L35
+.L35:
+	br label .L10
+.L10:
+	%t121=%l8
+	%t122 = add %t121, 1
+	%l8=%t122
+	br label .L5
+.L7:
+	%t123=%l9
+	%t124=cmp eq %t123, 0
+	bc %t124,label.L38 ,label.L40 
+.L38:
+	%t125 = neg 1
+	call void @putint(i32 %t125);
+	call void @putch(i32 10);
+	br label .L40
+.L40:
+	br label .L2
+.L4:
+	%l0 = 0
+	br label .L1
+.L1:
+	exit %l0
+}
+
