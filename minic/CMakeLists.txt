@@ -37,11 +37,18 @@ add_executable(${PROJECT_NAME}
     minic_yacc.h
     lexer.h
     parser.h
+    opti.cpp
+    opti.h
     graph_minic.cpp
     ast_minic.cpp
     ast_minic.h
+    IRInst.h
+    IRInst.cpp
+    IRCode.h
+    IRCode.cpp
     main.cpp
     utils.h
+    utils.cpp
     symbol.cpp
     symbol.h
 )

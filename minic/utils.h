@@ -12,89 +12,37 @@ public:
     string code;
 
 public:
-    void append(const string &str)
-    {
-        code += str;
-    }
+    void append(const string &str);
 
-    void code_single(const string &op, const string &tg, const string &str1)
-    {
-        code += "\t" + tg + " = " + op + " " + str1 + "\n";
-    }
+    void code_entry();
 
-    void code_binary(const string &op, const string &tg, const string &str1, const string &str2)
-    {
-        code += "\t" + tg + " = " + op + " " + str1 + ", " + str2 + "\n";
-    }
+    void code_single(const string &op, const string &tg, const string &str1);
 
-    void code_label(const string &label)
-    {
-        code += label + ":\n";
-    }
+    void code_binary(const string &op, const string &tg, const string &str1, const string &str2);
 
-    void code_assign(const string &str, const string &str1)
-    {
-        code += "\t" + str + "=" + str1 + "\n";
-    }
+    void code_label(const string &label);
 
-    void code_exit(const string &str)
-    {
-        code += "\texit " + str + "\n";
-    }
+    void code_assign(const string &str, const string &str1);
 
-    void code_globalInt(const string &name, const string &type, const string &info = "")
-    {
-        code += "declare " + type + " " + name + " " + info + "\n";
-    }
+    void code_exit(const string &str);
 
-    void code_globalArray(const string &name, const string &type, const string &info = "")
-    {
-        code += "declare i32 " + name + type + " " + info + "\n";
-    }
+    void code_globalInt(const string &name, const string &type, const string &info = "");
 
-    void code_valDecl(const string &name, const string &type, const string &info = "")
-    {
-        code += "\tdeclare " + type + " " + name + " " + info + "\n";
-    }
+    void code_globalArray(const string &name, const string &type, const string &info = "");
 
-    void code_arrayDecl(const string &name, const string &type, const string &info = "")
-    {
-        code += "\tdeclare i32 " + name + type + " " + info + "\n";
-    }
+    void code_valDecl(const string &name, const string &type, const string &info = "");
 
-    void code_cmp(const string &tg, const string &op, const string &str1, const string &str2)
-    {
-        code += "\t" + tg + "=cmp " + op + " " + str1 + ", " + str2 + "\n";
-    }
+    void code_arrayDecl(const string &name, const string &type, const string &info = "");
 
-    void code_bc(const string &tg, const string &str1, const string &str2)
-    {
-        code += "\tbc " + tg + ",label" + str1 + " ,label" + str2 + " \n";
-    }
+    void code_cmp(const string &tg, const string &op, const string &str1, const string &str2);
 
-    void code_br(const string &tg)
-    {
-        code += "\tbr label " + tg + "\n";
-    }
+    void code_bc(const string &tg, const string &str1, const string &str2);
 
-    void code_call(const std::string &to, const std::string &func, const std::vector<std::string> &params)
-    {
-        if (to.length()) {
-            code += "\t" + to + " = call i32 ";
-        } else {
-            code += "\tcall void ";
-        }
-        code += func + '(';
-        if (params.size()) {
-            int n = params.size();
-            code += params[0];
-            for (int i = 1; i < n; ++i) {
-                code += ", " + params[i];
-            }
-        }
-        code += ")\n";
-    }
-    const char *c_str() { return code.c_str(); }
+    void code_br(const string &tg);
+
+    void code_call(const std::string &to, const std::string &func, const std::vector<std::string> &params);
+
+    const char *c_str();
 };
 
 class While_t {

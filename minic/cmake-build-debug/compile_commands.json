@@ -13,6 +13,12 @@
 },
 {
   "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic.dir\\opti.cpp.obj -c D:\\CompilerTools\\code\\minic\\opti.cpp",
+  "file": "D:/CompilerTools/code/minic/opti.cpp",
+  "output": "CMakeFiles/minic.dir/opti.cpp.obj"
+},
+{
+  "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
   "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic.dir\\graph_minic.cpp.obj -c D:\\CompilerTools\\code\\minic\\graph_minic.cpp",
   "file": "D:/CompilerTools/code/minic/graph_minic.cpp",
   "output": "CMakeFiles/minic.dir/graph_minic.cpp.obj"
@@ -25,9 +31,27 @@
 },
 {
   "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic.dir\\IRInst.cpp.obj -c D:\\CompilerTools\\code\\minic\\IRInst.cpp",
+  "file": "D:/CompilerTools/code/minic/IRInst.cpp",
+  "output": "CMakeFiles/minic.dir/IRInst.cpp.obj"
+},
+{
+  "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic.dir\\IRCode.cpp.obj -c D:\\CompilerTools\\code\\minic\\IRCode.cpp",
+  "file": "D:/CompilerTools/code/minic/IRCode.cpp",
+  "output": "CMakeFiles/minic.dir/IRCode.cpp.obj"
+},
+{
+  "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
   "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic.dir\\main.cpp.obj -c D:\\CompilerTools\\code\\minic\\main.cpp",
   "file": "D:/CompilerTools/code/minic/main.cpp",
   "output": "CMakeFiles/minic.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/CompilerTools/code/minic/cmake-build-debug",
+  "command": "D:\\CompilerTools\\msys64\\mingw64\\bin\\clang++.exe -DBISON_USE -DFLEX_USE @CMakeFiles/minic.dir/includes_CXX.rsp -g -std=c++17 -Wno-write-strings -Wno-unused-function -o CMakeFiles\\minic.dir\\utils.cpp.obj -c D:\\CompilerTools\\code\\minic\\utils.cpp",
+  "file": "D:/CompilerTools/code/minic/utils.cpp",
+  "output": "CMakeFiles/minic.dir/utils.cpp.obj"
 },
 {
   "directory": "D:/CompilerTools/code/minic/cmake-build-debug",

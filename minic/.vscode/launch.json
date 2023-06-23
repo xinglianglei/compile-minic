@@ -39,7 +39,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/cmake-build-debug/minic",
             "args": [
-                "-R",
+                "-c",
                 "test.txt"
             ],
             "stopAtEntry": true,

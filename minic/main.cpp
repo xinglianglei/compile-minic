@@ -15,7 +15,7 @@
 #include "parser.h"
 #include "symbol.h"
 #include "ast_minic.h"
-#include "utils.h"
+#include "opti.h"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ int gShowAST = 0;
 int gGenIr = 0;
 
 // 直接运行，默认运行
-int gDirectRun = 0;
+int gOptimize = 0;
 
 std::string gInputFile;
 std::string gOutputFile;
@@ -65,7 +65,7 @@ std::string trim(const std::string &str)
 int ArgsAnalysis(int argc, char *argv[])
 {
     int ch;
-    const char options[] = "ho:aiR";
+    const char options[] = "ho:aic";
 
     opterr = 1;
 
@@ -74,6 +74,7 @@ lb_check:
         switch (ch) {
         case 'o':
             gOutputFile = optarg;
+            cout << gOutputFile << endl;
             break;
         case 'a':
             gShowAST = 1;
@@ -85,9 +86,9 @@ lb_check:
             // 产生中间IR
             gGenIr = 1;
             break;
-        case 'R':
+        case 'c':
             // 直接运行，默认运行
-            gDirectRun = 1;
+            gOptimize = 1;
             break;
         default:
             return -1;
@@ -116,24 +117,19 @@ lb_check:
     }
 
     // 这三者只能指定一个
-    int flag = gShowAST + gGenIr + gDirectRun;
+    int flag = gShowAST + gGenIr + gOptimize;
     if (flag != 1) {
         return -1;
     }
 
     if (gOutputFile.empty()) {
-
         // 默认文件名
         if (gShowAST) {
             gOutputFile = "ast.png";
         } else if (gGenIr) {
             gOutputFile = "ir.txt";
-        }
-    } else {
-
-        // 输出文件指定，但没有指定-r或者-a或者指定了-R，则出差错
-        if (gDirectRun) {
-            return -1;
+        } else if (gOptimize) {
+            gOutputFile = "result.png";
         }
     }
 
@@ -179,7 +175,9 @@ int main(int argc, char *argv[])
         printf("yyparse failed\n");
         return -1;
     }
-
+    cout << gShowAST << endl;
+    cout << gGenIr << endl;
+    cout << gOptimize << endl;
     if (gShowAST) {
         // 遍历抽象语法树，生成抽象语法树图片
         OutputAST((AST_CompUnit *)root.release(), gOutputFile);
@@ -195,11 +193,15 @@ int main(int argc, char *argv[])
         fout.close();
     }
 
-    /*if (gDirectRun) {
-
+    if (gOptimize) {
         // 遍历抽象语法树，进行表达式运算
-        expr_calculate_show(ast_root);
-    }*/
+        ast.reset((AST_CompUnit *)root.release());
+        //cout << 1 << endl;
+        ast->done();
+        //cout << 1 << endl;
+        opti_show(gOutputFile);
+    }
+
 
 
     /*// 清理抽象语法树

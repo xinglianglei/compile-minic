@@ -7,6 +7,7 @@ code_vec=code_vec+code_localval+code_tmpval+code_stmt;
 #include "symbol.h"
 #include "utils.h"
 
+
 IRCode code_vec;
 IRCode code_localval;
 IRCode code_tmpval;
@@ -137,7 +138,8 @@ string AST_FuncDef::done(bool option)
         code_vec.append(";\n");
     else {
         code_vec.append(" {\n");
-        code_stmt.append("\tentry\n");
+        code_stmt.code_entry();
+        //code_stmt.append("\tentry\n");
         //解决函数形参赋值局部变量
         int param_num;
         if (type == "i32")

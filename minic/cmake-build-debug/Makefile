@@ -128,6 +128,54 @@ minic/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/build
 .PHONY : minic/fast
 
+IRCode.obj: IRCode.cpp.obj
+.PHONY : IRCode.obj
+
+# target to build an object file
+IRCode.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/IRCode.cpp.obj
+.PHONY : IRCode.cpp.obj
+
+IRCode.i: IRCode.cpp.i
+.PHONY : IRCode.i
+
+# target to preprocess a source file
+IRCode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/IRCode.cpp.i
+.PHONY : IRCode.cpp.i
+
+IRCode.s: IRCode.cpp.s
+.PHONY : IRCode.s
+
+# target to generate assembly for a file
+IRCode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/IRCode.cpp.s
+.PHONY : IRCode.cpp.s
+
+IRInst.obj: IRInst.cpp.obj
+.PHONY : IRInst.obj
+
+# target to build an object file
+IRInst.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/IRInst.cpp.obj
+.PHONY : IRInst.cpp.obj
+
+IRInst.i: IRInst.cpp.i
+.PHONY : IRInst.i
+
+# target to preprocess a source file
+IRInst.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/IRInst.cpp.i
+.PHONY : IRInst.cpp.i
+
+IRInst.s: IRInst.cpp.s
+.PHONY : IRInst.s
+
+# target to generate assembly for a file
+IRInst.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/IRInst.cpp.s
+.PHONY : IRInst.cpp.s
+
 ast_minic.obj: ast_minic.cpp.obj
 .PHONY : ast_minic.obj
 
@@ -248,6 +296,30 @@ minic_yacc.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/minic_yacc.cpp.s
 .PHONY : minic_yacc.cpp.s
 
+opti.obj: opti.cpp.obj
+.PHONY : opti.obj
+
+# target to build an object file
+opti.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/opti.cpp.obj
+.PHONY : opti.cpp.obj
+
+opti.i: opti.cpp.i
+.PHONY : opti.i
+
+# target to preprocess a source file
+opti.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/opti.cpp.i
+.PHONY : opti.cpp.i
+
+opti.s: opti.cpp.s
+.PHONY : opti.s
+
+# target to generate assembly for a file
+opti.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/opti.cpp.s
+.PHONY : opti.cpp.s
+
 symbol.obj: symbol.cpp.obj
 .PHONY : symbol.obj
 
@@ -272,6 +344,30 @@ symbol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/symbol.cpp.s
 .PHONY : symbol.cpp.s
 
+utils.obj: utils.cpp.obj
+.PHONY : utils.obj
+
+# target to build an object file
+utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/utils.cpp.obj
+.PHONY : utils.cpp.obj
+
+utils.i: utils.cpp.i
+.PHONY : utils.i
+
+# target to preprocess a source file
+utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/utils.cpp.i
+.PHONY : utils.cpp.i
+
+utils.s: utils.cpp.s
+.PHONY : utils.s
+
+# target to generate assembly for a file
+utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\minic.dir\build.make CMakeFiles/minic.dir/utils.cpp.s
+.PHONY : utils.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -281,6 +377,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... minic
+	@echo ... IRCode.obj
+	@echo ... IRCode.i
+	@echo ... IRCode.s
+	@echo ... IRInst.obj
+	@echo ... IRInst.i
+	@echo ... IRInst.s
 	@echo ... ast_minic.obj
 	@echo ... ast_minic.i
 	@echo ... ast_minic.s
@@ -296,9 +398,15 @@ help:
 	@echo ... minic_yacc.obj
 	@echo ... minic_yacc.i
 	@echo ... minic_yacc.s
+	@echo ... opti.obj
+	@echo ... opti.i
+	@echo ... opti.s
 	@echo ... symbol.obj
 	@echo ... symbol.i
 	@echo ... symbol.s
+	@echo ... utils.obj
+	@echo ... utils.i
+	@echo ... utils.s
 .PHONY : help
 
 

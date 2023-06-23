@@ -459,7 +459,7 @@ CMakeFiles/minic.dir/main.cpp.obj: D:/CompilerTools/code/minic/main.cpp \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/deque.tcc \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_heap.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_queue.h \
-  D:/CompilerTools/code/minic/utils.h \
+  D:/CompilerTools/code/minic/opti.h D:/CompilerTools/code/minic/utils.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/set \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tree.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_set.h \

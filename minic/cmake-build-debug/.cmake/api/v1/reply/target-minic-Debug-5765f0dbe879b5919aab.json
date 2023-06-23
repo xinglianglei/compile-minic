@@ -38,31 +38,31 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 70,
+				"line" : 77,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 61,
+				"line" : 68,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 67,
+				"line" : 74,
 				"parent" : 0
 			},
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 64,
+				"line" : 71,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 50,
+				"line" : 57,
 				"parent" : 0
 			}
 		]
@@ -122,9 +122,13 @@
 				0,
 				2,
 				6,
-				7,
+				8,
 				9,
-				11
+				12,
+				14,
+				15,
+				17,
+				18
 			]
 		}
 	],
@@ -184,9 +188,13 @@
 				0,
 				2,
 				6,
-				7,
+				8,
 				9,
-				11
+				12,
+				14,
+				15,
+				17,
+				18
 			]
 		},
 		{
@@ -197,17 +205,20 @@
 				3,
 				4,
 				5,
-				8,
+				7,
 				10,
-				12
+				11,
+				13,
+				16,
+				19
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				13,
-				14
+				20,
+				21
 			]
 		}
 	],
@@ -252,6 +263,17 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "opti.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "opti.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "graph_minic.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -268,6 +290,28 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "IRInst.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "IRInst.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "IRCode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "IRCode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
@@ -276,6 +320,12 @@
 			"backtrace" : 1,
 			"path" : "utils.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "utils.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
