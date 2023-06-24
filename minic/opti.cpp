@@ -7,12 +7,14 @@ using namespace std;
 
 extern InterCode itcode;
 
-int func_num = 0;
-int block_num = 0;
-int instNo = 0;
+int func_num = 0;//函数个数
+int block_num = 0;//每个函数块名
+int instNo = 0;//每个块语句数
+int loop_num = 0;
 bool first = false;
 Agnode_t *ag[10][500];
-unordered_map<string, string> block_map;
+int func_bNum[10];
+unordered_map<string, vector<string>> block_map;
 string cur_block;
 
 // 创建GV的上下文
@@ -25,6 +27,21 @@ Agraph_t *g_opti = agopen((char *)"ast", Agdirected, nullptr);
 
 void opti()
 {
+    for (int i = 0; i <= func_num; i++) {
+        for (int j = 1;j < func_bNum[i];j++) {
+            string cur = to_string(i) + " .L" + to_string(j);
+            if (block_map.find(cur) == block_map.end()) {
+                Agnode_t *node = agfindnode(g_opti, (char *)cur.c_str());
+                agdelnode(g_opti, node);
+            }
+        }
+    }
+}
+
+void gen_graph()
+{
+    //生成结点
+    //语句数
     int cnt = 0;
     string nodeLabel = "";
     for (auto &stmt : itcode.getInsts()) {
@@ -36,6 +53,7 @@ void opti()
             }
             block_num = 0;
             ag[func_num][block_num] = agnode(g_opti, (char *)(to_string(func_num) + " " + stmt->getDst()).c_str(), 1);
+            func_bNum[func_num]++;
             first = true;
             instNo = 0;
             nodeLabel = "";
@@ -48,6 +66,7 @@ void opti()
             }
             block_num = atoi(stmt->getDst().substr(2, 100).c_str());
             ag[func_num][block_num] = agnode(g_opti, (char *)(to_string(func_num) + " " + stmt->getDst()).c_str(), 1);
+            func_bNum[func_num]++;
             first = true;
             instNo = 0;
             nodeLabel = "";
@@ -55,13 +74,28 @@ void opti()
         }
 
         if (stmt->getOp() == "bc") {
-            for (auto val : stmt->getSrc()) {
-                //if (block_map.find(cur_block))
-                block_map.insert({ cur_block, to_string(func_num) + " " + val });
+            auto iter = block_map.find(cur_block);
+            if (iter != block_map.end()) {
+                for (auto val : stmt->getSrc()) {
+                    iter->second.push_back(to_string(func_num) + " " + val);
+                }
+            } else {
+                std::vector<string> myVector;
+                for (auto val : stmt->getSrc()) {
+                    myVector.push_back(to_string(func_num) + " " + val);
+                }
+                block_map.insert({ cur_block,myVector });
             }
         }
         if (stmt->getOp() == "br") {
-            block_map.insert({ cur_block, to_string(func_num) + " " + stmt->getDst() });
+            auto iter = block_map.find(cur_block);
+            if (iter != block_map.end()) {
+                iter->second.push_back(to_string(func_num) + " " + stmt->getDst());
+            } else {
+                std::vector<string> myVector;
+                myVector.push_back(to_string(func_num) + " " + stmt->getDst());
+                block_map.insert({ cur_block,myVector });
+            }
         }
 
         nodeLabel += to_string(instNo) + " " + itcode.ircode[cnt] + "\\l";
@@ -71,11 +105,16 @@ void opti()
     agsafeset(ag[func_num][block_num], (char *)"label", (char *)nodeLabel.c_str(), (char *)"");
     agsafeset(ag[func_num][block_num], (char *)"shape", (char *)"Mrecord", (char *)"");
 
+    //遍历哈希表，连边
     for (auto &kv : block_map) {
         Agnode_t *src = agfindnode(g_opti, (char *)kv.first.c_str());
-        Agnode_t *tg = agfindnode(g_opti, (char *)kv.second.c_str());
-        agedge(g_opti, src, tg, "", 1);
+        for (auto &iter : kv.second) {
+            Agnode_t *tg = agfindnode(g_opti, (char *)iter.c_str());
+            agedge(g_opti, src, tg, "", 1);
+        }
     }
+    //优化
+    opti();
 }
 
 
@@ -84,7 +123,7 @@ void opti_show(const std::string filePath)
 {
     agsafeset(g_opti, (char *)"dpi", (char *)"600", (char *)"");
 
-    opti();
+    gen_graph();
 
     // 设置图形的布局
     gvLayout(gv_opti, g_opti, "dot");

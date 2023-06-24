@@ -287,9 +287,10 @@ string AST_Stmt::done(bool option)
             //return ret_name;
             code_stmt.code_assign("%l0", ret_name);
             //code_stmt.append("\t%l0 = " + ret_name + "\n");
-            if (stk.nm.cnt_label > 2) {
+            /*if (stk.nm.cnt_label > 2) {
                 code_stmt.code_br(".L1");
-            }
+            }*/
+            code_stmt.code_br(".L1");
         } else {
             code_stmt.code_br(".L1");
         }
@@ -378,7 +379,7 @@ string AST_Stmt::done(bool option)
         stk.push();
         flag = 0;
         string t = stk.getLabelName();
-        string e = stk.getLabelName();
+        string e;
         string j = stk.getLabelName();
 
         //短路回填,顺序还没撸出来
@@ -396,6 +397,7 @@ string AST_Stmt::done(bool option)
         }
 
         if (else_body != nullptr) {
+            e = stk.getLabelName();
             for (auto index : stk.lab_t.back()->f_line) {
                 if (e.size() > 3)
                     code_stmt.code.replace(index, 4, e);
@@ -487,6 +489,8 @@ string AST_LVal::done(bool option)
     if (tag == VARIABLE) {
         // Hint: a single a ident be a array address
         MinicType *ty = stk.getType(*ident);
+        if (ty == nullptr)
+            cout << "error:未定义变量" << endl;
         if (ty->type == MinicType::INT) {
             if (option == false) {
                 string tmp = stk.getTmpName();
@@ -668,7 +672,8 @@ int AST_Exp1::getValue()
 
 string AST_Cond::done(bool option)
 {
-    return lor->done();
+    string tmp = lor->done();
+    return tmp;
 }
 
 int AST_Cond::getValue()
