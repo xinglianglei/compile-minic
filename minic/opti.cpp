@@ -1,6 +1,7 @@
 #include "opti.h"
 #include <gvc.h>
 #include <iostream>
+#include<algorithm>
 #include <vector>
 #include "IRCode.h"
 using namespace std;
@@ -12,10 +13,12 @@ int block_num = 0;//每个函数块名
 int instNo = 0;//每个块语句数
 int loop_num = 0;
 bool first = false;
+vector<string> states;
 Agnode_t *ag[10][500];
 int func_bNum[10];
 unordered_map<string, vector<string>> block_map;
 string cur_block;
+bool skip = false;
 
 // 创建GV的上下文
 GVC_t *gv_opti = gvContext();
@@ -33,6 +36,20 @@ void opti()
             if (block_map.find(cur) == block_map.end()) {
                 Agnode_t *node = agfindnode(g_opti, (char *)cur.c_str());
                 agdelnode(g_opti, node);
+                states.push_back(cur);
+            } else {
+                bool flag = false;
+                for (auto &block : block_map.find(cur)->second) {
+                    if (find(states.begin(), states.end(), block) == states.end()) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    Agnode_t *node = agfindnode(g_opti, (char *)cur.c_str());
+                    agdelnode(g_opti, node);
+                    states.push_back(cur);
+                }
             }
         }
     }
@@ -58,6 +75,7 @@ void gen_graph()
             instNo = 0;
             nodeLabel = "";
             cur_block = (char *)(to_string(func_num) + " " + stmt->getDst()).c_str();
+            skip = false;//到下一个entry处，即下一个块儿处，停止跳过
         }
         if (stmt->getOp() == "label") {
             if (first) {
@@ -71,31 +89,35 @@ void gen_graph()
             instNo = 0;
             nodeLabel = "";
             cur_block = (char *)(to_string(func_num) + " " + stmt->getDst()).c_str();
+            skip = false;//到下一个label处，即下一个块儿处，停止跳过
         }
-
+        if (skip) {
+            cnt++;
+            continue;
+        }
         if (stmt->getOp() == "bc") {
-            auto iter = block_map.find(cur_block);
-            if (iter != block_map.end()) {
-                for (auto val : stmt->getSrc()) {
-                    iter->second.push_back(to_string(func_num) + " " + val);
+            for (auto val : stmt->getSrc()) {
+                auto iter = block_map.find(to_string(func_num) + " " + val);
+                if (iter != block_map.end()) {
+                    iter->second.push_back(cur_block);
+                } else {
+                    std::vector<string> myVector;
+                    myVector.push_back(cur_block);
+                    block_map.insert({ to_string(func_num) + " " + val,myVector });
                 }
-            } else {
-                std::vector<string> myVector;
-                for (auto val : stmt->getSrc()) {
-                    myVector.push_back(to_string(func_num) + " " + val);
-                }
-                block_map.insert({ cur_block,myVector });
             }
+            skip = true;
         }
         if (stmt->getOp() == "br") {
-            auto iter = block_map.find(cur_block);
+            auto iter = block_map.find(to_string(func_num) + " " + stmt->getDst());
             if (iter != block_map.end()) {
-                iter->second.push_back(to_string(func_num) + " " + stmt->getDst());
+                iter->second.push_back(cur_block);
             } else {
                 std::vector<string> myVector;
-                myVector.push_back(to_string(func_num) + " " + stmt->getDst());
-                block_map.insert({ cur_block,myVector });
+                myVector.push_back(cur_block);
+                block_map.insert({ to_string(func_num) + " " + stmt->getDst(),myVector });
             }
+            skip = true;
         }
 
         nodeLabel += to_string(instNo) + " " + itcode.ircode[cnt] + "\\l";
@@ -110,7 +132,7 @@ void gen_graph()
         Agnode_t *src = agfindnode(g_opti, (char *)kv.first.c_str());
         for (auto &iter : kv.second) {
             Agnode_t *tg = agfindnode(g_opti, (char *)iter.c_str());
-            agedge(g_opti, src, tg, "", 1);
+            agedge(g_opti, tg, src, "", 1);
         }
     }
     //优化

@@ -1862,14 +1862,20 @@ CMakeFiles/minic.dir/opti.cpp.obj: D:/CompilerTools/code/minic/opti.cpp \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/ostream.tcc \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/istream \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/istream.tcc \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/algorithm \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_algo.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/algorithmfwd.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_heap.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uniform_int_dist.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_algorithm_defs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h \
   D:/CompilerTools/code/minic/IRCode.h \
   D:/CompilerTools/code/minic/IRInst.h \
   D:/CompilerTools/code/minic/symbol.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/queue \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_heap.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_queue.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/align.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bit \
@@ -1882,8 +1888,7 @@ CMakeFiles/minic.dir/opti.cpp.obj: D:/CompilerTools/code/minic/opti.cpp \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_base.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h \
-  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h
 
 CMakeFiles/minic.dir/symbol.cpp.obj: D:/CompilerTools/code/minic/symbol.cpp \
   D:/CompilerTools/code/minic/symbol.h \
@@ -2232,6 +2237,8 @@ CMakeFiles/minic.dir/utils.cpp.obj: D:/CompilerTools/code/minic/utils.cpp \
 
 D:/CompilerTools/code/minic/symbol.cpp:
 
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/stl_algo.h:
+
 D:/CompilerTools/code/minic/opti.cpp:
 
 D:/CompilerTools/code/minic/minic_yacc.cpp:
@@ -2394,6 +2401,8 @@ D:/CompilerTools/msys64/mingw64/include/processenv.h:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/tbmintrin.h:
 
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uniform_int_dist.h:
+
 D:/CompilerTools/msys64/mingw64/include/oleauto.h:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/prfchwintrin.h:
@@ -2418,6 +2427,8 @@ D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/waitpkgintrin.h:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/wbnoinvdintrin.h:
 
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/algorithmfwd.h:
+
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/rdseedintrin.h:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/xsavesintrin.h:
@@ -2441,6 +2452,8 @@ D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/pkuintrin.h:
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vlbf16intrin.h:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512pfintrin.h:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_algorithm_defs.h:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/avx512vbmiintrin.h:
 
@@ -2797,6 +2810,8 @@ D:/CompilerTools/code/minic/IRInst.h:
 D:/CompilerTools/code/minic/main.cpp:
 
 D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/memory:
+
+D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/algorithm:
 
 D:/CompilerTools/msys64/mingw64/lib/clang/15.0.7/include/mwaitxintrin.h:
 

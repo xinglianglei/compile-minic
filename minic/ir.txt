@@ -1,3 +1,30 @@
+define i32 @add(i32 %t1,i32 %t2) {
+	declare i32 %l0 
+	declare i32 %l3 
+	declare i32 %l4 
+	declare i32 %l5 ;a
+	declare i32 %t6 
+	declare i1 %t7 
+	declare i32 %t8 
+	entry
+	%l3=%t1
+	%l4=%t2
+	%t6=%l5
+	%t7=cmp gt %t6, 0
+	bc %t7,label.L2 ,label.L4 
+.L2:
+	%l5=1
+	br label .L4
+.L3:
+	br label .L4
+.L4:
+	%t8=%l5
+	%l0=%t8
+	br label .L1
+.L1:
+	exit %l0
+}
+
 define i32 @main() {
 	declare i32 %l0 
 	declare i32 %l1 ;a
@@ -18,6 +45,8 @@ define i32 @main() {
 	bc %t5,label.L5 ,label.L7 
 .L5:
 	%l1=1
+	br label .L7
+.L6:
 	br label .L7
 .L7:
 	br label .L2
