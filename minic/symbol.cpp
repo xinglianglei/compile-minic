@@ -47,30 +47,30 @@ string NameOrder::getTmpPtrName()
     return "%t" + to_string(cnt_val++);
 }
 
-MinicType::MinicType() :type(INT), value(-1), next(nullptr) {}
+MinicType::MinicType() :type(INT), value(-1) {}
 
-MinicType::MinicType(TYPE _t) :type(_t), value(-1), next(nullptr) {}
+MinicType::MinicType(TYPE _t) :type(_t), value(-1) {}
 
-MinicType::MinicType(TYPE _t, int _v) : type(_t), value(_v), next(nullptr) {}
+MinicType::MinicType(TYPE _t, int _v) : type(_t), value(_v) {}
 
-MinicType::MinicType(TYPE _t, const std::vector<int> &len) :type(_t), value(-1), next(nullptr)
+MinicType::MinicType(TYPE _t, const std::vector<int> &len) :type(_t), value(-1)
 {
     buildFromArrayType(len);
 }
 
 MinicType::~MinicType()
 {
-    auto p = next;
+    /*auto p = next;
     if (p != nullptr) {
         auto prev = p;
         p = p->next;
         delete prev;
-    }
+    }*/
 }
 
 void MinicType::buildFromArrayType(const vector<int> &len)
 {
-    TYPE t = ARRAY;
+    /*TYPE t = ARRAY;
     MinicType *p = this;
     for (int i : len) {
         p->type = t;
@@ -80,17 +80,23 @@ void MinicType::buildFromArrayType(const vector<int> &len)
     }
     p->next = new MinicType();
     p = p->next;
-    p->type = INT;
+    p->type = INT;*/
+    for (auto i : len) {
+        array_index.push_back(i);
+    }
 }
 
 void MinicType::getArrayType(vector<int> &len)
 {
     len.clear();
-    MinicType *p = this;
+    /*MinicType *p = this;
     //注意这里一定是p->value!!!
     while (p->next != nullptr && (p->type == ARRAY)) {
         len.push_back(p->value);
         p = p->next;
+    }*/
+    for (auto i : array_index) {
+        len.push_back(i);
     }
     return;
 }
@@ -182,11 +188,6 @@ void SymTabStk::push()
 {
     sym_tb_st.emplace_back(new SymTab_t());
 }
-/*
-void SymTabStk::push_block()
-{
-    sym_tb_st.emplace_back(new SymTab_t());
-}*/
 
 void SymTabStk::pop()
 {

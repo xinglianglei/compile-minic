@@ -57,7 +57,8 @@ public:
 
     TYPE type;
     int value;
-    MinicType *next;
+    //MinicType *next;
+    vector<int> array_index;
 
     MinicType();
     MinicType(TYPE _type);
