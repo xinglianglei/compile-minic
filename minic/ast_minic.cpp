@@ -336,7 +336,10 @@ string AST_Stmt::done(bool option)
         code_stmt.code_label(while_entry);
         //string cond_ = cond->done();
         //code_stmt.code_bc(cond_, while_body, while_end);
-        stk.insert_Label();
+        //stk.insert_Label();
+        /*维护真假出口*/
+        stk.true_s = while_body;
+        stk.false_s = while_end;
         string s = cond->done();
         //注意!!!
         if (flag == 0) {
@@ -350,7 +353,7 @@ string AST_Stmt::done(bool option)
             code_stmt.code_bc(tmp_s, while_body, while_end);
         }
 
-        for (auto index : stk.lab_t.back()->f_line) {
+        /*for (auto index : stk.lab_t.back()->f_line) {
             if (while_end.size() > 3)
                 code_stmt.code.replace(index, 4, while_end);
             else
@@ -361,7 +364,7 @@ string AST_Stmt::done(bool option)
                 code_stmt.code.replace(index, 4, while_body);
             else
                 code_stmt.code.replace(index, 3, while_body);
-        }
+        }*/
 
         code_stmt.code_label(while_body);
         body->done();
@@ -383,7 +386,13 @@ string AST_Stmt::done(bool option)
         string j = stk.getLabelName();
 
         //短路回填,顺序还没撸出来
-        stk.insert_Label();
+        //stk.insert_Label();
+
+        //填入code里需要填入的标签
+        stk.true_s = t;
+        //如果存在else，加出口为e,否则为j
+        stk.false_s = else_body == nullptr ? j : e;
+
         string s = cond->done();
         if (flag == 0) {
             string tmp_s;
@@ -396,7 +405,7 @@ string AST_Stmt::done(bool option)
             code_stmt.code_bc(tmp_s, t, else_body == nullptr ? j : e);
         }
 
-        if (else_body != nullptr) {
+        /*if (else_body != nullptr) {
             for (auto index : stk.lab_t.back()->f_line) {
                 if (e.size() > 3)
                     code_stmt.code.replace(index, 4, e);
@@ -416,10 +425,11 @@ string AST_Stmt::done(bool option)
                 code_stmt.code.replace(index, 4, t);
             else
                 code_stmt.code.replace(index, 3, t);
-        }
+        }*/
 
         // IF Stmt
         code_stmt.code_label(t);
+
         body->done();
         code_stmt.code_br(j);
 
@@ -435,7 +445,7 @@ string AST_Stmt::done(bool option)
         }
         // end
         code_stmt.code_label(j);
-        flag = 0;
+        //flag = 0;
         stk.pop();
     } else if (tag == FOR) {
         stk.push();
@@ -451,7 +461,10 @@ string AST_Stmt::done(bool option)
         code_stmt.code_br(s);
 
         code_stmt.code_label(s);
-        stk.insert_Label();
+        //stk.insert_Label();
+        /*维护真假出口*/
+        stk.true_s = b;
+        stk.false_s = e;
         string cond_ = cond->done();
 
         if (flag == 0) {
@@ -465,12 +478,12 @@ string AST_Stmt::done(bool option)
             code_stmt.code_bc(tmp_cond, b, e);
         }
 
-        for (auto index : stk.lab_t.back()->t_line) {
+        /*for (auto index : stk.lab_t.back()->t_line) {
             code_stmt.code.replace(index, 3, b);
         }
         for (auto index : stk.lab_t.back()->f_line) {
             code_stmt.code.replace(index, 3, e);
-        }
+        }*/
         code_stmt.code_label(b);
         body->done();
         code_stmt.code_br(s);
@@ -987,22 +1000,25 @@ int AST_EqExp::getValue()
 
 string AST_LAnd::done(bool option)
 {
-    if (only_eq == true) return eqExp->done();
+    string true_s = stk.true_s;
+    string false_s = stk.false_s;
 
-    // 修改支持短路逻辑
-    /*string result = stk.getVarName("SCRES");
-    code_vec.alloc(result);
-    stk.store("0", result);*/
+    //eqExp | land||eqExp
+    if (only_eq == true) {
+        return eqExp->done();
+    }
 
     //标志
     flag++;
 
-    string lhs = eqExp->done();
     string s_1 = stk.getLabelName();
-    //string true_s = stk.getLabelName();
-    //string false_s = stk.getLabelName();
-    string true_s = ".LT";
-    string false_s = ".LF";
+
+    /*真假出口维护*/
+    //真出口变为s_1，假出口不变
+    stk.true_s = s_1;
+    stk.false_s = false_s;
+    string lhs = landExp->done(true);
+
 
     //处理为指针的情况
     string tmp_lhs;
@@ -1014,11 +1030,14 @@ string AST_LAnd::done(bool option)
     } else tmp_lhs = lhs;
     code_stmt.code_bc(tmp_lhs, s_1, false_s);
 
-    //获取false_s中F的位置
-    stk.insert_F(code_stmt.code.size() - 5);
+
     code_stmt.code_label(s_1);
 
-    string rhs = landExp->done(true);
+    /*真假出口维护*/
+    //真假出口一致，但真出口需要恢复
+    stk.true_s = true_s;
+    stk.false_s = false_s;
+    string rhs = eqExp->done();
     if (option) {
         return rhs;
     }
@@ -1032,19 +1051,7 @@ string AST_LAnd::done(bool option)
         //code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
     } else tmp_rhs = rhs;
     code_stmt.code_bc(tmp_rhs, true_s, false_s);
-    //获取true_s中T的位置 false_s中F的位置
-    stk.insert_F(code_stmt.code.size() - 5);
-    stk.insert_T(code_stmt.code.size() - 15);
 
-    //stk.store(tmp, result);
-    //stk.jump(end_s);
-
-    /*code_stmt.code_label(true_s);
-    string ret = stk.getTmpName();
-    code_tmpval.code_valDecl(ret, "i1");
-    code_stmt.append("\t" + ret + "=1" + "\n");
-    code_stmt.code_label(false_s);
-    code_stmt.append("\t" + ret + "=0" + "\n");*/
     return rhs;
 }
 
@@ -1057,22 +1064,27 @@ int AST_LAnd::getValue()
 
 string AST_LOr::done(bool option)
 {
+    //land | lor||land
+    string true_s = stk.true_s;
+    string false_s = stk.false_s;
     //只有cond过来的exp需要直接输出
-    if (only_land == true) return landExp->done();
+    if (only_land == true) {
+        /*真假出口的维护*/
+        //真假出口一致
+        return landExp->done();
+    }
 
-    // 修改支持短路逻辑
-    /*string result = stk.getVarName("SCRES");
-    code_vec.alloc(result);
-    stk.store("0", result);*/
     //标志
     flag++;
 
-    string lhs = landExp->done(true);
     string s_1 = stk.getLabelName();
-    //string true_s = stk.getLabelName();
-    //string false_s = stk.getLabelName();
-    string true_s = ".LT";
-    string false_s = ".LF";
+
+    /*真假出口的维护*/
+    //真出口不变，加出口变为s_1
+    stk.true_s = true_s;
+    stk.false_s = s_1;
+    string lhs = lorExp->done(true);
+
 
     //处理为指针的情况
     string tmp_lhs;
@@ -1083,15 +1095,19 @@ string AST_LOr::done(bool option)
         //code_stmt.append("\t" + tmp_lhs + "=" + lhs + "\n");
     } else tmp_lhs = lhs;
     code_stmt.code_bc(tmp_lhs, true_s, s_1);
-    //获取true_s中T的位置
-    if (s_1.size() > 3)
-        stk.insert_T(code_stmt.code.size() - 16);
-    else
-        stk.insert_T(code_stmt.code.size() - 15);
+
     code_stmt.code_label(s_1);
 
-    string rhs = lorExp->done();
-    //string tmp = stk.getTmpName();
+    /*真假出口的维护*/
+    //真假出口一致，但false_s需恢复
+    stk.true_s = true_s;
+    stk.false_s = false_s;
+    string rhs = landExp->done(true);
+
+    if (option) {
+        return rhs;
+    }
+
     //处理为指针的情况
     string tmp_rhs;
     if (rhs.find("*") != string::npos) {
@@ -1101,20 +1117,7 @@ string AST_LOr::done(bool option)
         //code_stmt.append("\t" + tmp_rhs + "=" + rhs + "\n");
     } else tmp_rhs = rhs;
     code_stmt.code_bc(tmp_rhs, true_s, false_s);
-    //获取true_s中T的位置 false_s中F的位置
 
-    stk.insert_T(code_stmt.code.size() - 15);
-    stk.insert_F(code_stmt.code.size() - 5);
-
-    //stk.store(tmp, result);
-    //stk.jump(end_s);
-
-    /*code_stmt.code_label(true_s);
-    string ret = stk.getTmpName();
-    code_tmpval.code_valDecl(ret, "i1");
-    code_stmt.append("\t" + ret + "=1" + "\n");
-    code_stmt.code_label(false_s);
-    code_stmt.append("\t" + ret + "=0" + "\n");*/
     return rhs;
 }
 

@@ -111,6 +111,8 @@ public:
     deque<unique_ptr<SymTab_t>> sym_tb_st;
     deque<unique_ptr<Label_t>> lab_t;
     NameOrder nm;
+    string true_s;
+    string false_s;
 
     const int UNKNOWN = -1;
     void push();
