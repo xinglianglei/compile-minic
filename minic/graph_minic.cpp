@@ -178,13 +178,21 @@ Agnode_t *AST_Stmt::gen_graph(bool option)
         Agnode_t *stmt = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(stmt, (char *)"shape", (char *)"ellipse", (char *)"");
         agsafeset(stmt, (char *)"label", (char *)"if", (char *)"");
-        Agnode_t *if_cond = cond->gen_graph();
+        Agnode_t *if_cond = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(if_cond, (char *)"label", (char *)"if_cond", (char *)"");
-        Agnode_t *t_body = body->gen_graph();
+        Agnode_t *cond_ = cond->gen_graph();
+        agedge(g, if_cond, cond_, "", 1);
+
+        Agnode_t *t_body = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(t_body, (char *)"label", (char *)"then_body", (char *)"");
+        Agnode_t *t_body_ = body->gen_graph();
+        agedge(g, t_body, t_body_, "", 1);
+
         if (else_body != nullptr) {
-            Agnode_t *e_body = else_body->gen_graph();
+            Agnode_t *e_body = agnode(g, (char *)getNodeLabelName().c_str(), 1);
             agsafeset(e_body, (char *)"label", (char *)"else_body", (char *)"");
+            Agnode_t *e_body_ = else_body->gen_graph();
+            agedge(g, e_body, e_body_, "", 1);
             agedge(g, stmt, e_body, "", 1);
         }
         agedge(g, stmt, if_cond, "", 1);
