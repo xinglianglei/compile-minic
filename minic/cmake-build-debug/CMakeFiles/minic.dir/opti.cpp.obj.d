@@ -204,6 +204,8 @@ CMakeFiles/minic.dir/opti.cpp.obj: D:/CompilerTools/code/minic/opti.cpp \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/uniform_int_dist.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/glue_algorithm_defs.h \
   D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/unordered_set \
+  D:/CompilerTools/msys64/mingw64/include/c++/12.2.0/bits/unordered_set.h \
   D:/CompilerTools/code/minic/IRCode.h \
   D:/CompilerTools/code/minic/IRInst.h \
   D:/CompilerTools/code/minic/symbol.h \

@@ -18,6 +18,7 @@ WhileStack wst;
 ForStack forst;
 FuncTabStack fts;
 int flag = 0;//用来指示是否是条件
+int not_ = 0;
 
 
 // 1 表示形参; 2表示实参; 0表示内部
@@ -200,8 +201,9 @@ string AST_FuncDef::done(bool option)
         auto ast_block = dynamic_cast<AST_Block *>(func_block.get());
         ast_block->func_params = func_params.get();
         ast_block->done();
-        if (stk.nm.cnt_label > 2)
-            code_stmt.code_label(return_Label);
+        //!!!
+        //if (stk.nm.cnt_label > 2)
+        code_stmt.code_label(return_Label);
         if (*func_type == "int")
             code_stmt.code_exit(return_Val);
         //code_stmt.append("\texit " + return_Val + "\n");
@@ -287,9 +289,9 @@ string AST_Stmt::done(bool option)
             //return ret_name;
             code_stmt.code_assign("%l0", ret_name);
             //code_stmt.append("\t%l0 = " + ret_name + "\n");
-            if (stk.nm.cnt_label > 2) {
-                code_stmt.code_br(".L1");
-            }
+            //if (stk.nm.cnt_label > 2) {
+            code_stmt.code_br(".L1");
+            //}
             //code_stmt.code_br(".L1");
         } else {
             code_stmt.code_br(".L1");
@@ -350,6 +352,11 @@ string AST_Stmt::done(bool option)
                 code_stmt.code_assign(tmp_s, s);
                 //code_stmt.append("\t" + tmp_s + "=" + s + "\n");
             } else tmp_s = s;
+            /*if (not_ == 1) {
+                code_stmt.code_bc(tmp_s, stk.true_s, stk.false_s);
+                not_ = 0;
+            } else
+                code_stmt.code_bc(tmp_s, while_body, while_end);*/
             code_stmt.code_bc(tmp_s, while_body, while_end);
         }
 
@@ -402,6 +409,11 @@ string AST_Stmt::done(bool option)
                 code_stmt.code_assign(tmp_s, s);
                 //code_stmt.append("\t" + tmp_s + "=" + s + "\n");
             } else tmp_s = s;
+            /*if (not_ == 1) {
+                code_stmt.code_bc(tmp_s, stk.true_s, stk.false_s);
+                not_ = 0;
+            } else
+                code_stmt.code_bc(tmp_s, t, else_body == nullptr ? j : e);*/
             code_stmt.code_bc(tmp_s, t, else_body == nullptr ? j : e);
         }
 
@@ -475,6 +487,11 @@ string AST_Stmt::done(bool option)
                 code_stmt.code_assign(tmp_cond, cond_);
                 //code_stmt.append("\t" + tmp_cond + "=" + cond_ + "\n");
             } else tmp_cond = cond_;
+            /*if (not_ == 1) {
+                code_stmt.code_bc(tmp_cond, stk.true_s, stk.false_s);
+                not_ = 0;
+            } else
+                code_stmt.code_bc(tmp_cond, b, e);*/
             code_stmt.code_bc(tmp_cond, b, e);
         }
 
@@ -749,6 +766,10 @@ string AST_Unary::done(bool option)
                 code_stmt.code_cmp(c, "eq", tmp, "0");
             } else
                 code_stmt.code_cmp(c, "eq", b, "0");
+            /*string tmp = stk.true_s;
+            stk.true_s = stk.false_s;
+            stk.false_s = tmp;
+            not_ = 1;*/
             return c;
         }
 

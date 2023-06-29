@@ -3,6 +3,7 @@
 #include <iostream>
 #include<algorithm>
 #include <vector>
+#include <unordered_set>
 #include "IRCode.h"
 using namespace std;
 
@@ -13,7 +14,7 @@ int block_num = 0;//每个函数块名
 int instNo = 0;//每个块语句数
 int loop_num = 0;
 bool first = false;
-vector<string> states;
+unordered_set<string> states;
 Agnode_t *ag[10][500];
 int func_bNum[10];
 unordered_map<string, vector<string>> block_map;
@@ -30,7 +31,7 @@ Agraph_t *g_opti = agopen((char *)"ast", Agdirected, nullptr);
 
 void opti()
 {
-    for (int i = 0; i <= func_num; i++) {
+    /*for (int i = 0; i <= func_num; i++) {
         for (int j = 1;j < func_bNum[i];j++) {
             string cur = to_string(i) + " .L" + to_string(j);
             if (block_map.find(cur) == block_map.end()) {
@@ -52,6 +53,36 @@ void opti()
                 }
             }
         }
+    }*/
+    for (int i = 0; i <= func_num; i++) {
+        int vec_cnt = 0;
+        do {
+            vec_cnt = states.size();
+            for (int j = 1;j < func_bNum[i];j++) {
+                string cur = to_string(i) + " .L" + to_string(j);
+                if (block_map.find(cur) == block_map.end()) {
+                    states.insert(cur);
+                } else {
+                    bool flag = false;
+                    for (auto &block : block_map.find(cur)->second) {
+                        if (find(states.begin(), states.end(), block) == states.end()) {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (flag == false) {
+                        states.insert(cur);
+                    }
+                }
+            }
+        }
+        while (vec_cnt != states.size());
+        for (auto a_node : states) {
+            Agnode_t *node = agfindnode(g_opti, (char *)a_node.c_str());
+            if (node != nullptr)
+                agdelnode(g_opti, node);
+        }
+        unordered_set<string>(states).swap(states);
     }
 }
 

@@ -1,4 +1,5 @@
-int FourWhile() {
+int FourWhile()
+{
   int a;
   a = 5;
   int b;
@@ -9,11 +10,11 @@ int FourWhile() {
   d = 10;
   while (a < 20) {
     a = a + 3;
-    while(b < 10){
+    while (b < 10) {
       b = b + 1;
-      while(c == 7){
+      while (c == 7) {
         c = c - 1;
-        while(d < 20){
+        while (d < 20) {
           d = d + 3;
         }
         d = d - 1;
@@ -22,10 +23,11 @@ int FourWhile() {
     }
     b = b - 2;
   }
-  
+
   return (a + (b + d) + c);
 }
 
-int main() {
+int main()
+{
   return FourWhile();
 }

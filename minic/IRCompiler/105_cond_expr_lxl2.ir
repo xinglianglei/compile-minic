@@ -1,0 +1,67 @@
+declare i32 @n
+define i32 @main() {
+	declare i32 %l0
+	declare i32 %l1
+	declare i32 %l2
+	declare i32 %l3
+	declare i32 %t4
+	declare i32 %t5
+	declare i32 %t6
+	declare i32 %t7
+	declare i32 %t8
+	declare i1 %t9
+	declare i32 %t10
+	declare i32 %t11
+	declare i1 %t12
+	declare i1 %t13
+	declare i32 %t14
+	declare i1 %t15
+	declare i32 %t16
+	declare i1 %t17
+	declare i32 %t18
+	declare i1 %t19
+	entry
+	%t4 = call i32 @getint()
+	%l1 = %t4
+	%t5 = call i32 @getint()
+	%l2 = %t5
+	%t6 = call i32 @getint()
+	%l3 = %t6
+	%t7 = %l1
+	%t8 = %l2
+	%t9 = cmp lt %t7, %t8
+	bc %t9, label .L5, label .L3
+.L5:
+	%t10 = %l1
+	%t11 = %l3
+	%t12 = cmp gt %t10, %t11
+	bc %t12, label .L2, label .L3
+	%t13 = cmp eq %t12, 0
+	call void @putint(i32 2)
+	br label .L4
+.L3:
+	call void @putint(i32 1)
+	br label .L4
+.L4:
+	%t14 = %l1
+	%t15 = cmp gt %t14, 5
+	bc %t15, label .L9, label .L7
+.L9:
+	%t16 = %l3
+	%t17 = cmp lt %t16, 10
+	bc %t17, label .L10, label .L7
+.L10:
+	%t18 = %l3
+	%t19 = cmp gt %t18, 0
+	bc %t19, label .L6, label .L7
+	bc %t19, label .L6, label .L7
+.L6:
+	call void @putint(i32 3)
+	br label .L8
+.L7:
+	call void @putint(i32 4)
+	br label .L8
+.L8:
+	%l0 = 0
+	exit %l0
+}

@@ -79,6 +79,10 @@ Agnode_t *AST_FuncDef::gen_graph(bool option)
         }
         agsafeset(params, (char *)"label", (char *)"func_params", (char *)"");
         agedge(g, func, params, "", 1);
+    } else {
+        Agnode_t *funcParam = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+        agsafeset(funcParam, (char *)"label", (char *)"funcParam", (char *)"");
+        agedge(g, func, funcParam, "", 1);
     }
     if (tag == DEF_NOPARAM || tag == DEF_PARAM) {
         Agnode_t *block = func_block->gen_graph();
@@ -91,10 +95,22 @@ Agnode_t *AST_FuncDef::gen_graph(bool option)
 Agnode_t *AST_FuncFParam::gen_graph(bool option)
 {
     if (tag == VARIABLE) {
+        Agnode_t *vardef = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+        agsafeset(vardef, (char *)"label", (char *)"paramdecl", (char *)"");
+        Agnode_t *int_ = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+        agsafeset(int_, (char *)"label", (char *)"int", (char *)"");
+        agedge(g, vardef, int_, "", 1);
         Agnode_t *val = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(val, (char *)"label", (char *)param_name->c_str(), (char *)"");
-        return val;
+        agedge(g, vardef, val, "", 1);
+        return vardef;
     } else {
+        Agnode_t *vardef = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+        agsafeset(vardef, (char *)"label", (char *)"paramdecl", (char *)"");
+        Agnode_t *int_ = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+        agsafeset(int_, (char *)"label", (char *)"int", (char *)"");
+        agedge(g, vardef, int_, "", 1);
+
         Agnode_t *val_array = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(val_array, (char *)"label", (char *)(*param_name + "[]").c_str(), (char *)"");
         if (ArrayIndexList->is_zero) {
@@ -106,7 +122,8 @@ Agnode_t *AST_FuncFParam::gen_graph(bool option)
             Agnode_t *tmp = index->gen_graph();
             agedge(g, val_array, tmp, "", 1);
         }
-        return val_array;
+        agedge(g, vardef, val_array, "", 1);
+        return vardef;
     }
 }
 
@@ -145,8 +162,10 @@ Agnode_t *AST_Stmt::gen_graph(bool option)
         Agnode_t *stmt = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(stmt, (char *)"shape", (char *)"ellipse", (char *)"");
         agsafeset(stmt, (char *)"label", (char *)"ret", (char *)"");
-        Agnode_t *ret_exp = exp->gen_graph();
-        agedge(g, stmt, ret_exp, "", 1);
+        if (exp != nullptr) {
+            Agnode_t *ret_exp = exp->gen_graph();
+            agedge(g, stmt, ret_exp, "", 1);
+        }
         return stmt;
     } else if (tag == ASSIGN) {
         Agnode_t *stmt = agnode(g, (char *)getNodeLabelName().c_str(), 1);
@@ -183,16 +202,28 @@ Agnode_t *AST_Stmt::gen_graph(bool option)
         Agnode_t *cond_ = cond->gen_graph();
         agedge(g, if_cond, cond_, "", 1);
 
-        Agnode_t *t_body = agnode(g, (char *)getNodeLabelName().c_str(), 1);
-        agsafeset(t_body, (char *)"label", (char *)"then_body", (char *)"");
         Agnode_t *t_body_ = body->gen_graph();
-        agedge(g, t_body, t_body_, "", 1);
+        Agnode_t *t_body;
+        if (strcmp(agnameof(t_body_), "block") == 0) {
+            t_body = t_body_;
+        } else {
+            t_body = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+            agsafeset(t_body, (char *)"label", (char *)"then_body", (char *)"");
+
+            agedge(g, t_body, t_body_, "", 1);
+        }
 
         if (else_body != nullptr) {
-            Agnode_t *e_body = agnode(g, (char *)getNodeLabelName().c_str(), 1);
-            agsafeset(e_body, (char *)"label", (char *)"else_body", (char *)"");
             Agnode_t *e_body_ = else_body->gen_graph();
-            agedge(g, e_body, e_body_, "", 1);
+            Agnode_t *e_body;
+            if (strcmp(agnameof(e_body_), "block") == 0) {
+                e_body = e_body_;
+            } else {
+                e_body = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+                agsafeset(e_body, (char *)"label", (char *)"else_body", (char *)"");
+
+                agedge(g, e_body, e_body_, "", 1);
+            }
             agedge(g, stmt, e_body, "", 1);
         }
         agedge(g, stmt, if_cond, "", 1);
@@ -294,10 +325,16 @@ Agnode_t *AST_VarDef::gen_graph(bool option)
         agsafeset(node, (char *)"shape", (char *)"ellipse", (char *)"");
     }
     return node;*/
+    Agnode_t *vardef = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+    agsafeset(vardef, (char *)"label", (char *)"vardef", (char *)"");
+    Agnode_t *int_ = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+    agsafeset(int_, (char *)"label", (char *)"int", (char *)"");
+    agedge(g, vardef, int_, "", 1);
     if (tag == VARIABLE) {
         Agnode_t *val = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(val, (char *)"label", (char *)ident->c_str(), (char *)"");
-        return val;
+        agedge(g, vardef, val, "", 1);
+        return vardef;
     } else {
         Agnode_t *val_array = agnode(g, (char *)getNodeLabelName().c_str(), 1);
         agsafeset(val_array, (char *)"label", (char *)(*ident + "[]").c_str(), (char *)"");
@@ -305,7 +342,8 @@ Agnode_t *AST_VarDef::gen_graph(bool option)
             Agnode_t *tmp = index->gen_graph();
             agedge(g, val_array, tmp, "", 1);
         }
-        return val_array;
+        agedge(g, vardef, val_array, "", 1);
+        return vardef;
     }
 }
 
@@ -483,9 +521,23 @@ Agnode_t *AST_FuncCall::gen_graph(bool option)
 {
     Agnode_t *funcCall = agnode(g, (char *)getNodeLabelName().c_str(), 1);
     agsafeset(funcCall, (char *)"label", (char *)id_val->c_str(), (char *)"");
-    for (auto &param : params->vec) {
-        Agnode_t *tmp = param->gen_graph();
-        agedge(g, funcCall, tmp, "", 1);
+    if (params != nullptr) {
+        for (auto &param : params->vec) {
+            /*Agnode_t *vardef = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+            agsafeset(vardef, (char *)"label", (char *)"param", (char *)"");
+            Agnode_t *int_ = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+            agsafeset(int_, (char *)"label", (char *)"int", (char *)"");
+            agedge(g, vardef, int_, "", 1);*/
+
+            Agnode_t *tmp = param->gen_graph();
+            /*agedge(g, vardef, tmp, "", 1);
+            agedge(g, funcCall, vardef, "", 1);*/
+            agedge(g, funcCall, tmp, "", 1);
+        }
+    } else {
+        Agnode_t *funcParam = agnode(g, (char *)getNodeLabelName().c_str(), 1);
+        agsafeset(funcParam, (char *)"label", (char *)"funcParam", (char *)"");
+        agedge(g, funcCall, funcParam, "", 1);
     }
     return funcCall;
 }
