@@ -54,6 +54,7 @@ void opti()
             }
         }
     }*/
+    //循环遍历map，删除无用块，直到map收敛稳定
     for (int i = 0; i <= func_num; i++) {
         int vec_cnt = 0;
         do {
@@ -76,6 +77,7 @@ void opti()
                 }
             }
         }
+        //删除无用基本块
         while (vec_cnt != states.size());
         for (auto a_node : states) {
             Agnode_t *node = agfindnode(g_opti, (char *)a_node.c_str());
@@ -126,6 +128,7 @@ void gen_graph()
             cnt++;
             continue;
         }
+        //维护基本块调用关系
         if (stmt->getOp() == "bc") {
             for (auto val : stmt->getSrc()) {
                 auto iter = block_map.find(to_string(func_num) + " " + val);
@@ -137,6 +140,7 @@ void gen_graph()
                     block_map.insert({ to_string(func_num) + " " + val,myVector });
                 }
             }
+            //开始忽略标签前的语句
             skip = true;
         }
         if (stmt->getOp() == "br") {
@@ -148,6 +152,7 @@ void gen_graph()
                 myVector.push_back(cur_block);
                 block_map.insert({ to_string(func_num) + " " + stmt->getDst(),myVector });
             }
+            //开始忽略标签前的语句
             skip = true;
         }
 

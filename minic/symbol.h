@@ -10,7 +10,7 @@ class NameOrder {
 public:
     int cnt_val;
     int cnt_label;
-    unordered_map<string, int> no;
+    //unordered_map<string, int> no;
 
     NameOrder() :cnt_val(0), cnt_label(2) {}
     void reset();
@@ -73,7 +73,7 @@ public:
 class Sym_t {
 public:
     string ident;   // SysY标识符，诸如x,y
-    string ir_name;    // KoopaIR中的具名变量，诸如@x_1, @y_1, ..., @n_2
+    string ir_name;    // IRCode中的具名变量，诸如@x, @y, ..., @n
     MinicType *type;
     Sym_t(const string &_ident, const string &_ir_name, MinicType *_type);
     ~Sym_t();
@@ -81,7 +81,7 @@ public:
 
 class SymTab_t {
 public:
-    const int UNKNOWN = -1;
+    const int UNKNOWN = -1; //const变量用的，可以扩展
     unordered_map<string, Sym_t *> symbol_tb;  // ident -> Symbol *
     SymTab_t() = default;
     ~SymTab_t();
@@ -95,7 +95,6 @@ public:
     int getValue(const string &ident);
     MinicType *getType(const string &ident);
     string getName(const string &ident);
-
 };
 
 class Label_t {
@@ -109,11 +108,11 @@ public:
 
 class SymTabStk {
 public:
-    deque<unique_ptr<SymTab_t>> sym_tb_st;
-    deque<unique_ptr<Label_t>> lab_t;
-    NameOrder nm;
-    string true_s;
-    string false_s;
+    deque<unique_ptr<SymTab_t>> sym_tb_st; //符号队列
+    deque<unique_ptr<Label_t>> lab_t; //用于拉链回填
+    NameOrder nm; //符号名管理器
+    string true_s; //用于短路求值的真出口
+    string false_s; //用于短路求值的假出口
 
     const int UNKNOWN = -1;
     void push();

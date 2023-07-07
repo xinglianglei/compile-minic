@@ -20,7 +20,7 @@ string NameOrder::getLocalName()
 
 string NameOrder::getGlobalName(const string &s)
 {
-    auto i = no.find(s);
+    //auto i = no.find(s);
     return "@" + s;
     /*if (i == no.end()) {
         no.insert(make_pair(s, 1));

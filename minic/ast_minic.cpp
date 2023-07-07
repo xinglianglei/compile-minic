@@ -503,11 +503,11 @@ string AST_Stmt::done(bool option)
         }*/
         code_stmt.code_label(b);
         body->done();
-        code_stmt.code_br(s);
+        code_stmt.code_br(c);
 
         code_stmt.code_label(c);
         exp2->done();
-        code_stmt.code_br(b);
+        code_stmt.code_br(s);
         code_stmt.code_label(e);
         forst.quit(); // 该while处理已结束，退栈
         flag = 0;
@@ -554,6 +554,7 @@ string AST_LVal::done(bool option)
         vector<string> index;
         vector<int> len;
 
+        //计算各个维度的具体值
         for (auto &e : exps->vec) {
             string tmp_ = e->done();
             if (tmp_.find("*") != string::npos) {
@@ -566,6 +567,7 @@ string AST_LVal::done(bool option)
             index.push_back(tmp_);
         }
 
+        //获取函数对应的形参
         MinicType *type = stk.getType(*ident);
         type->getArrayType(len);
 
@@ -580,10 +582,12 @@ string AST_LVal::done(bool option)
         string tmp_name, tmp_name1;
         //cout << tmp_type << endl;
         tmp_name1 = index[0];
+        //维度为空，直接返回地址
         if (index.size() == 0) {
             return tmp_val;
         }
 
+        //利用形参维度和实参维度计算地址
         for (int i = 0; i < index.size() - 1; i++) {
             tmp_name = stk.getTmpName();
             cout << tmp_name << endl;
@@ -1086,6 +1090,7 @@ int AST_LAnd::getValue()
 string AST_LOr::done(bool option)
 {
     //land | lor||land
+    //记录初始真假出口
     string true_s = stk.true_s;
     string false_s = stk.false_s;
     //只有cond过来的exp需要直接输出

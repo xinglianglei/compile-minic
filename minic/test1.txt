@@ -1,39 +1,43 @@
-//整数定义
-a=5;
--a;
-d=2;
-//浮点数定义
-b=2.5;
--d;
-//科学计数
-c=2.1e2;
--c;
-
-//显示
-a
-b
-c
-//加减乘除取余取负纯整数
-a+d;
-a-d;
-a*d;
-a/d;
-a%d;
-//加减乘除取余取负实数
-b+c;
-b-c;
-b*c;
-b/c;
-b%c;
-//加减乘除取余取负(混合)
-a+b;
-a-c;
-a*b;
-a/c;
-a%b;
-//复合运算
-a=6.5;
--a+b*(-c)%(b-c)/b
 
 
+
+int enc(int a)
+{
+   if(a>25)
+   a=a+60;
+   else
+   {
+       a=a-15;
+   }
+   
+   return a;
+}
+
+int dec(int a)
+{
+    if (a>85)
+    a=a-59;
+    else
+    {
+        a=a+14;
+    }
+
+    return a;
+    
+}
+
+void putint(int k);
+
+int main()
+{
+    int a;
+    a=400;
+    int res;
+    res=enc(a);
+    res=dec(res);
+    putint(res);
+    res = 10;
+    putch(res);
+    return 0;
+}
 

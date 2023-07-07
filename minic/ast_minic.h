@@ -55,7 +55,6 @@ enum ast_op_type {
 };
 
 class AST_Base;
-class AST_ExpBase;
 class AST_Vec;
 
 class AST_FuncDef;
@@ -99,7 +98,6 @@ public:
     {
         vec.push_back(move(ptr));
     }
-
 };
 
 class AST_Exp :public AST_Base {
